@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/app/core/sass/biz-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
