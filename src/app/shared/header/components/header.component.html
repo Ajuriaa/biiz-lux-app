@@ -1,0 +1,18 @@
+<div class="container">
+  <section class="title-wrapper">
+    <img
+      class="user-avatar-mobile"
+      [routerLink]="['/profile']"
+    />
+    <img class="logo" alt="logo" src="assets/icons/logo-cokids-white.svg" />
+  </section>
+
+  <ng-template #backMenu>
+    <section class="title-wrapper">
+      <span class="material-icons-outlined icon" (click)="navigate()">arrow_back</span>
+      <span class="current-path" >
+        NEW HEADER
+      </span>
+    </section>
+  </ng-template>
+</div>
