@@ -1,0 +1,9 @@
+<button
+  mat-button
+  class="btn monserrat"
+  [class]="styleClass"
+  [disabled]="disableButton"
+  (click)="btnClick.emit($event)"
+>
+  <ng-content></ng-content>
+</button>

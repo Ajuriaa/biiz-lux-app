@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderModule } from '../shared';
+import { ButtonsModule, HeaderModule } from '../shared';
 import { HomeComponent } from './containers/home/home.component';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
@@ -11,7 +11,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
   imports: [
     CommonModule,
     PassengersRoutingModule,
-    HeaderModule
+    HeaderModule,
+    ButtonsModule
   ]
 })
 export class PassengersModule {}
