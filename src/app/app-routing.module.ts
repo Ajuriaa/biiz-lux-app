@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
   {
     path: 'customer',
-    loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
+    loadChildren: () => import('./passengers/passengers.module').then(m => m.PassengersModule)
   }
 
   // Errors routes
