@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HeaderModule } from '../shared';
 import { HomeComponent } from './containers/home/home.component';
 import { CustomersRoutingModule } from './customers-routing.module';
 
@@ -7,7 +8,8 @@ import { CustomersRoutingModule } from './customers-routing.module';
     HomeComponent
   ],
   imports: [
-    CustomersRoutingModule
+    CustomersRoutingModule,
+    HeaderModule
   ]
 })
 export class CustomersModule {}

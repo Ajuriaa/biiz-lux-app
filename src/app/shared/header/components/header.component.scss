@@ -1,0 +1,42 @@
+@import 'src/app/core/sass/colors';
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: $black;
+  min-width: 34rem;
+  max-height: 3.5rem;
+  border-radius: 0.5rem 1rem 1rem 0.5rem;
+
+  .logo {
+    margin: 0.5rem 0 0 5rem;
+  }
+
+  .d-flex {
+    gap: 1rem;
+  }
+
+  .translate {
+    background-color: $green;
+    min-width: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0.5rem 0.5rem 0;
+
+    .translate-label {
+      font-weight: bold;
+      margin: 0 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .translate-icon {
+      max-width: 2rem;
+    }
+  }
+}
