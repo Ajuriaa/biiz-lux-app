@@ -1,0 +1,91 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.trip-container {
+  height: 31.6rem;
+  width: 34.2rem;
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/unidad.png');
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.experience-container {
+  height: 13.2rem;
+  width: 34.2rem;
+  border-radius: 0.6rem;
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/experiencias.png');
+  background-size: cover;
+
+  .button-container {
+    flex-direction: column;
+    gap: 6.3rem;
+    margin-left: 3rem;
+
+    .label {
+      align-self: flex-end;
+    }
+
+    .button {
+      align-self: flex-start;
+    }
+  }
+}
+
+.shared-container {
+  display: flex;
+  gap: 0.5rem;
+
+  .airport-container, .specials-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 13.2rem;
+    width: 16.7rem;
+    border-radius: 0.4rem;
+
+    .button {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .airport-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport.png');
+  }
+
+  .specials-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/especiales.png');
+    background-size: cover;
+  }
+}
+
+.button {
+  width: 11.7rem;
+  background-color: $white;
+}
+
+.label {
+  width: 6.6rem;
+  background-color: $green;
+}
+
+.button-container {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.4rem;
+}
+
+.button, .label {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 0.3rem;
+}
