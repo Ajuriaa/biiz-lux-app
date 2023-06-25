@@ -1,17 +1,24 @@
 <div class="container">
-  <section class="header-wrapper">
-    <img
-      src="assets/images/profile.svg"
-      [routerLink]="['/profile']"
-    />
-    <img class="logo" src="assets/images/logo.svg" alt="Logo">
+  <div class="back-arrow">
+    <span class="material-icons-round icon">
+      arrow_back_ios
+    </span>
+  </div>
+  <div class="header">
+    <section class="header-wrapper">
+      <img
+        src="assets/images/profile.svg"
+        [routerLink]="['/profile']"
+      />
+      <img class="logo" src="assets/images/logo.svg" alt="Logo">
 
-    <div class="d-flex">
-      <img src="assets/images/weather.svg" alt="weather">
-      <section class="translate">
-        <img class="translate-icon" src="assets/images/translate.svg" alt="translate">
-        <p class="translate-label">ESP</p>
-      </section>
-    </div>
-  </section>
+      <div class="d-flex">
+        <img src="assets/images/weather.svg" alt="weather">
+        <section class="translate">
+          <img class="translate-icon" src="assets/images/translate.svg" alt="translate">
+          <p class="translate-label">ESP</p>
+        </section>
+      </div>
+    </section>
+  </div>
 </div>

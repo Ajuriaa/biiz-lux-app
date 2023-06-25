@@ -1,8 +1,36 @@
 @import 'src/app/core/sass/colors';
 
-.container {
+.back-arrow {
   display: flex;
   justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: setColor(firm-gray, 100);
+  max-width: 4.5rem;
+  min-height: 2.6rem;
+  border-radius: 0.5rem;
+
+  .icon {
+    padding: 0.4rem;
+    background-color: $green;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+
+  .header {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .header-wrapper {
