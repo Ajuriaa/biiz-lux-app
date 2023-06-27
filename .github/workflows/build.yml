@@ -1,0 +1,24 @@
+name: Angular CI
+on:
+  pull_request_review:
+    types: [submitted]
+jobs:
+  install-and-test:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.16.x]
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install and Test
+        run: |
+          npm install
+          npm run lint
+          npm run test:single-run
+        env:
+          CI: true
