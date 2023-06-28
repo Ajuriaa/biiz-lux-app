@@ -15,4 +15,4 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ButtonsModule
   ]
 })
-export class PassengersModule {}
+export class PassengersModule { }
