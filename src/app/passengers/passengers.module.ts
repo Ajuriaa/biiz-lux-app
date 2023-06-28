@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ButtonsModule, HeaderModule } from '../shared';
 import { HomeComponent } from './containers/home/home.component';
 import { PassengersRoutingModule } from './passengers-routing.module';
+import { ExperiencesComponent } from './containers';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ExperiencesComponent
   ],
   imports: [
     CommonModule,
@@ -17,4 +19,4 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ButtonsModule
   ]
 })
-export class PassengersModule {}
+export class PassengersModule { }

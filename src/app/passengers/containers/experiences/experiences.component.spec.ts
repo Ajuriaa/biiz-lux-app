@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { ExperiencesComponent } from './experiences.component';
 
 describe('ExperiencesComponent', () => {
@@ -8,7 +9,9 @@ describe('ExperiencesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ExperiencesComponent]
+      declarations: [ExperiencesComponent],
+      imports: [HeaderModule, ButtonsModule],
+      providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
     });
     fixture = TestBed.createComponent(ExperiencesComponent);
     component = fixture.componentInstance;

@@ -1,0 +1,91 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $white;
+  gap: 0.7rem;
+}
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.label {
+  display: flex;
+  font-weight: bold;
+  align-self: flex-end;
+  justify-content: center;
+  background-color: $green;
+  color: $black;
+  margin: 1.5rem;
+  width: 7.4rem;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+}
+
+.driveit-container, .car-container, .experience-container {
+  height: 13.2rem;
+  width: 34.2rem;
+  border-radius: 0.6rem;
+}
+
+.experience-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/raptor.png');
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 9.5rem;
+  border-radius: 0.6rem;
+  height: 31.6rem;
+  width: 34.2rem;
+
+  .raptor {
+    height: 2.6rem;
+  }
+}
+
+.driveit-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/drive-it-yourself.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .title {
+    font-size: 0.8rem;
+    letter-spacing: 0.8rem;
+    font-weight: bold;
+  }
+
+  .paragraph {
+    margin: 0;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    width: 24.5rem;
+    text-align: center;
+  }
+
+  .footer {
+    font-size: 0.6rem;
+  }
+}
+
+.car-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/supra.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .car-label {
+    font-weight: bold;
+    font-size: 0.5rem;
+    letter-spacing: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+}
