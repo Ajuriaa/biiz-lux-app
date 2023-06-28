@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProfileComponent } from './components';
 import { HeaderModule } from '../header/header.module';
 import { ButtonsModule } from '../buttons/buttons.module';
+import { ProfileComponent } from './components';
 
 @NgModule({
   declarations: [ProfileComponent],

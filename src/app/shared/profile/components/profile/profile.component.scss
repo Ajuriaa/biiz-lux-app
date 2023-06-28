@@ -1,158 +1,145 @@
 @import 'src/app/core/sass/global';
 
 .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.15rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 .profile-photo {
-    position: relative;
+  position: relative;
 }
 
 .profile-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .row {
-    margin-left: -0.3rem;
+  margin-left: -0.3rem;
+  display: flex;
+  width: 34.3rem;
+  gap: 0.6rem;
+
+  .top-left,
+  .top-right,
+  .bottom-left,
+  .bottom-right {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 17rem;
+    height: 14.5rem;
     display: flex;
-    width: 34.3rem;
-    gap: 0.6rem;
-    .top-left, .top-right, .bottom-left, .bottom-right {
-        font-size: 0.8rem;
-        font-weight: bold;
-        margin-top: 1rem;
-        width: 17rem;
-        height: 14.5rem;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        border-radius: 0.3rem;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 0.3rem;
 
-        .button {
-            display: flex;
-            justify-content: center;
-            background-color: $white;
-            width: 11.7rem;
-            margin-bottom: 1.5rem;
-            border-radius: 0.3rem;
-        }
-        
+    .button {
+      display: flex;
+      justify-content: center;
+      background-color: $white;
+      width: 11.7rem;
+      margin-bottom: 1.5rem;
+      border-radius: 0.3rem;
     }
+  }
 
-    .top-left {
-        background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
-    }
+  .top-left {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
+  }
 
-    .top-right {
-        background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
-    }
+  .top-right {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
+  }
 
-    .bottom-left {
-        background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
-    }
+  .bottom-left {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
+  }
 
-    .bottom-right {
-        background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
-    }
+  .bottom-right {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
+  }
 
-    .image {
-        width: 6.8rem;
-        height: 3.8rem;
-    }
+  .image {
+    width: 6.8rem;
+    height: 3.8rem;
+  }
 }
 
 .icon {
-    margin-bottom: 0.5rem;
-    background-color: $green;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    padding: 0.2rem;
-    color: setColor(firm-gray, 200);
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  margin-bottom: 0.5rem;
+  background-color: $green;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  padding: 0.2rem;
+  color: setColor(firm-gray, 200);
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .profile-name {
-    font-size: 0.8rem;
-    display: flex;
-    text-align: center;
-    color: white;
-    margin-top: -2rem;
-    background-color: $black;
-    width: 34rem;
-    height: 7.5rem;
-    border-radius: 0.4rem;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
+  font-size: 0.8rem;
+  display: flex;
+  text-align: center;
+  color: white;
+  margin-top: -2rem;
+  background-color: $black;
+  width: 34rem;
+  height: 7.5rem;
+  border-radius: 0.4rem;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
 
-    .name {
-        margin: 0;
-        font-weight: bold;
-    }
+  .name {
+    margin: 0;
+    font-weight: bold;
+  }
 }
 
 .profile-options {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 34rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 34rem;
 }
 
-.image-wrapper {
-    position: relative;
+.customer-service {
+  margin-top: 1rem;
+  border-radius: 0.4rem;
+  width: 33.9rem;
+  height: 14.5rem;
+  background-color: $black;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  .image {
+    width: 6.8rem;
+    align-self: flex-end;
+    margin-right: 5rem;
   }
 
-.button-options {
-   
-    margin-top:8rem;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
- }
-
- .customer-service {
-    margin-top: 1rem;
-    border-radius: 0.4rem;
-    width: 33.9rem;
-    height: 14.5rem;
-    background-color: $black;
-    font-size: 0.8rem;
+  .service-label {
+    margin-bottom: 1.5rem;
     font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    
-
-    .image {
-        width: 6.8rem;
-        align-self: flex-end;
-        margin-right: 5rem;
-    }
-
-    .service-label {
-        margin-bottom: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-        background-color: $white;
-        width: 24.1rem;
-        border-radius: 0.4rem;
-    }
- }
-
- .main-button {
-    display: flex;
-    justify-content: center;
-    margin: 1.3rem;
+    text-align: center;
+    background-color: $white;
+    width: 24.1rem;
+    border-radius: 0.4rem;
   }
+}
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  margin: 1.3rem;
+}
