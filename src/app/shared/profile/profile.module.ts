@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HeaderModule } from '../header/header.module';
+import { ButtonsModule } from '../buttons/buttons.module';
 import { ProfileComponent } from './components';
 
 @NgModule({
@@ -8,7 +10,9 @@ import { ProfileComponent } from './components';
   exports: [ProfileComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HeaderModule,
+    ButtonsModule
   ]
 })
 export class ProfileModule { }
