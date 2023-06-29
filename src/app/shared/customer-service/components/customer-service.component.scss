@@ -1,0 +1,95 @@
+@import 'src/app/core/sass/global';
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-container {
+  width: 37.6rem;
+  height: 38rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('//biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+  font-size: 0.8rem;
+  display: flex;
+  text-align: center;
+  color: white;
+  margin-top: -2rem;
+  background-color: $black;
+  width: 34rem;
+  height: 7.5rem;
+  border-radius: 0.4rem;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+
+  .name {
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+.profile-photo {
+  position: relative;
+}
+
+.options {
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  display: flex;
+  text-align: center;
+  color: white;
+  background-color: $black;
+  width: 16.65rem;
+  height: 7.5rem;
+  border-radius: 0.4rem;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.1rem;
+  font-weight: bold;
+  gap: 2 rem;
+}
+
+.tittle {
+  padding: 1.5rem;
+  font-size: 1rem;
+  color: $black;
+  font-weight: bold;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+
+}
+.row {
+  display: flex;
+  width: 34.3rem;
+  margin: 1rem;
+}
+
+.row-sh {
+  display: flex;
+  width: 34.3rem;
+}
+.shortcuts {
+  display: flex;
+  align-items: flex-end;
+  margin: 0.20rem;
+  width: 16.5rem;
+  height: 13rem;
+  border-radius: 0.4rem;
+  background-color: $white;
+  box-shadow: 0rem 0rem 0.5rem 0.5rem hsla(0, 0%, 0%, 0.027);
+
+  .text {
+  text-align: justify;
+  opacity: 0.6;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  }
+}

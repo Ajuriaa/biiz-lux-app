@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth';
 import { ProfileComponent } from './shared/profile/components';
+import { CustomerServiceComponent } from './shared/customer-service/components/customer-service.component';
 
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
@@ -11,6 +12,9 @@ const routes: Routes = [
   }
   ,
   { path: 'profile', title: 'Perfil', component: ProfileComponent }
+  ,
+  { path: 'customer-service', title: 'Customer Service', component: CustomerServiceComponent }
+
 
   // Errors routes
   // { path: 'error', title: 'Error', component: NotFoundErrorComponent },
