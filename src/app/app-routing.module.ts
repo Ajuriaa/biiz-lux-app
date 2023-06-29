@@ -13,7 +13,7 @@ const routes: Routes = [
   ,
   { path: 'profile', title: 'Perfil', component: ProfileComponent }
   ,
-  { path: 'customer-service', title: 'Customer Service', component: CustomerServiceComponent }
+  { path: 'customer-service', title: 'Servicio al cliente', component: CustomerServiceComponent }
 
 
   // Errors routes

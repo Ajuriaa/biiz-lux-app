@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HeaderModule } from 'src/app/shared';
 import { CustomerServiceComponent } from './customer-service.component';
 
-
 describe('CustomerServiceComponent', () => {
   let component: CustomerServiceComponent;
   let fixture: ComponentFixture<CustomerServiceComponent>;

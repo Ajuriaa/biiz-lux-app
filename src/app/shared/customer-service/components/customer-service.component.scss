@@ -1,4 +1,5 @@
 @import 'src/app/core/sass/global';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -10,7 +11,7 @@
   height: 38rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('//biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
+  background-image: url('http://biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +22,6 @@
   display: flex;
   text-align: center;
   color: white;
-  margin-top: -2rem;
   background-color: $black;
   width: 34rem;
   height: 7.5rem;
@@ -55,7 +55,6 @@
   align-items: center;
   margin-top: 0.1rem;
   font-weight: bold;
-  gap: 2 rem;
 }
 
 .tittle {
@@ -64,8 +63,8 @@
   color: $black;
   font-weight: bold;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
-
 }
+
 .row {
   display: flex;
   width: 34.3rem;
@@ -76,6 +75,7 @@
   display: flex;
   width: 34.3rem;
 }
+
 .shortcuts {
   display: flex;
   align-items: flex-end;
