@@ -5,6 +5,7 @@ import {
   ExperiencesComponent,
   HomeComponent
 } from './containers';
+import { AirportComponent } from './containers/airport/airport.component';
 
 
 const routes: Routes = [{
@@ -20,6 +21,11 @@ const routes: Routes = [{
       path: 'experiences',
       title: 'Experiencias',
       component: ExperiencesComponent
+    },
+    {
+      path: 'airport',
+      title: 'Airport',
+      component: AirportComponent
     }
   ]
 }];
