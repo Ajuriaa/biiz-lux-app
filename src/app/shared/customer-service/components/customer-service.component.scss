@@ -11,7 +11,7 @@
   height: 38rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('http://biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@
   font-size: 0.8rem;
   display: flex;
   text-align: center;
-  color: white;
+  color: $white;
   background-color: $black;
   width: 34rem;
   height: 7.5rem;
@@ -45,7 +45,6 @@
   font-size: 0.8rem;
   display: flex;
   text-align: center;
-  color: white;
   background-color: $black;
   width: 16.65rem;
   height: 7.5rem;
@@ -87,9 +86,9 @@
   box-shadow: 0rem 0rem 0.5rem 0.5rem hsla(0, 0%, 0%, 0.027);
 
   .text {
-  text-align: justify;
-  opacity: 0.6;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+    text-align: justify;
+    opacity: 0.6;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
   }
 }
