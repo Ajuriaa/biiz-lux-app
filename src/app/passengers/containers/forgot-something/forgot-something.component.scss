@@ -1,0 +1,45 @@
+
+.section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.text {
+  color: #3E4958;
+  font-weight: bold;
+  margin-right: 23.8rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.info {
+  color: #3E4958;
+  text-align: justify;
+  width: 34.2rem;
+}
+
+.message {
+  color: #5a5a5aaf;
+  padding: 0.5rem;
+  background-color: #3e495810;
+  width: 32.8rem;
+  height: 25.2rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid #696a6b60;
+}
+
+.sent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  margin-top: 2rem;
+  width: 34.2rem;
+  height: 6.1rem;
+  background-color: black;
+  border-radius: 0.4rem;
+}
