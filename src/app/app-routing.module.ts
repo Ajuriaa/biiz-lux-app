@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth';
 import { ProfileComponent } from './shared/profile/components';
 import { CustomerServiceComponent } from './shared/customer-service/';
-import { FaqComponent } from './shared/Faq/components/faq.component';
+import { FaqComponent } from './shared/faq/components/faq.component';
 
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
