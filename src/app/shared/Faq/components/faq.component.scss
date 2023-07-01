@@ -1,0 +1,39 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.section {
+  flex-direction: row;
+}
+
+.title {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+.text {
+  flex-direction: row;
+  color: #3E4958;
+  width: 34.3rem;
+
+  .icon { 
+    margin-bottom: 1rem;
+    color: #3E4958;
+    height: 1rem;
+  }
+}
+
+.line {
+  width: 34.3rem;
+  opacity: 20%;
+  margin-top: 0.2rem;
+  border-bottom: 0.2rem solid black;
+}
+
