@@ -11,7 +11,7 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
       imports: [HeaderModule, ButtonsModule, RouterModule],
-      providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
+      providers: [{ provide: ActivatedRoute, useValue: { params: ({}) } }]
     });
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;

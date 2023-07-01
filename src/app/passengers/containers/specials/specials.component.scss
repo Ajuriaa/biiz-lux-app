@@ -13,49 +13,38 @@
   margin: 0.5rem;
 }
 
-.trip-container {
-  height: 31.6rem;
+.specials-container {
+  height: 28.1rem;
   width: 34.2rem;
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/unidad.png');
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-car.png');
   border-radius: 0.6rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
+  flex-direction: column;
 }
 
-.experience-container {
-  height: 13.2rem;
+.ambulance-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-ambulance.png');
+  height: 14.7rem;
   width: 34.2rem;
   border-radius: 0.6rem;
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/experiencias.png');
-  background-size: cover;
-
-  .button-container {
-    flex-direction: column;
-    gap: 6.3rem;
-    margin-left: 3rem;
-
-    .label {
-      align-self: flex-end;
-    }
-
-    .button {
-      align-self: flex-start;
-    }
-  }
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .shared-container {
   display: flex;
   gap: 0.5rem;
 
-  .airport-container,
-  .specials-container {
+  .armored-container,
+  .crane-container {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     height: 13.2rem;
-    width: 16.7rem;
+    width: 17.1rem;
     border-radius: 0.4rem;
 
     .button {
@@ -63,12 +52,12 @@
     }
   }
 
-  .airport-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport.png');
+  .armored-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
   }
 
-  .specials-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/especiales.png');
+  .crane-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
     background-size: cover;
   }
 }
@@ -81,6 +70,11 @@
 .label {
   width: 6.6rem;
   background-color: $green;
+}
+
+.main-banner-soon {
+  margin-top: 1.5rem;
+  margin-right: 1rem;
 }
 
 .button-container {

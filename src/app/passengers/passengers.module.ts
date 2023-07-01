@@ -7,12 +7,14 @@ import { HomeComponent } from './containers/home/home.component';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { ExperiencesComponent } from './containers';
 import { AirportComponent } from './containers/airport/airport.component';
+import { SpecialsComponent } from './containers/specials/specials.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ExperiencesComponent,
-    AirportComponent
+    AirportComponent,
+    SpecialsComponent
   ],
   imports: [
     CommonModule,
