@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { HeaderModule } from '../header/header.module';
 import { FaqComponent } from './components/faq.component';
 
-
-
 @NgModule({
   declarations: [FaqComponent],
   exports: [FaqComponent],
