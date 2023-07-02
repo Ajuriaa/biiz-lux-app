@@ -3,10 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
 import {
   ExperiencesComponent,
-  HomeComponent
+  HomeComponent,
+  AirportComponent
 } from './containers';
-import { AirportComponent } from './containers/airport/airport.component';
-
 
 const routes: Routes = [{
   path: '',
