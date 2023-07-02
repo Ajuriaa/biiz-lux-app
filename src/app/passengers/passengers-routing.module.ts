@@ -23,7 +23,7 @@ const routes: Routes = [{
     },
     {
       path: 'airport',
-      title: 'Airport',
+      title: 'Aeropuertos',
       component: AirportComponent
     }
   ]

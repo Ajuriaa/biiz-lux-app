@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ButtonsModule, HeaderModule } from '../shared';
-import { HomeComponent } from './containers/home/home.component';
 import { PassengersRoutingModule } from './passengers-routing.module';
-import { ExperiencesComponent } from './containers';
-import { AirportComponent } from './containers/airport/airport.component';
+import {
+  ExperiencesComponent,
+  HomeComponent,
+  AirportComponent
+} from './containers';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,7 @@ import { AirportComponent } from './containers/airport/airport.component';
     PassengersRoutingModule,
     HeaderModule,
     RouterModule,
-    ButtonsModule,
-    MatSlideToggleModule
+    ButtonsModule
   ]
 })
 export class PassengersModule { }
