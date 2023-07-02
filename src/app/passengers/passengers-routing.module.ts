@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
 import {
   ExperiencesComponent,
+  ForgotSomethingComponent,
   HomeComponent
 } from './containers';
 
@@ -20,6 +21,11 @@ const routes: Routes = [{
       path: 'experiences',
       title: 'Experiencias',
       component: ExperiencesComponent
+    },
+    {
+      path: 'forgot-something',
+      title: 'Olvide Algo',
+      component: ForgotSomethingComponent
     }
   ]
 }];

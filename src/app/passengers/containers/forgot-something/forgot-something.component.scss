@@ -1,9 +1,9 @@
+@import 'src/app/core/sass/colors';
 
 .section {
   display: flex;
   align-items: center;
   flex-direction: column;
-
 }
 
 .text {
@@ -22,13 +22,13 @@
 }
 
 .message {
-  color: #5a5a5aaf;
+  color: $black;
   padding: 0.5rem;
   background-color: #3e495810;
   width: 32.8rem;
   height: 25.2rem;
   border-radius: 0.6rem;
-  border: 0.1rem solid #696a6b60;
+  border-bottom: none !important;
 }
 
 .sent {
