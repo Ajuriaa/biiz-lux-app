@@ -14,4 +14,8 @@ export class HeaderComponent {
   public navigate(): void {
     this._router.navigateByUrl('customer/home');
   }
+
+  public isProfileRoute(): boolean {
+    return this._router.url.includes('profile');
+  }
 }
