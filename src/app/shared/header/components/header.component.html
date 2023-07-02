@@ -7,6 +7,8 @@
   <div class="header">
     <section class="header-wrapper">
       <img
+        class="profile"
+        *ngIf="!isProfileRoute()"
         src="assets/images/profile.svg"
         [routerLink]="['/profile']"
         alt="profile"
