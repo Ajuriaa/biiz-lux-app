@@ -1,0 +1,35 @@
+@import 'src/app/core/sass/colors';
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+
+  &.checked {
+    .toggle-ball {
+      transform: translateX(1.6rem);
+    }
+  }
+
+  .toggle-switch {
+    width: 3.7rem;
+    height: 2rem;
+    background-color: setColor(firm-gray, 200);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .toggle-ball {
+    margin-left: 0.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    background-color: $green;
+  }
+
+  .toggle-label {
+    margin-right: 1rem;
+    font-weight: bold;
+  }
+}
