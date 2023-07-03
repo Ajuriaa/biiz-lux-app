@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(
-    private _router: Router
+    private _router: Router,
+    private _location: Location,
   ) {}
 
   public navigate(): void {
@@ -17,5 +19,9 @@ export class HeaderComponent {
 
   public isProfileRoute(): boolean {
     return this._router.url.includes('profile');
+  }
+
+  public goToPreviousPage(): void {
+    this._location.back();
   }
 }
