@@ -1,0 +1,93 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.specials-container {
+  height: 28.1rem;
+  width: 34.2rem;
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-car.png');
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.ambulance-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-ambulance.png');
+  height: 14.7rem;
+  width: 34.2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.shared-container {
+  display: flex;
+  gap: 0.5rem;
+
+  .armored-container,
+  .crane-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 13.2rem;
+    width: 17.1rem;
+    border-radius: 0.4rem;
+
+    .button {
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .armored-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
+  }
+
+  .crane-container {
+    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
+    background-size: cover;
+  }
+}
+
+.button {
+  width: 11.7rem;
+  background-color: $white;
+}
+
+.label {
+  width: 6.6rem;
+  background-color: $green;
+}
+
+.main-banner-soon {
+  margin-top: 1.5rem;
+  margin-right: 1rem;
+}
+
+.button-container {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.4rem;
+}
+
+.button,
+.label {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 0.3rem;
+}
