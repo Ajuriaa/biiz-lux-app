@@ -24,12 +24,12 @@
   margin-top: 2rem;
   display: flex;
   justify-content: space-between;
-  color: #3E4958;
+  color: setColor(firm-gray, 300);
   width: 32rem;
-  
+
   .icon {
     margin-right: 1rem;
-    color: #97ADB6;
+    color: setColor(firm-gray, 200);
     height: 1rem;
     font-size: 1.6rem;
   }
@@ -38,5 +38,5 @@
 .line {
   width: 32rem;
   margin-top: 0.2rem;
-  border-bottom: 0.01rem solid #97adb631;
+  border-bottom: 0.01rem solid $line;
 }

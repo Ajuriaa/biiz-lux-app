@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute , RouterModule } from '@angular/router';
 import { HeaderModule } from 'src/app/shared';
-import { FaqComponent } from '../../faq/components/faq.component';
+import { FaqComponent } from './faq.component';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
