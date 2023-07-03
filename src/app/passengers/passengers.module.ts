@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ButtonsModule, HeaderModule } from '../shared';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import {
   ExperiencesComponent,
   HomeComponent,
-  AirportComponent,
   SpecialsComponent
 } from './containers';
 
@@ -16,7 +14,6 @@ import {
   declarations: [
     HomeComponent,
     ExperiencesComponent,
-    AirportComponent,
     SpecialsComponent
   ],
   imports: [
@@ -24,8 +21,7 @@ import {
     PassengersRoutingModule,
     HeaderModule,
     RouterModule,
-    ButtonsModule,
-    MatSlideToggleModule
+    ButtonsModule
   ]
 })
 export class PassengersModule { }
