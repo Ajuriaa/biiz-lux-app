@@ -6,14 +6,16 @@ import { PassengersRoutingModule } from './passengers-routing.module';
 import {
   ExperiencesComponent,
   HomeComponent,
-  AirportComponent
+  AirportComponent,
+  SpecialsComponent
 } from './containers';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ExperiencesComponent,
-    AirportComponent
+    AirportComponent,
+    SpecialsComponent
   ],
   imports: [
     CommonModule,
