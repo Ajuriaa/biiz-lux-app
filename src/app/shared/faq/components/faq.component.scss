@@ -1,0 +1,42 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.section {
+  flex-direction: row;
+}
+
+.title {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.text {
+  padding-bottom: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: setColor(firm-gray, 300);
+  width: 32rem;
+
+  .icon {
+    margin-right: 1rem;
+    color: setColor(firm-gray, 200);
+    height: 1rem;
+    font-size: 1.6rem;
+  }
+}
+
+.line {
+  width: 32rem;
+  margin-top: 0.2rem;
+  border-bottom: 0.01rem solid $line;
+}

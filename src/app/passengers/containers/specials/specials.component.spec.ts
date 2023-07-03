@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { SpecialsComponent } from './specials.component';
 

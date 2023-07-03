@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth';
 import { ProfileComponent } from './shared/profile/components';
 import { CustomerServiceComponent } from './shared/customer-service/';
+import { FaqComponent } from './shared/faq';
 
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'profile', title: 'Perfil', component: ProfileComponent }
   ,
   { path: 'customer-service', title: 'Servicio al cliente', component: CustomerServiceComponent }
+  ,
+  { path: 'faq', title: 'Preguntas frecuentes', component: FaqComponent }
 
 
   // Errors routes
