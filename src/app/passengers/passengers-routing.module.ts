@@ -4,7 +4,8 @@ import { Role } from '../core/enums';
 import {
   ExperiencesComponent,
   HomeComponent,
-  AirportComponent
+  AirportComponent,
+  SpecialsComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -25,6 +26,11 @@ const routes: Routes = [{
       path: 'airport',
       title: 'Aeropuertos',
       component: AirportComponent
+    },
+    {
+      path: 'specials',
+      title: 'Especiales',
+      component: SpecialsComponent
     }
   ]
 }];
