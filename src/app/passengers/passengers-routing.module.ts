@@ -4,7 +4,6 @@ import { Role } from '../core/enums';
 import {
   ExperiencesComponent,
   HomeComponent,
-  AirportComponent,
   SpecialsComponent
 } from './containers';
 
@@ -21,11 +20,6 @@ const routes: Routes = [{
       path: 'experiences',
       title: 'Experiencias',
       component: ExperiencesComponent
-    },
-    {
-      path: 'airport',
-      title: 'Aeropuerto',
-      component: AirportComponent
     },
     {
       path: 'specials',
