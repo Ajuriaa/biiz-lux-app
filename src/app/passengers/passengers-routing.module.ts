@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
 import {
   ExperiencesComponent,
-  HomeComponent
+  HomeComponent,
+  AirportComponent
 } from './containers';
-
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +20,11 @@ const routes: Routes = [{
       path: 'experiences',
       title: 'Experiencias',
       component: ExperiencesComponent
+    },
+    {
+      path: 'airport',
+      title: 'Aeropuertos',
+      component: AirportComponent
     }
   ]
 }];
