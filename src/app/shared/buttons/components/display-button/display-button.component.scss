@@ -1,0 +1,33 @@
+@import 'src/app/core/sass/colors';
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 13.2rem;
+  width: 16.7rem;
+  border-radius: 0.4rem;
+  background-size: cover;
+
+  .title {
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    color: $white;
+    align-self: flex-start;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+  }
+}
+
+.label {
+  margin-bottom: 1.2rem;
+  width: 11.7rem;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 0.3rem;
+}

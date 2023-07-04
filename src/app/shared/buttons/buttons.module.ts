@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PrimaryButtonComponent, ToggleButtonComponent } from './components';
+import { PrimaryButtonComponent, ToggleButtonComponent, DisplayButtonComponent } from './components';
 
 @NgModule({
   declarations: [
     PrimaryButtonComponent,
-    ToggleButtonComponent
+    ToggleButtonComponent,
+    DisplayButtonComponent
   ],
   exports: [
     PrimaryButtonComponent,
-    ToggleButtonComponent
+    ToggleButtonComponent,
+    DisplayButtonComponent
   ],
   imports: [CommonModule, RouterModule],
 })
