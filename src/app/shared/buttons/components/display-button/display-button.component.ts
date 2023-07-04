@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class DisplayButtonComponent {
   @Input() label = '';
-  @Input() routerLink?: any[] | null = null;
+  @Input() routerLink = '';
   @Input() title = '';
 }
