@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">BIZ Lux</string>
-    <string name="title_activity_main">BIZ Lux</string>
-    <string name="package_name">com.atlantisdev.bizlux</string>
-    <string name="custom_url_scheme">com.atlantisdev.bizlux</string>
+    <string name="app_name">BIIZ</string>
+    <string name="title_activity_main">BIIZ</string>
+    <string name="package_name">com.atlantisdev.biiz</string>
+    <string name="custom_url_scheme">com.atlantisdev.biiz</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.atlantisdev.bizlux;
+package com.atlantisdev.biiz;
 
 import com.getcapacitor.BridgeActivity;
 
