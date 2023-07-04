@@ -49,27 +49,15 @@
   display: flex;
   gap: 0.5rem;
 
-  .airport-container, .specials-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: 13.2rem;
-    width: 16.7rem;
-    border-radius: 0.4rem;
+}
 
-    .button {
-      margin-bottom: 1.2rem;
-    }
-  }
+.airport-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport.png');
+}
 
-  .airport-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport.png');
-  }
-
-  .specials-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/especiales.png');
-    background-size: cover;
-  }
+.specials-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/especiales.png');
+  background-size: cover;
 }
 
 .button {
@@ -88,7 +76,8 @@
   margin: 1.4rem;
 }
 
-.button, .label {
+.button,
+.label {
   display: flex;
   justify-content: center;
   font-size: 0.8rem;

@@ -14,12 +14,8 @@
     </div>
   </section>
   <section class="shared-container">
-    <section class="airport-container" [routerLink]="['../airport']">
-      <div class="button">VIAJE AEROPUERTO</div>
-    </section>
-    <section class="specials-container" [routerLink]="['../specials']">
-      <div class="button">ESPECIALES</div>
-    </section>
+    <app-display-button label="VIAJE AEROPUERTO" routerLink="../airport" class="airport-container"></app-display-button>
+    <app-display-button label="ESPECIALES" routerLink="../specials" class="specials-container"></app-display-button>
   </section>
 </div>
 
