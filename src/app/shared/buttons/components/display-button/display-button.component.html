@@ -1,3 +1,9 @@
-<section class="display-container" [routerLink]="[routerLink]">
+<section class="display-container" *ngIf="routerLink" [routerLink]="routerLink">
+  <div class="title">{{ title }}</div>
+  <div class="button">{{ label }}</div>
+</section>
+
+<section class="display-container" *ngIf="!routerLink">
+  <div class="title">{{ title }}</div>
   <div class="button">{{ label }}</div>
 </section>
