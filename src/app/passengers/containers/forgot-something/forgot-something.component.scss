@@ -7,7 +7,7 @@
 }
 
 .text {
-  color: #3E4958;
+  color: setColor(firm-gray, 300);
   font-weight: bold;
   margin-right: 23.8rem;
   margin-bottom: 1rem;
@@ -16,7 +16,7 @@
 }
 
 .info {
-  color: #3E4958;
+  color: setColor(firm-gray, 300);
   text-align: justify;
   width: 34.2rem;
 }
