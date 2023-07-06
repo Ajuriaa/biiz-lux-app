@@ -10,7 +10,7 @@ import {
 
 const routes: Routes = [{
   path: '',
-  data: { roles: [Role.customer] },
+  data: { roles: [Role.passenger] },
   children: [
     {
       path: 'home',
