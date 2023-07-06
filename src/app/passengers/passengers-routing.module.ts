@@ -35,7 +35,7 @@ const routes: Routes = [{
     },
     {
       path: 'forgot-something',
-      title: 'Olvide Algo',
+      title: 'Olvidé Algo',
       component: ForgotSomethingComponent
     }
   ]

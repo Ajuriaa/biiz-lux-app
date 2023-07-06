@@ -30,10 +30,6 @@
   border-radius: 0.6rem;
 }
 
-::ng-deep .message .mat-form-field-underline {
-  display: none;
-}
-
 .sent {
   display: flex;
   justify-content: center;
@@ -43,6 +39,6 @@
   margin-top: 2rem;
   width: 34.2rem;
   height: 6.1rem;
-  background-color: black;
+  background-color:$black;
   border-radius: 0.4rem;
 }
