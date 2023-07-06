@@ -22,6 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -48,7 +50,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatTabsModule,
     MatTableModule,
     MatTooltipModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatNativeDateModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: []
 })

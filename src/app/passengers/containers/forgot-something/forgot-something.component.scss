@@ -24,11 +24,14 @@
 .message {
   color: $black;
   padding: 0.5rem;
-  background-color: #3e495810;
+  background-color: $gray;
   width: 32.8rem;
   height: 25.2rem;
   border-radius: 0.6rem;
-  border-bottom: none !important;
+}
+
+::ng-deep .message .mat-form-field-underline {
+  display: none;
 }
 
 .sent {
