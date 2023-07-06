@@ -4,7 +4,6 @@ import { LoginComponent } from './auth';
 import { ProfileComponent } from './shared/profile/components';
 import { CustomerServiceComponent } from './shared/customer-service/';
 import { FaqComponent } from './shared/faq';
-import { ForgotSomethingComponent } from './passengers';
 
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
@@ -17,10 +16,6 @@ const routes: Routes = [
   { path: 'customer-service', title: 'Servicio al cliente', component: CustomerServiceComponent }
   ,
   { path: 'faq', title: 'Preguntas frecuentes', component: FaqComponent }
-  ,
-  { path: 'forgot-something', component: ForgotSomethingComponent }
-
-
 
   // Errors routes
   // { path: 'error', title: 'Error', component: NotFoundErrorComponent },
