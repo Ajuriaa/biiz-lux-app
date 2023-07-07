@@ -6,13 +6,8 @@
   </div>
   <div class="header">
     <section class="header-wrapper">
-      <img
-        class="profile"
-        *ngIf="!isProfileRoute()"
-        src="assets/images/profile.svg"
-        [routerLink]="['/profile']"
-        alt="profile"
-      />
+      <img class="profile" *ngIf="!isProfileRoute()" src="assets/images/profile.svg" [routerLink]="['../profile']"
+        alt="profile" />
       <img class="logo" (click)='navigate()' src="assets/images/logo.svg" alt="Logo">
 
       <div class="d-flex">

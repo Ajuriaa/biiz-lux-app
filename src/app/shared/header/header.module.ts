@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 
-import { HeaderComponent } from './components/header.component';
+import { HeaderComponent } from './components';
 
 @NgModule({
   declarations: [HeaderComponent],
