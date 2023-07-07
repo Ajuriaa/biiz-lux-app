@@ -1,7 +1,30 @@
 @import 'src/app/core/sass/global';
 
-.table {
-  background-color: $white;
+.weeks {
+  width: 12.2rem;
+  height: 1rem;
+  font-size: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header {
+    font-weight: bold;
+  }
+
+  .day {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selected {
+    background-color: $green;
+    color: $black;
+    border-radius: 0.3rem;
+  }
 }
 
 .header-row {
@@ -51,7 +74,9 @@
 
 
 .date {
-  width: 12.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .time {

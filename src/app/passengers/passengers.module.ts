@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
   ButtonsModule,
-  HeaderModule,
-  CalendarModule
+  HeaderModule
 } from '../shared';
 import {
   ExperiencesComponent,
@@ -26,8 +25,7 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     PassengersRoutingModule,
     HeaderModule,
     RouterModule,
-    ButtonsModule,
-    CalendarModule
+    ButtonsModule
   ]
 })
 export class PassengersModule { }
