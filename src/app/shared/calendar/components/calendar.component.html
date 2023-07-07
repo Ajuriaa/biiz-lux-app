@@ -1,0 +1,24 @@
+<div class="calendar-container monserrat">
+ <section class="logo-wrapper">
+  <img class="logo" [src]='imageUrl' alt="logo" />
+  <div class="label">ENERO</div>
+ </section>
+ <section class="date">
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+ </section>
+ <section class="time">
+  <p class="date-time"></p>
+  <div class="clock-wrapper">
+    <div class="label">12</div>
+    <p class="dots">:</p>
+    <div class="label">30</div>
+  </div>
+  <div class="label">PM</div>
+ </section>
+</div>
