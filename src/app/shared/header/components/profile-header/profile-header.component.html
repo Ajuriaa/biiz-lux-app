@@ -1,8 +1,10 @@
 <div class="profile-wrapper">
   <div class="profile-photo">
-    <span class="material-icons-outlined icon">
-      edit
-    </span>
+    <ng-container *ngIf="showEditIcon">
+      <span class="material-icons-outlined icon">
+        edit
+      </span>
+    </ng-container>
     <img [src]="imgSrc" alt="Profile Image">
   </div>
 </div>
