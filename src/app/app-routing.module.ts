@@ -8,16 +8,24 @@ import { FaqComponent } from './shared/faq';
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
   {
-    path: 'customer',
+    path: 'passenger',
     loadChildren: () => import('./passengers/passengers.module').then(m => m.PassengersModule)
+  },
+  {
+    path: 'profile',
+    title: 'Perfil',
+    component: ProfileComponent
+  },
+  {
+    path: 'customer-service',
+    title: 'Servicio al cliente',
+    component: CustomerServiceComponent
+  },
+  {
+    path: 'faq',
+    title: 'Preguntas frecuentes',
+    component: FaqComponent
   }
-  ,
-  { path: 'profile', title: 'Perfil', component: ProfileComponent }
-  ,
-  { path: 'customer-service', title: 'Servicio al cliente', component: CustomerServiceComponent }
-  ,
-  { path: 'faq', title: 'Preguntas frecuentes', component: FaqComponent }
-
 
   // Errors routes
   // { path: 'error', title: 'Error', component: NotFoundErrorComponent },
