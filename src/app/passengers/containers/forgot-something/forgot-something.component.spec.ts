@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { MaterialModule } from 'src/app/material';
 import { ForgotSomethingComponent } from './forgot-something.component';
@@ -11,7 +12,7 @@ describe('ForgotSomethingComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ForgotSomethingComponent],
-      imports: [HeaderModule, ButtonsModule, RouterModule,MaterialModule],
+      imports: [HeaderModule, ButtonsModule, RouterModule, MaterialModule, BrowserAnimationsModule],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
     });
     fixture = TestBed.createComponent(ForgotSomethingComponent);
