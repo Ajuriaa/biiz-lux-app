@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ButtonsModule,HeaderModule } from '../shared';
+import {
+  ButtonsModule,
+  HeaderModule
+} from '../shared';
 import {
   ExperiencesComponent,
   HomeComponent,
