@@ -8,7 +8,7 @@ import { FaqComponent } from './shared/faq';
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
   {
-    path: 'customer',
+    path: 'passenger',
     loadChildren: () => import('./passengers/passengers.module').then(m => m.PassengersModule)
   },
   {

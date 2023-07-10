@@ -1,0 +1,23 @@
+@import 'src/app/core/sass/global';
+
+.profile-photo {
+  position: relative;
+}
+
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.icon {
+  margin-bottom: 0.5rem;
+  background-color: $green;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  padding: 0.2rem;
+  color: setColor(firm-gray, 300);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
