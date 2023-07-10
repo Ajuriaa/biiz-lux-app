@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 
-import { HeaderComponent } from './components/header.component';
+import { HeaderComponent, ProfileHeaderComponent } from './components';
 
 @NgModule({
-  declarations: [HeaderComponent],
-  exports: [HeaderComponent],
+  declarations: [HeaderComponent, ProfileHeaderComponent],
+  exports: [HeaderComponent, ProfileHeaderComponent],
   imports: [
     CommonModule,
     RouterModule
