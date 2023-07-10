@@ -5,7 +5,8 @@ import {
   ExperiencesComponent,
   HomeComponent,
   AirportComponent,
-  SpecialsComponent
+  SpecialsComponent,
+  ForgotSomethingComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -31,6 +32,11 @@ const routes: Routes = [{
       path: 'specials',
       title: 'Especiales',
       component: SpecialsComponent
+    },
+    {
+      path: 'forgot-something',
+      title: 'Olvidé Algo',
+      component: ForgotSomethingComponent
     }
   ]
 }];
