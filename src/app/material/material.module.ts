@@ -48,7 +48,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatTabsModule,
     MatTableModule,
     MatTooltipModule,
-    MatNativeDateModule,
     MatNativeDateModule
   ],
   providers: []
