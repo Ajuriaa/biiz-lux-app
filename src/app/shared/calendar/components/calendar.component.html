@@ -1,0 +1,30 @@
+<div class="calendar-container monserrat">
+ <section class="logo-wrapper">
+  <img class="logo" [src]='imageUrl' alt="logo" />
+  <div class="label">{{month}}</div>
+ </section>
+ <section class="date">
+  <div class="weeks">
+    <div class="day header" *ngFor="let day of weekdays">{{day}}</div>
+  </div>
+  <div class="weeks" *ngFor="let week of weeks">
+    <div
+      class="day"
+      *ngFor="let date of week"
+      [class.selected]="isDateSelected(date)"
+      (click)="selectDate(date)"
+    >
+      {{ date ? date : '' }}
+    </div>
+  </div>
+ </section>
+ <section class="time">
+  <p class="date-time"></p>
+  <div class="clock-wrapper">
+    <div class="label">{{hour}}</div>
+    <p class="dots">:</p>
+    <div class="label">{{minutes}}</div>
+  </div>
+  <div class="label" (click)="toggleTimePeriod()">{{timePeriod}}</div>
+ </section>
+</div>
