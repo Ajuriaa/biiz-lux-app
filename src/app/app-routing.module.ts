@@ -11,11 +11,21 @@ const routes: Routes = [
     path: 'customer',
     loadChildren: () => import('./passengers/passengers.module').then(m => m.PassengersModule)
   },
-  { path: 'profile', title: 'Perfil', component: ProfileComponent }
-  ,
-  { path: 'customer-service', title: 'Servicio al cliente', component: CustomerServiceComponent }
-  ,
-  { path: 'faq', title: 'Preguntas frecuentes', component: FaqComponent }
+  {
+    path: 'profile',
+    title: 'Perfil',
+    component: ProfileComponent
+  },
+  {
+    path: 'customer-service',
+    title: 'Servicio al cliente',
+    component: CustomerServiceComponent
+  },
+  {
+    path: 'faq',
+    title: 'Preguntas frecuentes',
+    component: FaqComponent
+  }
 
   // Errors routes
   // { path: 'error', title: 'Error', component: NotFoundErrorComponent },
