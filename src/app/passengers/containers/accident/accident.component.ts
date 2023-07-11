@@ -13,7 +13,7 @@ export class AccidentComponent implements OnInit {
 
   ngOnInit(): void {
     this.accidentForm = this.formBuilder.group({
-      gotHurt: ['', Validators.required],
+      gotHurt: [false, Validators.required],
       message: ['', Validators.required],
     });
   }
