@@ -1,39 +1,43 @@
 <app-shared-header></app-shared-header>
-<section class="section">
-  <div class="text monserrat">
-    TUVE UN ACCIDENTÉ
-  </div>
-  <div class="info">
-    Si estuvo involucrado en algun accidente con alguno de nuestros 
-    choferes, contamos con un seguro de viaje que cubre parte de tus
-    gastos, llena los siguientes datos y luego espera ser contactado 
-    por nuestro servicio al cliente.
-  </div>
-  <div class="text monserrat">
-    ¿SALISTE HERIDO?
-  </div>
-  <mat-radio-group aria-label="Select an option">
-    <mat-radio-button value="1">SI</mat-radio-button>
-    <mat-radio-button value="2">NO</mat-radio-button>
-  </mat-radio-group>
-  <div class="text monserrat">
-    CUENTANOS
-  </div>
-  <form [formGroup]="accidentForm">
-    <mat-form-field class="form-field">
-      <textarea
-        class="multiline-input"
-        matInput
-        formControlName="message"
-        maxlength="500"
-        minlength="1"
-        rows="7"
-        required
-      ></textarea>
-      <span class="material-icons">
-        photo_camera
+<div class="container">
+  <section class="section">
+    <div class="text monserrat">
+      TUVE UN ACCIDENTÉ
+    </div>
+    <div class="info">
+      Si estuvo involucrado en algún accidente con alguno de nuestros 
+      choferes, contamos con un seguro de viaje que cubre parte de tus
+      gastos, llena los siguientes datos y luego espera ser contactado 
+      por nuestro servicio al cliente.
+    </div>
+    <div class="text monserrat">
+      ¿SALISTE HERIDO?
+    </div>
+    <form [formGroup]="accidentForm">
+      <mat-radio-group aria-label="Select an option" formControlName="gotHurt">
+        <div class="radio-buttons">
+          <mat-radio-button value="true">SI</mat-radio-button>
+          <mat-radio-button value="false">NO</mat-radio-button>
+        </div>
+      </mat-radio-group>
+      <div class="text monserrat">
+        CUÉNTANOS
+      </div>
+      <mat-form-field class="form-field">
+        <textarea
+          class="multiline-input"
+          matInput
+          formControlName="message"
+          maxlength="500"
+          minlength="1"
+          rows="7"
+          required
+        ></textarea>
+        <span class="material-icons">
+          photo_camera
         </span>
-    </mat-form-field>
-  </form>
-  <app-primary-button>ENVIAR</app-primary-button>
-</section>
+      </mat-form-field>
+      <app-primary-button type="submit">ENVIAR</app-primary-button>
+    </form>
+  </section>
+</div>

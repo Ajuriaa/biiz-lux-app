@@ -10,7 +10,6 @@ import {
   AccidentComponent
 } from './containers';
 
-
 const routes: Routes = [{
   path: '',
   data: { roles: [Role.passenger] },

@@ -7,15 +7,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./accident.component.scss']
 })
 export class AccidentComponent implements OnInit {
-  public accidentForm: FormGroup = new FormGroup({});
+  accidentForm!: FormGroup;
 
-  constructor(
-    private readonly _formBuilder: FormBuilder,
-  ){}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.accidentForm = this._formBuilder.group({
-      message: ['', [Validators.required]]
+    this.accidentForm = this.formBuilder.group({
+      gotHurt: ['', Validators.required],
+      message: ['', Validators.required],
     });
+  }
+
+  submitForm() {
+    if (this.accidentForm.valid) {
+      const formData = this.accidentForm.value;
+      console.log(formData);
+    }
   }
 }
