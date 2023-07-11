@@ -17,11 +17,4 @@ export class AccidentComponent implements OnInit {
       message: ['', Validators.required],
     });
   }
-
-  submitForm() {
-    if (this.accidentForm.valid) {
-      const formData = this.accidentForm.value;
-      console.log(formData);
-    }
-  }
 }

@@ -5,9 +5,9 @@
       TUVE UN ACCIDENTÉ
     </div>
     <div class="info">
-      Si estuvo involucrado en algún accidente con alguno de nuestros 
+      Si estuvo involucrado en algún accidente con alguno de nuestros
       choferes, contamos con un seguro de viaje que cubre parte de tus
-      gastos, llena los siguientes datos y luego espera ser contactado 
+      gastos, llena los siguientes datos y luego espera ser contactado
       por nuestro servicio al cliente.
     </div>
     <div class="text monserrat">
@@ -16,8 +16,8 @@
     <form [formGroup]="accidentForm">
       <mat-radio-group aria-label="Select an option" formControlName="gotHurt">
         <div class="radio-buttons">
-          <mat-radio-button value="true">SI</mat-radio-button>
-          <mat-radio-button value="false" [checked]="accidentForm.get('gotHurt')?.value === false">NO</mat-radio-button>
+          <mat-radio-button [value]="true">SI</mat-radio-button>
+          <mat-radio-button [value]="false">NO</mat-radio-button>
         </div>
       </mat-radio-group>
       <div class="text monserrat">
