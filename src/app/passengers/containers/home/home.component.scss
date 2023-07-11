@@ -21,6 +21,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+
+  .label {
+    margin-bottom: 1.4rem;
+  }
 }
 
 .experience-container {
@@ -32,15 +36,10 @@
 
   .button-container {
     flex-direction: column;
-    gap: 6.3rem;
-    margin-left: 3rem;
-
+    gap: 5rem;
+    
     .label {
       align-self: flex-end;
-    }
-
-    .button {
-      align-self: flex-start;
     }
   }
 }

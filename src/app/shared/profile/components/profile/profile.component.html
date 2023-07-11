@@ -1,5 +1,4 @@
 <app-shared-header></app-shared-header>
-
 <div class="container monserrat">
   <app-profile-header imgSrc="https://biz-app-bucket.s3.us-east-2.amazonaws.com/profile-image.png"></app-profile-header>
   <div class='profile-name'>
@@ -7,12 +6,12 @@
   </div>
   <section class="profile-options">
     <div class="row">
-      <app-display-button label="MIS VIAJES" class="top-left"></app-display-button>
-      <app-display-button label="MIS DATOS" class="top-right"></app-display-button>
+      <app-display-button message="MIS VIAJES" class="top-left"></app-display-button>
+      <app-display-button message="MIS DATOS" class="top-right"></app-display-button>
     </div>
     <div class="row">
-      <app-display-button label="INGRESAR TARJETA" class="bottom-left"></app-display-button>
-      <app-display-button label="NOTIFICACIONES" class="bottom-right"></app-display-button>
+      <app-display-button message="INGRESAR TARJETA" class="bottom-left"></app-display-button>
+      <app-display-button message="NOTIFICACIONES" class="bottom-right"></app-display-button>
     </div>
   </section>
   <section class="customer-service" [routerLink]="['../customer-service']">

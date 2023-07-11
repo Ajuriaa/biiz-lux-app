@@ -37,34 +37,25 @@
 .shared-container {
   display: flex;
   gap: 0.5rem;
-
-  .armored-container,
-  .crane-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: 13.2rem;
-    width: 17.1rem;
-    border-radius: 0.4rem;
-
-    .button {
-      margin-bottom: 1.2rem;
-    }
-  }
-
-  .armored-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
-  }
-
-  .crane-container {
-    background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
-    background-size: cover;
-  }
 }
 
-.button {
-  width: 11.7rem;
-  background-color: $white;
+.armored-container,
+.crane-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 13.2rem;
+  width: 17.1rem;
+  border-radius: 0.4rem;
+}
+
+.armored-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
+}
+
+.crane-container {
+  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
+  background-size: cover;
 }
 
 .label {
@@ -80,14 +71,15 @@
 .button-container {
   display: flex;
   gap: 0.5rem;
-  margin: 1.4rem;
 }
 
 .button,
 .label {
   display: flex;
   justify-content: center;
-  font-size: 0.8rem;
   font-weight: bold;
+  margin: 1rem;
+  font-size: 0.8rem;
   border-radius: 0.3rem;
+  height: 2rem;
 }

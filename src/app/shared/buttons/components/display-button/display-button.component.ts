@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./display-button.component.scss']
 })
 export class DisplayButtonComponent {
-  @Input() label = '';
+  @Input() message = '';
   @Input() routerLink = '';
   @Input() title = '';
 }
