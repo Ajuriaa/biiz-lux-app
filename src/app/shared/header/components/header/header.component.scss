@@ -45,30 +45,26 @@
     margin: 0.5rem 0 0 0;
   }
 
-  .profile {
-    margin-right: 5rem;
+  .d-flex {
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .d-flex {
-    gap: 1rem;
+  .profile {
+    margin: 0 3rem 0 1rem;
+  }
+
+  .weather {
+    height: 2.5rem;
   }
 
   .translate {
     background-color: $green;
-    min-width: 3.5rem;
+    height: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1.2rem 0.5rem 0.3rem;
     border-radius: 0 0.5rem 0.5rem 0;
-
-    .translate-label {
-      font-weight: bold;
-      margin: 0 0.8rem;
-      font-size: 0.8rem;
-    }
-
-    .translate-icon {
-      max-width: 2rem;
-    }
   }
 }
