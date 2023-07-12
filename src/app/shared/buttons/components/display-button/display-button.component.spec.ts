@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { WhiteButtonComponent } from '../white-button/white-button.component';
 import { DisplayButtonComponent } from './display-button.component';
 
 describe('DisplayButtonComponent', () => {
@@ -8,7 +8,7 @@ describe('DisplayButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DisplayButtonComponent]
+      declarations: [DisplayButtonComponent, WhiteButtonComponent]
     });
     fixture = TestBed.createComponent(DisplayButtonComponent);
     component = fixture.componentInstance;

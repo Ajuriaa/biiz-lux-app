@@ -1,21 +1,26 @@
 <app-shared-header></app-shared-header>
-
 <div class="container monserrat">
   <section class="trip-container">
-    <div class="button-container">
-      <div class="label">7 MIN.</div>
-      <div class="button">SOLICITAR UNIDAD</div>
-    </div>
+    <div class="label">7 MIN.</div>
+    <app-white-button message="SOLICITAR UNIDAD"></app-white-button>
   </section>
   <section class="experience-container" [routerLink]="['../experiences']">
     <div class="button-container">
       <div class="label">SOON</div>
-      <div class="button">EXPERIENCIAS</div>
+      <app-white-button message="EXPERIENCIAS"></app-white-button>
     </div>
   </section>
   <section class="shared-container">
-    <app-display-button label="VIAJE AEROPUERTO" routerLink="../airport" class="airport-container"></app-display-button>
-    <app-display-button label="ESPECIALES" routerLink="../specials" class="specials-container"></app-display-button>
+    <app-display-button
+      message ="VIAJE AEROPUERTO"
+      routerLink="../airport"
+      class="airport-container display-btn"
+    ></app-display-button>
+    <app-display-button
+      message="ESPECIALES"
+      routerLink="../specials"
+      class="specials-container display-btn"
+    ></app-display-button>
   </section>
 </div>
 
