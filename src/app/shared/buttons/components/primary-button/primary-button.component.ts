@@ -9,4 +9,5 @@ export class PrimaryButtonComponent {
   @Input() public styleClass = 'btn-black';
   @Input() public disableButton = false;
   @Output() public btnClick = new EventEmitter();
+  @Input() showNotification = true;
 }
