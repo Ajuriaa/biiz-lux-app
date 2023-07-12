@@ -9,7 +9,6 @@
   min-width: 34.2rem;
   letter-spacing: 0.1rem;
   position: relative;
-  overflow: hidden;
 }
 
 .btn-black {
@@ -26,14 +25,11 @@
   height: 1.5rem;
   border-radius: 0.4rem;
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 0.3rem;
+  top: 0.7rem;
+  right: 1rem;
 
   .icon {
     font-size: 1.2rem;
     color: $black;
   }
 }
-
