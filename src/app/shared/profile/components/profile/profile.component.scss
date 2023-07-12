@@ -44,25 +44,6 @@
   height: 3.8rem;
 }
 
-.profile-name {
-  font-size: 0.8rem;
-  display: flex;
-  text-align: center;
-  color: white;
-  margin-top: -2rem;
-  background-color: $black;
-  width: 34rem;
-  height: 7.5rem;
-  border-radius: 0.4rem;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-name .name {
-  margin: 0;
-}
-
 .profile-options {
   display: flex;
   flex-direction: column;
