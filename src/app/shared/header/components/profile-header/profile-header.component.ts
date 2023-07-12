@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ProfileHeaderComponent {
   @Input() imgSrc = '';
-  @Input() showEditIcon = true;
+  @Input() profileName = 'PROFILE NAME';
+  @Input() showEditIcon = false;
 }
