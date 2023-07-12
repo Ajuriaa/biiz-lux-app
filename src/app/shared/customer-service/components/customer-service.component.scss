@@ -1,17 +1,13 @@
 @import 'src/app/core/sass/global';
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include container;
 }
 
 .header-container {
   width: 37.6rem;
   height: 38rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/prado.png');
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +15,7 @@
 
 .profile-name {
   font-size: 0.8rem;
-  display: flex;
+  @include flex-center;
   text-align: center;
   color: $white;
   background-color: $black;
@@ -28,12 +24,6 @@
   border-radius: 0.4rem;
   align-self: center;
   justify-content: center;
-  align-items: center;
-
-  .name {
-    margin: 0;
-    font-weight: bold;
-  }
 }
 
 .profile-photo {
@@ -43,15 +33,12 @@
 .options {
   margin: 0.5rem;
   font-size: 0.8rem;
-  display: flex;
+  @include flex-center;
   text-align: center;
   background-color: $black;
   width: 16.65rem;
   height: 7.5rem;
   border-radius: 0.4rem;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
   margin-top: 0.1rem;
   font-weight: bold;
 }

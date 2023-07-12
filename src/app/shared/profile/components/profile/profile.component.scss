@@ -1,10 +1,7 @@
 @import 'src/app/core/sass/global';
 
 .container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  @include container;
   font-weight: bold;
   gap: 0.15rem;
 }
@@ -15,28 +12,24 @@
 }
 
 .button {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   background-color: $white;
-  width: 11.7rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0.3rem;
 }
 
 .top-left {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
 }
 
 .top-right {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
 }
 
 .bottom-left {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
 }
 
 .bottom-right {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
 }
 
 .image {

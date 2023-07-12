@@ -1,18 +1,13 @@
 @import 'src/app/core/sass/colors';
+@import 'src/app/core/sass/global';
 
 .section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  @include section;
   color: setColor(firm-gray, 300);
 }
 
 .text {
-  display: flex;
-  margin: 1rem 0;
-  width: 33.3rem;
-  justify-content: flex-start;
-  font-weight: bold;
+  @include text;
 }
 
 .info {
@@ -26,8 +21,6 @@
   height: 25.7rem;
 
   .multiline-input {
-    resize: vertical;
-    height: auto;
-    padding-top: 1rem;
+    @include multiline-input;
   }
 }

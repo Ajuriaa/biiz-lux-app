@@ -1,32 +1,27 @@
 @import 'src/app/core/sass/global';
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include container;
   gap: 0.7rem;
 }
 
 .main-button {
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   margin: 0.5rem;
 }
 
 .airport-banner-container {
   height: 18rem;
   width: 34.2rem;
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-banner.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-banner.png');
   border-radius: 0.6rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  @include flex-center;
 }
 
 .airport-gap-container {
   height: 1rem;
   width: 34.2rem;
-  display: flex;
+  @include flex-center;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -40,15 +35,14 @@
   }
 }
 
-
 .shared-container {
-  display: flex;
+  @include flex-center;
   gap: 0.8rem;
   border-radius: 0.6rem;
 
   .first-container,
   .second-container {
-    display: flex;
+    @include flex-center;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -73,28 +67,27 @@
 }
 
 .xpl {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-4.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-4.png');
 }
 
 .rvm {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-3.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-3.png');
   background-repeat: no-repeat;
 }
 
 .tct {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-1.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-1.png');
 }
 
 .gls {
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-2.png');
+  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-2.png');
   background-repeat: no-repeat;
 }
 
 .label {
   width: 12.2rem;
   background-color: $white;
-  display: flex;
-  justify-content: center;
+  @include flex-center;
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 0.3rem;

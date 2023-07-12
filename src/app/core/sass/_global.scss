@@ -1,1 +1,56 @@
 @import './index';
+
+@mixin container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin background-cover($image-url) {
+  background-image: url(#{$image-url});
+  background-size: cover;
+}
+
+@mixin label {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-radius: 0.3rem;
+}
+
+@mixin bordered-container($width, $height, $border-radius, $background-color) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $height;
+  width: $width;
+  border-radius: $border-radius;
+  background-color: $background-color;
+}
+
+@mixin section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin text {
+  display: flex;
+  margin: 1rem 0;
+  width: 33.3rem;
+  justify-content: flex-start;
+  font-weight: bold;
+}
+
+@mixin multiline-input {
+  resize: vertical;
+  height: auto;
+  padding-top: 1rem;
+}
