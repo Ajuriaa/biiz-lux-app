@@ -1,8 +1,7 @@
-@import 'src/app/core/sass/colors';
 @import 'src/app/core/sass/global';
 
 .section {
-  @include section;
+  @include flex-column;
   color: setColor(firm-gray, 300);
 }
 

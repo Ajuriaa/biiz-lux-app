@@ -1,6 +1,6 @@
 @import './index';
 
-@mixin container {
+@mixin flex-column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,12 +33,6 @@
   width: $width;
   border-radius: $border-radius;
   background-color: $background-color;
-}
-
-@mixin section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 @mixin text {

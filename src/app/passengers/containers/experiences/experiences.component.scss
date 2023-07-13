@@ -1,7 +1,7 @@
 @import 'src/app/core/sass/global';
 
 .container {
-  @include container;
+  @include flex-column;
   color: $white;
   gap: 0.7rem;
 }
