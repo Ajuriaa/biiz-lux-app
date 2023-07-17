@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public homePathname = '';
-  public emailForm: FormGroup = new FormGroup({});
+  public loginForm: FormGroup = new FormGroup({});
 
   constructor(
     private _router: Router,
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.emailForm = this._formBuilder.group({
+    this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
@@ -30,4 +30,3 @@ export class LoginComponent implements OnInit {
     this._router.navigate([this.homePathname]);
   }
 }
-
