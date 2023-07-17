@@ -2,27 +2,36 @@
 
 .container {
   @include flex-column;
-  height: 80rem;
   background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/login_prado.png');
   background-repeat: no-repeat;
+  justify-content: space-between;
   background-size: 100% 100%;
+  height: 100%;
+
+  .login-header, .login-footer {
+    @include flex-column;
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+}
+
+.translate-box {
+  justify-content: flex-end;
+  display: flex;
+  align-items: end;
+  height: 7rem;
+  width: 80%;
 }
 
 .translate {
-  margin: 5rem 0 1rem 24rem;
-  padding-top: 0.2rem;
+  height: 3rem;
   border-radius: 0.4rem;
-  height: 3.5rem;
-  width: 3.7rem;
   background-color: $green;
-  @include flex-center;
 }
 
 .logo {
   width: 15rem;
-  @include flex-column;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .icon {
@@ -43,31 +52,28 @@
 }
 
 .login {
-  @include flex-center;
-  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;
   background-color: #00E741;
-  min-width: 31rem;
-  width: 87%;
+  align-items: center;
   height: 3rem;
+  min-width: 30rem;
+  width: 85%;
   border-radius: 0.4rem;
 }
 
-.login img {
-  object-fit: contain;
-  width: 75%;
-  height: 75%;
-  margin-left: 27.5rem;
-  margin-top: 0.3rem;
+.button-image {
+  height: 2rem;
+  margin-right: 1rem;
   filter: brightness(0%);
 }
 
 .terms {
   text-align: end;
   font-weight: bold;
-  margin-top: 40rem;
   border-radius: 0.3rem;
-  min-width: 31rem;
-  width: 87%;
+  min-width: 30rem;
+  width: 85%;
   height: 2.5rem;
   background-image: linear-gradient(90deg, #00E741 10%, #ffffff 10%);
 
@@ -91,8 +97,8 @@
   flex-direction: column;
   margin-top: 0.2rem;
   margin-bottom: 0.3rem;
-  min-width: 31rem;
-  width: 87%;
+  min-width: 30rem;
+  width: 85%;
   
   .input {
     height: 3.5rem;

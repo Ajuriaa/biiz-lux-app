@@ -1,31 +1,35 @@
 <div class="container monserrat">
-  <div class="translate" > 
-    <img src="assets/images/translate.svg" alt="translate">
+  <div class="login-header">
+    <div class="translate-box" > 
+      <img class="translate" src="assets/images/translate.svg" alt="translate">
+    </div>
+    <img class="logo" src="assets/images/logo.svg">
+    <p class="version">ALFA</p>
   </div>
-  <img class="logo" src="assets/images/logo.svg">
-  <div class="version monserrat">ALFA</div>
-  <div class="terms">
-    <div class="text">TERMINOS Y CONDICIONES</div>
-  </div>
-  <form [formGroup]="emailForm" class="form-field">
-    <input
-      class="input"
-      placeholder="Ingresa tu email"
-      formControlName="email"
-      maxlength="500"
-      minlength="1"
-      require
-      >
-    <input
-      class="input"
-      placeholder="Ingresa tu contraseña"
-      formControlName="pass"
-      maxlength="500"
-      minlength="1"
-      required
-      >
-  </form>
-  <div class="login" (click)="onSubmit()">
-    <img src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/iiz.png">
+  <div class="login-footer">
+    <div class="terms">
+      <p class="text">TERMINOS Y CONDICIONES</p>
+    </div>
+    <form [formGroup]="emailForm" class="form-field">
+      <input
+        class="input"
+        placeholder="Ingresa tu email"
+        formControlName="email"
+        maxlength="50"
+        minlength="1"
+        require
+        >
+      <input
+        class="input"
+        placeholder="Ingresa tu contraseña"
+        formControlName="password"
+        maxlength="50"
+        minlength="1"
+        required
+        >
+    </form>
+    <div class="login" (click)="onSubmit()">
+      <img class="button-image" src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/iiz.png">
+    </div>
   </div>
 </div>
