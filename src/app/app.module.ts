@@ -6,6 +6,7 @@ import { ApolloModule } from 'apollo-angular';
 import { GraphqlService } from '../services/graphql.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ApolloModule
+    ApolloModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
