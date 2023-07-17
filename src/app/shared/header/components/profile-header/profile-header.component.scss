@@ -11,18 +11,12 @@
 }
 
 .profile-name {
+  @include bordered-container(34rem, 7.5rem, 0.4rem, $black);
   font-size: 1rem;
-  display: flex;
-  text-align: center;
+  align-self: center;
   color: white;
   margin-top: -2rem;
-  background-color: $black;
-  width: 34rem;
-  height: 7.5rem;
-  border-radius: 0.4rem;
-  align-self: center;
   justify-content: center;
-  align-items: center;
 }
 
 .icon {
