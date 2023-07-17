@@ -1,0 +1,35 @@
+@import 'src/app/core/sass/index';
+
+.btn {
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  min-height: 6.2rem;
+  min-width: 16rem;
+  letter-spacing: 0.1rem;
+  position: relative;
+}
+
+.btn-black {
+  background-color: $black;
+  color: $white;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $green;
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+
+  .icon {
+    font-size: 1.2rem;
+    color: $black;
+  }
+}
