@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { 
+import {
   PrimaryButtonComponent,
   SecondaryButtonComponent,
   ToggleButtonComponent,
   DisplayButtonComponent,
   WhiteButtonComponent
 } from './components';
-
 
 @NgModule({
   declarations: [
