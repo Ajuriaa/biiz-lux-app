@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { HeaderModule } from 'src/app/shared';
+import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CustomerServiceComponent } from './customer-service.component';
 
@@ -11,7 +11,7 @@ describe('CustomerServiceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CustomerServiceComponent],
-      imports: [HeaderModule, RouterTestingModule],
+      imports: [HeaderModule, RouterTestingModule,ButtonsModule],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
       
     });

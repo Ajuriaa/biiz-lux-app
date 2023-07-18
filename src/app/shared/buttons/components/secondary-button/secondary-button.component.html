@@ -1,0 +1,16 @@
+<button
+  mat-button
+  class="btn monserrat"
+  [class]="styleClass"
+  [disabled]="disableButton"
+  (click)="btnClick.emit($event)"
+>
+  <div class="button-content">
+    <ng-content></ng-content>
+    <div class="icon-container" *ngIf="showNotification">
+      <span class="material-icons-round icon">
+        notifications
+      </span>
+    </div>
+  </div>
+</button>
