@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material';
 import { LoginComponent } from './containers';
+import { AuthMutations } from './services';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { LoginComponent } from './containers';
     ReactiveFormsModule,
     RouterModule,
     MaterialModule
-  ]
+  ],
+  providers: [AuthMutations]
 })
 export class AuthModule {}
