@@ -13,12 +13,14 @@ import {
   AirportComponent,
   SpecialsComponent,
   ForgotSomethingComponent,
-  AccidentComponent
+  AccidentComponent,
+  PassengerRouterComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
 @NgModule({
   declarations: [
+    PassengerRouterComponent,
     HomeComponent,
     ExperiencesComponent,
     AirportComponent,
