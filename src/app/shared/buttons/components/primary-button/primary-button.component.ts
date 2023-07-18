@@ -8,6 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PrimaryButtonComponent {
   @Input() public styleClass = 'btn-black';
   @Input() public disableButton = false;
+  @Input() public showNotification = false;
   @Output() public btnClick = new EventEmitter();
-  @Input() showNotification = false;
 }
