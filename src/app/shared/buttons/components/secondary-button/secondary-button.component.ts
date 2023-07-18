@@ -9,5 +9,5 @@ export class SecondaryButtonComponent {
   @Input() public styleClass = 'btn-black';
   @Input() public disableButton = false;
   @Output() public btnClick = new EventEmitter();
-  @Input() showNotification = true;
+  @Input() showNotification = false;
 }
