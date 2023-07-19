@@ -4,7 +4,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonsModule,
-  HeaderModule
+  HeaderModule,
+  MapsModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -14,8 +15,8 @@ import {
   SpecialsComponent,
   ForgotSomethingComponent,
   AccidentComponent,
-  PassengerRouterComponent
-} from './containers';
+  PassengerRouterComponent,
+  TripComponent} from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     AirportComponent,
     SpecialsComponent,
     ForgotSomethingComponent,
-    AccidentComponent
+    AccidentComponent,
+    TripComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     RouterModule,
     ButtonsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    MapsModule
   ]
 })
 export class PassengersModule { }
