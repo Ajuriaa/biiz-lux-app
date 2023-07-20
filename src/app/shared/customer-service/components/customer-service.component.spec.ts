@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ButtonsModule, HeaderModule } from 'src/app/shared';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 import { CustomerServiceComponent } from './customer-service.component';
 
 describe('CustomerServiceComponent', () => {
@@ -11,9 +12,9 @@ describe('CustomerServiceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CustomerServiceComponent],
-      imports: [HeaderModule, RouterTestingModule,ButtonsModule],
+      imports: [HeaderModule, RouterTestingModule, ButtonsModule, ApolloTestingModule],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
-      
+
     });
     fixture = TestBed.createComponent(CustomerServiceComponent);
     component = fixture.componentInstance;
