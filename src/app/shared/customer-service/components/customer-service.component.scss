@@ -14,16 +14,10 @@
 }
 
 .options {
-  margin: 0.5rem;
-  font-size: 0.8rem;
   @include flex-center;
-  text-align: center;
-  background-color: $black;
-  width: 16.65rem;
-  height: 7.5rem;
-  border-radius: 0.4rem;
-  margin-top: 0.1rem;
-  font-weight: bold;
+  width: 17rem;
+  height: 6rem;
+  padding: 0.4rem;
 }
 
 .title {
@@ -35,9 +29,9 @@
 }
 
 .row {
+  margin-top: 1rem;
   display: flex;
-  width: 34.3rem;
-  margin: 1rem;
+  justify-content: center;
 }
 
 .row-sh {

@@ -3,7 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material';
 import { LoginComponent } from './containers';
+import { AuthMutations } from './services';
+
 
 @NgModule({
   declarations: [LoginComponent],
@@ -11,7 +14,9 @@ import { LoginComponent } from './containers';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
-  ]
+    RouterModule,
+    MaterialModule
+  ],
+  providers: [AuthMutations]
 })
 export class AuthModule {}

@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
+import { AuthGuard, RoleGuard } from '../core/guards';
 import {
   ExperiencesComponent,
   HomeComponent,
   AirportComponent,
   SpecialsComponent,
   ForgotSomethingComponent,
-  AccidentComponent
+  AccidentComponent,
+  PassengerRouterComponent
 } from './containers';
 
 const routes: Routes = [{
   path: '',
+  component: PassengerRouterComponent,
+  canActivate: [AuthGuard, RoleGuard],
   data: { roles: [Role.passenger] },
   children: [
     {
