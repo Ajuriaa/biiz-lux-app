@@ -16,7 +16,8 @@ import {
   ForgotSomethingComponent,
   AccidentComponent,
   PassengerRouterComponent,
-  TripComponent} from './containers';
+  TripComponent
+} from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
 @NgModule({
