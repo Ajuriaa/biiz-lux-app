@@ -18,9 +18,24 @@ export class CalendarComponent implements OnInit {
   public weeks: (number | null)[][] = [];
   public selectedDate: number = new Date().getDate();
   public month = Months[new Date().getMonth() + 1];
+  public isHourInputVisible = false;
+  public inputHour = '12';
+  public isMinutesInputVisible = false;
+  public inputMinutes = '00';
 
   ngOnInit() {
+    this.updateMonth();
+  }
+
+  private updateMonth(): void {
     this.weeks = this._getWeeksOfMonth(this._getMonthIndex(this.month));
+  }
+
+  public changeMonth(step: number): void {
+    const currentMonthIndex = this._getMonthIndex(this.month);
+    const newMonthIndex = (currentMonthIndex + step + 12) % 12;
+    this.month = Months[newMonthIndex + 1];
+    this.updateMonth();
   }
 
   public isDateSelected(date: number | null): boolean {
@@ -83,4 +98,48 @@ export class CalendarComponent implements OnInit {
   private _getMonthIndex(month: string): number {
     return Object.values(Months).indexOf(month);
   }
+
+  public isCurrentMonth(): boolean {
+    const currentMonthIndex = new Date().getMonth() + 0;
+    return this._getMonthIndex(this.month) === currentMonthIndex;
+  }
+
+  public toggleHourInput(): void {
+    this.isHourInputVisible = !this.isHourInputVisible;
+
+    if (!this.isHourInputVisible) {
+      this.hour = this.inputHour;
+    }
+  }
+
+  public onHourInputChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const inputNumber = parseInt(inputElement.value, 10);
+    
+    if (!isNaN(inputNumber) && inputNumber >= 1 && inputNumber <= 12) {
+      this.inputHour = inputNumber.toString();
+    } else {
+      this.inputHour = '01';
+    }
+  }
+
+  public toggleMinutesInput(): void {
+    this.isMinutesInputVisible = !this.isMinutesInputVisible;
+
+    if (!this.isMinutesInputVisible) {
+      this.minutes = this.inputMinutes;
+    }
+  }
+
+  public onMinutesInputChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const inputNumber = parseInt(inputElement.value, 10);
+
+    if (!isNaN(inputNumber) && inputNumber >= 0 && inputNumber <= 59) {
+      this.inputMinutes = inputNumber.toString().padStart(2, '0');
+    } else {
+      this.inputMinutes = '00';
+    }
+  }
+
 }
