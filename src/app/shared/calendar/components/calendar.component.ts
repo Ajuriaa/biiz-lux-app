@@ -27,10 +27,6 @@ export class CalendarComponent implements OnInit {
     this.updateMonth();
   }
 
-  private updateMonth(): void {
-    this.weeks = this._getWeeksOfMonth(this._getMonthIndex(this.month));
-  }
-
   public changeMonth(step: number): void {
     const currentMonthIndex = this._getMonthIndex(this.month);
     const newMonthIndex = (currentMonthIndex + step + 12) % 12;
@@ -72,31 +68,6 @@ export class CalendarComponent implements OnInit {
     }
 
     return weeks;
-  }
-
-  private _generateMonthCalendar(year: number, month: number): number[][] {
-    const monthCalendar: number[][] = [];
-    const firstDayOfMonth = new Date(year, month, 1);
-    const firstDayOfWeek = firstDayOfMonth.getDay();
-    const numDaysInMonth = new Date(year, month + 1, 0).getDate();
-
-    let week: number[] = new Array(7).fill(0);
-
-    for (let day = 1; day <= numDaysInMonth; day++) {
-      const index = (firstDayOfWeek + day - 1) % 7;
-      week[index] = day;
-
-      if (index === 6 || day === numDaysInMonth) {
-        monthCalendar.push(week);
-        week = new Array(7).fill(0);
-      }
-    }
-
-    return monthCalendar;
-  }
-
-  private _getMonthIndex(month: string): number {
-    return Object.values(Months).indexOf(month);
   }
 
   public isCurrentMonth(): boolean {
@@ -142,4 +113,32 @@ export class CalendarComponent implements OnInit {
     }
   }
 
+  private _getMonthIndex(month: string): number {
+    return Object.values(Months).indexOf(month);
+  }
+
+  private updateMonth(): void {
+    this.weeks = this._getWeeksOfMonth(this._getMonthIndex(this.month));
+  }
+
+  private _generateMonthCalendar(year: number, month: number): number[][] {
+    const monthCalendar: number[][] = [];
+    const firstDayOfMonth = new Date(year, month, 1);
+    const firstDayOfWeek = firstDayOfMonth.getDay();
+    const numDaysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let week: number[] = new Array(7).fill(0);
+
+    for (let day = 1; day <= numDaysInMonth; day++) {
+      const index = (firstDayOfWeek + day - 1) % 7;
+      week[index] = day;
+
+      if (index === 6 || day === numDaysInMonth) {
+        monthCalendar.push(week);
+        week = new Array(7).fill(0);
+      }
+    }
+
+    return monthCalendar;
+  }
 }
