@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header-container">
     <app-shared-header></app-shared-header>
-    <app-profile-header imgSrc="https://biz-app-bucket.s3.us-east-2.amazonaws.com/profile-image.png"
-      profileName="STEPH MENA AGUILAR"></app-profile-header>
+    <app-profile-header profileName="STEPH MENA AGUILAR">
+    </app-profile-header>
     <div class="row">
       <div class="options">
         <app-secondary-button>
@@ -19,7 +19,7 @@
   <div class="title">
     SERVICIO AL CLIENTE
   </div>
-  <div class="row-sh">
+  <div class="row-sh inter">
     <div class="shortcuts" [routerLink]="['../faq']">
       <div class="text">PREGUNTAS FRECUENTES</div>
     </div>
@@ -27,7 +27,7 @@
       <div class="text">SOBRE NOSOTROS</div>
     </div>
   </div>
-  <div class="row-sh">
+  <div class="row-sh inter">
     <div class="shortcuts" [routerLink]="['../passenger/forgot-something']">
       <div class="text">OLVIDÉ ALGO</div>
     </div>

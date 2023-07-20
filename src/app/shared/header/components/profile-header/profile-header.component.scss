@@ -1,20 +1,25 @@
 @import 'src/app/core/sass/global';
 
-.profile-photo {
-  position: relative;
-}
-
 .profile-wrapper {
-  @include flex-center;
-  gap: 1rem;
+  @include flex-column;
+  height: 11.3rem;
+  justify-content: flex-end;
+
+  .profile-photo {
+    position: absolute;
+    margin-bottom: 3.8rem;
+  }
 }
 
 .profile-name {
-  @include bordered-container(34rem, 7.5rem, 0.4rem, $black);
-  align-self: center;
+  @include bordered-container(33.8rem, 5.7rem, 0.4rem, $black);
   font-size: 1rem;
+  font-weight: bold;
   color: white;
-  margin-top: -2rem;
+
+  .name {
+    margin: 0;
+  }
 }
 
 .icon {
