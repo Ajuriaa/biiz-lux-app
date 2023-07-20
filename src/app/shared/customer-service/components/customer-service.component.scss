@@ -13,23 +13,6 @@
   align-items: center;
 }
 
-.profile-name {
-  font-size: 0.8rem;
-  @include flex-center;
-  text-align: center;
-  color: $white;
-  background-color: $black;
-  width: 34rem;
-  height: 7.5rem;
-  border-radius: 0.4rem;
-  align-self: center;
-  justify-content: center;
-}
-
-.profile-photo {
-  position: relative;
-}
-
 .options {
   @include flex-center;
   width: 17rem;
@@ -37,11 +20,10 @@
   padding: 0.4rem;
 }
 
-.tittle {
+.title {
   padding: 1.5rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: $black;
-  font-weight: bold;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
 }
 
@@ -54,6 +36,7 @@
 .row-sh {
   display: flex;
   width: 34.3rem;
+  font-size: 1.6rem;
 }
 
 .shortcuts {

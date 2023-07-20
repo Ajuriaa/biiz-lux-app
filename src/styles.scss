@@ -1,6 +1,12 @@
 @import './app/core/sass/global';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+@font-face {
+  font-family: 'Gotham';
+  src: url('./assets/fonts/GothamBold.ttf') format('truetype'),
+       url('./assets/fonts/Gotham-Bold.otf') format('opentype');
+}
+
 :root,
 html {
   font-size: 62.5%;
@@ -14,6 +20,7 @@ body {
 body {
   margin: 0;
   font-family: 'Gotham', sans-serif;
+  letter-spacing: 0.05rem;
 }
 
 * {
@@ -23,11 +30,6 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-.mat-typography,
-.mat-typography h4{
-  letter-spacing: normal;
 }
 
 // Simple reusable classes
@@ -41,7 +43,6 @@ a {
 
 .inter {
   font-family: 'Inter', sans-serif;
-  letter-spacing: 0.05rem;
 }
 
 .display-btn {
