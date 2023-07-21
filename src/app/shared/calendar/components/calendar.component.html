@@ -1,9 +1,9 @@
 <div class="calendar-container">
- <section class="logo-wrapper">
+ <section class="arrow-label">
   <img class="logo" [src]='imageUrl' alt="logo" />
   <div class="label">
     <span
-      class="material-icons-round arrow"
+      class="material-icons-round arrow-l"
       *ngIf="!isCurrentMonth()"
       (click)="changeMonth(-1)"
     >
@@ -42,8 +42,8 @@
         (input)="onHourInputChange($event)"
         min="1"
         max="12"
+        class="custom-input"
       />
-      <button (click)="toggleHourInput()">OK</button>
     </div>
     <p class="dots">:</p>
     <div *ngIf="!isMinutesInputVisible" class="label" (click)="toggleMinutesInput()">{{ minutes }}</div>
@@ -55,8 +55,8 @@
         (input)="onMinutesInputChange($event)"
         min="0"
         max="59"
+        class="custom-input"
       />
-      <button (click)="toggleMinutesInput()">OK</button>
     </div>
   </div>
   <div class="label" (click)="toggleTimePeriod()">{{timePeriod}}</div>

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonsModule,
+  CalendarModule,
   HeaderModule
 } from '../shared';
 import { MaterialModule } from '../material';
@@ -35,7 +36,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     RouterModule,
     ButtonsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    CalendarModule
   ]
 })
 export class PassengersModule { }

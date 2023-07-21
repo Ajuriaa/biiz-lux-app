@@ -90,7 +90,7 @@ export class CalendarComponent implements OnInit {
     if (!isNaN(inputNumber) && inputNumber >= 1 && inputNumber <= 12) {
       this.inputHour = inputNumber.toString();
     } else {
-      this.inputHour = '01';
+      this.inputHour = '00';
     }
   }
 
