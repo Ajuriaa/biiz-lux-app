@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ButtonsModule, HeaderModule } from 'src/app/shared';
-import { PassengersRoutingModule } from '../../passengers-routing.module';
 import { HomeComponent } from './home.component';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,7 +11,7 @@ describe('HomeComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [HeaderModule, ButtonsModule, RouterModule,PassengersRoutingModule],
+      imports: [HeaderModule, ButtonsModule, RouterModule, ApolloTestingModule],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({})}}]
     });
     fixture = TestBed.createComponent(HomeComponent);
