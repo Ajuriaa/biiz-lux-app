@@ -73,7 +73,8 @@
     width: 7rem;
   }
 
-  .arrow {
+  .arrow,
+  .arrow-l {
     font-size: 1rem;
     margin-top: 0.3rem;
     height: 1.4rem;
@@ -81,16 +82,13 @@
     color: $black;
     background-color: none;
     position: absolute;
+  }
+
+  .arrow {
     right: 0;
   }
 
   .arrow-l {
-    font-size: 1rem;
-    margin-top: 0.3rem;
-    height: 1.4rem;
-    color: $black;
-    background-color: none;
-    position: absolute;
     left: 0;
   }
 }
