@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { MaterialModule } from 'src/app/material';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatRadioModule } from '@angular/material/radio';
+import { BrowserModule } from '@angular/platform-browser';
+import { ApolloTestingModule } from 'apollo-angular/testing';
+import { MaterialModule } from 'src/app/material';
+import { ButtonsModule, HeaderModule } from 'src/app/shared';
 import { AccidentComponent } from './accident.component';
 
 describe('AccidentComponent', () => {
@@ -23,7 +23,7 @@ describe('AccidentComponent', () => {
         BrowserModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
-        MatRadioModule
+        ApolloTestingModule
       ],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({}) } }]
     });
