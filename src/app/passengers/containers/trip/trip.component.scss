@@ -22,11 +22,27 @@
   text-align: start;
 }
 
-.confirm {
-  text-align: center;
-  align-items: center;
+.options {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  min-width: 34rem;
+  width: 85%;
+
+  .btn {
+    text-align: center;
+    background-color: $black;
+    min-width: 16.9rem;
+    width: 100%;
+    border-radius: 0.4rem;
+  }
 }
 
-.button-image {
-  height: 1.6rem;
+.confirm {
+  text-align: center;
+  margin-top: 0.5rem;
+  min-width: 34rem;
+  width: 85%;
+  background-color: $black;
+  border-radius: 0.4rem;
 }
