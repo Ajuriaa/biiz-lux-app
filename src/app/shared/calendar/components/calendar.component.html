@@ -1,7 +1,19 @@
 <div class="calendar-container">
- <section class="logo-wrapper">
+ <section class="arrow-label">
   <img class="logo" [src]='imageUrl' alt="logo" />
-  <div class="label">{{month}}</div>
+  <div class="label">
+    <span
+      class="material-icons-round arrow-l"
+      *ngIf="!isCurrentMonth()"
+      (click)="changeMonth(-1)"
+    >
+      arrow_back_ios
+    </span>
+    {{ month }}
+    <span class="material-icons-round arrow" (click)="changeMonth(1)">
+      arrow_forward_ios
+    </span>
+  </div>
  </section>
  <section class="date">
   <div class="weeks">
@@ -21,9 +33,31 @@
  <section class="time">
   <p class="date-time"></p>
   <div class="clock-wrapper">
-    <div class="label">{{hour}}</div>
+    <div *ngIf="!isHourInputVisible" class="label" (click)="toggleHourInput()">{{ hour }}</div>
+    <div *ngIf="isHourInputVisible" class="input-wrapper">
+      <input
+        #hourInput
+        type="number"
+        [value]="inputHour"
+        (input)="onHourInputChange($event)"
+        min="1"
+        max="12"
+        class="custom-input"
+      />
+    </div>
     <p class="dots">:</p>
-    <div class="label">{{minutes}}</div>
+    <div *ngIf="!isMinutesInputVisible" class="label" (click)="toggleMinutesInput()">{{ minutes }}</div>
+    <div *ngIf="isMinutesInputVisible" class="input-wrapper">
+      <input
+        #minutesInput
+        type="number"
+        [value]="inputMinutes"
+        (input)="onMinutesInputChange($event)"
+        min="0"
+        max="59"
+        class="custom-input"
+      />
+    </div>
   </div>
   <div class="label" (click)="toggleTimePeriod()">{{timePeriod}}</div>
  </section>
