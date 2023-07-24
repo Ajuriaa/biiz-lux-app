@@ -1,19 +1,13 @@
 <div class="container">
-
   <div class="header-container">
     <app-shared-header></app-shared-header>
-
-    <div class="profile-photo">
-      <img src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/profile-image.png" alt="Profile Image">
-    </div>
-    <div class='profile-name'>
-      <p class="name">PROFILE NAME</p>
-    </div>
+    <app-profile-header profileName="STEPH MENA AGUILAR">
+    </app-profile-header>
     <div class="row">
       <div class="options">
         <app-secondary-button>
           <img src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/call.png" alt="Llamada">
-        </app-secondary-button> 
+        </app-secondary-button>
       </div>
       <div class="options">
         <app-secondary-button>
@@ -22,10 +16,10 @@
       </div>
     </div>
   </div>
-  <div class="tittle">
+  <div class="title">
     SERVICIO AL CLIENTE
   </div>
-  <div class="row-sh">
+  <div class="row-sh inter">
     <div class="shortcuts" [routerLink]="['../faq']">
       <div class="text">PREGUNTAS FRECUENTES</div>
     </div>
@@ -33,7 +27,7 @@
       <div class="text">SOBRE NOSOTROS</div>
     </div>
   </div>
-  <div class="row-sh">
+  <div class="row-sh inter">
     <div class="shortcuts" [routerLink]="['../passenger/forgot-something']">
       <div class="text">OLVIDÉ ALGO</div>
     </div>
