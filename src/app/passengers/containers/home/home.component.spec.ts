@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { ButtonsModule, HeaderModule } from 'src/app/shared';
-import { ApolloTestingModule } from 'apollo-angular/testing';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
