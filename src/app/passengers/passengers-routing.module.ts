@@ -10,7 +10,8 @@ import {
   ForgotSomethingComponent,
   AccidentComponent,
   PassengerRouterComponent,
-  UserInfoComponent
+  UserInfoComponent,
+  TripComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -48,6 +49,11 @@ const routes: Routes = [{
       path: 'accident',
       title: 'Me Accidenté',
       component: AccidentComponent
+    },
+    {
+      path: 'trip',
+      title: 'Viaje',
+      component: TripComponent
     }
     ,
     {
