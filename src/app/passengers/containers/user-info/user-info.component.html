@@ -5,7 +5,7 @@
     <p>NOMBRE COMPLETO</p>
     <input
       type="text"
-      [value]="name"
+      [value]="user.fullName"
       class="custom-input"
       required
       pattern="^[a-zA-Z\s]+$"
@@ -25,7 +25,7 @@
         <input
           type="email"
           class="custom-input-s"
-          [value]="email"
+          [value]="user.email"
           maxlength="100"
           minlength="6"
           required
@@ -36,7 +36,7 @@
         <input
           type="tel"
           class="custom-input-s"
-          [value]="phone"
+          [value]="user.phoneNumber"
           maxlength="10"
           minlength="6"
           required
