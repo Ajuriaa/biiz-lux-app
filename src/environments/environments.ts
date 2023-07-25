@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1:3000/graphql'
+  apiUrl: 'https://biiz-stage-43c295af4b0a.herokuapp.com/graphql'
 };
 
 /*
