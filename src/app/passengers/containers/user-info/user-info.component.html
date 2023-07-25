@@ -1,0 +1,64 @@
+<app-shared-header></app-shared-header>
+<app-profile-header></app-profile-header>
+<div class="container">
+  <div class="info">
+    <p>NOMBRE COMPLETO</p>
+    <input
+      type="text"
+      [value]="name"
+      class="custom-input"
+      required
+      pattern="^[a-zA-Z\s]+$"
+    />
+    <p>DIRECCION PRINCIPAL</p>
+    <input
+      type="text"
+      class="custom-input"
+      [value]="address"
+      maxlength="100"
+      minlength="6"
+      required
+    />
+    <div class="row">
+      <div class="section">
+        <p>CORREO</p>
+        <input
+          type="email"
+          class="custom-input-s"
+          [value]="email"
+          maxlength="100"
+          minlength="6"
+          required
+        />
+      </div>
+      <div class="section">
+        <p>TELEFONO</p>
+        <input
+          type="tel"
+          class="custom-input-s"
+          [value]="phone"
+          maxlength="10"
+          minlength="6"
+          required
+        />
+      </div>
+    </div>
+  </div>
+  <div class="scanner">
+    <img src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/scanner-icon.png" alt="Imagen del escáner" class="image-container">
+    ESCANEAR ID/LICENCIA
+  </div>
+  <div class="row-btn">
+    <div class="btn-scanner g">ID</div>
+    <div class="btn-scanner">LICENCIA</div>
+  </div>
+  <div class="banner">
+    <img src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/pase-bizz.png" alt="Imagen del escáner">
+    <p class="text">PASE BIZZ</p>
+    <p class="soon">SOON</p>
+  </div>
+  <div class="notification">
+    NOTIFICACIONES
+    <app-toggle-button> </app-toggle-button>
+  </div>
+</div>

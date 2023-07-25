@@ -5,3 +5,4 @@ export * from './airport/airport.component';
 export * from './specials/specials.component';
 export * from './forgot-something/forgot-something.component';
 export * from './accident/accident.component';
+export * from './user-info/user-info.component';

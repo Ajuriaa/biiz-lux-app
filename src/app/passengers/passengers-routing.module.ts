@@ -9,7 +9,8 @@ import {
   SpecialsComponent,
   ForgotSomethingComponent,
   AccidentComponent,
-  PassengerRouterComponent
+  PassengerRouterComponent,
+  UserInfoComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -47,6 +48,12 @@ const routes: Routes = [{
       path: 'accident',
       title: 'Me Accidenté',
       component: AccidentComponent
+    }
+    ,
+    {
+      path: 'user-info',
+      title: 'Mis Datos',
+      component: UserInfoComponent
     }
   ]
 }];

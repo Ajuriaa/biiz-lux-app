@@ -1,0 +1,125 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  @include flex-column;
+}
+
+.scanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $black;
+  color: $white;
+  position: relative;
+  font-size: 1rem;
+  width: 34rem;
+  border-radius: 0.4rem;
+  height: 5.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.info {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  color: setColor(firm-gray, 300);
+}
+.scanner .image-container {
+  position: absolute;
+  right: 82%; 
+  top: 12%;
+}
+
+.row-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top:0.4rem ;
+}
+
+.btn-scanner {
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: setColor(firm-gray, 300);
+  font-size: 1rem;
+  width: 16.5rem;
+  height: 3.5rem;
+  border-radius: 0.4rem;
+}
+
+.row-btn div:nth-child(1) {
+  background-color: $green;
+  color: $black;
+}
+
+.banner {
+  position: relative;
+  margin-top: 0.8rem;
+  width: 34rem;
+
+  .text {
+    position: absolute;
+    top: 75%;
+    left: 72%;
+    color: $white;
+  }
+
+  .soon {
+    text-align: center;
+    background-color: $green;
+    position: absolute;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    width: 8rem;
+    top: 10%;
+    left: 5%;
+  }
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  color: setColor(firm-gray, 300);
+  font-weight: bold;
+  font-size: 1.3rem;
+  width: 33rem;
+  margin-top: 0.2rem;
+}
+
+.custom-input {
+  background-color: setColor(firm-gray, 100);
+  opacity: 30%;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  height: 5rem;
+  width: 33rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 2.8rem;
+
+  .section {
+    flex-direction: column;
+    width: 15.5rem;
+  }
+
+  .custom-input-s {
+    background-color: setColor(firm-gray, 100);
+    border: none;
+    opacity: 30%;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    height: 5rem;
+    width: 15rem;
+    margin-bottom: 0.8rem;
+    outline: none;
+  }
+}

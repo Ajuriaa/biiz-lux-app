@@ -14,7 +14,9 @@ import {
   SpecialsComponent,
   ForgotSomethingComponent,
   AccidentComponent,
-  PassengerRouterComponent
+  PassengerRouterComponent,
+  UserInfoComponent,
+  
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
@@ -26,7 +28,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     AirportComponent,
     SpecialsComponent,
     ForgotSomethingComponent,
-    AccidentComponent
+    AccidentComponent,
+    UserInfoComponent
   ],
   imports: [
     CommonModule,
