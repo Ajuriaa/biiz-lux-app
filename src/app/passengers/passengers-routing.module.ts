@@ -10,6 +10,7 @@ import {
   ForgotSomethingComponent,
   AccidentComponent,
   PassengerRouterComponent,
+  UserInfoComponent,
   TripComponent
 } from './containers';
 
@@ -53,6 +54,12 @@ const routes: Routes = [{
       path: 'trip',
       title: 'Viaje',
       component: TripComponent
+    }
+    ,
+    {
+      path: 'user-info',
+      title: 'Mis Datos',
+      component: UserInfoComponent
     }
   ]
 }];

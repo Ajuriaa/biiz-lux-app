@@ -16,6 +16,7 @@ import {
   ForgotSomethingComponent,
   AccidentComponent,
   PassengerRouterComponent,
+  UserInfoComponent,
   TripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
@@ -29,6 +30,7 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     SpecialsComponent,
     ForgotSomethingComponent,
     AccidentComponent,
+    UserInfoComponent,
     TripComponent
   ],
   imports: [
