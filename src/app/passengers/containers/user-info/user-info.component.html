@@ -7,7 +7,6 @@
       type="text"
       class="custom-input"
       [value]="user.fullName"
-      required
       readonly
     />
     <p>DIRECCION PRINCIPAL</p>
@@ -17,7 +16,6 @@
       [value]="address"
       maxlength="100"
       minlength="6"
-      required
       readonly
     />
     <div class="row">
@@ -29,7 +27,6 @@
           [value]="user.email"
           maxlength="100"
           minlength="6"
-          required
           readonly
         />
       </div>
@@ -41,7 +38,6 @@
           [value]="user.phoneNumber"
           maxlength="10"
           minlength="6"
-          required
           readonly
         />
       </div>
@@ -52,7 +48,7 @@
     ESCANEAR ID/LICENCIA
   </div>
   <div class="row-btn">
-    <div class="btn-scanner g">ID</div>
+    <div class="btn-id">ID</div>
     <div class="btn-scanner">LICENCIA</div>
   </div>
   <div class="banner">
