@@ -1,18 +1,4 @@
-export interface IUser {
-  email: string;
-  fullName: string;
-  phoneNumber: string;
-  userable: IUserable;
-}
-
-export interface IUserable {
-  addresses?: IAddress[];
-}
-
-export interface IAddress {
-  name: string;
-  address: string;
-}
+import { IUser } from ".";
 
 export interface IUserInfoResponse {
   currentUser: IUser;

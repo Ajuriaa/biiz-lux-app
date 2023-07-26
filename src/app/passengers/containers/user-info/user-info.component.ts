@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { USER } from 'src/app/core/constants';
 import { UserInfoQueries } from '../../services';
 import { IUser } from '../../interfaces';
 
@@ -8,7 +9,7 @@ import { IUser } from '../../interfaces';
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
-  public user!: IUser;
+  public user: IUser = USER;
   public address = '';
 
   constructor(

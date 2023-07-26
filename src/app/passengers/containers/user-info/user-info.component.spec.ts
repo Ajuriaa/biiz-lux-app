@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserInfoComponent } from './user-info.component';
-import { ButtonsModule, HeaderModule } from 'src/app/shared';
+import { ActivatedRoute } from '@angular/router';
 import { ApolloTestingModule } from 'apollo-angular/testing';
-
+import { ButtonsModule, HeaderModule } from 'src/app/shared';
+import { UserInfoComponent } from './user-info.component';
 
 describe('UserInfoComponent', () => {
   let component: UserInfoComponent;
@@ -11,7 +11,8 @@ describe('UserInfoComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HeaderModule, ButtonsModule, ApolloTestingModule],
-      declarations: [UserInfoComponent]
+      declarations: [UserInfoComponent],
+      providers: [{ provide: ActivatedRoute, useValue: { params: ({}) } }]
     }).compileComponents();
     fixture = TestBed.createComponent(UserInfoComponent);
     component = fixture.componentInstance;
