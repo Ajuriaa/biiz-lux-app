@@ -11,7 +11,8 @@ import {
   AccidentComponent,
   PassengerRouterComponent,
   UserInfoComponent,
-  TripComponent
+  TripComponent,
+  ProgramTripComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -60,6 +61,12 @@ const routes: Routes = [{
       path: 'user-info',
       title: 'Mis Datos',
       component: UserInfoComponent
+    }
+    ,
+    {
+      path: 'program-trip',
+      title: 'Programar Viaje',
+      component: ProgramTripComponent
     }
   ]
 }];

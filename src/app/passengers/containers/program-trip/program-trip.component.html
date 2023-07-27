@@ -1,0 +1,9 @@
+<div class="container">
+<app-maps class="map"></app-maps>
+<app-shared-header class="header"></app-shared-header>
+  <app-primary-button class="select" (click)="toggleCalendar()">
+    SELECCIONAR FECHA Y HORA
+  </app-primary-button>
+  <app-calendar  class="calendar" *ngIf="showCalendar"></app-calendar>
+  <app-primary-button class="confirm">CONFIRMAR DESTINO</app-primary-button>
+</div>

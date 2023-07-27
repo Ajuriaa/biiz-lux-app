@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonsModule,
+  CalendarModule,
   HeaderModule,
   MapsModule
 } from '../shared';
@@ -17,7 +18,8 @@ import {
   AccidentComponent,
   PassengerRouterComponent,
   UserInfoComponent,
-  TripComponent
+  TripComponent,
+  ProgramTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
@@ -31,7 +33,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ForgotSomethingComponent,
     AccidentComponent,
     UserInfoComponent,
-    TripComponent
+    TripComponent,
+    ProgramTripComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ButtonsModule,
     ReactiveFormsModule,
     MaterialModule,
-    MapsModule
+    MapsModule,
+    CalendarModule
   ]
 })
 export class PassengersModule { }

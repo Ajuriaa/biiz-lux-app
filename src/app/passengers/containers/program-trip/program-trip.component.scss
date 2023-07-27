@@ -1,0 +1,23 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  @include flex-column;
+}
+
+.header {
+  position: relative;
+}
+
+.confirm {
+  position: absolute;
+  top: 70%;
+}
+
+.calendar {
+  margin-top: 1rem;
+  position: relative;
+}
+
+.map {
+  position: absolute;
+}
