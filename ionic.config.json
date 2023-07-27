@@ -1,0 +1,7 @@
+{
+  "name": "BIIZ-LUX-APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
