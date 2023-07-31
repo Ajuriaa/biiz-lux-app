@@ -20,6 +20,7 @@ import {
   TripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ButtonsModule,
     ReactiveFormsModule,
     MaterialModule,
-    MapsModule
+    MapsModule,
+    IonicModule
   ]
 })
 export class PassengersModule { }
