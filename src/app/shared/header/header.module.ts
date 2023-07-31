@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-
-import { HeaderComponent, ProfileHeaderComponent } from './components';
 import { IonicModule } from '@ionic/angular';
+import { HeaderComponent, ProfileHeaderComponent } from './components';
+
 
 @NgModule({
   declarations: [HeaderComponent, ProfileHeaderComponent],

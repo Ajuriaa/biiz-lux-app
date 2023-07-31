@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import {
   ButtonsModule,
   HeaderModule,
@@ -20,7 +21,6 @@ import {
   TripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
-import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
