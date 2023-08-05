@@ -1,8 +1,6 @@
-<div class="container">
+<ion-header class="container ion-no-border"  collapse="fade">
   <div class="back-arrow" (click)="goToPreviousPage()">
-    <span class="material-icons-round icon">
-      arrow_back_ios
-    </span>
+    <span class="material-icons-round icon"> arrow_back_ios </span>
   </div>
   <div class="header">
     <section class="header-wrapper">
@@ -13,12 +11,21 @@
         [routerLink]="['/profile']"
         alt="profile"
       />
-      <img class="logo" (click)='navigate()' src="assets/images/logo.svg" alt="Logo">
+      <img
+        class="logo"
+        (click)="navigate()"
+        src="assets/images/logo.svg"
+        alt="Logo"
+      />
 
       <div class="d-flex">
-        <img class="weather" [src]="weatherImage" alt="weather">
-        <img class="translate" src="assets/images/translate.svg" alt="translate">
+        <img class="weather" [src]="weatherImage" alt="weather" />
+        <img
+          class="translate"
+          src="assets/images/translate.svg"
+          alt="translate"
+        />
       </div>
     </section>
   </div>
-</div>
+</ion-header>

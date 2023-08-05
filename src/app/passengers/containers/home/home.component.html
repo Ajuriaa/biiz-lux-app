@@ -1,29 +1,31 @@
 <app-shared-header></app-shared-header>
-<div class="container">
-  <section class="trip-container" routerLink="/passenger/trip">
-    <div class="label">7 MIN.</div>
-    <app-white-button message="SOLICITAR UNIDAD"></app-white-button>
-  </section>
-  <section class="experience-container" [routerLink]="['../experiences']">
-    <div class="button-container">
-      <div class="label">SOON</div>
-      <app-white-button message="EXPERIENCIAS"></app-white-button>
-    </div>
-  </section>
-  <section class="shared-container">
-    <app-display-button
-      message ="VIAJE AEROPUERTO"
-      link="../airport"
-      class="airport-container display-btn"
-    ></app-display-button>
-    <app-display-button
-      message="ESPECIALES"
-      link="../specials"
-      class="specials-container display-btn"
-    ></app-display-button>
-  </section>
-</div>
+<ion-content>
+  <div class="container">
+    <section class="trip-container" routerLink="/passenger/trip">
+      <div class="label">7 MIN.</div>
+      <app-white-button message="SOLICITAR UNIDAD"></app-white-button>
+    </section>
+    <section class="experience-container" [routerLink]="['../experiences']">
+      <div class="button-container">
+        <div class="label">SOON</div>
+        <app-white-button message="EXPERIENCIAS"></app-white-button>
+      </div>
+    </section>
+    <section class="shared-container">
+      <app-display-button
+        message ="VIAJE AEROPUERTO"
+        link="../airport"
+        class="airport-container display-btn"
+      ></app-display-button>
+      <app-display-button
+        message="ESPECIALES"
+        link="../specials"
+        class="specials-container display-btn"
+      ></app-display-button>
+    </section>
+  </div>
 
-<div class="main-button">
-  <app-primary-button>MIS VIAJES</app-primary-button>
-</div>
+  <div class="main-button">
+    <app-primary-button>MIS VIAJES</app-primary-button>
+  </div>
+</ion-content>

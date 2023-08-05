@@ -1,5 +1,5 @@
 export interface IWeatherInfo {
-  iconUri: string;
+  icon: string;
 }
 
 export interface IWeatherResponse {

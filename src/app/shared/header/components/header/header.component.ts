@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this._weatherQuery.getWeatherData().subscribe(({ data }) => {
       if (data) {
-        this.weatherImage = data.weather.weather[0].iconUri;
+        this.weatherImage = this._setWeatherImage(data.weather.weather[0].icon);
       }
     });
   }
@@ -37,5 +37,9 @@ export class HeaderComponent implements OnInit {
 
   public goToPreviousPage(): void {
     this._location.back();
+  }
+
+  private _setWeatherImage(icon: string): string {
+    return `https://openweathermap.org/img/wn/${icon}@2x.png`;
   }
 }
