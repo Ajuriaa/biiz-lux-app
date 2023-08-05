@@ -17,7 +17,8 @@ import {
   AccidentComponent,
   PassengerRouterComponent,
   UserInfoComponent,
-  TripComponent
+  TripComponent,
+  CancelTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
@@ -31,7 +32,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ForgotSomethingComponent,
     AccidentComponent,
     UserInfoComponent,
-    TripComponent
+    TripComponent,
+    CancelTripComponent
   ],
   imports: [
     CommonModule,
