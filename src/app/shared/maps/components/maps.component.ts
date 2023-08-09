@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-
-const API_KEY = 'AIzaSyBOmdqASwwGxnxF2V-30nV98G1f32042Ng';
+import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
 })
-export class MapsComponent {
-  apiLoaded: Observable<boolean>;
+export class MapsComponent implements OnInit {
+  public centerLatLong: google.maps.LatLngLiteral = {lat: 14.060536, lng: -87.241214};
+  public options: google.maps.MapOptions = {
+    center: this.centerLatLong,
+    zoom: 17,
+    disableDefaultUI: true,
+    keyboardShortcuts: false,
+    gestureHandling: "greedy"
+  };
 
-  constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${API_KEY}`, 'callback')
-        .pipe(
-          map(() => true),
-          catchError(() => of(false)),
-        );
+  ngOnInit(): void {
+
   }
 }
