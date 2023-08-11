@@ -49,3 +49,19 @@ a {
   border-radius: 0.5rem;
   background-size: cover;
 }
+
+.green-radio {
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: gray;
+  outline: none;
+  margin-right: 0.7rem;
+}
+
+.green-radio:checked {
+  background-color: $green;
+  background-image: url('assets/images/check.svg');
+  background-size: 90% 90%;
+}
