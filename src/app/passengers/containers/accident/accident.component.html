@@ -13,31 +13,26 @@
     <div class="text">
       ¿SALISTE HERIDO?
     </div>
-    <form [formGroup]="accidentForm">
-      <mat-radio-group aria-label="Select an option" formControlName="gotHurt">
-        <div class="radio-buttons">
-          <mat-radio-button [value]="true">SI</mat-radio-button>
-          <mat-radio-button [value]="false">NO</mat-radio-button>
-        </div>
-      </mat-radio-group>
-      <div class="text">
-        CUÉNTANOS
-      </div>
-      <mat-form-field class="form-field">
-        <textarea
-          class="multiline-input"
-          matInput
-          formControlName="message"
-          maxlength="500"
-          minlength="1"
-          rows="7"
-          required
-        ></textarea>
-        <span class="material-icons">
-          photo_camera
-        </span>
-      </mat-form-field>
+    <div class="options">
+      <app-radio-button label="SI" value="true" name="hurt" (click)="updateGotHurt(true)"></app-radio-button>
+      <app-radio-button label="NO" value="false" name="notHurt" (click)="updateGotHurt(false)"></app-radio-button>
+    </div>
+    <div class="text">
+      CUÉNTANOS
+    </div>
+    <div class="textarea-container">
+      <textarea
+        class="multiline-input"
+        message="message"
+        maxlength="500"
+        minlength="100"
+        rows="12"
+        required
+      ></textarea>
+      <span class="material-icons camera-icon">
+        photo_camera
+      </span>
+    </div>
       <app-primary-button type="submit">ENVIAR</app-primary-button>
-    </form>
   </section>
 </div>

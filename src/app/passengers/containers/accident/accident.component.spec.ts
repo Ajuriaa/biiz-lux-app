@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { MaterialModule } from 'src/app/material';
@@ -22,7 +21,6 @@ describe('AccidentComponent', () => {
         MaterialModule,
         BrowserModule,
         BrowserAnimationsModule,
-        ReactiveFormsModule,
         ApolloTestingModule
       ],
       providers: [{ provide: ActivatedRoute, useValue: { params: ({}) } }]
