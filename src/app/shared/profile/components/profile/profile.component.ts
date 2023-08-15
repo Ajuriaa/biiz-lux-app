@@ -20,6 +20,6 @@ export class ProfileComponent implements OnInit {
       if (data) {
         this.user = data.currentUser;
       }
-    })
+    });
   }
 }
