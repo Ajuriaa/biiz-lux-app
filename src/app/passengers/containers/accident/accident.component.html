@@ -14,8 +14,8 @@
       ¿SALISTE HERIDO?
     </div>
     <div class="options">
-      <app-radio-button label="SI" value="true" name="hurt"></app-radio-button>
-      <app-radio-button label="NO" value="false" name="notHurt"></app-radio-button>
+      <app-radio-button label="SI" value="true" name="hurt" (click)="updateGotHurt(true)"></app-radio-button>
+      <app-radio-button label="NO" value="false" name="notHurt" (click)="updateGotHurt(false)"></app-radio-button>
     </div>
     <div class="text">
       CUÉNTANOS

@@ -9,7 +9,7 @@ export class AccidentComponent {
   gotHurt = false;
   message = '';
 
-  updateGotHurt(value: boolean) {
+  public updateGotHurt(value: boolean) {
     this.gotHurt = value;
   }
 }
