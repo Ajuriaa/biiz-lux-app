@@ -11,9 +11,9 @@ export class AccidentComponent {
 
   updateGotHurt(value: boolean) {
     if (value) {
-      this.gotHurt = true;
+      this.gotHurt = value;
     } else {
-      this.gotHurt = false;
+      this.gotHurt = value;
     }
   }
 }
