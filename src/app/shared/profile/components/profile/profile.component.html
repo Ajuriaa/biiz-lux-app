@@ -1,8 +1,8 @@
 <app-shared-header></app-shared-header>
 <div class="container">
-  <app-profile-header [showEditIcon]="true"></app-profile-header>
+  <app-profile-header [showEditIcon]="true" [profileName]="user.fullName"></app-profile-header>
   <section class="profile-options">
-    <div class="row">
+  <div class="row">
       <app-display-button message="MIS VIAJES" class="top-left"></app-display-button>
       <app-display-button message="MIS DATOS" class="top-right" link="/passenger/user-info"></app-display-button>
     </div>
