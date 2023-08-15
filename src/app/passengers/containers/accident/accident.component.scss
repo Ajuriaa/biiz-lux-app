@@ -23,14 +23,14 @@
 
 .options {
   display: flex;
-  gap: 20rem;
+  justify-content: space-between;
+  width: 31rem;
 }
 
 .textarea-container {
   margin-bottom: 1.5rem;
   width: 34rem;
   position: relative;
-  display: inline-block;
 }
 
 .multiline-input {

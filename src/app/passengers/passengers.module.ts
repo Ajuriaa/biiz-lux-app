@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {
   ButtonsModule,
@@ -43,8 +43,7 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ReactiveFormsModule,
     MaterialModule,
     MapsModule,
-    IonicModule,
-    FormsModule
+    IonicModule
   ]
 })
 export class PassengersModule { }
