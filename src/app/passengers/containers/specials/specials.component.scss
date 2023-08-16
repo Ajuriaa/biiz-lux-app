@@ -13,7 +13,7 @@
 .specials-container {
   height: 28.1rem;
   width: 34.2rem;
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-car.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-car.png');
   border-radius: 0.6rem;
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@
 }
 
 .ambulance-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-ambulance.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-ambulance.png');
   height: 14.7rem;
   width: 34.2rem;
   border-radius: 0.6rem;
@@ -47,11 +47,11 @@
 }
 
 .armored-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
 }
 
 .crane-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
 }
 
 .label {
