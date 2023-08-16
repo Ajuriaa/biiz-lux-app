@@ -17,19 +17,19 @@
 }
 
 .top-left {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
 }
 
 .top-right {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
 }
 
 .bottom-left {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
 }
 
 .bottom-right {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
 }
 
 .image {
