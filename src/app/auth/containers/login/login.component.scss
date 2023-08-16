@@ -2,7 +2,7 @@
 
 .container {
   height: 100%;
-  background-image: url('https://biz-app-bucket.s3.us-east-2.amazonaws.com/login_prado.png');
+  background-image: url('https://biiz-bucket.s3.us-east-2.amazonaws.com/login_prado.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   justify-content: space-between;
@@ -115,7 +115,7 @@
 }
 
 .form-field .input::placeholder {
-  text-align: center; 
-  line-height: 5rem; 
+  text-align: center;
+  line-height: 5rem;
   opacity: 50%;
 }
