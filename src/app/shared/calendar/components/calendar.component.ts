@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Months } from 'src/app/core/enums';
 
-const IMAGE_URL = 'https://biz-app-bucket.s3.us-east-2.amazonaws.com/iiz.png';
+const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz.png';
 const WEEKDAYS = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 
 @Component({
@@ -86,7 +86,7 @@ export class CalendarComponent implements OnInit {
   public onHourInputChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     const inputNumber = parseInt(inputElement.value, 10);
-    
+
     if (!isNaN(inputNumber) && inputNumber >= 1 && inputNumber <= 12) {
       this.inputHour = inputNumber.toString();
     } else {
