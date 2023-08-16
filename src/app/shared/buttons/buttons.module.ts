@@ -6,7 +6,8 @@ import {
   SecondaryButtonComponent,
   ToggleButtonComponent,
   DisplayButtonComponent,
-  WhiteButtonComponent
+  WhiteButtonComponent,
+  RadioButtonComponent
 } from './components';
 
 @NgModule({
@@ -15,14 +16,16 @@ import {
     SecondaryButtonComponent,
     ToggleButtonComponent,
     DisplayButtonComponent,
-    WhiteButtonComponent
+    WhiteButtonComponent,
+    RadioButtonComponent
   ],
   exports: [
     PrimaryButtonComponent,
     SecondaryButtonComponent,
     ToggleButtonComponent,
     DisplayButtonComponent,
-    WhiteButtonComponent
+    WhiteButtonComponent,
+    RadioButtonComponent
   ],
   imports: [CommonModule, RouterModule]
 })

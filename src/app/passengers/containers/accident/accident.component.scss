@@ -21,29 +21,30 @@
   width: 33.3rem;
 }
 
-.radio-buttons {
+.options {
   display: flex;
   justify-content: space-between;
+  width: 31rem;
 }
 
-.radio-buttons mat-radio-button {
-  margin-right: 1rem;
-}
-
-.material-icons {
-  margin-left: 0.5rem;
-  font-size: 4rem;
-  opacity: 50%;
-}
-
-.form-field {
-  display: flex;
-  width: 33.3rem;
-  height: 25.7rem;
+.textarea-container {
+  margin-bottom: 1.5rem;
+  width: 34rem;
+  position: relative;
 }
 
 .multiline-input {
-  resize: vertical;
-  height: auto;
-  padding-top: 1rem;
+  background-color: setColor(firm-gray, 10);
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 8%;
+  left: 5%;
+  font-size: 4.5rem;
+  opacity: 50%;
 }
