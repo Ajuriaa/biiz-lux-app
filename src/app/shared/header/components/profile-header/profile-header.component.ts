@@ -9,6 +9,6 @@ const DEFAULT_IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/profil
 })
 export class ProfileHeaderComponent {
   @Input() imgSrc = DEFAULT_IMAGE_URL;
-  @Input() profileName = 'PROFILE NAME';
+  @Input() profileName = 'TU PERFIL';
   @Input() showEditIcon = false;
 }
