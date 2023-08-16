@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-const IMAGE_URL = 'https://biz-app-bucket.s3.us-east-2.amazonaws.com/raptor-experience.png';
+const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/raptor-experience.png';
 
 @Component({
   selector: 'app-experiences',

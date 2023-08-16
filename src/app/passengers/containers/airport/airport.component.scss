@@ -13,7 +13,7 @@
 .airport-banner-container {
   height: 18rem;
   width: 34.2rem;
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-banner.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/airport-banner.png');
   border-radius: 0.6rem;
   @include flex-center;
 }
@@ -67,20 +67,20 @@
 }
 
 .xpl {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-4.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/airport-location-4.png');
 }
 
 .rvm {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-3.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/airport-location-3.png');
   background-repeat: no-repeat;
 }
 
 .tct {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-1.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/airport-location-1.png');
 }
 
 .gls {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/airport-location-2.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/airport-location-2.png');
   background-repeat: no-repeat;
 }
 

@@ -30,7 +30,7 @@
 }
 
 .experience-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/raptor.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/raptor.png');
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -45,7 +45,7 @@
 }
 
 .driveit-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/drive-it-yourself.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/drive-it-yourself.png');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,7 +72,7 @@
 }
 
 .car-container {
-  @include background-cover('https://biz-app-bucket.s3.us-east-2.amazonaws.com/supra.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/supra.png');
   display: flex;
   flex-direction: column;
   justify-content: space-between;
