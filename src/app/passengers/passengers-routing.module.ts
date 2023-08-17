@@ -55,14 +55,12 @@ const routes: Routes = [{
       path: 'trip',
       title: 'Viaje',
       component: TripComponent
-    }
-    ,
+    },
     {
       path: 'user-info',
       title: 'Mis Datos',
       component: UserInfoComponent
-    }
-    ,
+    },
     {
       path: 'cancel-trip',
       title: 'Cancelar Viaje',

@@ -6,27 +6,23 @@
     Cancelacion
   </p>
   <section class="options">
-    <form [formGroup]="cancelForm">
-      <mat-radio-group aria-label="Select an option" formControlName="cancel">
-        <div class="radio-buttons">
-          <mat-radio-button [value]="0">No lo dire</mat-radio-button>
-          <div class="line"></div>
-          <mat-radio-button [value]="1">No pude contactar al chofer</mat-radio-button>
-          <div class="line"></div>
-          <mat-radio-button [value]="2">El chofer llego tarde</mat-radio-button>
-          <div class="line"></div>
-          <mat-radio-button [value]="3">Precio del servicio</mat-radio-button>
-          <div class="line"></div>
-          <mat-radio-button [value]="4">El lugar de recogida era incorrecto</mat-radio-button>
-          <div class="line"></div>
-        </div>
-      </mat-radio-group>
-      <textarea
-        formControlName="message"
-        class="custom-input"
-        placeholder="Compartenos tu reporte:"
-      ></textarea>
-    </form>
+    <div class="radio-buttons inter">
+      <app-radio-button label="No lo diré" value="1" checked name="option"></app-radio-button>
+      <hr class="line">
+      <app-radio-button label="No pude contactar al chofer" value="2" name="option"></app-radio-button>
+      <hr class="line">
+      <app-radio-button label="El chofer llegó tarde" value="3" name="option"></app-radio-button>
+      <hr class="line">
+      <app-radio-button label="Precio del servicio" value="4" name="option"></app-radio-button>
+      <hr class="line">
+      <app-radio-button label="El lugar de recogida era incorrecto" value="5" name="option"></app-radio-button>
+      <hr class="line">
+    </div>
+    <textarea
+      value="message"
+      class="custom-input"
+      placeholder="Compártenos tu reporte"
+    ></textarea>
     <app-primary-button>ENVIAR</app-primary-button>
   </section>
 </div>
