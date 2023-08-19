@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./radio-button.component.scss']
 })
 export class RadioButtonComponent {
-  @Input() label = '';
-  @Input() value = '';
+  @Input() values: string[] = [];
   @Input() name = '';
+  @Input() selectedValue = '';
 }

@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cancel-trip.component.scss']
 })
 export class CancelTripComponent {
-  option = false;
+  options: string[] = [
+    'No lo diré',
+    'No pude contactar al chofer',
+    'El Chofer llegó tarde',
+    'Precio del servicio',
+    'El lugar de recogida era incorrecto'];
+  selectedValue ='No lo diré';
   message = '';
 }

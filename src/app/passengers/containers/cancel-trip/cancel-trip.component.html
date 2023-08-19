@@ -7,19 +7,19 @@
   </p>
   <section class="options">
     <div class="radio-buttons inter">
-      <app-radio-button label="No lo diré" value="1" checked name="option"></app-radio-button>
+      <app-radio-button [values]="['No lo diré']" [name]="'options'" [selectedValue]="selectedValue"></app-radio-button>
       <hr class="line">
-      <app-radio-button label="No pude contactar al chofer" value="2" name="option"></app-radio-button>
+      <app-radio-button [values]="['No pude contactar al chofer']" [name]="'options'"></app-radio-button>
       <hr class="line">
-      <app-radio-button label="El chofer llegó tarde" value="3" name="option"></app-radio-button>
+      <app-radio-button [values]="['El chofer llegó tarde']" [name]="'options'"></app-radio-button>
       <hr class="line">
-      <app-radio-button label="Precio del servicio" value="4" name="option"></app-radio-button>
+      <app-radio-button [values]="['Precio del servicio']" [name]="'options'"></app-radio-button>
       <hr class="line">
-      <app-radio-button label="El lugar de recogida era incorrecto" value="5" name="option"></app-radio-button>
+      <app-radio-button [values]="['El lugar de recogida era incorrecto']" [name]="'options'"></app-radio-button>
       <hr class="line">
     </div>
     <textarea
-      value="message"
+      [(ngModel)]="message"
       class="custom-input"
       placeholder="Compártenos tu reporte"
     ></textarea>

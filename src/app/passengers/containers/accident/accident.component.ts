@@ -6,10 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./accident.component.scss']
 })
 export class AccidentComponent {
-  gotHurt = false;
+  gothurt: string[] = ['SI,','NO'];
+  selectedValue ='NO';
   message = '';
 
-  public updateGotHurt(value: boolean) {
-    this.gotHurt = value;
-  }
 }
