@@ -16,7 +16,6 @@ export class CancelTripComponent {
   message = '';
 
   changeSelectedValue(newValue: string) {
-    console.log('nuevo valor recibido:', newValue);
     this.selectedValue = newValue;
   }
 }
