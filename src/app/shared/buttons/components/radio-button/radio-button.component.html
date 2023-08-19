@@ -1,11 +1,11 @@
-<div *ngFor="let value of values; let i = index" class="radio-label">
+<div class="radio-label">
   <input
     type="radio"
+    [id]="value"
     [value]="value"
-    [(ngModel)]="selectedValue"
-    [id]="'radio-' + i"
-    [name]="name"
+    [checked]="value === selectedValue"
+    (change)="changeSelectedOption()"
     class="green-radio"
   />
-  <label [for]="'radio-' + i">{{ value }}</label>
+  <label [for]="value">{{ value }}</label>
 </div>

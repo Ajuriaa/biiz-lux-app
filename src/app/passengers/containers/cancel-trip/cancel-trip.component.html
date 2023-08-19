@@ -7,16 +7,15 @@
   </p>
   <section class="options">
     <div class="radio-buttons inter">
-      <app-radio-button [values]="['No lo diré']" [name]="'options'" [selectedValue]="selectedValue"></app-radio-button>
-      <hr class="line">
-      <app-radio-button [values]="['No pude contactar al chofer']" [name]="'options'"></app-radio-button>
-      <hr class="line">
-      <app-radio-button [values]="['El chofer llegó tarde']" [name]="'options'"></app-radio-button>
-      <hr class="line">
-      <app-radio-button [values]="['Precio del servicio']" [name]="'options'"></app-radio-button>
-      <hr class="line">
-      <app-radio-button [values]="['El lugar de recogida era incorrecto']" [name]="'options'"></app-radio-button>
-      <hr class="line">
+      <div *ngFor="let option of options">
+        <app-radio-button
+          [value]="option"
+          [selectedValue]="selectedValue"
+          (changeSelected)="changeSelectedValue($event)"
+        >
+        </app-radio-button>
+        <hr class="line">
+      </div>
     </div>
     <textarea
       [(ngModel)]="message"

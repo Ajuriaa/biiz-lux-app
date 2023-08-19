@@ -12,6 +12,11 @@ export class CancelTripComponent {
     'El Chofer llegó tarde',
     'Precio del servicio',
     'El lugar de recogida era incorrecto'];
-  selectedValue ='No lo diré';
+  selectedValue = 'No lo diré';
   message = '';
+
+  changeSelectedValue(newValue: string) {
+    console.log('nuevo valor recibido:', newValue);
+    this.selectedValue = newValue;
+  }
 }
