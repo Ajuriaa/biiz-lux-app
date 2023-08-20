@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-radio-button',
@@ -6,7 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./radio-button.component.scss']
 })
 export class RadioButtonComponent {
-  @Input() label = '';
   @Input() value = '';
-  @Input() name = '';
+  @Input() selectedValue = '';
+  @Output() changeSelected = new EventEmitter<string>();
+
+  changeSelectedOption() {
+    this.changeSelected.emit(this.value);
+  }
 }

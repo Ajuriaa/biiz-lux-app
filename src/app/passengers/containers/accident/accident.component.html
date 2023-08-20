@@ -14,8 +14,14 @@
       ¿SALISTE HERIDO?
     </div>
     <div class="options">
-      <app-radio-button label="SI" value="true" name="hurt" (click)="updateGotHurt(true)"></app-radio-button>
-      <app-radio-button label="NO" value="false" name="notHurt" (click)="updateGotHurt(false)"></app-radio-button>
+      <div *ngFor="let option of options">
+        <app-radio-button
+          [value]="option"
+          [selectedValue]="selectedValue"
+          (changeSelected)="changeSelectedValue($event)"
+        >
+        </app-radio-button>
+      </div>
     </div>
     <div class="text">
       CUÉNTANOS
@@ -23,7 +29,7 @@
     <div class="textarea-container">
       <textarea
         class="multiline-input"
-        message="message"
+        [(ngModel)]="message"
         maxlength="500"
         minlength="100"
         rows="12"

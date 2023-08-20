@@ -1,0 +1,44 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  @include flex-column;
+}
+
+.text {
+  font-size: 2rem;
+  width: 33.3rem;
+  margin-top: 2rem;
+}
+
+.custom-input { 
+  background-color: setColor(firm-gray, 10);
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  height: 20rem;
+  width: 33rem;
+  margin: 2rem 0 1.5rem 0;
+
+  &::placeholder {
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left:22%;
+  }
+}
+
+.options {
+  @include flex-column;
+  width: 33.3rem;
+  margin: 3rem;
+}
+
+.multiline-input {
+  @include multiline-input;
+}
+
+.line {
+  width: 29rem;
+  margin: 2rem 0 2rem 3rem;
+  border-bottom: 0.01rem $line;
+  opacity: 0.5;
+}
