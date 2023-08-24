@@ -27,7 +27,7 @@ export class ToastComponent {
       message: message,
       duration: 1500,
       position: 'bottom',
-      color: 'sucess',
+      color: 'success',
       icon: 'checkmark-circle-outline'
     });
 
