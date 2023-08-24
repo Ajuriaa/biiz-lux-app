@@ -6,7 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import {
   ButtonsModule,
   HeaderModule,
-  MapsModule
+  MapsModule,
+  ToasterModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -46,6 +47,7 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     FormsModule,
     MaterialModule,
     MapsModule,
+    ToasterModule,
     IonicModule
   ]
 })
