@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
+import { ToastComponent } from 'src/app/shared/toaster';
 
 const login = gql `
   mutation login($attributes: LoginInput!) {
@@ -16,7 +17,7 @@ const login = gql `
 export class AuthMutations {
   private _mutateSub!: Subscription;
 
-  constructor(private _apollo: Apollo) {}
+  constructor(private _apollo: Apollo, private toaster: ToastComponent) {}
 
   public login(userName: string, userPassword: string): Promise<any> {
     return new Promise ((resolve) => {
@@ -31,13 +32,14 @@ export class AuthMutations {
         }
       }).subscribe(({ data }: any) => {
         if (data) {
+          this.toaster.successToast("Sesión Iniciada correctamente");
           const token = data.login.token;
           const role = data.login.role;
           this._setCookie(token, role);
           resolve(data);
         }
       }, (error) => {
-        resolve(error);
+        this.toaster.errorToast(error.message);
       });
     });
   }
