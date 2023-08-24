@@ -14,30 +14,31 @@
 }
 
 .title {
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   font-size: 1.7rem;
   font-weight: bold;
 }
 
 .text {
   padding-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 1.6rem;
   display: flex;
   justify-content: space-between;
   color: setColor(firm-gray, 300);
   width: 32rem;
 
   .icon {
+    margin-top: 0.4rem;
     margin-right: 1rem;
     color: setColor(firm-gray, 200);
     height: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 }
 
 .line {
-  width: 32rem;
-  margin-top: 0.2rem;
+  margin-right: 1rem;
+  width: 31rem;
   border-bottom: 0.01rem solid $line;
 }
