@@ -8,29 +8,24 @@ import { ToastController } from '@ionic/angular';
 
 export class ToastComponent {
   constructor(private toastController: ToastController) {}
-  public toastMessage = '';
 
-  public async errorToast(message: string) {
+  private async _baseToast(message: string, color: string, icon: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 1500,
       position: 'bottom',
-      color: 'danger',
-      icon: 'alert-circle-outline'
+      color,
+      icon
     });
 
     await toast.present();
   }
 
-  public async successToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: 'bottom',
-      color: 'success',
-      icon: 'checkmark-circle-outline'
-    });
+  public async errorToast(message: string) {
+    await this._baseToast(message, 'danger', 'alert-circle-outline');
+  }
 
-    await toast.present();
+  public async successToast(message: string) {
+    await this._baseToast(message, 'success', 'checkmark-circle-outline');
   }
 }
