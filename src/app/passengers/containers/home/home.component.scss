@@ -3,46 +3,56 @@
 .container {
   @include flex-column;
   gap: 0.7rem;
-}
+  height: 85%;
 
-.main-button {
-  @include flex-center;
-  margin: 0.5rem;
+  .button {
+    width: 90%;
+  }
 }
 
 .trip-container {
-  height: 31.6rem;
-  width: 34.2rem;
+  height: 50%;
+  width: 90%;
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/unidad.png');
+  background-position: 100%;
   border-radius: 0.6rem;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 
   .label {
+    display: flex;
+    justify-content: flex-start;
     margin-bottom: 1.4rem;
-  }
-}
 
-.experience-container {
-  height: 13.2rem;
-  width: 34.2rem;
-  border-radius: 0.6rem;
-  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/experiencias.png');
-
-  .button-container {
-    flex-direction: column;
-    gap: 5rem;
-
-    .label {
-      align-self: flex-end;
+    .icon {
+      margin:0 0.5rem;
+      font-size: 1.5rem;
     }
   }
 }
 
+.experience-container {
+  height: 25%;
+  width: 90%;
+  border-radius: 0.6rem;
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/events.png');
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
 .shared-container {
   display: flex;
-  gap: 0.5rem;
+  height: 25%;
+  width: 90%;
+  gap: 0.7rem;
+}
+
+.airport-container, .specials-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .airport-container {
@@ -50,7 +60,9 @@
 }
 
 .specials-container {
-  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/especiales.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials.png');
+  background-size: 250%;
+  background-position: 30%;
 }
 
 .button {
@@ -65,7 +77,6 @@
 
 .button-container {
   display: flex;
-  gap: 0.5rem;
   margin: 1.4rem;
 }
 
