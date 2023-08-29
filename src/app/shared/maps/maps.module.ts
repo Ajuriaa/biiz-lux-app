@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { MapsComponent } from './components/maps.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { MapsComponent } from './components/maps.component';
   ],
   imports: [
     CommonModule,
-    GoogleMapsModule
+    IonicModule
   ],
   exports: [
     MapsComponent
