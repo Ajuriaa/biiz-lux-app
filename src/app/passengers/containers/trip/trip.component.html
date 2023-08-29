@@ -1,5 +1,15 @@
 
-<app-shared-header></app-shared-header>
-<ion-content [fullscreen]="true">
-  <div style="background-color: aqua; height: 100%;"></div>
-</ion-content>
+<div class="container">
+  <capacitor-google-map class="map" #map></capacitor-google-map>
+  <app-shared-header></app-shared-header>
+  <div class="button-container">
+    <div class="options">
+      <app-secondary-button class="btn">EVENTOS</app-secondary-button>
+      <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
+    </div>
+    <app-primary-button class="confirm">
+      <p class="text">CONFIRMAR DESTINO</p>
+      <img class="button-image" [src]="imageUrl">
+    </app-primary-button>
+  </div>
+</div>
