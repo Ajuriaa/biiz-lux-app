@@ -30,7 +30,7 @@ export class WeatherQueries {
         headers: new HttpHeaders().set('Authorization', this._getToken())
       },
       notifyOnNetworkStatusChange: true,
-      fetchPolicy: 'cache-and-network'
+      fetchPolicy: 'cache-first'
     }).valueChanges;
   }
 
