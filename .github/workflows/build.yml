@@ -11,13 +11,13 @@ jobs:
         node-version: [18.16.x]
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@master
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          bun-version: latest
       - name: Install and Test
         run: |
-          npm install
-          npm run lint
+          bun install
+          bun run lint
         env:
           CI: true
