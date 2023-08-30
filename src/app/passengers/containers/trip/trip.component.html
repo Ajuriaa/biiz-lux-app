@@ -1,14 +1,14 @@
-<app-shared-header></app-shared-header>
 <div class="container">
-  <div class="map">
-    <app-maps></app-maps>
+  <capacitor-google-map class="map" #map></capacitor-google-map>
+  <app-shared-header></app-shared-header>
+  <div class="button-container">
+    <div class="options">
+      <app-secondary-button class="btn">EVENTOS</app-secondary-button>
+      <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
+    </div>
+    <app-primary-button class="confirm">
+      <p class="text">CONFIRMAR DESTINO</p>
+      <img class="button-image" [src]="imageUrl">
+    </app-primary-button>
   </div>
-  <div class="options">
-    <app-secondary-button class="btn">EVENTOS</app-secondary-button>
-    <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
-  </div>
-  <app-primary-button class="confirm">
-    <div class="text">CONFIRMAR DESTINO</div>
-    <img class="button-image" src="https://biz-app-bucket.s3.us-east-2.amazonaws.com/iiz-green.png">
-  </app-primary-button>
 </div>
