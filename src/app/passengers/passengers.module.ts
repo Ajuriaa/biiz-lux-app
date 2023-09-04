@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {
   ButtonsModule,
-  HeaderModule,
-  MapsModule
+  HeaderModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -45,8 +44,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    MapsModule,
     IonicModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PassengersModule { }

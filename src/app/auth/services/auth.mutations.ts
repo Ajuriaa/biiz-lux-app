@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
+import { setCapacitorCookie } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
 
 const login = gql `
@@ -35,20 +36,13 @@ export class AuthMutations {
           this.toaster.successToast("Sesión Iniciada correctamente");
           const token = data.login.token;
           const role = data.login.role;
-          this._setCookie(token, role);
+          setCapacitorCookie('BZ-TOKEN', token);
+          setCapacitorCookie('BZ-ROLE', role);
           resolve(data);
         }
       }, (error) => {
         this.toaster.errorToast(error.message);
       });
     });
-  }
-
-  private _setCookie(token: string, role: string): void {
-    const date = new Date();
-    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
-    const expires = 'expires=' + date.toUTCString();
-    document.cookie = `BZ-TOKEN=${token};${expires};path=/`;
-    document.cookie = `BZ-ROLE=${role};${expires};path=/`;
   }
 }
