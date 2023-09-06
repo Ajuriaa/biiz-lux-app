@@ -16,23 +16,26 @@ export class TripComponent implements OnInit {
   newMap!: GoogleMap;
 
   ngOnInit() {
-    GoogleMap.create({
-      id: 'map',
-      element: this.mapRef.nativeElement,
-      apiKey: environment.mapsApiKey,
-      config: {
-        center: {
-          // TODO: remove this hardcoded values when gps implemented properly
-          lat: 14.060536,
-          lng: -87.241214
+    setTimeout(() => {
+      GoogleMap.create({
+        id: 'map',
+        element: this.mapRef.nativeElement,
+        apiKey: environment.mapsApiKey,
+        config: {
+          center: {
+            // TODO: remove this hardcoded values when GPS implemented properly
+            lat: 14.060536,
+            lng: -87.241214
+          },
+          zoom: 17,
+          clickableIcons: false,
+          disableDefaultUI: true,
+          keyboardShortcuts: false,
+          gestureHandling: "greedy"
         },
-        zoom: 17,
-        clickableIcons: false,
-        disableDefaultUI: true,
-        keyboardShortcuts: false,
-        gestureHandling: "greedy"
-      },
-      language: 'es'
-    });
+        language: 'es'
+      });
+    }, 500);
   }
 }
+
