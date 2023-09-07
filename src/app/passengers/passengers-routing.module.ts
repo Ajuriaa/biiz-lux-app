@@ -12,7 +12,8 @@ import {
   PassengerRouterComponent,
   UserInfoComponent,
   TripComponent,
-  CancelTripComponent
+  CancelTripComponent,
+  ProgramTripComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -65,6 +66,11 @@ const routes: Routes = [{
       path: 'cancel-trip',
       title: 'Cancelar Viaje',
       component: CancelTripComponent
+    },
+    {
+      path: 'program-trip',
+      title: 'Programar Viaje',
+      component: ProgramTripComponent
     }
   ]
 }];
