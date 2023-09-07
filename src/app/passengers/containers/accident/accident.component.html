@@ -1,44 +1,46 @@
 <app-shared-header></app-shared-header>
-<div class="container">
-  <section class="section">
-    <div class="text">
-      TUVE UN ACCIDENTÉ
-    </div>
-    <div class="info inter">
-      Si estuvo involucrado en algún accidente con alguno de nuestros
-      choferes, contamos con un seguro de viaje que cubre parte de tus
-      gastos, llena los siguientes datos y luego espera ser contactado
-      por nuestro servicio al cliente.
-    </div>
-    <div class="text">
-      ¿SALISTE HERIDO?
-    </div>
-    <div class="options">
-      <div *ngFor="let option of options">
-        <app-radio-button
-          [value]="option"
-          [selectedValue]="selectedValue"
-          (changeSelected)="changeSelectedValue($event)"
-        >
-        </app-radio-button>
+<ion-content>
+  <div class="container">
+    <section class="section">
+      <div class="text">
+        TUVE UN ACCIDENTÉ
       </div>
-    </div>
-    <div class="text">
-      CUÉNTANOS
-    </div>
-    <div class="textarea-container">
-      <textarea
-        class="multiline-input"
-        [(ngModel)]="message"
-        maxlength="500"
-        minlength="100"
-        rows="12"
-        required
-      ></textarea>
-      <span class="material-icons camera-icon">
-        photo_camera
-      </span>
-    </div>
-      <app-primary-button type="submit">ENVIAR</app-primary-button>
-  </section>
-</div>
+      <div class="info inter">
+        Si estuvo involucrado en algún accidente con alguno de nuestros
+        choferes, contamos con un seguro de viaje que cubre parte de tus
+        gastos, llena los siguientes datos y luego espera ser contactado
+        por nuestro servicio al cliente.
+      </div>
+      <div class="text">
+        ¿SALISTE HERIDO?
+      </div>
+      <div class="options">
+        <div *ngFor="let option of options">
+          <app-radio-button
+            [value]="option"
+            [selectedValue]="selectedValue"
+            (changeSelected)="changeSelectedValue($event)"
+          >
+          </app-radio-button>
+        </div>
+      </div>
+      <div class="text">
+        CUÉNTANOS
+      </div>
+      <div class="textarea-container">
+        <textarea
+          class="multiline-input"
+          [(ngModel)]="message"
+          maxlength="500"
+          minlength="100"
+          rows="12"
+          required
+        ></textarea>
+        <span class="material-icons camera-icon">
+          photo_camera
+        </span>
+      </div>
+        <app-primary-button type="submit">ENVIAR</app-primary-button>
+    </section>
+  </div>
+</ion-content>

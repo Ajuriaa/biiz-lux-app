@@ -1,38 +1,40 @@
-<div class="container">
-  <div class="header-container">
-    <app-shared-header></app-shared-header>
-    <app-profile-header profileName="STEPH MENA AGUILAR">
-    </app-profile-header>
-    <div class="row">
-      <div class="options">
-        <app-secondary-button>
-          <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/call.png" alt="Llamada">
-        </app-secondary-button>
+<ion-content>
+  <div class="container">
+    <div class="header-container">
+      <app-shared-header></app-shared-header>
+      <app-profile-header profileName="STEPH MENA AGUILAR">
+      </app-profile-header>
+      <div class="row">
+        <div class="options">
+          <app-secondary-button>
+            <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/call.png" alt="Llamada">
+          </app-secondary-button>
+        </div>
+        <div class="options">
+          <app-secondary-button>
+            <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/message.png" alt="Mensaje">
+          </app-secondary-button>
+        </div>
       </div>
-      <div class="options">
-        <app-secondary-button>
-          <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/message.png" alt="Mensaje">
-        </app-secondary-button>
+    </div>
+    <div class="title">
+      SERVICIO AL CLIENTE
+    </div>
+    <div class="row-sh inter">
+      <div class="shortcuts" [routerLink]="['../faq']">
+        <div class="text">PREGUNTAS FRECUENTES</div>
+      </div>
+      <div class="shortcuts">
+        <div class="text">SOBRE NOSOTROS</div>
+      </div>
+    </div>
+    <div class="row-sh inter">
+      <div class="shortcuts" [routerLink]="['../passenger/forgot-something']">
+        <div class="text">OLVIDÉ ALGO</div>
+      </div>
+      <div class="shortcuts" [routerLink]="['../passenger/accident']">
+        <div class="text">ME ACCIDENTÉ</div>
       </div>
     </div>
   </div>
-  <div class="title">
-    SERVICIO AL CLIENTE
-  </div>
-  <div class="row-sh inter">
-    <div class="shortcuts" [routerLink]="['../faq']">
-      <div class="text">PREGUNTAS FRECUENTES</div>
-    </div>
-    <div class="shortcuts">
-      <div class="text">SOBRE NOSOTROS</div>
-    </div>
-  </div>
-  <div class="row-sh inter">
-    <div class="shortcuts" [routerLink]="['../passenger/forgot-something']">
-      <div class="text">OLVIDÉ ALGO</div>
-    </div>
-    <div class="shortcuts" [routerLink]="['../passenger/accident']">
-      <div class="text">ME ACCIDENTÉ</div>
-    </div>
-  </div>
-</div>
+</ion-content>
