@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environments';
   styleUrls: ['./program-trip.component.scss']
 })
 export class ProgramTripComponent {
-  showCalendar = false;
+  public showCalendar = false;
 
   toggleCalendar() {
     this.showCalendar = !this.showCalendar;
