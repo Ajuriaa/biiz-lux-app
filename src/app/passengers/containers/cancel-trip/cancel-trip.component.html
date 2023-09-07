@@ -1,27 +1,29 @@
 <app-shared-header></app-shared-header>
-<div class="container">
-  <p class="text">
-    Por Favor, Seleccione
-    Una Razon Para Su
-    Cancelacion
-  </p>
-  <section class="options">
-    <div class="radio-buttons inter">
-      <div *ngFor="let option of options">
-        <app-radio-button
-          [value]="option"
-          [selectedValue]="selectedValue"
-          (changeSelected)="changeSelectedValue($event)"
-        >
-        </app-radio-button>
-        <hr class="line">
+<ion-content>
+  <div class="container">
+    <p class="text">
+      Por Favor, Seleccione
+      Una Razon Para Su
+      Cancelacion
+    </p>
+    <section class="options">
+      <div class="radio-buttons inter">
+        <div *ngFor="let option of options">
+          <app-radio-button
+            [value]="option"
+            [selectedValue]="selectedValue"
+            (changeSelected)="changeSelectedValue($event)"
+          >
+          </app-radio-button>
+          <hr class="line">
+        </div>
       </div>
-    </div>
-    <textarea
-      [(ngModel)]="message"
-      class="custom-input"
-      placeholder="Compártenos tu reporte"
-    ></textarea>
-    <app-primary-button>ENVIAR</app-primary-button>
-  </section>
-</div>
+      <textarea
+        [(ngModel)]="message"
+        class="custom-input"
+        placeholder="Compártenos tu reporte"
+      ></textarea>
+      <app-primary-button>ENVIAR</app-primary-button>
+    </section>
+  </div>
+</ion-content>
