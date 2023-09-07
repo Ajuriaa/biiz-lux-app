@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
-import { Geolocation, Position } from '@capacitor/geolocation';
+import { Geolocation } from '@capacitor/geolocation';
 import { environment } from 'src/environments/environments';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
@@ -59,6 +59,6 @@ export class TripComponent implements OnInit {
       enableHighAccuracy: true
     });
     this.coords = coordinates.coords;
-  };
+  }
 }
 
