@@ -1,33 +1,35 @@
 <app-shared-header></app-shared-header>
-<section class="section">
-  <div class="text">
-    OLVIDÉ ALGO
-  </div>
-  <div class="info inter">
-    Si dejó algo olvidado contactanos Io más
-    pronto posible, y brindenos la mayor cantidad
-    de detalles, Ie conectaremos directamente
-    con su chofer asignado. Puedes también
-    comunicarte vía chat en vivo o llamar a
-    nuestros números de servicio al cliente que
-    24 horas del día.
-  </div>
-  <div class="text">
-    CUENTANOS
-  </div>
-  <form [formGroup]="forgotSomethingForm">
-    <mat-form-field class="form-field">
-      <textarea
-        class="multiline-input"
-        placeholder="Tu mensaje aquí"
-        matInput
-        formControlName="message"
-        maxlength="500"
-        minlength="1"
-        rows="9"
-        required
-      ></textarea>
-    </mat-form-field>
-  </form>
-  <app-primary-button>ENVIAR</app-primary-button>
-</section>
+<ion-content>
+  <section class="section">
+    <div class="text">
+      OLVIDÉ ALGO
+    </div>
+    <div class="info inter">
+      Si dejó algo olvidado contactanos Io más
+      pronto posible, y brindenos la mayor cantidad
+      de detalles, Ie conectaremos directamente
+      con su chofer asignado. Puedes también
+      comunicarte vía chat en vivo o llamar a
+      nuestros números de servicio al cliente que
+      24 horas del día.
+    </div>
+    <div class="text">
+      CUENTANOS
+    </div>
+    <form [formGroup]="forgotSomethingForm">
+      <mat-form-field class="form-field">
+        <textarea
+          class="multiline-input"
+          placeholder="Tu mensaje aquí"
+          matInput
+          formControlName="message"
+          maxlength="500"
+          minlength="1"
+          rows="9"
+          required
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <app-primary-button>ENVIAR</app-primary-button>
+  </section>
+</ion-content>
