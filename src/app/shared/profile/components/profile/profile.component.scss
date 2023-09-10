@@ -14,35 +14,29 @@
   width: 100%;
 }
 
+.car-box {
+  width: 50%;
+  display: flex;
+  border-radius: 0.4rem;
+}
+
 .button {
   background-color: $white;
 }
 
 .top-left {
-  width: 50%;
-  display: flex;
-  border-radius: 0.4rem;
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-top-left.png');
 }
 
 .top-right {
-  width: 50%;
-  display: flex;
-  border-radius: 0.4rem;
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-top-right.png');
 }
 
 .bottom-left {
-  width: 50%;
-  display: flex;
-  border-radius: 0.4rem;
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-bottom-left.png');
 }
 
 .bottom-right {
-  width: 50%;
-  display: flex;
-  border-radius: 0.4rem;
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/car-bottom-right.png');
 }
 
