@@ -3,21 +3,21 @@
   <div class="container">
     <app-profile-header [showEditIcon]="true" [profileName]="user.fullName"></app-profile-header>
     <section class="profile-options">
-    <div class="row">
-        <app-display-button message="MIS VIAJES" class="top-left"></app-display-button>
-        <app-display-button message="MIS DATOS" class="top-right" link="/passenger/user-info"></app-display-button>
+      <div class="row">
+        <app-display-button message="MIS VIAJES" class="car-box top-left"></app-display-button>
+        <app-display-button message="MIS DATOS" class="car-box top-right" link="/passenger/user-info"></app-display-button>
       </div>
       <div class="row">
-        <app-display-button message="INGRESAR TARJETA" class="bottom-left"></app-display-button>
-        <app-display-button message="NOTIFICACIONES" class="bottom-right"></app-display-button>
+        <app-display-button message="INGRESAR TARJETA" class="car-box bottom-left"></app-display-button>
+        <app-display-button message="NOTIFICACIONES" class="car-box bottom-right"></app-display-button>
       </div>
     </section>
     <section class="customer-service" [routerLink]="['../customer-service']">
       <img class="image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz.png" alt="Customer Image">
       <p class="service-label">SERVICIO AL CLIENTE</p>
     </section>
-  </div>
-  <div class="main-button">
-    <app-primary-button>Terminos y condiciones</app-primary-button>
+    <div class="main-button">
+      <app-primary-button>Terminos y condiciones</app-primary-button>
+    </div>
   </div>
 </ion-content>
