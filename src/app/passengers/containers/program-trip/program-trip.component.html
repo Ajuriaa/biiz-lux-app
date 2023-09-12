@@ -1,0 +1,11 @@
+<div class="container">
+  <capacitor-google-map class="map" #map></capacitor-google-map>
+  <app-shared-header></app-shared-header>
+  <div class="wrap">
+    <app-primary-button (click)="toggleCalendar()" class="button-container">
+      SELECCIONAR FECHA Y HORA
+    </app-primary-button>
+    <app-calendar  class="calendar" *ngIf="showCalendar"></app-calendar>
+    <app-primary-button class="button-container">CONFIRMAR DESTINO</app-primary-button>
+  </div>
+</div>

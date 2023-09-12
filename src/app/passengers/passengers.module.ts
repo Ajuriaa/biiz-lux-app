@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {
   ButtonsModule,
+  CalendarModule,
   HeaderModule
 } from '../shared';
 import { MaterialModule } from '../material';
@@ -18,7 +19,8 @@ import {
   PassengerRouterComponent,
   UserInfoComponent,
   TripComponent,
-  CancelTripComponent
+  CancelTripComponent,
+  ProgramTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 
@@ -33,7 +35,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     AccidentComponent,
     UserInfoComponent,
     TripComponent,
-    CancelTripComponent
+    CancelTripComponent,
+    ProgramTripComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    IonicModule
+    IonicModule,
+    CalendarModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
