@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@capacitor/geolocation';
 import { environment } from 'src/environments/environments';
@@ -12,7 +12,7 @@ const MARKER_IMAGE = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/marker.png'
   templateUrl: './trip.component.html',
   styleUrls: ['./trip.component.scss']
 })
-export class TripComponent implements OnInit {
+export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
   private markerImage = MARKER_IMAGE;
   @ViewChild('map', { static: true })
@@ -46,13 +46,32 @@ export class TripComponent implements OnInit {
     .then((map) => {
       this.newMap = map;
 
-      this.newMap.addMarker({
-        coordinate: {
-          lat: coords.latitude,
-          lng: coords.longitude
-        },
-        iconUrl: this.markerImage
-      });
+      this.addMarker(coords);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.newMap.destroy();
+  }
+
+  private removeMarker(coordinates: {longitude: number, latitude: number}, markerId: string): void {
+    this.newMap.removeMarker(markerId);
+    this.addMarker(coordinates);
+  }
+
+  private async addMarker(coordinates: {longitude: number, latitude: number}): Promise<void> {
+    const markerId = await this.newMap.addMarker({
+      coordinate: {
+        lat: coordinates.latitude,
+        lng: coordinates.longitude
+      },
+      iconUrl: this.markerImage,
+      draggable: true
+    });
+
+    await this.newMap.setOnMapClickListener((event) => {
+      const newCoords = {latitude: event.latitude, longitude: event.longitude};
+      this.removeMarker(newCoords, markerId);
     });
   }
 }
