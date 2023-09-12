@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
-import { Geolocation } from '@capacitor/geolocation';
 import { environment } from 'src/environments/environments';
 import { SharedDataService } from 'src/app/core/services';
 
