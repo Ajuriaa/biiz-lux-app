@@ -37,6 +37,7 @@ export class TripComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const coords = this.sharedDataService.getCoordinates();
+    this.currentCoordinates = coords;
     new Promise((resolve) => setTimeout(resolve, 500))
     .then(() => {
       return GoogleMap.create({
@@ -90,46 +91,31 @@ export class TripComponent implements OnInit, OnDestroy {
     });
   }
 
-  public UpdateSearchResults(isCurrentAddress = false){
-    if(isCurrentAddress){
-      if (this.autocompleteCurrent.input == '') {
-        this.autocompleteCurrentAddresses = [];
-        return;
-      }
-      this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteCurrent.input + 'Tegucigalpa, Honduras' },
-      (predictions: any) => {
-        this.autocompleteCurrentAddresses = [];
-        this.zone.run(() => {
-          predictions.forEach((prediction: any) => {
-            this.autocompleteCurrentAddresses.push(prediction);
-          });
-        });
-      });
-    } else {
-      if (this.autocompleteDestination.input == '') {
-        this.autocompleteDestinationAddresses = [];
-        return;
-      }
-      this.GoogleAutocomplete.getPlacePredictions({ input: this.autocompleteDestination.input + 'Tegucigalpa, Honduras' },
-      (predictions: any) => {
-        this.autocompleteDestinationAddresses = [];
-        this.zone.run(() => {
-          predictions.forEach((prediction: any) => {
-            this.autocompleteDestinationAddresses.push(prediction);
-          });
-        });
-      });
+  public UpdateSearchResults(isCurrentAddress = false) {
+    const input = isCurrentAddress ? this.autocompleteCurrent.input : this.autocompleteDestination.input;
+    const addressesArray = isCurrentAddress ? this.autocompleteCurrentAddresses : this.autocompleteDestinationAddresses;
+
+    if (input === '') {
+      addressesArray.length = 0;
+      return;
     }
+
+    this.GoogleAutocomplete.getPlacePredictions({ input: input + 'Tegucigalpa, Honduras' }, (predictions: any) => {
+      addressesArray.length = 0;
+      this.zone.run(() => {
+        addressesArray.push(...predictions);
+      });
+    });
   }
 
-  public SelectSearchResult(item: any, isCurrentAddress = false) {
-    let options: NativeGeocoderOptions = {
+  public SelectSearchResult(item: any, isCurrentAddress = false): void {
+    const options: NativeGeocoderOptions = {
       useLocale: true,
       maxResults: 1
     };
     this.nativeGeocoder.forwardGeocode(item.description, options).then((coords : NativeGeocoderResult[]) => {
-      const coordinates = {latitude: + coords[0].latitude, longitude: +coords[0].longitude};
-      let cameraOptions = {
+      const coordinates = {latitude: +coords[0].latitude, longitude: +coords[0].longitude};
+      const cameraOptions = {
         coordinate: {
           lat: coordinates.latitude,
           lng: coordinates.longitude
@@ -138,7 +124,7 @@ export class TripComponent implements OnInit, OnDestroy {
         animate: true
       };
 
-      if(isCurrentAddress) {
+      if (isCurrentAddress) {
         this.currentCoordinates = coordinates;
         const markerId = this.sharedDataService.getCurrentMarkerId();
         this.removeMarker(coordinates, markerId);
@@ -156,16 +142,16 @@ export class TripComponent implements OnInit, OnDestroy {
         this.autocompleteDestinationAddresses = [];
       }
       this.newMap.setCamera(cameraOptions);
-    })
+    });
   }
 
-  public ClearAutocomplete(isCurrentAddress = true){
-    if (isCurrentAddress){
-      this.autocompleteCurrentAddresses = []
-      this.autocompleteCurrent.input = ''
+  public ClearAutocomplete(isCurrentAddress = false): void {
+    if (isCurrentAddress) {
+      this.autocompleteCurrentAddresses = [];
+      this.autocompleteCurrent.input = '';
     } else {
-      this.autocompleteDestinationAddresses = []
-      this.autocompleteDestination.input = ''
+      this.autocompleteDestinationAddresses = [];
+      this.autocompleteDestination.input = '';
     }
   }
 }
