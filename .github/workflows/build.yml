@@ -1,7 +1,8 @@
 name: Angular CI
 on:
-  pull_request_review:
-    types: [submitted]
+  push:
+    branches:
+      - '*'
 jobs:
   install-and-test:
     if: github.event.review.state == 'approved'
