@@ -8,6 +8,7 @@ import { GraphqlService } from '../services/graphql.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth';
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { AuthModule } from './auth';
     ApolloModule,
     AuthModule,
     IonicModule.forRoot()
+  ],
+  providers: [
+    NativeGeocoder
   ],
   bootstrap: [AppComponent]
 })
