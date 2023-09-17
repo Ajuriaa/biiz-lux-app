@@ -12,7 +12,7 @@
 }
 
 .profile-name {
-  @include bordered-container(33.8rem, 5.7rem, 0.4rem, $black);
+  @include bordered-container( 100%, 5.7rem, 0.4rem, $black);
   font-size: 1rem;
   font-weight: bold;
   color: white;
