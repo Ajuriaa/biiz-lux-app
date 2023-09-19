@@ -45,6 +45,7 @@ export class TripComponent implements OnInit, OnDestroy {
     const coords = this.sharedDataService.getCoordinates();
     this.currentCoordinates = coords;
     const mapOptions = {
+      mapId: 'f8e6a2472dfc90b0',
       center: coords,
       zoom: 17,
       clickableIcons: false,
