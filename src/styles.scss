@@ -7,6 +7,10 @@
        url('./assets/fonts/Gotham-Bold.otf') format('opentype');
 }
 
+:root{
+  --ion-font-family: 'Gotham';
+}
+
 :root,
 html {
   font-size: 62.5%;
