@@ -1,39 +1,34 @@
 <ion-content>
   <div class="container">
     <div class="header-container">
-      <app-shared-header></app-shared-header>
-      <app-profile-header profileName="STEPH MENA AGUILAR">
-      </app-profile-header>
-      <div class="row">
-        <div class="options">
-          <app-secondary-button>
+      <app-shared-header class="main-header"></app-shared-header>
+      <div class="profile-header">
+        <app-profile-header
+          profileName="STEPH MENA AGUILAR">
+        </app-profile-header>
+        <div class="row">
+          <app-secondary-button class="option">
             <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/call.png" alt="Llamada">
           </app-secondary-button>
-        </div>
-        <div class="options">
-          <app-secondary-button>
+          <app-secondary-button class="option">
             <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/message.png" alt="Mensaje">
           </app-secondary-button>
         </div>
       </div>
     </div>
-    <div class="title">
-      SERVICIO AL CLIENTE
-    </div>
-    <div class="row-sh inter">
-      <div class="shortcuts" [routerLink]="['../faq']">
-        <div class="text">PREGUNTAS FRECUENTES</div>
-      </div>
-      <div class="shortcuts">
-        <div class="text">SOBRE NOSOTROS</div>
-      </div>
-    </div>
-    <div class="row-sh inter">
-      <div class="shortcuts" [routerLink]="['../passenger/forgot-something']">
-        <div class="text">OLVIDÉ ALGO</div>
-      </div>
-      <div class="shortcuts" [routerLink]="['../passenger/accident']">
-        <div class="text">ME ACCIDENTÉ</div>
+    <div class="info-container">
+      <p class="title">
+        SERVICIO AL CLIENTE
+      </p>
+      <div class="button-wrapper">
+        <div class="row-sh inter">
+          <p [routerLink]="['../faq']" class="text">PREGUNTAS FRECUENTES</p>
+          <p class="text">SOBRE NOSOTROS</p>
+        </div>
+        <div class="row-sh inter">
+          <p [routerLink]="['../passenger/forgot-something']" class="text">OLVIDÉ ALGO</p>
+          <p [routerLink]="['../passenger/accident']" class="text">ME ACCIDENTÉ</p>
+        </div>
       </div>
     </div>
   </div>
