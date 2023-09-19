@@ -1,7 +1,6 @@
 import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap } from '@capacitor/google-maps';
+
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
-import { environment } from 'src/environments/environments';
 import { SharedDataService } from 'src/app/core/services';
 import { calculateMidpoint } from 'src/app/core/helpers';
 import { ICoordinate } from 'src/app/core/interfaces';
@@ -20,12 +19,17 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
-  public GoogleAutocomplete: any;
-  private currentCoordinates = {latitude: 0, longitude: 0};
+  public GoogleAutocomplete: google.maps.places.AutocompleteService;
+  public directionsRenderer: google.maps.DirectionsRenderer;
+  public directionsService: google.maps.DirectionsService;
+  private currentCoordinates = {lat: 0, lng: 0};
   private markerImage = MARKER_IMAGE;
+  private startPlaceCoords = {lat: 0, lng: 0};
+  private destinationCoords = {lat:0, lng:0};
+  private emptyCoords = {lat:0, lng:0};
   @ViewChild('map', { static: true })
   mapRef!: ElementRef;
-  newMap!: GoogleMap;
+  newMap!: any;
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -33,62 +37,51 @@ export class TripComponent implements OnInit, OnDestroy {
     private zone: NgZone
   ) {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRenderer = new google.maps.DirectionsRenderer({polylineOptions: {strokeColor: '#00E741'}, suppressMarkers: true});
   }
 
   ngOnInit() {
     const coords = this.sharedDataService.getCoordinates();
     this.currentCoordinates = coords;
-    new Promise((resolve) => setTimeout(resolve, 500))
-    .then(() => {
-      return GoogleMap.create({
-        id: 'map',
-        element: this.mapRef.nativeElement,
-        apiKey: environment.mapsApiKey,
-        config: {
-          center: {
-            lat: coords.latitude,
-            lng: coords.longitude
-          },
-          zoom: 17,
-          clickableIcons: false,
-          disableDefaultUI: true,
-          keyboardShortcuts: false,
-          gestureHandling: "greedy"
-        },
-        language: 'es'
-      });
-    })
-    .then((map) => {
-      this.newMap = map;
+    const mapOptions = {
+      center: coords,
+      zoom: 17,
+      clickableIcons: false,
+      disableDefaultUI: true,
+      keyboardShortcuts: false,
+      gestureHandling: 'greedy'
+    };
+    setTimeout(() => {
+      this.newMap = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
 
-      this.addMarker(coords);
-    });
+      this.directionsRenderer.setMap(this.newMap);
+      this.sharedDataService.setCurrentMarker(this.addMarker(coords));
+    }, 500);
   }
 
   ngOnDestroy(): void {
-    this.newMap.destroy();
+    if (this.newMap) {
+      google.maps.event.clearInstanceListeners(this.newMap);
+      this.newMap = null;
+    }
   }
 
-  private removeMarker(coordinates: ICoordinate, markerId: string): void {
-    this.newMap.removeMarker(markerId);
-    this.addMarker(coordinates);
+  private removeMarker(marker: google.maps.Marker): void {
+    marker.setMap(null);
   }
 
-  private async addMarker(coordinates: ICoordinate): Promise<void> {
-    const markerId = await this.newMap.addMarker({
-      coordinate: {
-        lat: coordinates.latitude,
-        lng: coordinates.longitude
-      },
-      iconUrl: this.markerImage,
-      draggable: true
+  private addMarker(coordinates: ICoordinate): google.maps.Marker {
+    const marker = new google.maps.Marker({
+      position: coordinates,
+      map: this.newMap,
+      draggable: true,
+      icon: {
+        url: this.markerImage,
+        scaledSize: new google.maps.Size(50, 50)
+      }
     });
-    this.sharedDataService.setCurrentMarkerId(markerId);
-
-    await this.newMap.setOnMapClickListener((event) => {
-      const newCoords = {latitude: event.latitude, longitude: event.longitude};
-      this.removeMarker(newCoords, markerId);
-    });
+    return marker;
   }
 
   public UpdateSearchResults(isCurrentAddress = false) {
@@ -114,34 +107,36 @@ export class TripComponent implements OnInit, OnDestroy {
       maxResults: 1
     };
     this.nativeGeocoder.forwardGeocode(item.description, options).then((coords : NativeGeocoderResult[]) => {
-      const coordinates = {latitude: +coords[0].latitude, longitude: +coords[0].longitude};
+      const coordinates = {lat: +coords[0].latitude, lng: +coords[0].longitude};
       const cameraOptions = {
-        coordinate: {
-          lat: coordinates.latitude,
-          lng: coordinates.longitude
-        },
-        zoom: 17,
-        animate: true
+        coordinate: coordinates,
+        zoom: 14
       };
 
       if (isCurrentAddress) {
         this.currentCoordinates = coordinates;
-        const markerId = this.sharedDataService.getCurrentMarkerId();
-        this.removeMarker(coordinates, markerId);
+        const marker = this.sharedDataService.getCurrentMarker();
+        this.removeMarker(marker);
+        this.startPlaceCoords = coordinates;
+        this.sharedDataService.setCurrentMarker(this.addMarker(coordinates));
         this.autocompleteCurrent.input = item.description;
         this.autocompleteCurrentAddresses = [];
       } else {
         const centeredCoordinates = calculateMidpoint(coordinates, this.currentCoordinates);
-        this.addMarker(coordinates);
-        cameraOptions.coordinate = {
-          lat: centeredCoordinates.latitude,
-          lng: centeredCoordinates.longitude
-        };
+        const marker = this.sharedDataService.getDestinationMarker();
+        this.destinationCoords = coordinates;
+        this.removeMarker(marker);
+        this.sharedDataService.setDestinationMarker(this.addMarker(coordinates));
+        cameraOptions.coordinate = centeredCoordinates;
         cameraOptions.zoom = 13;
         this.autocompleteDestination.input = item.description;
         this.autocompleteDestinationAddresses = [];
       }
-      this.newMap.setCamera(cameraOptions);
+      this.newMap.setZoom(cameraOptions.zoom);
+      this.newMap.panTo(cameraOptions.coordinate);
+      if (this.startPlaceCoords !== this.emptyCoords && this.destinationCoords !== this.emptyCoords) {
+        this.calcRoute(this.startPlaceCoords, this.destinationCoords);
+      }
     });
   }
 
@@ -153,6 +148,19 @@ export class TripComponent implements OnInit, OnDestroy {
       this.autocompleteDestinationAddresses = [];
       this.autocompleteDestination.input = '';
     }
+  }
+
+  private calcRoute(start: ICoordinate, end: ICoordinate) {
+    const request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode['DRIVING']
+    };
+    this.directionsService.route(request, (result, status) => {
+      if (status == 'OK') {
+        this.directionsRenderer.setDirections(result);
+      }
+    });
   }
 }
 

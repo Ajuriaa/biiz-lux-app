@@ -6,8 +6,9 @@ import { ICoordinate } from '../interfaces';
   providedIn: 'root',
 })
 export class SharedDataService {
-  private coordinates = { latitude: 0, longitude: 0 };
-  private markerId = '';
+  private coordinates = { lat: 0, lng: 0 };
+  private marker = new google.maps.Marker();
+  private destinationMarker = new google.maps.Marker();
 
   public setCoordinates(coordinates: ICoordinate) {
     this.coordinates = coordinates;
@@ -17,11 +18,19 @@ export class SharedDataService {
     return this.coordinates;
   }
 
-  public setCurrentMarkerId(markerId: string) {
-    this.markerId = markerId;
+  public setCurrentMarker(marker: google.maps.Marker) {
+    this.marker = marker;
   }
 
-  public getCurrentMarkerId() {
-    return this.markerId;
+  public getCurrentMarker() {
+    return this.marker;
+  }
+
+  public setDestinationMarker(marker: google.maps.Marker) {
+    this.destinationMarker = marker;
+  }
+
+  public getDestinationMarker() {
+    return this.destinationMarker;
   }
 }
