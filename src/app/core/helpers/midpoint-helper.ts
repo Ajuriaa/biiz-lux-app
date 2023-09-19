@@ -2,8 +2,8 @@ import { ICoordinate } from "../interfaces";
 
 export function calculateMidpoint(coord1: ICoordinate, coord2: ICoordinate): ICoordinate {
   const midpoint: ICoordinate = {
-    latitude: (coord1.latitude + coord2.latitude) / 2,
-    longitude: (coord1.longitude + coord2.longitude) / 2,
+    lat: (coord1.lat + coord2.lat) / 2,
+    lng: (coord1.lng + coord2.lng) / 2,
   };
 
   return midpoint;

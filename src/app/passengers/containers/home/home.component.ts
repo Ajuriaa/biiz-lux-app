@@ -32,9 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   private async setDefaultCoordinates(): Promise<void> {
-    const coordinates = await Geolocation.getCurrentPosition({
+    const coords = await Geolocation.getCurrentPosition({
       enableHighAccuracy: true
     });
-    this.sharedDataService.setCoordinates(coordinates.coords);
+    const coordinates = { lat: coords.coords.latitude, lng: coords.coords.longitude };
+    this.sharedDataService.setCoordinates(coordinates);
   }
 }
