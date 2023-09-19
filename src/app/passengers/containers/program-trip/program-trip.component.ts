@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environments';
   templateUrl: './program-trip.component.html',
   styleUrls: ['./program-trip.component.scss']
 })
-export class ProgramTripComponent {
+export class ProgramTripComponent implements OnInit {
   public showCalendar = false;
 
   toggleCalendar() {

@@ -2,6 +2,35 @@
   <capacitor-google-map class="map" #map></capacitor-google-map>
   <app-shared-header></app-shared-header>
   <div class="button-container">
+    <div class="autocomplete">
+      <div class="autocomplete-img">
+        <img class="logo" src="assets/images/location-arrows.svg">
+      </div>
+      <div class="input-wrapper">
+        <ion-input
+          [(ngModel)]="autocompleteCurrent.input"
+          (ionInput)="UpdateSearchResults(true)"
+          placeholder="Dirección actual"
+          (ionClear)="ClearAutocomplete(true)"
+        ></ion-input>
+        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0">
+          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item, true)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
+        <ion-input
+          [(ngModel)]="autocompleteDestination.input"
+          (ionInput)="UpdateSearchResults()"
+          placeholder="Dirección de destino"
+          (ionClear)="ClearAutocomplete()"
+        ></ion-input>
+        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0">
+          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
     <div class="options">
       <app-secondary-button class="btn">EVENTOS</app-secondary-button>
       <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>

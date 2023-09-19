@@ -46,3 +46,22 @@
   position: absolute;
   right: 2rem;
 }
+
+.autocomplete {
+  display: flex;
+  z-index: 1;
+  width: 90%;
+  margin-bottom: 10%;
+  background-color: $white;
+  border-radius: 1rem;
+
+  .autocomplete-img {
+    @include flex-column;
+    justify-content: center;
+    width: 10%;
+  }
+}
+
+.input-wrapper {
+  width: 90%;
+}
