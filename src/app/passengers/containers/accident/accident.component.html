@@ -2,31 +2,30 @@
 <ion-content>
   <div class="container">
     <section class="section">
-      <div class="text">
-        TUVE UN ACCIDENTÉ
+      <p class="text">TUVE UN ACCIDENTE</p>
+      <p class="info inter">{{ infoMessage }}</p>
+    </section>
+    <section class="section">
+      <p class="text">¿SALISTE HERIDO?</p>
+      <div class="radio-wrapper">
+        <app-radio-button
+          class="radio"
+          value="SI"
+          [selectedValue]="selectedValue"
+          (changeSelected)="changeSelectedValue($event)"
+        >
+        </app-radio-button>
+        <app-radio-button
+          class="radio"
+          value="NO"
+          [selectedValue]="selectedValue"
+          (changeSelected)="changeSelectedValue($event)"
+        >
+        </app-radio-button>
       </div>
-      <div class="info inter">
-        Si estuvo involucrado en algún accidente con alguno de nuestros
-        choferes, contamos con un seguro de viaje que cubre parte de tus
-        gastos, llena los siguientes datos y luego espera ser contactado
-        por nuestro servicio al cliente.
-      </div>
-      <div class="text">
-        ¿SALISTE HERIDO?
-      </div>
-      <div class="options">
-        <div *ngFor="let option of options">
-          <app-radio-button
-            [value]="option"
-            [selectedValue]="selectedValue"
-            (changeSelected)="changeSelectedValue($event)"
-          >
-          </app-radio-button>
-        </div>
-      </div>
-      <div class="text">
-        CUÉNTANOS
-      </div>
+    </section>
+    <section class="section">
+      <p class="text">CUENTANOS</p>
       <div class="textarea-container">
         <textarea
           class="multiline-input"
@@ -40,7 +39,7 @@
           photo_camera
         </span>
       </div>
-        <app-primary-button type="submit">ENVIAR</app-primary-button>
+      <app-primary-button class="button">ENVIAR</app-primary-button>
     </section>
   </div>
 </ion-content>
