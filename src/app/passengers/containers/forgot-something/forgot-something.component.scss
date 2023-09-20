@@ -1,23 +1,32 @@
 @import 'src/app/core/sass/global';
 
-.section {
-  @include flex-column;
+.container {
+  height: 100%;
   color: setColor(firm-gray, 300);
+
+  .section {
+    @include flex-column;
+    margin-top: 2rem;
+    min-height: 20%;
+  }
+}
+
+.text, .info, .form, .button {
+  width: 90%;
 }
 
 .text {
-  @include text;
+  font-size: 1.5rem;
 }
 
 .info {
   text-align: justify;
   font-size: 1.5rem;
-  width: 33.3rem;
 }
 
 .form-field {
-  width: 33.3rem;
-  height: 25.7rem;
+  width: 100%;
+  margin-bottom: 2rem;
 
   .multiline-input {
     @include multiline-input;

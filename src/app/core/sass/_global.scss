@@ -35,14 +35,6 @@
   background-color: $background-color;
 }
 
-@mixin text {
-  display: flex;
-  margin: 1rem 0;
-  width: 33.3rem;
-  justify-content: flex-start;
-  font-weight: bold;
-}
-
 @mixin multiline-input {
   resize: vertical;
   height: auto;
