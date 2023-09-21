@@ -1,0 +1,20 @@
+<app-shared-header></app-shared-header>
+<ion-content>
+  <div class="container">
+    <section class="header-wrapper">
+      <app-profile-header class="header"></app-profile-header>
+    </section>
+    <section class="content-wrapper">
+      <div class="content">
+        <p class="title">MIS DIRECCIONES</p>
+        <p class="address" *ngFor="let address of addresses"> {{ address.name }} </p>
+        <img class="icon" [src]="iconUrl">
+        <div class="weather">
+          <img class="weather-image" [src]="weatherImage"/>
+          <p class="temperature"> {{ temperature }}° </p>
+        </div>
+        <img class="logo" [src]="logoUrl"/>
+      </div>
+    </section>
+  </div>
+</ion-content>
