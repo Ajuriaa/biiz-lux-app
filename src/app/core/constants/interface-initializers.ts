@@ -9,6 +9,7 @@ export const USER: IUser = {
   email: '',
   phoneNumber: '',
   fullName: '',
+  imageUrl: '',
   userable: USERABLE
 };
 

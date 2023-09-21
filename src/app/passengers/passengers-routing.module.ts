@@ -13,7 +13,8 @@ import {
   UserInfoComponent,
   TripComponent,
   CancelTripComponent,
-  ProgramTripComponent
+  ProgramTripComponent,
+  AddressComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -71,6 +72,11 @@ const routes: Routes = [{
       path: 'program-trip',
       title: 'Programar Viaje',
       component: ProgramTripComponent
+    },
+    {
+      path: 'address',
+      title: 'Mis Direcciones',
+      component: AddressComponent
     }
   ]
 }];

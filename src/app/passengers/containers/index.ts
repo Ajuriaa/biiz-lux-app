@@ -9,3 +9,4 @@ export * from './user-info/user-info.component';
 export * from './trip/trip.component';
 export * from './cancel-trip/cancel-trip.component';
 export * from './program-trip/program-trip.component';
+export * from './address/address.component';

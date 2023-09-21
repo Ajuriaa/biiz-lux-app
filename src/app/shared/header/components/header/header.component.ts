@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public navigate(): void {
-    this._router.navigateByUrl('passenger/home');
+  public navigate(path: string): void {
+    this._router.navigateByUrl('passenger/' + path);
   }
 
   public isProfileRoute(): boolean {

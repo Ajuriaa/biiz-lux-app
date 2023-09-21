@@ -4,17 +4,13 @@ import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
 import { TokenHelper } from 'src/app/core/helpers';
-import { IHomeResponse } from '../interfaces';
+import { IProfileHeaderResponse } from '../interfaces';
 
-const weatherQuery: DocumentNode = gql`
-  query weatherQuery {
-    weather {
-      weather {
-        icon
-      }
-      main {
-        temp
-      }
+const userInfoQuery: DocumentNode = gql`
+  query userInfoQuery {
+    currentUser {
+      imageUrl
+      fullName
     }
   }
 `;
@@ -22,13 +18,13 @@ const weatherQuery: DocumentNode = gql`
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherQueries {
+export class ProfileHeaderQueries {
   constructor(private _apollo: Apollo) {}
 
-  public getWeatherData(
-  ): Observable<ApolloQueryResult<IHomeResponse>> {
-    return this._apollo.watchQuery<IHomeResponse>({
-      query: weatherQuery,
+  public getUserInformation(
+  ): Observable<ApolloQueryResult<IProfileHeaderResponse>> {
+    return this._apollo.watchQuery<IProfileHeaderResponse>({
+      query: userInfoQuery,
       context: {
         headers: new HttpHeaders().set('Authorization', this._getToken())
       },

@@ -13,13 +13,13 @@
       />
       <img
         class="logo"
-        (click)="navigate()"
+        (click)="navigate('home')"
         src="assets/images/logo.svg"
         alt="Logo"
       />
 
       <div class="d-flex">
-        <img class="weather" [src]="weatherImage" alt="weather" />
+        <img class="weather" [src]="weatherImage" alt="weather" (click)="navigate('address')"/>
         <img
           class="translate"
           src="assets/images/translate.svg"
