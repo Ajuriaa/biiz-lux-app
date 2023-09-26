@@ -8,7 +8,7 @@
       <div class="content">
         <p class="title">MIS DIRECCIONES</p>
         <p class="address" *ngFor="let address of addresses"> {{ address.name }} </p>
-        <img class="icon" [src]="iconUrl">
+        <img class="icon" [src]="iconUrl" [routerLink]="'../new-address'">
         <div class="weather">
           <img class="weather-image" [src]="weatherImage"/>
           <p class="temperature"> {{ temperature }}° </p>

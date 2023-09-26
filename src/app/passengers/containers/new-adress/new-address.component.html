@@ -1,0 +1,43 @@
+<app-shared-header></app-shared-header>
+<ion-content>
+  <div class="container">
+    <section class="header-wrapper">
+      <app-profile-header class="header"></app-profile-header>
+    </section>
+    <section class="content-wrapper">
+      <div class="content">
+        <button class="button" (click)="saveAddress()">GUARDAR DIRECCION</button>
+        <ion-input
+          color="null"
+          class="input"
+          [(ngModel)]="addressName"
+          placeholder="ELEGIR NOMBRE"
+        ></ion-input>
+        <ion-input
+          class="input"
+          [(ngModel)]="autocomplete.input"
+          (ionInput)="UpdateSearchResults()"
+          (ionClear)="ClearAutocomplete()"
+          placeholder="DIRECCION"
+        ></ion-input>
+        <ion-list *ngIf="autocompleteAddresses.length !== 0" color="dark">
+          <ion-item
+            *ngFor="let item of autocompleteAddresses"
+            tappable
+            color='dark'
+            (click)="SelectSearchResult(item)"
+          >
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
+        <ion-input
+          color="null"
+          class="input"
+          placeholder="REFERENCIA"
+        ></ion-input>
+        <div class="map" #map></div>
+        <img class="logo" [src]="logoUrl"/>
+      </div>
+    </section>
+  </div>
+</ion-content>
