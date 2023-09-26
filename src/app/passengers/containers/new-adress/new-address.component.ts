@@ -1,10 +1,10 @@
 import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IAddress } from '../../interfaces';
 import { SharedDataService } from 'src/app/core/services';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { ICoordinate } from 'src/app/core/interfaces';
-import { AddressMutations } from '../../services';
 import { Router } from '@angular/router';
+import { AddressMutations } from '../../services';
+import { IAddress } from '../../interfaces';
 
 const ICON_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/plus.png';
 const LOGO_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-white.png';
@@ -134,7 +134,7 @@ export class NewAddressComponent implements OnInit, OnDestroy {
       longitude: longitude.toString(),
       primary: false,
       address: this.autocomplete.input
-    }
+    };
 
     const mutationRespone = await this._addressMutation.createAddress(address);
 

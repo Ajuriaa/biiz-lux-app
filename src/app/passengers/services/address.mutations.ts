@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { ToastComponent } from 'src/app/shared/toaster';
-import { IAddress } from '../interfaces';
-import { addressesQuery } from './address.queries';
 import { HttpHeaders } from '@angular/common/http';
 import { TokenHelper } from 'src/app/core/helpers';
+import { IAddress } from '../interfaces';
+import { addressesQuery } from './address.queries';
 
 const createAddress = gql `
   mutation createAddress($addressInput: AddressInput!) {
