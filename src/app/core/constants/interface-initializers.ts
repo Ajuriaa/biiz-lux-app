@@ -15,5 +15,8 @@ export const USER: IUser = {
 
 export const ADDRESS: IAddress = {
   name: '',
-  address: ''
+  address: '',
+  latitude: '',
+  longitude: '',
+  primary: false
 };

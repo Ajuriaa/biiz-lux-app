@@ -22,9 +22,11 @@ import {
   TripComponent,
   CancelTripComponent,
   ProgramTripComponent,
-  AddressComponent
+  AddressComponent,
+  NewAddressComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
+import { AddressMutations } from './services';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     TripComponent,
     CancelTripComponent,
     ProgramTripComponent,
-    AddressComponent
+    AddressComponent,
+    NewAddressComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +57,8 @@ import { PassengersRoutingModule } from './passengers-routing.module';
     CalendarModule
   ],
   providers: [
-    NativeGeocoder
+    NativeGeocoder,
+    AddressMutations
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { TokenHelper } from 'src/app/core/helpers';
 import { IAddressResponse } from '../interfaces';
 
-const addressesQuery: DocumentNode = gql`
+export const addressesQuery: DocumentNode = gql`
   query addressesQuery {
     addresses {
       id
