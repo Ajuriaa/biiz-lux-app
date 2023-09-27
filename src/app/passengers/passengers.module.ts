@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import {
   ButtonsModule,
   CalendarModule,
@@ -59,7 +58,6 @@ import { AddressMutations } from './services';
     LoadingModule
   ],
   providers: [
-    NativeGeocoder,
     AddressMutations
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

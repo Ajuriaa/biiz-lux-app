@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   private async checkGeolocationPermissions(): Promise<any> {
     const permissions = await Geolocation.checkPermissions();
     if (permissions.location === 'granted') {
-      this.setDefaultCoordinates();
+      this.sharedDataService.setDefaultCoordinates();
       return;
     }
     this.requestGeolocation();
@@ -44,14 +44,6 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.checkGeolocationPermissions();
     }, 500);
-  }
-
-  private async setDefaultCoordinates(): Promise<void> {
-    const coords = await Geolocation.getCurrentPosition({
-      enableHighAccuracy: true
-    });
-    const coordinates = { lat: coords.coords.latitude, lng: coords.coords.longitude };
-    this.sharedDataService.setCoordinates(coordinates);
   }
 
   private getDriverTime(): void {
@@ -71,6 +63,8 @@ export class HomeComponent implements OnInit {
     this.directionsService.route(request, (result, status) => {
       if (status == 'OK' && result) {
         this.time = result?.routes[0]?.legs[0]?.duration_in_traffic?.text || '10 mins';
+      } else {
+        this.time = '10 mins';
       }
     });
   }

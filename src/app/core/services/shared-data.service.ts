@@ -1,5 +1,5 @@
-// shared-data.service.ts
 import { Injectable } from '@angular/core';
+import { Geolocation } from '@capacitor/geolocation';
 import { ICoordinate } from '../interfaces';
 
 @Injectable({
@@ -11,8 +11,12 @@ export class SharedDataService {
   private marker = new google.maps.Marker();
   private destinationMarker = new google.maps.Marker();
 
-  public setCoordinates(coordinates: ICoordinate) {
-    this.coordinates = coordinates;
+  public async setDefaultCoordinates(): Promise<ICoordinate> {
+    const coords = await Geolocation.getCurrentPosition({
+      enableHighAccuracy: true
+    });
+    this.coordinates= { lat: coords.coords.latitude, lng: coords.coords.longitude };
+    return this.coordinates;
   }
 
   public getCoordinates() {

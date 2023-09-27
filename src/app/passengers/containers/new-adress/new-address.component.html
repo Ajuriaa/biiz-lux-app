@@ -25,7 +25,7 @@
             *ngFor="let item of autocompleteAddresses"
             tappable
             color='dark'
-            (click)="SelectSearchResult(item)"
+            (click)="SelectSearchResult(item.description)"
           >
             {{ item.description }}
           </ion-item>

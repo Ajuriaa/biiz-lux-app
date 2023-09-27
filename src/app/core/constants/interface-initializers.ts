@@ -1,4 +1,5 @@
 import { IAddress, IUser, IUserable } from "src/app/passengers/interfaces";
+import { ICoordinate } from "../interfaces";
 
 export const USERABLE: IUserable = {
   addresses: []
@@ -19,4 +20,9 @@ export const ADDRESS: IAddress = {
   latitude: '',
   longitude: '',
   primary: false
+};
+
+export const DEFAULT_COORDS: ICoordinate = {
+  lat: 0,
+  lng: 0
 };

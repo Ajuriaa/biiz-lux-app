@@ -11,23 +11,25 @@
       <div class="input-wrapper">
         <ion-input
           [(ngModel)]="autocompleteCurrent.input"
-          (ionInput)="UpdateSearchResults(true)"
+          (ionInput)="UpdateSearchResults(autocompleteCurrent)"
           placeholder="Dirección actual"
-          (ionClear)="ClearAutocomplete(true)"
+          (ionClear)="ClearAutocomplete()"
+          clearInput="true"
         ></ion-input>
         <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0">
-          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item, true)">
+          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
             {{ item.description }}
           </ion-item>
         </ion-list>
         <ion-input
           [(ngModel)]="autocompleteDestination.input"
-          (ionInput)="UpdateSearchResults()"
+          (ionInput)="UpdateSearchResults(autocompleteDestination, true)"
           placeholder="Dirección de destino"
-          (ionClear)="ClearAutocomplete()"
+          (ionClear)="ClearAutocomplete(true)"
+          clearInput="true"
         ></ion-input>
         <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0">
-          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item)">
+          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
             {{ item.description }}
           </ion-item>
         </ion-list>

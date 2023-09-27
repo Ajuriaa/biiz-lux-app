@@ -1,7 +1,8 @@
+import { DEFAULT_COORDS } from "../constants";
 import { ICoordinate } from "../interfaces";
 
 export function getClosestDriver(passengerCoords: ICoordinate, driverCoords: ICoordinate[]): ICoordinate {
-  let closestDriver: ICoordinate = {lat: 0, lng: 0};
+  let closestDriver: ICoordinate =  DEFAULT_COORDS;
   let minDistance = 100000000;
 
   for (const driverCoord of driverCoords) {
