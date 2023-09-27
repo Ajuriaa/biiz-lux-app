@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environments';
 import { ICoordinate } from '../interfaces';
 import { SharedDataService } from './shared-data.service';
 
@@ -8,7 +9,6 @@ import { SharedDataService } from './shared-data.service';
 export class WebsocketService {
   private coords: ICoordinate[] = [];
   private socket!: WebSocket;
-  private readonly SERVER_URL = 'ws://192.168.1.13:3000/cable';
 
   constructor(
     private sharedData: SharedDataService
@@ -28,7 +28,7 @@ export class WebsocketService {
   }
 
   public connectWebSocket() {
-    this.socket = new WebSocket(this.SERVER_URL);
+    this.socket = new WebSocket(environment.wsUrl);
 
     this.socket.onopen = () => {
       this.coords = [];
