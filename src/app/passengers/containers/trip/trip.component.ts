@@ -18,7 +18,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
-  public loading = false;
+  public loading = true;
   public map!: google.maps.Map;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
@@ -35,6 +35,7 @@ export class TripComponent implements OnInit, OnDestroy {
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
+    setTimeout(() => { this.loading = false }, 1500)
   }
 
   ngOnDestroy(): void {
