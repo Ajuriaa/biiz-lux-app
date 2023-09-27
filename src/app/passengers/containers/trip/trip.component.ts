@@ -60,7 +60,7 @@ export class TripComponent implements OnInit, OnDestroy {
       this.directionsRenderer.setMap(this.newMap);
       this.sharedDataService.setCurrentMarker(this.addMarker(coords));
     }, 500);
-    setTimeout(() => this.loading = false , 2000)
+    setTimeout(() => this.loading = false , 2000);
   }
 
   ngOnDestroy(): void {
