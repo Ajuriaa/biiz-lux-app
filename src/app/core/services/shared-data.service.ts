@@ -7,6 +7,7 @@ import { ICoordinate } from '../interfaces';
 })
 export class SharedDataService {
   private coordinates = { lat: 0, lng: 0 };
+  private closestDriverCoordinates = [{ lat: 0, lng: 0 }];
   private marker = new google.maps.Marker();
   private destinationMarker = new google.maps.Marker();
 
@@ -16,6 +17,14 @@ export class SharedDataService {
 
   public getCoordinates() {
     return this.coordinates;
+  }
+
+  public setDriverCoordinates(coordinates: ICoordinate[]) {
+    this.closestDriverCoordinates = coordinates;
+  }
+
+  public getDriverCoordinates() {
+    return this.closestDriverCoordinates;
   }
 
   public setCurrentMarker(marker: google.maps.Marker) {
