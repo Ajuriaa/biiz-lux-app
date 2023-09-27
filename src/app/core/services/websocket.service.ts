@@ -45,11 +45,9 @@ export class WebsocketService {
 
       if(data.message.title === 'COORD'){
         const x = {lat: data.message.lat, lng: data.message.lng};
-        console.log(x);
         this.coords.push(x);
         this.sharedData.setDriverCoordinates(this.coords);
       }
-      console.log(this.coords);
     };
 
     this.socket.onclose = (event) => {

@@ -22,6 +22,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public GoogleAutocomplete: google.maps.places.AutocompleteService;
   public directionsRenderer: google.maps.DirectionsRenderer;
   public directionsService: google.maps.DirectionsService;
+  public loading = true;
   private currentCoordinates = {lat: 0, lng: 0};
   private markerImage = MARKER_IMAGE;
   private startPlaceCoords = {lat: 0, lng: 0};
@@ -59,6 +60,7 @@ export class TripComponent implements OnInit, OnDestroy {
       this.directionsRenderer.setMap(this.newMap);
       this.sharedDataService.setCurrentMarker(this.addMarker(coords));
     }, 500);
+    setTimeout(() => this.loading = false , 2000)
   }
 
   ngOnDestroy(): void {

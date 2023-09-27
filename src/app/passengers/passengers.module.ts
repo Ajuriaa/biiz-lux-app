@@ -7,7 +7,8 @@ import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import {
   ButtonsModule,
   CalendarModule,
-  HeaderModule
+  HeaderModule,
+  LoadingModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -54,7 +55,8 @@ import { AddressMutations } from './services';
     FormsModule,
     MaterialModule,
     IonicModule,
-    CalendarModule
+    CalendarModule,
+    LoadingModule
   ],
   providers: [
     NativeGeocoder,

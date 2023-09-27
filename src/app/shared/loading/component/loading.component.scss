@@ -1,0 +1,6 @@
+@import 'src/app/core/sass/colors';
+
+.loading {
+  filter: invert(56%) sepia(98%) saturate(1959%) hue-rotate(95deg) brightness(106%) contrast(108%);
+  max-height: 7%;
+}
