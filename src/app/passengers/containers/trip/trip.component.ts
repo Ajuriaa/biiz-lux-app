@@ -2,11 +2,12 @@ import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@an
 
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { SharedDataService } from 'src/app/core/services';
-import { calculateMidpoint } from 'src/app/core/helpers';
+import { calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
 import { ICoordinate } from 'src/app/core/interfaces';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 const MARKER_IMAGE = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/marker.png';
+const DRIVER_MARKER_IMAGE = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/driver-car.png';
 
 @Component({
   selector: 'app-trip',
@@ -25,6 +26,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public loading = true;
   private currentCoordinates = {lat: 0, lng: 0};
   private markerImage = MARKER_IMAGE;
+  private driverMarker = DRIVER_MARKER_IMAGE;
   private startPlaceCoords = {lat: 0, lng: 0};
   private destinationCoords = {lat:0, lng:0};
   private emptyCoords = {lat:0, lng:0};
@@ -60,7 +62,11 @@ export class TripComponent implements OnInit, OnDestroy {
       this.directionsRenderer.setMap(this.newMap);
       this.sharedDataService.setCurrentMarker(this.addMarker(coords));
     }, 500);
-    setTimeout(() => this.loading = false , 2000);
+    setTimeout(() => {
+      this.loading = false;
+      this.markDrivers();
+    }
+    , 2000);
   }
 
   ngOnDestroy(): void {
@@ -74,13 +80,13 @@ export class TripComponent implements OnInit, OnDestroy {
     marker.setMap(null);
   }
 
-  private addMarker(coordinates: ICoordinate): google.maps.Marker {
+  private addMarker(coordinates: ICoordinate, markerUrl = this.markerImage, draggable = true): google.maps.Marker {
     const marker = new google.maps.Marker({
       position: coordinates,
       map: this.newMap,
-      draggable: true,
+      draggable: draggable,
       icon: {
-        url: this.markerImage,
+        url: markerUrl,
         scaledSize: new google.maps.Size(50, 50)
       }
     });
@@ -164,6 +170,14 @@ export class TripComponent implements OnInit, OnDestroy {
         this.directionsRenderer.setDirections(result);
       }
     });
+  }
+
+  private markDrivers(): void {
+    const currentCoordinates = this.sharedDataService.getCoordinates();
+    const driversCoords = getCloseDrivers(currentCoordinates, this.sharedDataService.getDriverCoordinates());
+    for (const driverCoords of driversCoords) {
+      this.addMarker(driverCoords, this.driverMarker, false);
+    }
   }
 }
 
