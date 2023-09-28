@@ -24,6 +24,7 @@
   @include flex-column;
   gap: 0.5rem;
   margin-bottom: 3rem;
+  transition: margin-bottom 1.5s ease-in-out;
 
   .confirm {
     width: 90%;
@@ -68,4 +69,8 @@
 
 .input-wrapper {
   width: 90%;
+}
+
+.animate {
+  margin-bottom: 100rem;
 }

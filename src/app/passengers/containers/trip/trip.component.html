@@ -3,7 +3,7 @@
 <div class="container">
   <div class="map" #map></div>
   <app-shared-header class="header"></app-shared-header>
-  <div class="button-container">
+  <div class="button-container" [ngClass]="{'animate': travelConfirmed}">
     <div class="autocomplete">
       <div class="autocomplete-img">
         <img class="logo" src="assets/images/location-arrows.svg">
@@ -35,11 +35,11 @@
         </ion-list>
       </div>
     </div>
-    <div class="options">
+    <div class="options" *ngIf="!travelConfirmed">
       <app-secondary-button class="btn">EVENTOS</app-secondary-button>
       <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
     </div>
-    <app-primary-button class="confirm">
+    <app-primary-button class="confirm" (btnClick)="submit()" *ngIf="!travelConfirmed">
       <p class="text">CONFIRMAR DESTINO</p>
       <img class="button-image" [src]="imageUrl">
     </app-primary-button>

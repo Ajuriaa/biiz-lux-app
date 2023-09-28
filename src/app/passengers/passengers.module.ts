@@ -7,7 +7,8 @@ import {
   ButtonsModule,
   CalendarModule,
   HeaderModule,
-  LoadingModule
+  LoadingModule,
+  ToasterModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -55,7 +56,8 @@ import { AddressMutations } from './services';
     MaterialModule,
     IonicModule,
     CalendarModule,
-    LoadingModule
+    LoadingModule,
+    ToasterModule
   ],
   providers: [
     AddressMutations

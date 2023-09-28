@@ -4,6 +4,7 @@ import { ICoordinate } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
+import { ToastComponent } from 'src/app/shared/toaster';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -20,6 +21,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteDestination = { input: ''};
   public loading = true;
   public map!: google.maps.Map;
+  public travelConfirmed = false;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
 
@@ -27,7 +29,8 @@ export class TripComponent implements OnInit, OnDestroy {
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private websocket: WebsocketService
+    private websocket: WebsocketService,
+    private toaster: ToastComponent
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -36,7 +39,7 @@ export class TripComponent implements OnInit, OnDestroy {
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
-    setTimeout(() => { this.loading = false }, 4000)
+    setTimeout(() => { this.loading = false; }, 4000);
     setTimeout(() => this.websocket.getDriverCoordinates(), 3000);
     setTimeout(() => {
       const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
@@ -45,7 +48,6 @@ export class TripComponent implements OnInit, OnDestroy {
         this.mapService.addMarker(driverCoords, this.map, MarkerUrl.driver);
       }
     } , 4000);
-
   }
 
   ngOnDestroy(): void {
@@ -90,6 +92,14 @@ export class TripComponent implements OnInit, OnDestroy {
 
   public ClearAutocomplete(destination = false): void {
     destination ? this.autocompleteDestinationAddresses = [] : this.autocompleteCurrentAddresses = [];
+  }
+
+  public async submit(): Promise<void> {
+    if(this.autocompleteDestination.input === '' || this.autocompleteCurrent.input === ''){
+      return this.toaster.errorToast('Debes llenar ambas direcciones!');
+    }
+
+    this.travelConfirmed = true;
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {
