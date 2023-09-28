@@ -1,7 +1,7 @@
 import { ElementRef, Injectable, NgZone } from '@angular/core';
 import { ICoordinate } from '../interfaces';
 import { getCloseDrivers } from '../helpers';
-import { MarkerUrl } from '../enums';
+import { DriverMarkerType, MarkerUrl, PassengerMarkerType } from '../enums';
 import { SharedDataService } from './shared-data.service';
 
 @Injectable({
@@ -42,15 +42,12 @@ export class MapService {
   }
 
   public addMarker(coordinates: ICoordinate, map: google.maps.Map, markerUrl: string, draggable = false): google.maps.Marker {
+    const iconType = markerUrl === MarkerUrl.driver ? DriverMarkerType : PassengerMarkerType;
     const marker = new google.maps.Marker({
       position: coordinates,
       map: map,
       draggable: draggable,
-      icon: {
-        // TODO: add custom icon options for driver markers
-        url: markerUrl,
-        scaledSize: new google.maps.Size(50, 50)
-      }
+      icon: iconType
     });
     return marker;
   }
