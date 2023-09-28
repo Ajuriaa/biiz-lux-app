@@ -8,7 +8,8 @@ import {
   CalendarModule,
   HeaderModule,
   LoadingModule,
-  ToasterModule
+  ToasterModule,
+  AvailableDriversModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -45,20 +46,21 @@ import { AddressMutations } from './services';
     AddressComponent,
     NewAddressComponent
   ],
-  imports: [
-    CommonModule,
-    PassengersRoutingModule,
-    HeaderModule,
-    RouterModule,
-    ButtonsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialModule,
-    IonicModule,
-    CalendarModule,
-    LoadingModule,
-    ToasterModule
-  ],
+    imports: [
+        CommonModule,
+        PassengersRoutingModule,
+        HeaderModule,
+        RouterModule,
+        ButtonsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MaterialModule,
+        IonicModule,
+        CalendarModule,
+        LoadingModule,
+        ToasterModule,
+        AvailableDriversModule
+    ],
   providers: [
     AddressMutations
   ],

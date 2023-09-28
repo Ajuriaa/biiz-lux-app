@@ -74,3 +74,18 @@
 .animate {
   margin-bottom: 100rem;
 }
+
+.driver-container {
+  position: absolute;
+  bottom: 1rem;
+  z-index: 2;
+  width: 100vw;
+  height: 20rem;
+  display: flex;
+  margin-right: 0.5rem;
+  overflow-x: scroll;
+}
+
+.drivers {
+  width: 200rem;
+}

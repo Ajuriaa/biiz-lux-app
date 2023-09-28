@@ -19,7 +19,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
-  public loading = true;
+  public loading = false;
   public map!: google.maps.Map;
   public travelConfirmed = false;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;

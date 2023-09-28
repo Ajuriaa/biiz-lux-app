@@ -37,6 +37,11 @@
         </ion-list>
       </div>
     </div>
+    <div class="driver-container" *ngIf="travelConfirmed">
+      <div class="drivers" *ngFor="let n of [1, 2, 3, 4, 5, 6]">
+        <app-available-drivers></app-available-drivers>
+      </div>
+    </div>
     <div class="options" *ngIf="!travelConfirmed">
       <app-secondary-button class="btn">EVENTOS</app-secondary-button>
       <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
