@@ -3,8 +3,7 @@ import { MapService, SharedDataService } from 'src/app/core/services';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
-import { calculateMidpoint } from 'src/app/core/helpers';
-import { getCloseDrivers } from "src/app/core/helpers";
+import { calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -36,7 +35,7 @@ export class TripComponent implements OnInit, OnDestroy {
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
-    setTimeout(() => { this.loading = false }, 1500)
+    setTimeout(() => { this.loading = false; }, 1500);
 
     const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
 
