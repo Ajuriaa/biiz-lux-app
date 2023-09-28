@@ -1,6 +1,9 @@
 import { DEFAULT_COORDS } from "../constants";
 import { ICoordinate } from "../interfaces";
 
+// This function takes in a passenger coordinate and an array of driver coordinates.
+// It then calculates the distance between the passenger and each driver.
+// It then returns the driver coordinate that is closest to the passenger.
 export function getClosestDriver(passengerCoords: ICoordinate, driverCoords: ICoordinate[]): ICoordinate {
   let closestDriver: ICoordinate =  DEFAULT_COORDS;
   let minDistance = 100000000;
@@ -16,6 +19,10 @@ export function getClosestDriver(passengerCoords: ICoordinate, driverCoords: ICo
   return closestDriver;
 }
 
+
+// This function takes in a passenger coordinate and an array of driver coordinates.
+// It then calculates the distance between the passenger and each driver.
+// It then returns the 3 driver coordinates that are closest to the passenger.
 export function getCloseDrivers(passengerCoords: ICoordinate, driverCoords: ICoordinate[]): ICoordinate[] {
   const driverDistances: { distance: number; coord: ICoordinate }[] = [];
 

@@ -4,6 +4,7 @@ import { ICoordinate } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { calculateMidpoint } from 'src/app/core/helpers';
+import { getCloseDrivers } from "src/app/core/helpers";
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -36,6 +37,12 @@ export class TripComponent implements OnInit, OnDestroy {
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
     setTimeout(() => { this.loading = false }, 1500)
+
+    const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
+
+    for (const driverCoords of closestDrivers) {
+      this.mapService.addMarker(driverCoords, this.map, MarkerUrl.driver);
+    }
   }
 
   ngOnDestroy(): void {

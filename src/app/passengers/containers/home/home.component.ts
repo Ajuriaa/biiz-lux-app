@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit {
     }, 500);
   }
 
+  // This function is used to get the time it will take for the driver to arrive at the passenger's location.
+  // The function uses the Google Maps Directions API to get the time.
   private getDriverTime(): void {
     const currentCoordinates = this.sharedDataService.getCoordinates();
     const driverCoords = getClosestDriver(currentCoordinates, this.sharedDataService.getDriverCoordinates());

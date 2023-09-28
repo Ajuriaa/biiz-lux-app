@@ -16,6 +16,10 @@ export class WebsocketService {
     this.connectWebSocket();
   }
 
+
+  // This function is used to send a message to the server to get the driver coordinates.
+  // The server will then send the driver coordinates back to the client.
+  // The client will then update the driver coordinates in the shared data service.
   public getDriverCoordinates() {
     const id = JSON.stringify({channel: 'DriverCoordinatesChannel'});
     const data = JSON.stringify({action: 'get_driver_coordinates'});
@@ -30,6 +34,8 @@ export class WebsocketService {
   public connectWebSocket() {
     this.socket = new WebSocket(environment.wsUrl);
 
+    // This function is called when the websocket connection is opened.
+    // To tell the DriverCoordinatesChannel that we want to subscribe to it.
     this.socket.onopen = () => {
       this.coords = [];
       const id = JSON.stringify({channel: 'DriverCoordinatesChannel'});
@@ -39,6 +45,11 @@ export class WebsocketService {
       });
       this.socket.send(payload);
     };
+
+    // This function is called when the websocket connection receives a message.
+    // The message is parsed into a JSON object.
+    // If the message title is 'COORD', then the coordinates are added to the coords array.
+    // The coords array is then set in the shared data service.
 
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
