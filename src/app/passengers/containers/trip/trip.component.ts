@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService } from 'src/app/core/services';
+import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
@@ -26,7 +26,8 @@ export class TripComponent implements OnInit, OnDestroy {
 
   constructor(
     private sharedDataService: SharedDataService,
-    private mapService: MapService
+    private mapService: MapService,
+    private websocket: WebsocketService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -35,13 +36,16 @@ export class TripComponent implements OnInit, OnDestroy {
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
-    setTimeout(() => { this.loading = false; }, 1500);
+    setTimeout(() => { this.loading = false }, 4000)
+    setTimeout(() => this.websocket.getDriverCoordinates(), 3000);
+    setTimeout(() => {
+      const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
 
-    const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
+      for (const driverCoords of closestDrivers) {
+        this.mapService.addMarker(driverCoords, this.map, MarkerUrl.driver);
+      }
+    } , 4000);
 
-    for (const driverCoords of closestDrivers) {
-      this.mapService.addMarker(driverCoords, this.map, MarkerUrl.driver);
-    }
   }
 
   ngOnDestroy(): void {

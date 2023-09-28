@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkGeolocationPermissions();
-    setTimeout(() => this.websocket.getDriverCoordinates(), 500);
-    setTimeout(() => this.getDriverTime(), 1000);
+    setTimeout(() => this.websocket.getDriverCoordinates(), 3000);
+    setTimeout(() => this.getDriverTime(), 4000);
   }
 
 
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
       if (status == 'OK' && result) {
         this.time = result?.routes[0]?.legs[0]?.duration_in_traffic?.text || '10 mins';
       } else {
-        this.time = '10 mins';
+        this.time = '99 mins';
       }
     });
   }

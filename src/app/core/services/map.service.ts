@@ -127,7 +127,6 @@ export class MapService {
       this.geocoder.geocode(options, (results, status) => {
         if (status === 'OK' && results) {
           const address = results[0].formatted_address;
-          console.log(address);
           resolve(address);
         } else {
           reject(new Error(`Reverse geocoding failed with status: ${status}`));
