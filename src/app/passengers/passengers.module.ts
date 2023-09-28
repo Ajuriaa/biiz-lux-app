@@ -46,21 +46,21 @@ import { AddressMutations } from './services';
     AddressComponent,
     NewAddressComponent
   ],
-    imports: [
-        CommonModule,
-        PassengersRoutingModule,
-        HeaderModule,
-        RouterModule,
-        ButtonsModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MaterialModule,
-        IonicModule,
-        CalendarModule,
-        LoadingModule,
-        ToasterModule,
-        AvailableDriversModule
-    ],
+  imports: [
+    CommonModule,
+    PassengersRoutingModule,
+    HeaderModule,
+    RouterModule,
+    ButtonsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    IonicModule,
+    CalendarModule,
+    LoadingModule,
+    ToasterModule,
+    AvailableDriversModule
+  ],
   providers: [
     AddressMutations
   ],

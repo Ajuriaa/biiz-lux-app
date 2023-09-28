@@ -17,7 +17,7 @@
           [clearInput]="!travelConfirmed"
           [readonly]="travelConfirmed"
         ></ion-input>
-        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0">
+        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0 && !travelConfirmed">
           <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
             {{ item.description }}
           </ion-item>
@@ -30,15 +30,15 @@
           [clearInput]="!travelConfirmed"
           [readonly]="travelConfirmed"
         ></ion-input>
-        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0">
+        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
           <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
             {{ item.description }}
           </ion-item>
         </ion-list>
       </div>
     </div>
-    <div class="driver-container" *ngIf="travelConfirmed">
-      <div class="drivers" *ngFor="let n of [1, 2, 3, 4, 5, 6]">
+    <div [@inAnimation] class="driver-container" *ngIf="travelConfirmed">
+      <div class="drivers" *ngFor="let n of [1, 2, 3]">
         <app-available-drivers></app-available-drivers>
       </div>
     </div>

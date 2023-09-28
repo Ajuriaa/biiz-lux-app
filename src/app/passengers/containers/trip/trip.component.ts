@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
@@ -11,7 +12,19 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
-  styleUrls: ['./trip.component.scss']
+  styleUrls: ['./trip.component.scss'],
+  animations: [
+    trigger(
+      'inAnimation',[
+        transition(':enter',
+          [
+            style({ opacity: 0 }),
+            animate('1.5s ease-out', style({ opacity: 1 }))
+          ]
+        )
+      ]
+    )
+  ]
 })
 export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
@@ -36,7 +49,7 @@ export class TripComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
-    const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
+    const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
     setTimeout(() => { this.loading = false; }, 4000);
