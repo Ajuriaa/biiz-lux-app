@@ -21,6 +21,12 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
             style({ opacity: 0 }),
             animate('1.5s ease-out', style({ opacity: 1 }))
           ]
+        ),
+        transition(':leave',
+          [
+            style({ opacity: 1 }),
+            animate('0.5s ease-in', style({ opacity: 0 }))
+          ]
         )
       ]
     )
@@ -28,12 +34,19 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
 })
 export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
+  public driverSelected = false;
+  public selectedDriver = { id: 1, distance: 1, coords: DEFAULT_COORDS };
   public autocompleteCurrentAddresses: any = [];
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
   public loading = false;
   public map!: google.maps.Map;
+  public drivers = [
+    { id: 1, distance: 1, coords: DEFAULT_COORDS },
+    { id: 2, distance: 2, coords: DEFAULT_COORDS },
+    { id: 3, distance: 3, coords: DEFAULT_COORDS }
+  ];
   public travelConfirmed = false;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
@@ -113,6 +126,11 @@ export class TripComponent implements OnInit, OnDestroy {
     }
 
     this.travelConfirmed = true;
+  }
+
+  public selectDriver(driver: { id: number, distance: number, coords: ICoordinate }): void {
+    this.selectedDriver = driver;
+    this.driverSelected = true;
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {

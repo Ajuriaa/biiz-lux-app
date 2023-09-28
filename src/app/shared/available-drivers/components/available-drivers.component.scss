@@ -1,50 +1,11 @@
-@import 'src/app/core/sass/colors';
+@import 'src/app/core/sass/global';
 
 .container {
-  background-color: $white;
-  border-radius: 8px;
-  width: 18rem;
-  height: 18rem;
   display: flex;
-  flex-direction: column;
-  margin-right: 1rem;
-}
+  gap: 1rem;
 
-.container img {
-  align-self: center;
-}
-
-.labels {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.5rem;
-}
-
-.label {
-  background-color: $green;
-  padding: 0.25rem;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.estimated {
-  background-color: setColor(firm-gray);
-}
-
-.price {
-  background-color: $black;
-  height: 100%;
-  color: $white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 0 8px 8px;
-}
-
-.price span {
-  font-weight: 800;
-  font-size: 1.25rem;
+  .cards {
+    width: 18rem;
+    height: 18rem;
+  }
 }

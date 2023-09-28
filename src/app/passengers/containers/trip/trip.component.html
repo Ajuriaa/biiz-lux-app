@@ -37,10 +37,19 @@
         </ion-list>
       </div>
     </div>
-    <div [@inAnimation] class="driver-container" *ngIf="travelConfirmed">
-      <div class="drivers" *ngFor="let n of [1, 2, 3]">
-        <app-available-drivers></app-available-drivers>
-      </div>
+    <div [@inAnimation] class="driver-container" *ngIf="!driverSelected && travelConfirmed">
+      <app-available-drivers
+        [drivers]="drivers"
+        (selected)="selectDriver($event)"
+      >
+      </app-available-drivers>
+    </div>
+    <div [@inAnimation] class="selected" *ngIf="driverSelected && travelConfirmed" >
+      <app-driver-card class="driver" [driver]="selectedDriver" [unique]="true"></app-driver-card>
+      <app-primary-button class="confirm" (btnClick)="submit()">
+        <p class="text">CONFIRMAR VIAJE</p>
+        <img class="button-image" [src]="imageUrl">
+      </app-primary-button>
     </div>
     <div class="options" *ngIf="!travelConfirmed">
       <app-secondary-button class="btn">EVENTOS</app-secondary-button>

@@ -9,7 +9,8 @@ import {
   HeaderModule,
   LoadingModule,
   ToasterModule,
-  AvailableDriversModule
+  AvailableDriversModule,
+  DriverCardModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -59,6 +60,7 @@ import { AddressMutations } from './services';
     CalendarModule,
     LoadingModule,
     ToasterModule,
+    DriverCardModule,
     AvailableDriversModule
   ],
   providers: [

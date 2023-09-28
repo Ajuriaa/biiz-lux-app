@@ -1,0 +1,16 @@
+<div class="card" [ngClass]="{'selected-driver' : unique}">
+  <div class="labels">
+    <div class="label">
+      <span>A {{ driver.id }} </span>
+      <span>17:45</span>
+    </div>
+    <div class="label estimated">
+      <span>F</span>
+      <span>17:45</span>
+    </div>
+  </div>
+  <img class="image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/car.png" />
+  <div class="price" [ngClass]="{'selected-driver' : unique}">
+    <span>155.00 LPS</span>
+  </div>
+</div>
