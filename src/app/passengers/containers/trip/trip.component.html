@@ -14,7 +14,8 @@
           (ionInput)="UpdateSearchResults(autocompleteCurrent)"
           placeholder="Dirección actual"
           (ionClear)="ClearAutocomplete()"
-          clearInput="true"
+          [clearInput]="!travelConfirmed"
+          [readonly]="travelConfirmed"
         ></ion-input>
         <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0">
           <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
@@ -26,7 +27,8 @@
           (ionInput)="UpdateSearchResults(autocompleteDestination, true)"
           placeholder="Dirección de destino"
           (ionClear)="ClearAutocomplete(true)"
-          clearInput="true"
+          [clearInput]="!travelConfirmed"
+          [readonly]="travelConfirmed"
         ></ion-input>
         <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0">
           <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
