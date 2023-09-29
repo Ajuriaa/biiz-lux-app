@@ -12,5 +12,6 @@ export interface ITripInfo {
   driver_id: number,
   start_coords: ICoordinate,
   end_coords: ICoordinate,
-  passenger_id: number
+  passenger_id: number,
+  fare: number
 }
