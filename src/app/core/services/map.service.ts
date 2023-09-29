@@ -71,7 +71,7 @@ export class MapService {
     });
   }
 
-  public renderRoute(start: ICoordinate, end: ICoordinate, map: google.maps.Map) {
+  public renderRoute(start: ICoordinate, end: ICoordinate, map: google.maps.Map): google.maps.DirectionsRenderer {
     const request = {
       origin: start,
       destination: end,
@@ -80,9 +80,11 @@ export class MapService {
     this.directionsRenderer.setMap(map);
     this.directionsService.route(request, (result, status) => {
       if (status == 'OK') {
-        this.directionsRenderer.setDirections(result);
+        return this.directionsRenderer.setDirections(result);
       }
     });
+
+    return this.directionsRenderer;
   }
 
   public markDrivers(passengerCoordinates: ICoordinate, driversCoordinates: ICoordinate[], map: google.maps.Map): void {

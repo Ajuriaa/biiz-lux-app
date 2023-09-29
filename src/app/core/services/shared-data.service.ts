@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
-import { IUser } from 'src/app/passengers/interfaces';
 import { ICoordinate, IDriver } from '../interfaces';
-import { DEFAULT_COORDS, USER } from '../constants';
+import { DEFAULT_COORDS } from '../constants';
 
 interface ICurrentTrip {
   passengerId: string;
   tripId: string;
-};
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +16,8 @@ export class SharedDataService {
   private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS}];
   private marker = new google.maps.Marker();
   private destinationMarker = new google.maps.Marker();
-  private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'}
+  private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'};
+  private driverCoords: ICoordinate = DEFAULT_COORDS;
 
   public async setDefaultCoordinates(): Promise<ICoordinate> {
     const coords = await Geolocation.getCurrentPosition({
@@ -66,5 +66,13 @@ export class SharedDataService {
 
   public getCurrentTrip(): ICurrentTrip {
     return this.currentTrip;
+  }
+
+  public setDriverCoord(coords: ICoordinate): void {
+    this.driverCoords = coords;
+  }
+
+  public getDriverCoord(): ICoordinate {
+    return this.driverCoords;
   }
 }

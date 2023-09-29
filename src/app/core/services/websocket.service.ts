@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
 import { IDriver, ITripInfo } from '../interfaces';
-import { SharedDataService } from './shared-data.service';
 import { CookieHelper } from '../helpers';
+import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -80,6 +80,13 @@ export class WebsocketService {
       if(data.message.title === 'confirm_travel' && data.message.passengerId === this._getPassengerId()){
         const currentTrip = data.message;
         this.sharedData.setCurrentTrip(currentTrip);
+      }
+
+      if(data.message.action === 'driver_coords' && data.message.driverCoords.passengerId === +this._getPassengerId()){
+        const coords = {lat: data.message.driverCoords.lat, lng: data.message.driverCoords.lng};
+        console.log('live ws coord:', coords);
+        this.sharedData.setDriverCoord(coords);
+        console.log('stored coord: ', this.sharedData.getDriverCoord());
       }
     };
 

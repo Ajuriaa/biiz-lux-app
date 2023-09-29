@@ -4,12 +4,16 @@ import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
 import { CookieHelper } from 'src/app/core/helpers';
-import { IAddressResponse } from '../interfaces';
+import { ITripResponse } from '../interfaces';
 
 export const tripQuery: DocumentNode = gql`
   query trip($tripId: Int!) {
     trip(tripId: $tripId) {
       id
+      startLocation {
+        lat
+        lng
+      }
       passenger {
       id
       }
@@ -23,8 +27,8 @@ export const tripQuery: DocumentNode = gql`
 export class TripQueries {
   constructor(private _apollo: Apollo) {}
 
-  public getTripInfo(tripId: number): Observable<ApolloQueryResult<IAddressResponse>> {
-    return this._apollo.watchQuery<IAddressResponse>({
+  public getTrip(tripId: number): Observable<ApolloQueryResult<ITripResponse>> {
+    return this._apollo.watchQuery<ITripResponse>({
       query: tripQuery,
       variables: {
         tripId

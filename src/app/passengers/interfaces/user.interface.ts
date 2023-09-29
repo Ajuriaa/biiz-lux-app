@@ -1,4 +1,4 @@
-import { IAddress } from ".";
+import { IAddress, IVehicle } from ".";
 
 export interface IUser {
   id: string;
@@ -11,4 +11,6 @@ export interface IUser {
 
 export interface IUserable {
   addresses?: IAddress[];
+  vehicles?: IVehicle[];
+  user?: IUser;
 }
