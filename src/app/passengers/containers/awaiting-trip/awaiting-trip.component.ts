@@ -56,6 +56,5 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     }
     this.driverMarker = this.mapService.addMarker(coords, this.map, MarkerUrl.driver);
     this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map);
-    console.log('ruta: ',this.route);
   }
 }

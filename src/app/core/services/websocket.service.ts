@@ -84,9 +84,7 @@ export class WebsocketService {
 
       if(data.message.action === 'driver_coords' && data.message.driverCoords.passengerId === +this._getPassengerId()){
         const coords = {lat: data.message.driverCoords.lat, lng: data.message.driverCoords.lng};
-        console.log('live ws coord:', coords);
         this.sharedData.setDriverCoord(coords);
-        console.log('stored coord: ', this.sharedData.getDriverCoord());
       }
     };
 
