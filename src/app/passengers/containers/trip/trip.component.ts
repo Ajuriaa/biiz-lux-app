@@ -150,8 +150,12 @@ export class TripComponent implements OnInit, OnDestroy {
     this.websocket.startTrip(info);
 
     setTimeout(() => {
-      this._router.navigate(['passenger/awaiting-trip']);
-    }, 1000);
+      const trip = this.sharedDataService.getCurrentTrip().passengerId;
+      const id = CookieHelper.getUserInfo();
+      if(trip === id){
+        this._router.navigate(['passenger/awaiting-trip']);
+      }
+    }, 5000);
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {

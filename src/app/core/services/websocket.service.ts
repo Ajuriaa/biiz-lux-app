@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
 import { IDriver, ITripInfo } from '../interfaces';
 import { SharedDataService } from './shared-data.service';
+import { CookieHelper } from '../helpers';
 
 @Injectable({
   providedIn: 'root',
@@ -75,6 +76,11 @@ export class WebsocketService {
 
         this.sharedData.setDriverCoordinates(this.drivers);
       }
+
+      if(data.message.title === 'confirm_travel' && data.message.passengerId === this._getPassengerId()){
+        const currentTrip = data.message;
+        this.sharedData.setCurrentTrip(currentTrip);
+      }
     };
 
     this.socket.onclose = (event) => {
@@ -90,5 +96,9 @@ export class WebsocketService {
     this.socket.onerror = (error) => {
       console.error('WebSocket error:', error);
     };
+  }
+
+  private _getPassengerId(): string {
+    return CookieHelper.getUserInfo();
   }
 }

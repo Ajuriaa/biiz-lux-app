@@ -4,6 +4,10 @@ import { IUser } from 'src/app/passengers/interfaces';
 import { ICoordinate, IDriver } from '../interfaces';
 import { DEFAULT_COORDS, USER } from '../constants';
 
+interface ICurrentTrip {
+  passengerId: string;
+  tripId: string;
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +17,7 @@ export class SharedDataService {
   private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS}];
   private marker = new google.maps.Marker();
   private destinationMarker = new google.maps.Marker();
-  private currentUser : IUser = USER;
+  private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'}
 
   public async setDefaultCoordinates(): Promise<ICoordinate> {
     const coords = await Geolocation.getCurrentPosition({
@@ -54,5 +58,13 @@ export class SharedDataService {
 
   public getDriverCoordinates() {
     return this.closeDriversCoordinates;
+  }
+
+  public setCurrentTrip(trip: ICurrentTrip) {
+    this.currentTrip = trip;
+  }
+
+  public getCurrentTrip(): ICurrentTrip {
+    return this.currentTrip;
   }
 }
