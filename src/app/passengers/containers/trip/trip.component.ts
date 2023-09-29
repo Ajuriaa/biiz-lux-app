@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
-import { ICoordinate } from 'src/app/core/interfaces';
+import { ICoordinate, IDriver, ITripInfo } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
-import { calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
+import { CookieHelper, calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
@@ -35,21 +35,19 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
 export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
   public driverSelected = false;
-  public selectedDriver = { id: 1, distance: 1, coords: DEFAULT_COORDS };
+  public selectedDriver = { id: 1, coordinates: DEFAULT_COORDS };
   public autocompleteCurrentAddresses: any = [];
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
   public loading = false;
   public map!: google.maps.Map;
-  public drivers = [
-    { id: 1, distance: 1, coords: DEFAULT_COORDS },
-    { id: 2, distance: 2, coords: DEFAULT_COORDS },
-    { id: 3, distance: 3, coords: DEFAULT_COORDS }
-  ];
+  public drivers : IDriver[] = [];
   public travelConfirmed = false;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
+  private startCoordinates = DEFAULT_COORDS;
+  private endCoordinates = DEFAULT_COORDS;
 
 
   constructor(
@@ -73,6 +71,8 @@ export class TripComponent implements OnInit, OnDestroy {
       for (const driverCoords of closestDrivers) {
         this.mapService.addMarker(driverCoords, this.map, MarkerUrl.driver);
       }
+
+      this.drivers = this.sharedDataService.getDrivers();
     } , 4000);
   }
 
@@ -97,9 +97,11 @@ export class TripComponent implements OnInit, OnDestroy {
       this.autocompleteDestination.input = address;
       this.autocompleteDestinationAddresses = [];
       const initialMarker = this.sharedDataService.getCurrentMarker().getPosition();
+      this.startCoordinates = this.LatLngToICoordinate(initialMarker);
+      this.endCoordinates = markerCoords;
       this.mapService.renderRoute(
-        this.LatLngToICoordinate(initialMarker),
-        markerCoords,
+        this.startCoordinates,
+        this.endCoordinates,
         this.map
       );
       const centeredCoords = calculateMidpoint(markerCoords, this.LatLngToICoordinate(initialMarker));
@@ -128,13 +130,27 @@ export class TripComponent implements OnInit, OnDestroy {
     this.travelConfirmed = true;
   }
 
-  public selectDriver(driver: { id: number, distance: number, coords: ICoordinate }): void {
+  public selectDriver(driver: { id: number, coordinates: ICoordinate }): void {
     this.selectedDriver = driver;
     this.driverSelected = true;
+  }
+
+  public async startTrip(): Promise<void> {
+    const passengerId = +this._getUserInfo();
+    const info : ITripInfo = {
+      driver_id: this.selectedDriver.id,
+      start_coords: this.startCoordinates,
+      end_coords: this.endCoordinates,
+      passenger_id: passengerId
+    };
+    this.websocket.startTrip(info);
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {
     return {lat: latLng.lat(), lng: latLng.lng()};
   }
-}
 
+  private _getUserInfo(): string {
+    return CookieHelper.getUserInfo();
+  }
+}

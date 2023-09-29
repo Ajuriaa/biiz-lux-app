@@ -46,7 +46,7 @@
     </div>
     <div [@inAnimation] class="selected" *ngIf="driverSelected && travelConfirmed" >
       <app-driver-card class="driver" [driver]="selectedDriver" [unique]="true"></app-driver-card>
-      <app-primary-button class="confirm" (btnClick)="submit()">
+      <app-primary-button class="confirm" (btnClick)="startTrip()">
         <p class="text">CONFIRMAR VIAJE</p>
         <img class="button-image" [src]="imageUrl">
       </app-primary-button>

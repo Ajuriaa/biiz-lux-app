@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
-import { ICoordinate } from '../interfaces';
+import { IDriver, ITripInfo } from '../interfaces';
 import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebsocketService {
-  private coords: ICoordinate[] = [];
+  private drivers: IDriver[] = [];
   private socket!: WebSocket;
 
   constructor(
@@ -31,13 +31,24 @@ export class WebsocketService {
     this.socket.send(payload);
   }
 
+  public startTrip(travelInfo: ITripInfo) {
+    const id = JSON.stringify({channel: 'DriverCoordinatesChannel'});
+    const data = JSON.stringify({action: 'new_travel', info: travelInfo});
+    const payload = JSON.stringify({
+      command: 'message',
+      identifier: id,
+      data: data
+    });
+    this.socket.send(payload);
+  }
+
   public connectWebSocket() {
     this.socket = new WebSocket(environment.wsUrl);
 
     // This function is called when the websocket connection is opened.
     // To tell the DriverCoordinatesChannel that we want to subscribe to it.
     this.socket.onopen = () => {
-      this.coords = [];
+      this.drivers = [];
       const id = JSON.stringify({channel: 'DriverCoordinatesChannel'});
       const payload = JSON.stringify({
         command: 'subscribe',
@@ -55,9 +66,14 @@ export class WebsocketService {
       const data = JSON.parse(event.data);
 
       if(data.message.title === 'COORD'){
-        const x = {lat: data.message.lat, lng: data.message.lng};
-        this.coords.push(x);
-        this.sharedData.setDriverCoordinates(this.coords);
+        const coords = {lat: data.message.lat, lng: data.message.lng};
+        const newDriver = {id: data.message.driver, coordinates: coords};
+
+        if (!this.drivers.some((driver) => driver.id === newDriver.id)) {
+          this.drivers.push(newDriver);
+        }
+
+        this.sharedData.setDriverCoordinates(this.drivers);
       }
     };
 

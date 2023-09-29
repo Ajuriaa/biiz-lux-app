@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AvailableDriversComponent } from './components/available-drivers.component';
 import { DriverCardModule } from '../driver-card/driver-card.module';
+import { AvailableDriversComponent } from './components/available-drivers.component';
 
 @NgModule({
   declarations: [AvailableDriversComponent],

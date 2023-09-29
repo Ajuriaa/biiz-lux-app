@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
-import { AuthGuard, RoleGuard } from '../core/guards';
+import { AuthGuard } from '../core/guards';
 import {
   ExperiencesComponent,
   HomeComponent,
@@ -21,7 +21,7 @@ import {
 const routes: Routes = [{
   path: '',
   component: PassengerRouterComponent,
-  canActivate: [AuthGuard, RoleGuard],
+  canActivate: [AuthGuard],
   data: { roles: [Role.passenger] },
   children: [
     {

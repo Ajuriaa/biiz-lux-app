@@ -3,7 +3,7 @@ import { Apollo, gql } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { ToastComponent } from 'src/app/shared/toaster';
 import { HttpHeaders } from '@angular/common/http';
-import { TokenHelper } from 'src/app/core/helpers';
+import { CookieHelper } from 'src/app/core/helpers';
 import { IAddress } from '../interfaces';
 import { addressesQuery } from './address.queries';
 
@@ -48,6 +48,6 @@ export class AddressMutations {
   }
 
   private _getToken(): string {
-    return TokenHelper.getToken();
+    return CookieHelper.getToken();
   }
 }
