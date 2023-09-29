@@ -26,7 +26,8 @@ import {
   CancelTripComponent,
   ProgramTripComponent,
   AddressComponent,
-  NewAddressComponent
+  NewAddressComponent,
+  AwaitingTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -45,7 +46,8 @@ import { AddressMutations } from './services';
     CancelTripComponent,
     ProgramTripComponent,
     AddressComponent,
-    NewAddressComponent
+    NewAddressComponent,
+    AwaitingTripComponent
   ],
   imports: [
     CommonModule,

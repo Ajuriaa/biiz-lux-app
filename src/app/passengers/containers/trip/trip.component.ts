@@ -6,6 +6,7 @@ import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { CookieHelper, calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
+import { Router } from '@angular/router';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -54,7 +55,8 @@ export class TripComponent implements OnInit, OnDestroy {
     private sharedDataService: SharedDataService,
     private mapService: MapService,
     private websocket: WebsocketService,
-    private toaster: ToastComponent
+    private toaster: ToastComponent,
+    private _router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -136,6 +138,7 @@ export class TripComponent implements OnInit, OnDestroy {
   }
 
   public async startTrip(): Promise<void> {
+    this.loading = true;
     const passengerId = +this._getUserInfo();
     const info : ITripInfo = {
       driver_id: this.selectedDriver.id,
@@ -145,6 +148,10 @@ export class TripComponent implements OnInit, OnDestroy {
       fare: Math.floor(Math.random() * 200)
     };
     this.websocket.startTrip(info);
+
+    setTimeout(() => {
+      this._router.navigate(['passenger/awaiting-trip']);
+    }, 1000);
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WeatherQueries } from 'src/app/shared/services';
 
 const DEFAULT_WEATHER_IMAGE = 'assets/images/weather.svg';
-const TRANSPARENT_HEADER_ROUTES = ['trip', 'customer-service'];
+const TRANSPARENT_HEADER_ROUTES = ['trip', 'customer-service', 'awaiting-trip'];
 @Component({
   selector: 'app-shared-header',
   templateUrl: './header.component.html',
