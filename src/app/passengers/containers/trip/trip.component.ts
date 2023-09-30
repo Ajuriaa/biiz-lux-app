@@ -4,7 +4,7 @@ import { MapService, SharedDataService, WebsocketService } from 'src/app/core/se
 import { ICoordinate, IDriver, ITripInfo } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
-import { CookieHelper, calculateMidpoint, getCloseDrivers } from 'src/app/core/helpers';
+import { CookieHelper, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
 import { Router } from '@angular/router';
 
@@ -106,8 +106,6 @@ export class TripComponent implements OnInit, OnDestroy {
         this.endCoordinates,
         this.map
       );
-      const centeredCoords = calculateMidpoint(markerCoords, this.LatLngToICoordinate(initialMarker));
-      this.map.panTo(centeredCoords);
     } else {
       this.autocompleteCurrent.input = address;
       this.autocompleteCurrentAddresses = [];
@@ -155,7 +153,7 @@ export class TripComponent implements OnInit, OnDestroy {
       if(trip === id){
         this._router.navigate(['passenger/awaiting-trip']);
       }
-    }, 5000);
+    }, 10000);
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {

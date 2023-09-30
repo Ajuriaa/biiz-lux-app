@@ -9,7 +9,7 @@ import { SharedDataService } from './shared-data.service';
 })
 export class MapService {
   public GoogleAutocomplete: google.maps.places.AutocompleteService;
-  public directionsRenderer: google.maps.DirectionsRenderer;
+  public directionsRenderer!: google.maps.DirectionsRenderer;
   public directionsService: google.maps.DirectionsService;
   public geocoder: google.maps.Geocoder;
 
@@ -18,13 +18,8 @@ export class MapService {
     private zone: NgZone
   )
   {
-    const directionOptions: google.maps.DirectionsRendererOptions = {
-      polylineOptions: { strokeColor: '#00E741' },
-      suppressMarkers: true
-    };
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.directionsService = new google.maps.DirectionsService();
-    this.directionsRenderer = new google.maps.DirectionsRenderer(directionOptions);
     this.geocoder = new google.maps.Geocoder();
   }
 
@@ -71,12 +66,18 @@ export class MapService {
     });
   }
 
-  public renderRoute(start: ICoordinate, end: ICoordinate, map: google.maps.Map): google.maps.DirectionsRenderer {
+  public renderRoute(start: ICoordinate, end: ICoordinate, map: google.maps.Map, isTracking = false): google.maps.DirectionsRenderer {
+    const directionOptions: google.maps.DirectionsRendererOptions = {
+      polylineOptions: { strokeColor: '#00E741' },
+      suppressMarkers: true,
+      preserveViewport: isTracking
+    };
     const request = {
       origin: start,
       destination: end,
       travelMode: google.maps.TravelMode['DRIVING']
     };
+    this.directionsRenderer = new google.maps.DirectionsRenderer(directionOptions);
     this.directionsRenderer.setMap(map);
     this.directionsService.route(request, (result, status) => {
       if (status == 'OK') {

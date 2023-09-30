@@ -22,8 +22,9 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates: ICoordinate = DEFAULT_COORDS;
   private interval: any = 0;
-  private driverMarker: google.maps.Marker | null = null;
+  private driverMarker = new google.maps.Marker();
   private route!: google.maps.DirectionsRenderer;
+  private oldRoute!: google.maps.DirectionsRenderer;
 
   constructor(
     private sharedDataService: SharedDataService,
@@ -38,12 +39,17 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     this.websocket.connectWebSocket();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
 
-    const queryResponse = await firstValueFrom(this._tripQuery.getTrip(18));
+    const tripId = this.sharedDataService.getCurrentTrip().tripId;
+    const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));
     this.trip = queryResponse.data.trip;
     this.currentCoordinates = {lat: +this.trip.startLocation.lat, lng: +this.trip.startLocation.lng};
     this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger);
     this.map.setCenter(this.currentCoordinates);
-    setTimeout(() => this.loading = false, 1500);
+    setTimeout(() => {
+      this.loading = false;
+      this.driverMarker = this.mapService.addMarker(this.sharedDataService.getDriverCoord(), this.map, MarkerUrl.driver);
+      this.route = this.mapService.renderRoute(this.sharedDataService.getDriverCoord(), this.currentCoordinates, this.map);
+    }, 5000);
     this.interval = setInterval(() => {
       this.trackDriver(this.sharedDataService.getDriverCoord());
       this.driverArrived();
@@ -55,12 +61,12 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   }
 
   private trackDriver(coords: ICoordinate) {
-    if(this.driverMarker){
-      this.mapService.removeMarker(this.driverMarker);
-      this.route.setMap(null);
+    if(this.route){
+      this.oldRoute = this.route;
     }
-    this.driverMarker = this.mapService.addMarker(coords, this.map, MarkerUrl.driver);
-    this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map);
+    this.driverMarker.setPosition(coords);
+    this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
+    this.oldRoute.setMap(null);
   }
 
   private driverArrived(){

@@ -19,6 +19,7 @@ export class SharedDataService {
   private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'};
   private driverCoords: ICoordinate = DEFAULT_COORDS;
   private driverArrived = false;
+  private tripFinished = false;
 
   public async setDefaultCoordinates(): Promise<ICoordinate> {
     const coords = await Geolocation.getCurrentPosition({
@@ -83,5 +84,13 @@ export class SharedDataService {
 
   public getDriverArrived(): boolean {
     return this.driverArrived;
+  }
+
+  public setFinishTrip(arrived: boolean): void {
+    this.tripFinished = arrived;
+  }
+
+  public getFinishTrip(): boolean {
+    return this.tripFinished;
   }
 }

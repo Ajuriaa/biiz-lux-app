@@ -78,7 +78,7 @@ export class WebsocketService {
       }
 
       if(data.message.title === 'confirm_travel' && data.message.passengerId === this._getPassengerId()){
-        const currentTrip = data.message;
+        const currentTrip = { passengerId: data.message.passengerId, tripId: data.message.tripId };
         this.sharedData.setCurrentTrip(currentTrip);
       }
 
@@ -89,6 +89,10 @@ export class WebsocketService {
 
       if(data.message.action === 'arrived' && data.message.passengerId === +this._getPassengerId()){
         this.sharedData.setDriverArrived(true);
+      }
+
+      if(data.message.action === 'finish_trip' && data.message.passengerId === +this._getPassengerId()){
+        this.sharedData.setFinishTrip(true);
       }
     };
 

@@ -10,7 +10,12 @@ export const tripQuery: DocumentNode = gql`
   query trip($tripId: Int!) {
     trip(tripId: $tripId) {
       id
+      fare
       startLocation {
+        lat
+        lng
+      }
+      endLocation {
         lat
         lng
       }
