@@ -19,6 +19,7 @@ import {
   AwaitingTripComponent,
   DriverArrivedComponent
 } from './containers';
+import { TravelingComponent } from './containers/traveling/traveling.component';
 
 const routes: Routes = [{
   path: '',
@@ -95,6 +96,11 @@ const routes: Routes = [{
       path: 'driver-arrived',
       title: 'Conductor afuera',
       component: DriverArrivedComponent
+    },
+    {
+      path: 'traveling',
+      title: 'Viajando',
+      component: TravelingComponent
     }
   ]
 }];

@@ -32,6 +32,7 @@ import {
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
+import { TravelingComponent } from './containers/traveling/traveling.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AddressMutations } from './services';
     AddressComponent,
     NewAddressComponent,
     AwaitingTripComponent,
-    DriverArrivedComponent
+    DriverArrivedComponent,
+    TravelingComponent
   ],
   imports: [
     CommonModule,
