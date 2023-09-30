@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedDataService, WebsocketService } from 'src/app/core/services';
 
 
 @Component({
@@ -8,8 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./finish-trip.component.scss']
 })
 export class FinishTripComponent {
+  constructor(
+    private _router: Router,
+    private websocket: WebsocketService,
+    private sharedData: SharedDataService
+  ){}
 
-  constructor(private _router: Router){}
-
-
+  public tripDetails(): void {
+    this.websocket.unsubscribe();
+    this.sharedData.resetData();
+    this._router.navigate(['/passenger/trip-detail']);
+  }
 }

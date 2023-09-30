@@ -29,7 +29,8 @@ import {
   NewAddressComponent,
   AwaitingTripComponent,
   DriverArrivedComponent,
-  FinishTripComponent
+  FinishTripComponent,
+  TripDetailComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -53,7 +54,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     AwaitingTripComponent,
     DriverArrivedComponent,
     TravelingComponent,
-    FinishTripComponent
+    FinishTripComponent,
+    TripDetailComponent
   ],
   imports: [
     CommonModule,

@@ -43,6 +43,15 @@ export class WebsocketService {
     this.socket.send(payload);
   }
 
+  public unsubscribe(): void {
+    const id = JSON.stringify({channel: 'DriverCoordinatesChannel'});
+    const payload = JSON.stringify({
+      command: 'unsubscribe',
+      identifier: id
+    });
+    this.socket.send(payload);
+  }
+
   public connectWebSocket() {
     this.socket = new WebSocket(environment.wsUrl);
 

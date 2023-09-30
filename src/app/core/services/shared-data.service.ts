@@ -93,4 +93,16 @@ export class SharedDataService {
   public getFinishTrip(): boolean {
     return this.tripFinished;
   }
+
+  public resetData(): void {
+  this.coordinates = DEFAULT_COORDS;
+  this.closeDriversCoordinates = [];
+  this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS}];
+  this.marker = new google.maps.Marker();
+  this.destinationMarker = new google.maps.Marker();
+  this.currentTrip = {passengerId: '0', tripId: '0'};
+  this.driverCoords = DEFAULT_COORDS;
+  this.driverArrived = false;
+  this.tripFinished = false;
+  }
 }

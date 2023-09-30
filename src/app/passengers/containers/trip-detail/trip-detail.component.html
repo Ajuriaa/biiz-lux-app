@@ -1,0 +1,41 @@
+<div class="container">
+  <app-shared-header></app-shared-header>
+  <div class="info-wrapper">
+    <section class="section">
+      <div class="display">
+        <p class="noti">SIN INCIDENTES</p>
+        <p class="label">TU VIAJE HA FINALIZADO</p>
+        <ion-icon class="check" name="checkmark-circle"></ion-icon>
+        <span class="card">
+          <ion-icon class="icon" name="card"></ion-icon>
+        </span>
+      </div>
+      <div class="trip-info inter">
+        <p class="red-label">REPORTAR</p>
+        <div class="address-wrapper">
+          <img class="image" src="assets/images/location-arrows.svg">
+          <div>
+            <p class="address">Loma Alta, Lomas del Guijarro</p>
+            <p>Col. Las Colinas, Bloque B</p>
+          </div>
+        </div>
+      </div>
+      <div class="tip">
+        <p class="tip-label">PROPINA</p>
+        <p class="tip-option">5%</p>
+        <p class="tip-option">10%</p>
+      </div>
+      <div class="footer">
+        <img class="logo" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-white.png">
+        <p class="fare">177.00 LPS</p>
+      </div>
+    </section>
+    <app-primary-button
+      class="btn"
+      [showNotification]="true"
+      (btnClick)="goHome()"
+    >
+      REGRESAR A INICIO
+    </app-primary-button>
+  </div>
+</div>

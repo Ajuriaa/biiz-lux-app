@@ -2,10 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
 import { MapService, SharedDataService } from 'src/app/core/services';
-import { TripQueries } from '../../services';
-import { ITrip } from '../../interfaces';
 import { firstValueFrom } from 'rxjs';
 import { MarkerUrl } from 'src/app/core/enums';
+import { TripQueries } from '../../services';
+import { ITrip } from '../../interfaces';
 
 
 @Component({
@@ -44,7 +44,7 @@ export class TravelingComponent implements OnInit {
     this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map);
     setTimeout(() => {
       this.map.panTo(this.currentCoordinates);
-      this.map.setZoom(19)
+      this.map.setZoom(19);
     }, 1000);
 
     setTimeout(()=> this.trackCar(), 3000);

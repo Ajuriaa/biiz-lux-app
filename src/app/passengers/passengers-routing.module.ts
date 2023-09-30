@@ -18,7 +18,8 @@ import {
   NewAddressComponent,
   AwaitingTripComponent,
   DriverArrivedComponent,
-  FinishTripComponent
+  FinishTripComponent,
+  TripDetailComponent
 } from './containers';
 import { TravelingComponent } from './containers/traveling/traveling.component';
 
@@ -107,6 +108,11 @@ const routes: Routes = [{
       path: 'finish-trip',
       title: 'Viaje terminado',
       component: FinishTripComponent
+    },
+    {
+      path: 'trip-detail',
+      title: 'Detalle Viaje',
+      component: TripDetailComponent
     }
   ]
 }];
