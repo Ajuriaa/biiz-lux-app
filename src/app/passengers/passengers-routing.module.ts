@@ -16,7 +16,8 @@ import {
   ProgramTripComponent,
   AddressComponent,
   NewAddressComponent,
-  AwaitingTripComponent
+  AwaitingTripComponent,
+  DriverArrivedComponent
 } from './containers';
 
 const routes: Routes = [{
@@ -89,6 +90,11 @@ const routes: Routes = [{
       path: 'awaiting-trip',
       title: 'Esperando Conductor',
       component: AwaitingTripComponent
+    },
+    {
+      path: 'driver-arrived',
+      title: 'Conductor afuera',
+      component: DriverArrivedComponent
     }
   ]
 }];

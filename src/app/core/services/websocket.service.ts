@@ -86,6 +86,10 @@ export class WebsocketService {
         const coords = {lat: data.message.driverCoords.lat, lng: data.message.driverCoords.lng};
         this.sharedData.setDriverCoord(coords);
       }
+
+      if(data.message.action === 'arrived' && data.message.passengerId === +this._getPassengerId()){
+        this.sharedData.setDriverArrived(true);
+      }
     };
 
     this.socket.onclose = (event) => {

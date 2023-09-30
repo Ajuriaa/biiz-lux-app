@@ -18,6 +18,7 @@ export class SharedDataService {
   private destinationMarker = new google.maps.Marker();
   private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'};
   private driverCoords: ICoordinate = DEFAULT_COORDS;
+  private driverArrived = false;
 
   public async setDefaultCoordinates(): Promise<ICoordinate> {
     const coords = await Geolocation.getCurrentPosition({
@@ -74,5 +75,13 @@ export class SharedDataService {
 
   public getDriverCoord(): ICoordinate {
     return this.driverCoords;
+  }
+
+  public setDriverArrived(arrived: boolean): void {
+    this.driverArrived = arrived;
+  }
+
+  public getDriverArrived(): boolean {
+    return this.driverArrived;
   }
 }

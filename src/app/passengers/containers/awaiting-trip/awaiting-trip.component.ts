@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService } from 'src/app/core/services';
+import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 import { TripQueries } from '../../services';
 import { ITrip } from '../../interfaces';
 
@@ -27,11 +28,14 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private _tripQuery: TripQueries
+    private websocket: WebsocketService,
+    private _tripQuery: TripQueries,
+    private _router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.loading = true;
+    this.websocket.connectWebSocket();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
 
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(18));
@@ -42,6 +46,7 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     setTimeout(() => this.loading = false, 1500);
     this.interval = setInterval(() => {
       this.trackDriver(this.sharedDataService.getDriverCoord());
+      this.driverArrived();
     }, 1000);
   }
 
@@ -56,5 +61,11 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     }
     this.driverMarker = this.mapService.addMarker(coords, this.map, MarkerUrl.driver);
     this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map);
+  }
+
+  private driverArrived(){
+    if(this.sharedDataService.getDriverArrived()){
+      this._router.navigate(['passenger/driver-arrived']);
+    }
   }
 }
