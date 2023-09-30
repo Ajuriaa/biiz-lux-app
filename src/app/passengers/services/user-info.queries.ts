@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
-import { TokenHelper } from 'src/app/core/helpers';
+import { CookieHelper } from 'src/app/core/helpers';
 import { IUserInfoResponse } from '../interfaces';
 
 const userInfoQuery: DocumentNode = gql`
   query userInfoQuery {
     currentUser {
+      id
       email
       fullName
       phoneNumber
@@ -40,6 +41,6 @@ export class UserInfoQueries {
   }
 
   private _getToken(): string {
-    return TokenHelper.getToken();
+    return CookieHelper.getToken();
   }
 }

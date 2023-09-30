@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RoleHelper } from 'src/app/core/helpers';
 import { AuthGuard } from 'src/app/core/guards';
 import { AuthMutations } from '../../services';
 
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
     private _authGuard: AuthGuard
   ) {
     if (this._authGuard.findToken()) {
-      this.homePathname = `/${RoleHelper.getRole()}/home`;
+      this.homePathname = `/passenger/home`;
       this._router.navigate([this.homePathname]);
     }
   }
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.controls.email.value,
       this.loginForm.controls.password.value
     );
-    const role = this.homePathname || RoleHelper.getRole();
+    const role = this.homePathname || 'passenger';
 
     if (login.login) {
       this._router.navigate([this.returnUrl || `/${role}/home`]);

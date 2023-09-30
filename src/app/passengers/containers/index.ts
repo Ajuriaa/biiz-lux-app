@@ -11,3 +11,7 @@ export * from './cancel-trip/cancel-trip.component';
 export * from './program-trip/program-trip.component';
 export * from './address/address.component';
 export * from './new-adress/new-address.component';
+export * from './awaiting-trip/awaiting-trip.component';
+export * from './driver-arrived/driver-arrived.component';
+export * from './finish-trip/finish-trip.component';
+export * from './trip-detail/trip-detail.component';

@@ -4,7 +4,7 @@
     <section class="trip-container" routerLink="/passenger/trip">
       <div class="label">
         <ion-icon name="time" class="icon"></ion-icon>
-        7 MIN.
+        {{ this.time }}
       </div>
       <app-white-button message="SOLICITAR UNIDAD"></app-white-button>
     </section>
@@ -24,6 +24,6 @@
       ></app-display-button>
     </section>
 
-    <app-primary-button class="button">MIS VIAJES</app-primary-button>
+    <app-primary-button class="button" (btnClick)="test()">MIS VIAJES</app-primary-button>
   </div>
 </ion-content>

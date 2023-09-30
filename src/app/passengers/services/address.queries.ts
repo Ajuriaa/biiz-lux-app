@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
-import { TokenHelper } from 'src/app/core/helpers';
+import { CookieHelper } from 'src/app/core/helpers';
 import { IAddressResponse } from '../interfaces';
 
 export const addressesQuery: DocumentNode = gql`
@@ -34,6 +34,6 @@ export class AddressQueries {
   }
 
   private _getToken(): string {
-    return TokenHelper.getToken();
+    return CookieHelper.getToken();
   }
 }

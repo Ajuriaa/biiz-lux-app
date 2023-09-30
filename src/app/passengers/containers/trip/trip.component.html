@@ -1,7 +1,9 @@
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
 <div class="container">
   <div class="map" #map></div>
-  <app-shared-header></app-shared-header>
-  <div class="button-container">
+  <app-shared-header class="header"></app-shared-header>
+  <div class="button-container" [ngClass]="{'animate': travelConfirmed}">
     <div class="autocomplete">
       <div class="autocomplete-img">
         <img class="logo" src="assets/images/location-arrows.svg">
@@ -9,33 +11,51 @@
       <div class="input-wrapper">
         <ion-input
           [(ngModel)]="autocompleteCurrent.input"
-          (ionInput)="UpdateSearchResults(true)"
+          (ionInput)="UpdateSearchResults(autocompleteCurrent)"
           placeholder="Dirección actual"
-          (ionClear)="ClearAutocomplete(true)"
+          (ionClear)="ClearAutocomplete()"
+          [clearInput]="!travelConfirmed"
+          [readonly]="travelConfirmed"
         ></ion-input>
-        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0">
-          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item, true)">
+        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0 && !travelConfirmed">
+          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
             {{ item.description }}
           </ion-item>
         </ion-list>
         <ion-input
           [(ngModel)]="autocompleteDestination.input"
-          (ionInput)="UpdateSearchResults()"
+          (ionInput)="UpdateSearchResults(autocompleteDestination, true)"
           placeholder="Dirección de destino"
-          (ionClear)="ClearAutocomplete()"
+          (ionClear)="ClearAutocomplete(true)"
+          [clearInput]="!travelConfirmed"
+          [readonly]="travelConfirmed"
         ></ion-input>
-        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0">
-          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item)">
+        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
+          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
             {{ item.description }}
           </ion-item>
         </ion-list>
       </div>
     </div>
-    <div class="options">
+    <div [@inAnimation] class="driver-container" *ngIf="!driverSelected && travelConfirmed">
+      <app-available-drivers
+        [drivers]="drivers"
+        (selected)="selectDriver($event)"
+      >
+      </app-available-drivers>
+    </div>
+    <div [@inAnimation] class="selected" *ngIf="driverSelected && travelConfirmed" >
+      <app-driver-card class="driver" [driver]="selectedDriver" [unique]="true"></app-driver-card>
+      <app-primary-button class="confirm" (btnClick)="startTrip()">
+        <p class="text">CONFIRMAR VIAJE</p>
+        <img class="button-image" [src]="imageUrl">
+      </app-primary-button>
+    </div>
+    <div class="options" *ngIf="!travelConfirmed">
       <app-secondary-button class="btn">EVENTOS</app-secondary-button>
       <app-secondary-button class="btn">PROGRAMAR</app-secondary-button>
     </div>
-    <app-primary-button class="confirm">
+    <app-primary-button class="confirm" (btnClick)="submit()" *ngIf="!travelConfirmed">
       <p class="text">CONFIRMAR DESTINO</p>
       <img class="button-image" [src]="imageUrl">
     </app-primary-button>

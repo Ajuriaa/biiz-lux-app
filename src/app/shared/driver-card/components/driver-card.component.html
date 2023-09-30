@@ -1,0 +1,25 @@
+<div class="card" [ngClass]="{'selected-driver' : unique}">
+  <div class="labels" [ngClass]="{'unique-labels' : unique}">
+    <div class="label" [ngClass]="{'unique-label' : unique}">
+      <span class="span">
+        <img
+          class="icon"
+          [ngClass]="{'icon' : unique}"
+          [ngClass]="{'unique-icon' : unique}"
+          src="https://biiz-bucket.s3.us-east-2.amazonaws.com/passenger-location.png"
+        />
+        <p class="no-margin">{{ driver.id }} </p>
+      </span>
+      <p class="no-margin">17:45</p>
+    </div>
+    <div class="label estimated" [ngClass]="{'unique-label' : unique}">
+      <ion-icon name="location-sharp">
+      </ion-icon>
+      <p class="no-margin">17:45</p>
+    </div>
+  </div>
+  <img class="image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/car.png" />
+  <div class="price" [ngClass]="{'selected-driver' : unique}">
+    <span>155.00 LPS</span>
+  </div>
+</div>

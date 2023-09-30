@@ -1,0 +1,11 @@
+@import 'src/app/core/sass/global';
+
+.container {
+  display: flex;
+  gap: 1rem;
+
+  .cards {
+    width: 18rem;
+    height: 18rem;
+  }
+}

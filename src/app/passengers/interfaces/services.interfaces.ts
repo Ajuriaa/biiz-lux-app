@@ -1,4 +1,4 @@
-import { IAddress, IUser } from ".";
+import { IAddress, IUser , ITrip } from ".";
 
 export interface IUserInfoResponse {
   currentUser: IUser;
@@ -6,4 +6,8 @@ export interface IUserInfoResponse {
 
 export interface IAddressResponse {
   addresses: IAddress[];
+}
+
+export interface ITripResponse {
+  trip: ITrip;
 }

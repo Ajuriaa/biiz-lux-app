@@ -1,14 +1,13 @@
-import { Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { SharedDataService } from 'src/app/core/services';
-import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@awesome-cordova-plugins/native-geocoder/ngx';
-import { ICoordinate } from 'src/app/core/interfaces';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MapService, SharedDataService } from 'src/app/core/services';
 import { Router } from '@angular/router';
+import { DEFAULT_COORDS } from 'src/app/core/constants';
+import { MarkerUrl } from 'src/app/core/enums';
 import { AddressMutations } from '../../services';
 import { IAddress } from '../../interfaces';
 
 const ICON_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/plus.png';
 const LOGO_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-white.png';
-const MARKER_IMAGE = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/marker.png';
 
 @Component({
   selector: 'app-new-address',
@@ -19,109 +18,60 @@ export class NewAddressComponent implements OnInit, OnDestroy {
   public addresses: IAddress[] = [];
   public iconUrl = ICON_URL;
   public logoUrl = LOGO_URL;
-  private markerImage = MARKER_IMAGE;
   public autocompleteAddresses: any = [];
   public autocomplete = { input: ''};
-  public GoogleAutocomplete: google.maps.places.AutocompleteService;
-  public directionsService: google.maps.DirectionsService;
   public weatherImage = '';
   public temperature = 0;
   public addressName = '';
-  public newMap!: any;
-  @ViewChild('map', { static: true })
-  mapRef!: ElementRef;
+  public map!: google.maps.Map;
+  @ViewChild('map', { static: true }) public mapRef!: ElementRef;
+  private currentCoordinates = DEFAULT_COORDS;
 
   constructor(
     private sharedDataService: SharedDataService,
     private _addressMutation: AddressMutations,
-    private nativeGeocoder: NativeGeocoder,
-    private zone: NgZone,
-    private _router: Router
-  ){
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.directionsService = new google.maps.DirectionsService();
-  }
+    private _router: Router,
+    private mapService: MapService
+  ){}
 
-  ngOnInit(): void {
-    const coords = this.sharedDataService.getCoordinates();
-    const mapOptions = {
-      mapId: 'f8e6a2472dfc90b0',
-      center: coords,
-      zoom: 17,
-      clickableIcons: false,
-      disableDefaultUI: true,
-      keyboardShortcuts: false,
-      gestureHandling: 'greedy'
-    };
-    setTimeout(() => {
-      this.newMap = new google.maps.Map(this.mapRef.nativeElement, mapOptions);
-      this.sharedDataService.setCurrentMarker(this.addMarker(coords));
-    }, 500);
+  async ngOnInit(): Promise<void> {
+    this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
+    this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
+    const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger, true);
+    this.sharedDataService.setCurrentMarker(marker);
+    this.autocomplete.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
   }
 
   ngOnDestroy(): void {
-    if (this.newMap) {
-      google.maps.event.clearInstanceListeners(this.newMap);
-      this.newMap = null;
+    if (this.map) {
+      google.maps.event.clearInstanceListeners(this.map);
     }
   }
 
-  private addMarker(coordinates: ICoordinate): google.maps.Marker {
-    const marker = new google.maps.Marker({
-      position: coordinates,
-      map: this.newMap,
-      draggable: true,
-      icon: {
-        url: this.markerImage,
-        scaledSize: new google.maps.Size(50, 50)
-      }
-    });
-    return marker;
+  public async SelectSearchResult(address: string): Promise<void> {
+    const addressCoordinates = await this.mapService.getCoordinateFromPlace(address);
+    this.mapService.removeMarker(this.sharedDataService.getCurrentMarker());
+    const marker = this.mapService.addMarker(addressCoordinates, this.map, MarkerUrl.passenger, true);
+    this.sharedDataService.setCurrentMarker(marker);
+    this.autocomplete.input = address;
+    this.autocompleteAddresses = [];
+    this.map.setZoom(13);
+    const markerCords = { lat: marker?.getPosition()?.lat() || 0, lng: marker?.getPosition()?.lng() || 0};
+    setTimeout(() => {
+      this.map.panTo(markerCords);
+    }, 350);
+    this.map.setZoom(17);
   }
 
   public UpdateSearchResults() {
-    const input = this.autocomplete.input;
-
-    if ( input=== '') {
-      this.autocompleteAddresses = [];
-      return;
-    }
-
-    this.GoogleAutocomplete.getPlacePredictions({ input: input + 'Tegucigalpa, Honduras' }, (predictions: any) => {
-      this.autocompleteAddresses = [];
-      this.zone.run(() => {
-        this.autocompleteAddresses.push(...predictions);
-      });
+    this.mapService.placesSearchResult(this.autocomplete).then((predictions) => {
+      this.autocompleteAddresses = predictions;
     });
   }
 
-  public SelectSearchResult(item: any): void {
-    const options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 1
-    };
-    this.nativeGeocoder.forwardGeocode(item.description, options).then((coords : NativeGeocoderResult[]) => {
-      const coordinates = {lat: +coords[0].latitude, lng: +coords[0].longitude};
-      const cameraOptions = {
-        coordinate: coordinates,
-        zoom: 17
-      };
-
-      const marker = this.sharedDataService.getCurrentMarker();
-      this.removeMarker(marker);
-      this.sharedDataService.setCurrentMarker(this.addMarker(coordinates));
-      this.autocomplete.input = item.description;
-      this.autocompleteAddresses = [];
-      this.newMap.setZoom(cameraOptions.zoom);
-      this.newMap.panTo(cameraOptions.coordinate);
-    });
-  }
-
-  public ClearAutocomplete(): boolean {
+  public ClearAutocomplete(): void {
     this.autocompleteAddresses = [];
     this.autocomplete.input = '';
-
-    return true;
   }
 
   public async saveAddress(): Promise<void> {
@@ -141,9 +91,5 @@ export class NewAddressComponent implements OnInit, OnDestroy {
     if (mutationRespone) {
       this._router.navigate(['/passenger/address']);
     }
-  }
-
-  private removeMarker(marker: google.maps.Marker): void {
-    marker.setMap(null);
   }
 }

@@ -1,0 +1,84 @@
+@import 'src/app/core/sass/global';
+
+.card {
+  @include flex-column;
+  background-color: $white;
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 100%;
+
+  .image {
+    height: 50%;
+  }
+}
+
+.labels {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.label {
+  background-color: $green;
+  width: 100%;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.4rem;
+  font-weight: bold;
+
+  .span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon {
+    height: 1.5rem;
+  }
+
+  .unique-icon {
+    height: 2rem;
+  }
+}
+
+.estimated {
+  background-color: setColor(firm-gray);
+}
+
+.price {
+  background-color: $black;
+  height: 20%;
+  width: 100%;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 0.8rem 0.8rem;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.selected-driver {
+  font-size: 2rem;
+}
+
+.unique-labels {
+  width: 90%;
+  margin: 1rem 1rem 0 1rem;
+
+  .unique-label {
+    padding: 1rem;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}

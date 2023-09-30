@@ -35,9 +35,9 @@ export class AuthMutations {
         if (data) {
           this.toaster.successToast("Sesión Iniciada correctamente");
           const token = data.login.token;
-          const role = data.login.role;
+          const userId = data.login.id;
           setCapacitorCookie('BZ-TOKEN', token);
-          setCapacitorCookie('BZ-ROLE', role);
+          setCapacitorCookie('BZ-USER-ID', userId);
           resolve(data);
         }
       }, (error) => {

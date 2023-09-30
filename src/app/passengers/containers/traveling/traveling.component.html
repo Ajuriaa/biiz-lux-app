@@ -1,0 +1,25 @@
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
+<div class="container">
+  <div class="map" #map></div>
+  <app-shared-header class="header"></app-shared-header>
+  <div class="button-container">
+    <div class="center">
+      <ion-icon
+        class="icon"
+        name="navigate-circle"
+        (click)="center()"
+      >
+      </ion-icon>
+    </div>
+    <div class="row">
+      <ion-icon class="mic" name="mic"></ion-icon>
+      <app-primary-button class="btn">¿QUE TAL TU VIAJE?</app-primary-button>
+    </div>
+    <p class="fare-label"> {{ trip.fare }} LPS </p>
+    <div class="green-label">
+      <ion-icon class="icon" name="location-sharp"></ion-icon>
+      <p class="timer">17:49</p>
+    </div>
+  </div>
+</div>

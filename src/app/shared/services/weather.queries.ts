@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
-import { TokenHelper } from 'src/app/core/helpers';
+import { CookieHelper } from 'src/app/core/helpers';
 import { IHomeResponse } from '../interfaces';
 
 const weatherQuery: DocumentNode = gql`
@@ -38,6 +38,6 @@ export class WeatherQueries {
   }
 
   private _getToken(): string {
-    return TokenHelper.getToken();
+    return CookieHelper.getToken();
   }
 }

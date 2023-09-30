@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import {
   ButtonsModule,
   CalendarModule,
-  HeaderModule
+  HeaderModule,
+  LoadingModule,
+  ToasterModule,
+  AvailableDriversModule,
+  DriverCardModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -23,10 +26,15 @@ import {
   CancelTripComponent,
   ProgramTripComponent,
   AddressComponent,
-  NewAddressComponent
+  NewAddressComponent,
+  AwaitingTripComponent,
+  DriverArrivedComponent,
+  FinishTripComponent,
+  TripDetailComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
+import { TravelingComponent } from './containers/traveling/traveling.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +50,12 @@ import { AddressMutations } from './services';
     CancelTripComponent,
     ProgramTripComponent,
     AddressComponent,
-    NewAddressComponent
+    NewAddressComponent,
+    AwaitingTripComponent,
+    DriverArrivedComponent,
+    TravelingComponent,
+    FinishTripComponent,
+    TripDetailComponent
   ],
   imports: [
     CommonModule,
@@ -54,10 +67,13 @@ import { AddressMutations } from './services';
     FormsModule,
     MaterialModule,
     IonicModule,
-    CalendarModule
+    CalendarModule,
+    LoadingModule,
+    ToasterModule,
+    DriverCardModule,
+    AvailableDriversModule
   ],
   providers: [
-    NativeGeocoder,
     AddressMutations
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

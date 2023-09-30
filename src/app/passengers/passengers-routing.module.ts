@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Role } from '../core/enums';
-import { AuthGuard, RoleGuard } from '../core/guards';
+import { AuthGuard } from '../core/guards';
 import {
   ExperiencesComponent,
   HomeComponent,
@@ -15,13 +15,18 @@ import {
   CancelTripComponent,
   ProgramTripComponent,
   AddressComponent,
-  NewAddressComponent
+  NewAddressComponent,
+  AwaitingTripComponent,
+  DriverArrivedComponent,
+  FinishTripComponent,
+  TripDetailComponent
 } from './containers';
+import { TravelingComponent } from './containers/traveling/traveling.component';
 
 const routes: Routes = [{
   path: '',
   component: PassengerRouterComponent,
-  canActivate: [AuthGuard, RoleGuard],
+  canActivate: [AuthGuard],
   data: { roles: [Role.passenger] },
   children: [
     {
@@ -81,8 +86,33 @@ const routes: Routes = [{
     },
     {
       path: 'new-address',
-      title: 'NUeva Dirección',
+      title: 'Nueva Dirección',
       component: NewAddressComponent
+    },
+    {
+      path: 'awaiting-trip',
+      title: 'Esperando Conductor',
+      component: AwaitingTripComponent
+    },
+    {
+      path: 'driver-arrived',
+      title: 'Conductor afuera',
+      component: DriverArrivedComponent
+    },
+    {
+      path: 'traveling',
+      title: 'Viajando',
+      component: TravelingComponent
+    },
+    {
+      path: 'finish-trip',
+      title: 'Viaje terminado',
+      component: FinishTripComponent
+    },
+    {
+      path: 'trip-detail',
+      title: 'Detalle Viaje',
+      component: TripDetailComponent
     }
   ]
 }];
