@@ -59,7 +59,8 @@ export class TravelingComponent implements OnInit {
     this.map.setZoom(19);
   }
 
-  private trackCar(){
+  private async trackCar(){
+    this.currentCoordinates = await this.sharedData.setDefaultCoordinates();
     this.carMarker.setPosition(this.currentCoordinates);
     this.oldRoute = this.route;
     this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map, true);
