@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedDataService, WebsocketService } from 'src/app/core/services';
+import { SharedDataService, GlobalWebsocketService } from 'src/app/core/services';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { SharedDataService, WebsocketService } from 'src/app/core/services';
 export class FinishTripComponent {
   constructor(
     private _router: Router,
-    private websocket: WebsocketService,
+    private websocket: GlobalWebsocketService,
     private sharedData: SharedDataService
   ){}
 

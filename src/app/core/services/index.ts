@@ -1,3 +1,4 @@
 export * from './shared-data.service';
-export * from './websocket.service';
+export * from './global-websocket.service';
+export * from './trip-websocket.service';
 export * from './map.service';

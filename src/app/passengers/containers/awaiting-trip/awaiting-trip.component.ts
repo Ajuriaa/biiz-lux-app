@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
+import { MapService, SharedDataService, GlobalWebsocketService, TripWebsocketService } from 'src/app/core/services';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { ICoordinate } from 'src/app/core/interfaces';
@@ -29,14 +29,14 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private websocket: WebsocketService,
+    private websocket: TripWebsocketService,
     private _tripQuery: TripQueries,
     private _router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.loading = true;
-    this.websocket.connectWebSocket();
+
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
 
     const tripId = this.sharedDataService.getCurrentTrip().tripId;

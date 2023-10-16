@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
+import { MapService, SharedDataService, GlobalWebsocketService } from 'src/app/core/services';
 import { ICoordinate, IDriver, ITripInfo } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
@@ -36,7 +36,7 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
 export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
   public driverSelected = false;
-  public selectedDriver = { id: 1, coordinates: DEFAULT_COORDS };
+  public selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };
   public autocompleteCurrentAddresses: any = [];
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
@@ -49,17 +49,19 @@ export class TripComponent implements OnInit, OnDestroy {
   private currentCoordinates = DEFAULT_COORDS;
   private startCoordinates = DEFAULT_COORDS;
   private endCoordinates = DEFAULT_COORDS;
+  subscription: any;
 
 
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private websocket: WebsocketService,
+    private websocket: GlobalWebsocketService,
     private toaster: ToastComponent,
     private _router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.websocket.connectWebSocket();
     this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger);
@@ -138,7 +140,8 @@ export class TripComponent implements OnInit, OnDestroy {
   public async startTrip(): Promise<void> {
     this.loading = true;
     const passengerId = +this._getUserInfo();
-    const info : ITripInfo = {
+    const info : any = {
+      title: 'driverRequest',
       driver_id: this.selectedDriver.id,
       start_coords: this.startCoordinates,
       end_coords: this.endCoordinates,
@@ -147,13 +150,13 @@ export class TripComponent implements OnInit, OnDestroy {
     };
     this.websocket.startTrip(info);
 
-    setTimeout(() => {
-      const trip = this.sharedDataService.getCurrentTrip().passengerId;
-      const id = CookieHelper.getUserInfo();
-      if(trip === id){
+    this.subscription = this.websocket.messageSubject.subscribe((message) => {
+      if (message === 'accepted') {
         this._router.navigate(['passenger/awaiting-trip']);
+      } else {
+        this.rejectedTrip();
       }
-    }, 10000);
+    });
   }
 
   private LatLngToICoordinate(latLng: any): ICoordinate {
@@ -162,5 +165,12 @@ export class TripComponent implements OnInit, OnDestroy {
 
   private _getUserInfo(): string {
     return CookieHelper.getUserInfo();
+  }
+
+  private rejectedTrip(): void {
+    this.selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };;
+    this.driverSelected = false;
+    this.toaster.errorToast('El conductor no aceptó el viaje!');
+    this.loading = false;
   }
 }
