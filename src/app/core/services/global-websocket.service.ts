@@ -68,22 +68,20 @@ export class GlobalWebsocketService {
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const message = data.message;
-      console.log(message);
 
-      if(message.title === 'driverCoordinates'){
+      if(message?.title === 'driverCoordinates'){
         // data = {title: 'driverCoordinates', driver: driverId, lat: 1, lng: 1}
         const coords = {lat: message.lat, lng: message.lng};
-        const newDriver = {id: message.driverId, coordinates: coords};
+        const newDriver = {id: message.driver, coordinates: coords};
 
-        if (!this.drivers.some((driver) => driver.id === newDriver.id)) {
+        if (!this.drivers.some((driver) => +driver.id === +newDriver.id)) {
           this.drivers.push(newDriver);
         }
 
         this.sharedData.setDriverCoordinates(this.drivers);
       }
 
-      if(message.title === 'driverResponse' && message.passengerId === this._getPassengerId()){
-        // data = {title: 'driverResponse', passengerId: 1, answer: 'accepted'/'rejected', tripId: 0/TripId }
+      if(message?.title === 'driverResponse' && message.passengerId === +this._getPassengerId()){
         if (message.answer === 'accepted') {
           const currentTrip = { passengerId: message.passengerId, tripId: message.tripId };
           this.sharedData.setCurrentTrip(currentTrip);

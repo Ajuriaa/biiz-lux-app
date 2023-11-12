@@ -18,6 +18,8 @@ export interface ITrip {
   vehicle: IVehicle;
   startLocation: ICoordinate;
   endLocation: ICoordinate;
+  startAddress: string;
+  endAddress: string;
   startTime: string;
   fare: string;
 }

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.checkGeolocationPermissions();
-    this.websocket.getDriverCoordinates();
+    setTimeout(() => this.websocket.getDriverCoordinates(), 1000);
     setTimeout(() => this.getDriverTime(), 4000);
   }
 

@@ -146,6 +146,9 @@ export class TripComponent implements OnInit, OnDestroy {
       start_coords: this.startCoordinates,
       end_coords: this.endCoordinates,
       passenger_id: passengerId,
+      start_location: this.autocompleteCurrent.input,
+      start_time: new Date(),
+      destination_location: this.autocompleteDestination.input,
       fare: Math.floor(Math.random() * 200)
     };
     this.websocket.startTrip(info);
