@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { MapService, SharedDataService, GlobalWebsocketService } from 'src/app/core/services';
-import { ICoordinate, IDriver, ITripInfo } from 'src/app/core/interfaces';
+import { ICoordinate, IDriver } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { CookieHelper, getCloseDrivers } from 'src/app/core/helpers';
@@ -171,7 +171,7 @@ export class TripComponent implements OnInit, OnDestroy {
   }
 
   private rejectedTrip(): void {
-    this.selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };;
+    this.selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };
     this.driverSelected = false;
     this.toaster.errorToast('El conductor no aceptó el viaje!');
     this.loading = false;

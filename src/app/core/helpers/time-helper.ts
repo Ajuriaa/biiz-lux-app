@@ -1,5 +1,3 @@
-import { ICoordinate } from "../interfaces";
-
 export function convertUtcToGmtMinus6(utcString: string): string {
   const utcDate = new Date(utcString);
 

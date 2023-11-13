@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
+import { Subject } from 'rxjs';
 import { IDriver, ITripInfo } from '../interfaces';
 import { CookieHelper } from '../helpers';
-import { SharedDataService } from './shared-data.service';
 import { WebsocketChannels } from '../enums';
+import { SharedDataService } from './shared-data.service';
 import { TripWebsocketService } from './trip-websocket.service';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

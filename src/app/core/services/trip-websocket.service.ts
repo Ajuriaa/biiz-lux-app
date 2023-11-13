@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
-import { SharedDataService } from './shared-data.service';
 import { WebsocketChannels } from '../enums';
+import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TripWebsocketService {
   private socket!: WebSocket;
-  private tripId: string = '';
+  private tripId = '';
 
   constructor(
     private sharedData: SharedDataService
@@ -42,7 +42,6 @@ export class TripWebsocketService {
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const message = data.message;
-      console.log('recibí: ', message);
 
       if(message.title === 'driverCoords'){
         // data = {title: 'driverCoords', driverCoords = {lat: 1, lng: 2}}

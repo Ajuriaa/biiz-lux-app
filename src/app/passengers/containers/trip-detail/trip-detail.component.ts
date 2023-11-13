@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ITrip } from '../../interfaces';
 import { TRIP } from 'src/app/core/constants';
-import { TripQueries } from '../../services';
 import { SharedDataService } from 'src/app/core/services';
 import { convertUtcToGmtMinus6 } from 'src/app/core/helpers';
+import { TripQueries } from '../../services';
+import { ITrip } from '../../interfaces';
 
 @Component({
   selector: 'app-trip-detail',
@@ -25,7 +25,7 @@ export class TripDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const tripId = this.sharedData.getCurrentTrip().tripId;
-    this.tripQuery.getTrip(117).subscribe(({ data }) => {
+    this.tripQuery.getTrip(+tripId).subscribe(({ data }) => {
       if (data) {
         this.trip = data.trip;
         this.loading = false;
