@@ -21,5 +21,6 @@ export interface ITrip {
   startAddress: string;
   endAddress: string;
   startTime: string;
+  endTime?: string;
   fare: string;
 }

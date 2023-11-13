@@ -42,6 +42,7 @@ export class TripWebsocketService {
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const message = data.message;
+      console.log('recibí: ', message);
 
       if(message.title === 'driverCoords'){
         // data = {title: 'driverCoords', driverCoords = {lat: 1, lng: 2}}

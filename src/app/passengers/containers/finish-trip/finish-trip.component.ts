@@ -17,7 +17,6 @@ export class FinishTripComponent {
 
   public tripDetails(): void {
     this.websocket.unsubscribe();
-    this.sharedData.resetData();
     this._router.navigate(['/passenger/trip-detail']);
   }
 }

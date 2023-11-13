@@ -11,6 +11,11 @@ export const tripQuery: DocumentNode = gql`
     trip(tripId: $tripId) {
       id
       fare
+      startAddress
+      endAddress
+      passenger {
+        shortName
+      }
       startLocation {
         lat
         lng
@@ -19,8 +24,12 @@ export const tripQuery: DocumentNode = gql`
         lat
         lng
       }
+      startAddress
+      startTime
+      endAddress
+      endTime
       passenger {
-      id
+        id
       }
     }
   }

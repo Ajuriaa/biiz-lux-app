@@ -30,15 +30,14 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     private sharedDataService: SharedDataService,
     private mapService: MapService,
     private websocket: TripWebsocketService,
+    private globalSocket: GlobalWebsocketService,
     private _tripQuery: TripQueries,
     private _router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
     this.loading = true;
-
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
-
     const tripId = this.sharedDataService.getCurrentTrip().tripId;
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));
     this.trip = queryResponse.data.trip;
@@ -49,7 +48,7 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
       this.loading = false;
       this.driverMarker = this.mapService.addMarker(this.sharedDataService.getDriverCoord(), this.map, MarkerUrl.driver);
       this.route = this.mapService.renderRoute(this.sharedDataService.getDriverCoord(), this.currentCoordinates, this.map);
-    }, 5000);
+    }, 3000);
     this.interval = setInterval(() => {
       this.trackDriver(this.sharedDataService.getDriverCoord());
       this.driverArrived();

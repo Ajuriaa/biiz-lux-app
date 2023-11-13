@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
-import { MapService, SharedDataService } from 'src/app/core/services';
+import { MapService, SharedDataService, TripWebsocketService } from 'src/app/core/services';
 import { firstValueFrom } from 'rxjs';
 import { MarkerUrl } from 'src/app/core/enums';
 import { TripQueries } from '../../services';
@@ -29,12 +29,14 @@ export class TravelingComponent implements OnInit {
     private sharedData: SharedDataService,
     private mapService: MapService,
     private _tripQuery: TripQueries,
+    private tripSocket: TripWebsocketService,
     private _router: Router
   ){}
 
   async ngOnInit() {
     this.currentCoordinates = await this.sharedData.setDefaultCoordinates();
-    const tripId = this.sharedData.getCurrentTrip().tripId;
+    const tripId =  this.sharedData.getCurrentTrip().tripId;
+    this.tripSocket.connectWebSocket(tripId.toString());
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));
     this.trip = queryResponse.data.trip;
     this.endCoordinates = {lat: +this.trip.endLocation.lat, lng: +this.trip.endLocation.lng};
@@ -62,9 +64,9 @@ export class TravelingComponent implements OnInit {
   private async trackCar(){
     this.currentCoordinates = await this.sharedData.setDefaultCoordinates();
     this.carMarker.setPosition(this.currentCoordinates);
-    this.oldRoute = this.route;
-    this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map, true);
-    this.oldRoute.setMap(null);
+    // this.oldRoute = this.route;
+    // this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map, true);
+    // this.oldRoute.setMap(null);
     this.finishTrip();
   }
 
