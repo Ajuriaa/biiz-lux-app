@@ -1,14 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
-import { ITrip } from 'src/app/passengers/interfaces';
-
-const IMAGE_URLS = [
-  'private.png',
-  'trendy.png',
-  'sports.png',
-  'scan.png',
-  'concerts.png'
-];
 
 @Component({
   selector: 'app-event-card',

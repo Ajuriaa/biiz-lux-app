@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DEFAULT_COORDS } from 'src/app/core/constants';
 
 @Component({
   selector: 'app-available-events',

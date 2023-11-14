@@ -38,7 +38,6 @@ import {
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
 import { TravelingComponent } from './containers/traveling/traveling.component';
-import { AvailableEventsComponent } from '../shared/available-events/components/available-events.component';
 
 @NgModule({
   declarations: [
