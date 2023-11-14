@@ -10,7 +10,9 @@ import {
   LoadingModule,
   ToasterModule,
   AvailableDriversModule,
-  DriverCardModule
+  DriverCardModule,
+  EventCardModule,
+  AvailableEventsModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -30,11 +32,13 @@ import {
   AwaitingTripComponent,
   DriverArrivedComponent,
   FinishTripComponent,
-  TripDetailComponent
+  TripDetailComponent,
+  EventsComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
 import { TravelingComponent } from './containers/traveling/traveling.component';
+import { AvailableEventsComponent } from '../shared/available-events/components/available-events.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     DriverArrivedComponent,
     TravelingComponent,
     FinishTripComponent,
-    TripDetailComponent
+    TripDetailComponent,
+    EventsComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +76,9 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     LoadingModule,
     ToasterModule,
     DriverCardModule,
-    AvailableDriversModule
+    EventCardModule,
+    AvailableDriversModule,
+    AvailableEventsModule
   ],
   providers: [
     AddressMutations

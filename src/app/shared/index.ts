@@ -8,3 +8,5 @@ export * from './toaster/toaster.module';
 export * from './loading/loading.module';
 export * from './available-drivers/available-drivers.module';
 export * from './driver-card/driver-card.module';
+export * from './event-card/event-card.module';
+export * from './available-events/available-events.module';
