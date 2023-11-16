@@ -36,7 +36,7 @@ export class TripDetailComponent implements OnInit {
   }
 
   public goHome(){
-    this.sharedData.resetData();
+    this.sharedData.resetCurrentTrip();
     this._router.navigate(['/passenger/home']);
   }
 }

@@ -60,12 +60,12 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   }
 
   private trackDriver(coords: ICoordinate) {
-    if(this.route){
-      this.oldRoute = this.route;
-    }
+    // if(this.route){
+    //   this.oldRoute = this.route;
+    // }
+    // this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
+    // this.oldRoute.setMap(null);
     this.driverMarker.setPosition(coords);
-    this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
-    this.oldRoute.setMap(null);
   }
 
   private driverArrived(){

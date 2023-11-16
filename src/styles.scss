@@ -7,6 +7,25 @@
        url('./assets/fonts/Gotham-Bold.otf') format('opentype');
 }
 
+// Hide all elements
+.barcode-scanner-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+// Show only the barcode scanner modal
+.barcode-scanner-modal {
+  visibility: visible;
+}
+
+@media (prefers-color-scheme: dark) {
+  .barcode-scanner-modal {
+    --background: transparent;
+    --ion-background-color: transparent;
+  }
+}
+
 :root{
   --ion-font-family: 'Gotham';
 }

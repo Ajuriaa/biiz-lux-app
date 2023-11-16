@@ -7,6 +7,7 @@ import { ToasterModule } from '../shared';
 import { MaterialModule } from '../material';
 import { LoginComponent } from './containers';
 import { AuthMutations } from './services';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,7 +17,8 @@ import { AuthMutations } from './services';
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
-    ToasterModule
+    ToasterModule,
+    IonicModule
   ],
   providers: [AuthMutations]
 })
