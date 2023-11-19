@@ -47,6 +47,6 @@ export const TRIP: ITrip = {
   startAddress: '',
   endAddress: '',
   startTime: '',
-  fare: '',
+  fare: '1.00',
 };
 

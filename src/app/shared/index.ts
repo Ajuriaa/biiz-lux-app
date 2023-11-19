@@ -10,3 +10,5 @@ export * from './available-drivers/available-drivers.module';
 export * from './driver-card/driver-card.module';
 export * from './event-card/event-card.module';
 export * from './available-events/available-events.module';
+export * from './timer/timer.module';
+export * from './current-driver-card/current-card.module';

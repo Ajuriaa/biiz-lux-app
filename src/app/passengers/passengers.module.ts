@@ -12,7 +12,8 @@ import {
   AvailableDriversModule,
   DriverCardModule,
   EventCardModule,
-  AvailableEventsModule
+  AvailableEventsModule,
+  CurrentDriverCardModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -77,7 +78,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     DriverCardModule,
     EventCardModule,
     AvailableDriversModule,
-    AvailableEventsModule
+    AvailableEventsModule,
+    CurrentDriverCardModule
   ],
   providers: [
     AddressMutations

@@ -13,10 +13,7 @@ export class MapService {
   public directionsService: google.maps.DirectionsService;
   public geocoder: google.maps.Geocoder;
 
-  constructor(
-    private sharedDataService: SharedDataService,
-    private zone: NgZone
-  )
+  constructor(private zone: NgZone)
   {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.directionsService = new google.maps.DirectionsService();
@@ -133,5 +130,25 @@ export class MapService {
         }
       });
     });
+  }
+
+  public getEstimatedTime(driverCoords: ICoordinate, currentCoordinates: ICoordinate): number {
+    const request = {
+      origin: driverCoords,
+      destination: currentCoordinates,
+      travelMode: google.maps.TravelMode.DRIVING,
+      drivingOptions: {
+        departureTime: new Date(),
+        trafficModel: google.maps.TrafficModel.PESSIMISTIC
+      }
+    };
+    this.directionsService.route(request, (result, status) => {
+      if (status == 'OK' && result) {
+        return result?.routes[0]?.legs[0]?.duration_in_traffic?.value;
+      } else {
+        return 601;
+      }
+    });
+    return 602;
   }
 }

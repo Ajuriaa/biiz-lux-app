@@ -19,11 +19,12 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   public driver = { id: 1, coordinates: DEFAULT_COORDS };
   public trip: ITrip = TRIP;
   public loading = false;
+  public time = 600;
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates: ICoordinate = DEFAULT_COORDS;
   private interval: any = 0;
   private driverMarker = new google.maps.Marker();
-  private route!: google.maps.DirectionsRenderer;
+  private route: any;
   private oldRoute!: google.maps.DirectionsRenderer;
 
   constructor(
@@ -36,7 +37,8 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.loading = true;
+    this.loading = false;
+    this.time = this.sharedDataService.getEta();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
     const tripId = this.sharedDataService.getCurrentTrip().tripId;
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));

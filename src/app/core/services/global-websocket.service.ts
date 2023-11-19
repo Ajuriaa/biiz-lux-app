@@ -84,6 +84,8 @@ export class GlobalWebsocketService {
       if(message?.title === 'driverResponse' && message.passengerId === +this._getPassengerId()){
         if (message.answer === 'accepted') {
           const currentTrip = { passengerId: message.passengerId, tripId: message.tripId };
+          this.sharedData.setDriverCoord(message.driverCoords);
+          this.sharedData.setEta();
           this.sharedData.setCurrentTrip(currentTrip);
           this.tripSocket.connectWebSocket(currentTrip.tripId);
           this.unsubscribe();
