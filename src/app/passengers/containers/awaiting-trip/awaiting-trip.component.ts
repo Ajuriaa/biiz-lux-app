@@ -54,7 +54,7 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       this.trackDriver(this.sharedDataService.getDriverCoord());
       this.driverArrived();
-    }, 1000);
+    }, 500);
   }
 
   ngOnDestroy() {
@@ -62,11 +62,11 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   }
 
   private trackDriver(coords: ICoordinate) {
-    // if(this.route){
-    //   this.oldRoute = this.route;
-    // }
-    // this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
-    // this.oldRoute.setMap(null);
+    if(this.route){
+      this.oldRoute = this.route;
+    }
+    this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
+    this.oldRoute.setMap(null);
     this.driverMarker.setPosition(coords);
   }
 

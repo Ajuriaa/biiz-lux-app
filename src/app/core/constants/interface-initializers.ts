@@ -1,4 +1,4 @@
-import { IAddress, ITrip, IUser, IUserable, IVehicle } from "src/app/passengers/interfaces";
+import { IAddress, IEvent, ITrip, IUser, IUserable, IVehicle } from "src/app/passengers/interfaces";
 import { ICoordinate } from "../interfaces";
 
 export const VEHICLE: IVehicle = {
@@ -36,6 +36,16 @@ export const ADDRESS: IAddress = {
 export const DEFAULT_COORDS: ICoordinate = {
   lat: 0,
   lng: 0
+};
+
+export const EVENT: IEvent = {
+  id: '',
+  name: '',
+  locationCoordinates: DEFAULT_COORDS,
+  addressName: '',
+  category: '',
+  description: '',
+  imageUrl: ''
 };
 
 export const TRIP: ITrip = {

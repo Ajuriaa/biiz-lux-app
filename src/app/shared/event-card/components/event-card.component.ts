@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Events } from 'src/app/core/enums';
 
 @Component({
   selector: 'app-event-card',
@@ -6,10 +7,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./event-card.component.scss']
 })
 export class EventCardComponent {
-  @Input() public event = { id: 0, label: 'trendy' };
+  @Input() public event = '';
   @Input() public unique = false;
 
   public imageUrl(name: string): string {
-    return `https://biiz-bucket.s3.us-east-2.amazonaws.com/${name}.png`;
+    const event = Events[name as keyof typeof Events];
+    return `https://biiz-bucket.s3.us-east-2.amazonaws.com/${event}.png`;
   }
 }

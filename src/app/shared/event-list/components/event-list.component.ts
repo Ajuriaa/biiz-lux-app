@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EVENT } from 'src/app/core/constants';
 import { Events } from 'src/app/core/enums';
+import { IEvent } from 'src/app/passengers/interfaces';
 
 const EVENTS = Object.keys(Events);
 @Component({
-  selector: 'app-available-events',
-  templateUrl: './available-events.component.html',
-  styleUrls: ['./available-events.component.scss']
+  selector: 'app-event-list',
+  templateUrl: './event-list.component.html',
+  styleUrls: ['./event-list.component.scss']
 })
-export class AvailableEventsComponent {
+export class EventListComponent {
   public events = EVENTS;
-  @Input() public selectedEvent = EVENT;
-  @Input() public isSelected = false;
+  @Input() public eventList: IEvent[] = [];
   @Output() public selected = new EventEmitter();
 }

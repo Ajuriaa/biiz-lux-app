@@ -12,3 +12,5 @@ export * from './event-card/event-card.module';
 export * from './available-events/available-events.module';
 export * from './timer/timer.module';
 export * from './current-driver-card/current-card.module';
+export * from './event-detail-card/event-detail.module';
+export * from './event-list/event-list.module';

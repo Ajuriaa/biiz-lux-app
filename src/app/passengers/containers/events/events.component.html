@@ -4,7 +4,7 @@
   <div class="map" #map></div>
   <div class="header-wrapper">
     <app-shared-header class="header"></app-shared-header>
-    <div class="event-info" *ngIf="selectedEvent.id !== 0">
+    <div class="event-info">
       <div class="img">
         <img class="logo" src="assets/images/location-arrows.svg">
       </div>
@@ -21,49 +21,36 @@
         ></ion-input>
       </div>
     </div>
-    <div (click)="selectConcert(1)" class="concert-wrapper" *ngIf="selectedEvent.label === 'concerts' && selectedConcert !== 2">
-      <p class="concert-name"> CONCIERTO CAROL G 17/7 </p>
-      <div class="concert-info">
-        <p class="concert-place" [ngClass]="{'selected' : selectedConcert === 1}"> ESTADIO CHOCHI SOSA </p>
-        <p class="concert-fare"> IDA Y VUELTA L.360.00 </p>
-      </div>
-    </div>
-    <div (click)="selectConcert(2)" class="concert-wrapper" *ngIf="selectedEvent.label === 'concerts' && selectedConcert !== 1">
-      <p class="concert-name"> CONCIERTO CAROL G 17/7 </p>
-      <div class="concert-info">
-        <p class="concert-place" [ngClass]="{'selected' : selectedConcert === 2}"> ESTADIO CHOCHI SOSA </p>
-        <p class="concert-fare"> IDA Y VUELTA L.360.00 </p>
-      </div>
-    </div>
-    <div (click)="selectMatch()" class="concert-wrapper" *ngIf="selectedEvent.label === 'sports'">
-      <p class="concert-name"> OLIMPIA VS MOTAGUA </p>
-      <div class="concert-info">
-        <p class="concert-place" [ngClass]="{'selected' : matchSelected}"> ESTADIO JOSE DE LA PAZ UCLES </p>
-        <p class="concert-fare"> IDA Y VUELTA L.400.00 </p>
-      </div>
-    </div>
-    <div (click)="scan()" class="scan-wrapper" *ngIf="selectedEvent.label === 'scan'">
-      <p class="concert-name"> ESCANEAR CODIGO </p>
-      <ion-icon class="camera" name="camera"></ion-icon>
-    </div>
+    <app-event-list
+      [@inAnimation]
+      class="event"
+      (selected)="selectEvent($event)"
+      [eventList]="filteredEvents"
+      *ngIf="eventSelected && !singleEventSelected"
+    >
+    </app-event-list>
+    <app-event-detail
+      [@inAnimation]
+      class="event"
+      [event]="event"
+      [selected]="true"
+      *ngIf="singleEventSelected"
+    >
+    </app-event-detail>
   </div>
   <div class="button-container">
     <div [@inAnimation] class="events-container" *ngIf="!eventSelected">
-      <app-available-events [events]="events" (selected)="selectEvent($event)"></app-available-events>
+      <app-available-events (selected)="selectEventType($event)"></app-available-events>
     </div>
     <div [@inAnimation] *ngIf="eventSelected && !hideCard">
-      <ion-icon (click)="eventList()" class="icon" name="arrow-back-circle"></ion-icon>
+      <ion-icon (click)="backToEvents()" class="icon" name="arrow-back-circle"></ion-icon>
       <app-event-card [event]="selectedEvent" [unique]="true"></app-event-card>
     </div>
-    <div class="karol" [@inAnimation] *ngIf="eventSelected && selectedConcert !== 0">
-      <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/karol.png"/>
-      <div class="black-box">
-        <p class="label">REST. VALOR APROX</p>
-        <p class="label">DESCRIPCION</p>
-        <p class="msg inter"> {{ message }} </p>
-      </div>
+    <div [@inAnimation] class="event-details inter" *ngIf="singleEventSelected">
+      <img class="event-image" [src]="event.imageUrl"/>
+      <p class="event-description"> {{ event.description }} </p>
     </div>
-    <app-primary-button (btnClick)="startTrip(selectedEvent)" class="confirm">
+    <app-primary-button class="confirm" (btnClick)="startTrip(event)">
       <p class="text">CONFIRMAR DESTINO</p>
       <img class="button-image" [src]="imageUrl">
     </app-primary-button>

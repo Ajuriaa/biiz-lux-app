@@ -1,0 +1,4 @@
+
+<div class="cards" *ngFor="let event of eventList" (click)="selected.emit(event)">
+  <app-event-detail class="card" [event]="event"></app-event-detail>
+</div>
