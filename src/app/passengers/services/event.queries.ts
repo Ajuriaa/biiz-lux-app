@@ -9,6 +9,7 @@ import { IEventResponse } from '../interfaces';
 export const allEventsQuery: DocumentNode = gql`
   query allEventsQuery {
     allEvents {
+      id
       name
       addressName
       category

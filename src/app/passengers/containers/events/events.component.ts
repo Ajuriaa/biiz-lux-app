@@ -4,7 +4,7 @@ import { ICoordinate, IDriver } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS, EVENT } from 'src/app/core/constants';
 import { Events, MarkerUrl } from 'src/app/core/enums';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { BarcodeScanner, BarcodeFormat, LensFacing } from '@capacitor-mlkit/barcode-scanning';
+import { BarcodeScanner, BarcodeFormat, LensFacing, Barcode } from '@capacitor-mlkit/barcode-scanning';
 import { IEvent } from '../../interfaces';
 import { firstValueFrom } from 'rxjs';
 import { EventQueries } from '../../services';
@@ -46,6 +46,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   public event = EVENT;
   public filteredEvents: IEvent[] = [];
   public singleEventSelected = false;
+  public barcodes = '';
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
 
@@ -65,6 +66,7 @@ export class EventsComponent implements OnInit, OnDestroy {
         this.allEvents = data.allEvents;
       }
     });
+    await BarcodeScanner.installGoogleBarcodeScannerModule();
   }
 
   ngOnDestroy(): void {
@@ -105,18 +107,22 @@ export class EventsComponent implements OnInit, OnDestroy {
     this.eventName = event.addressName;
   }
 
-  public async scan(): Promise<void> {
-    this.scanOpen = true;
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.requestPermissions();
+      return;
+    }
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes = barcodes[0].rawValue;
 
-    // Add the `barcodeScanned` listener
-    const listener = await BarcodeScanner.addListener(
-      'barcodeScanned',
-      async result => {
-        console.log(result.barcode);
-      },
-    );
+    this.eventSelected = true;
+    const event = this.allEvents.find(event => event.id === this.barcodes) || EVENT;
+    this.selectEvent(event);
+  }
 
-    // Start the barcode scanner
-    await BarcodeScanner.startScan();
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
   }
 }

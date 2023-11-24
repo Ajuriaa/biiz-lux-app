@@ -21,6 +21,13 @@
         ></ion-input>
       </div>
     </div>
+    <ion-icon
+      (click)="scan()"
+      class="scan"
+      name="camera"
+      *ngIf="selectedEvent === 'escanear' && !singleEventSelected"
+    >
+    </ion-icon>
     <app-event-list
       [@inAnimation]
       class="event"
