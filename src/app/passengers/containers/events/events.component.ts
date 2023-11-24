@@ -98,6 +98,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   public backToEvents(): void {
     this.eventSelected = false;
     this.singleEventSelected = false;
+    this.selectedEvent = '';
   }
 
   public selectEvent(event: IEvent): void {
