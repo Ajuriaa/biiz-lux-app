@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-customer-service',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./customer-service.component.scss']
 })
 export class CustomerServiceComponent {
+  constructor(private _routerService: RouterService) {}
 
+  public goToPath(path: string): void {
+    this._routerService.transition(path);
+  }
 }

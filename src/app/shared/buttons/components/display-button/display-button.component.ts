@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-display-button',
@@ -9,4 +10,12 @@ export class DisplayButtonComponent {
   @Input() message = '';
   @Input() link = '';
   @Input() title = '';
+
+  constructor(private _routerService: RouterService) { }
+
+  public goToPath(): void {
+    if (this.link !== '') {
+      this._routerService.transition(this.link);
+    }
+  }
 }

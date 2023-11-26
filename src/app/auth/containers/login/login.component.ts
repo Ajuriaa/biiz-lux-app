@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuard } from 'src/app/core/guards';
-import { AuthMutations } from '../../services';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ToastComponent } from 'src/app/shared/toaster';
+import { AuthMutations } from '../../services';
 
 @Component({
   selector: 'app-login',

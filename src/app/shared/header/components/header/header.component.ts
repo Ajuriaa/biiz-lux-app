@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RouterService } from 'src/app/core/services';
 import { WeatherQueries } from 'src/app/shared/services';
 
 const DEFAULT_WEATHER_IMAGE = 'assets/images/weather.svg';
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private _router: Router,
+    private _routerService: RouterService,
     private _route: ActivatedRoute,
     private _location: Location,
     private _weatherQuery: WeatherQueries
@@ -32,8 +34,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public navigate(path: string): void {
-    this._router.navigateByUrl('passenger/' + path);
+  public goToPath(path: string): void {
+    this._routerService.transition(path);
   }
 
   public isProfileRoute(): boolean {
@@ -41,6 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public goToPreviousPage(): void {
+    this._routerService.animate();
     this._location.back();
   }
 

@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EVENT } from 'src/app/core/constants';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Events } from 'src/app/core/enums';
 import { IEvent } from 'src/app/passengers/interfaces';
 

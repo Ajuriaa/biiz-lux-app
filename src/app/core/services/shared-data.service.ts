@@ -114,7 +114,7 @@ export class SharedDataService {
   }
 
   public setEta(): void {
-    this.eta = this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);;
+    this.eta = this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);
   }
 
   public getEta(): number {

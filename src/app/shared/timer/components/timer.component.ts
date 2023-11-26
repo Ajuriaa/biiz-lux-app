@@ -16,7 +16,7 @@ export class TimerComponent implements OnInit {
     if(this.startTimerOnInit) {
       this.startTimer();
     }
-    this.calculateEndTime(this.tripTime)
+    this.calculateEndTime(this.tripTime);
   }
 
   private startTimer() {

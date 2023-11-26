@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MapService, SharedDataService } from 'src/app/core/services';
-import { ICoordinate, IDriver } from 'src/app/core/interfaces';
+import { IDriver } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS, EVENT } from 'src/app/core/constants';
 import { Events, MarkerUrl } from 'src/app/core/enums';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { BarcodeScanner, BarcodeFormat, LensFacing, Barcode } from '@capacitor-mlkit/barcode-scanning';
+import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { IEvent } from '../../interfaces';
-import { firstValueFrom } from 'rxjs';
 import { EventQueries } from '../../services';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';

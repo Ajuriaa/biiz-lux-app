@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
-import { MapService, SharedDataService, TripWebsocketService } from 'src/app/core/services';
+import { MapService, RouterService, SharedDataService, TripWebsocketService } from 'src/app/core/services';
 import { firstValueFrom } from 'rxjs';
 import { MarkerUrl } from 'src/app/core/enums';
 import { TripQueries } from '../../services';
@@ -13,7 +12,7 @@ import { ITrip } from '../../interfaces';
   templateUrl: './traveling.component.html',
   styleUrls: ['./traveling.component.scss']
 })
-export class TravelingComponent implements OnInit {
+export class TravelingComponent implements OnInit, OnDestroy {
   public loading = false;
   public map!: google.maps.Map;
   public trip: ITrip = TRIP;
@@ -30,7 +29,7 @@ export class TravelingComponent implements OnInit {
     private mapService: MapService,
     private _tripQuery: TripQueries,
     private tripSocket: TripWebsocketService,
-    private _router: Router
+    private _routerService: RouterService
   ){}
 
   async ngOnInit() {
@@ -56,6 +55,10 @@ export class TravelingComponent implements OnInit {
     }, 1000);
   }
 
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
   public center(): void {
     this.map.panTo(this.currentCoordinates);
     this.map.setZoom(19);
@@ -64,15 +67,15 @@ export class TravelingComponent implements OnInit {
   private async trackCar(){
     this.currentCoordinates = await this.sharedData.setDefaultCoordinates();
     this.carMarker.setPosition(this.currentCoordinates);
-    // this.oldRoute = this.route;
-    // this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map, true);
-    // this.oldRoute.setMap(null);
+    this.oldRoute = this.route;
+    this.route = this.mapService.renderRoute(this.currentCoordinates, this.endCoordinates, this.map, true);
+    this.oldRoute.setMap(null);
     this.finishTrip();
   }
 
   private finishTrip(): void {
     if(this.sharedData.getFinishTrip()){
-      this._router.navigate(['/passenger/finish-trip']);
+      this._routerService.transition('/passenger/finish-trip');
     }
   }
 }

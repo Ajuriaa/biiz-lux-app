@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TRIP } from 'src/app/core/constants';
-import { SharedDataService } from 'src/app/core/services';
+import { RouterService, SharedDataService } from 'src/app/core/services';
 import { convertUtcToGmtMinus6 } from 'src/app/core/helpers';
 import { TripQueries } from '../../services';
 import { ITrip } from '../../interfaces';
@@ -18,7 +17,7 @@ export class TripDetailComponent implements OnInit {
   public endTime = '00:00';
 
   constructor(
-    private _router: Router,
+    private _routerService: RouterService,
     private tripQuery: TripQueries,
     private sharedData: SharedDataService
   ){}
@@ -37,6 +36,6 @@ export class TripDetailComponent implements OnInit {
 
   public goHome(){
     this.sharedData.resetCurrentTrip();
-    this._router.navigate(['/passenger/home']);
+    this._routerService.transition('/passenger/home');
   }
 }

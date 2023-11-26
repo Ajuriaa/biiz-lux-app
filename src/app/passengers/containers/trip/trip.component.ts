@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { MapService, SharedDataService, GlobalWebsocketService } from 'src/app/core/services';
+import { MapService, SharedDataService, GlobalWebsocketService, RouterService } from 'src/app/core/services';
 import { ICoordinate, IDriver } from 'src/app/core/interfaces';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { CookieHelper, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
-import { Router } from '@angular/router';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -57,7 +56,7 @@ export class TripComponent implements OnInit, OnDestroy {
     private mapService: MapService,
     private websocket: GlobalWebsocketService,
     private toaster: ToastComponent,
-    private _router: Router
+    private _routerService: RouterService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -155,7 +154,7 @@ export class TripComponent implements OnInit, OnDestroy {
 
     this.subscription = this.websocket.messageSubject.subscribe((message) => {
       if (message === 'accepted') {
-        this._router.navigate(['passenger/awaiting-trip']);
+        this._routerService.transition('passenger/awaiting-trip');
       } else {
         this.rejectedTrip();
       }

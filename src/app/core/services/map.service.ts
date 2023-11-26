@@ -2,7 +2,6 @@ import { ElementRef, Injectable, NgZone } from '@angular/core';
 import { ICoordinate } from '../interfaces';
 import { getCloseDrivers } from '../helpers';
 import { DriverMarkerType, MarkerUrl, PassengerMarkerType } from '../enums';
-import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root',

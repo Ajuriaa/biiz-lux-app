@@ -1,10 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService, GlobalWebsocketService, TripWebsocketService } from 'src/app/core/services';
+import { MapService, SharedDataService, RouterService } from 'src/app/core/services';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { firstValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
 import { TripQueries } from '../../services';
 import { ITrip } from '../../interfaces';
 
@@ -30,10 +29,8 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private websocket: TripWebsocketService,
-    private globalSocket: GlobalWebsocketService,
     private _tripQuery: TripQueries,
-    private _router: Router
+    private _routerService: RouterService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -72,7 +69,7 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
 
   private driverArrived(){
     if(this.sharedDataService.getDriverArrived()){
-      this._router.navigate(['passenger/driver-arrived']);
+      this._routerService.transition('passenger/driver-arrived');
     }
   }
 }

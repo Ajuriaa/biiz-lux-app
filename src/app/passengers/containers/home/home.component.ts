@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
-import { SharedDataService, GlobalWebsocketService } from 'src/app/core/services';
+import { SharedDataService, GlobalWebsocketService, RouterService } from 'src/app/core/services';
 import { getClosestDriver } from 'src/app/core/helpers';
 
 @Component({
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private sharedDataService: SharedDataService,
     private websocket: GlobalWebsocketService,
+    private _routerService: RouterService
     ) {
       this.websocket.connectWebSocket();
       this.directionsService = new google.maps.DirectionsService();
@@ -26,6 +27,9 @@ export class HomeComponent implements OnInit {
     setTimeout(() => this.getDriverTime(), 4000);
   }
 
+  public goToPath(path: string): void {
+    this._routerService.transition(path);
+  }
 
   public test(){
     this.getDriverTime();

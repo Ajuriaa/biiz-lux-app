@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
+import { TRIP } from 'src/app/core/constants';
 import { ITrip } from 'src/app/passengers/interfaces';
 
 @Component({

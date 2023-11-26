@@ -1,4 +1,4 @@
-<section class="display-container" [routerLink]="link !== '' ? link : null">
+<section class="display-container" (click)="goToPath()">
   <div class="title">{{ title }}</div>
   <app-white-button [message]="message"></app-white-button>
 </section>

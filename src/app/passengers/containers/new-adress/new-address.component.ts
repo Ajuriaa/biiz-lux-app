@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService } from 'src/app/core/services';
-import { Router } from '@angular/router';
+import { MapService, RouterService, SharedDataService } from 'src/app/core/services';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { AddressMutations } from '../../services';
@@ -30,7 +29,7 @@ export class NewAddressComponent implements OnInit, OnDestroy {
   constructor(
     private sharedDataService: SharedDataService,
     private _addressMutation: AddressMutations,
-    private _router: Router,
+    private _routerService: RouterService,
     private mapService: MapService
   ){}
 
@@ -89,7 +88,7 @@ export class NewAddressComponent implements OnInit, OnDestroy {
     const mutationRespone = await this._addressMutation.createAddress(address);
 
     if (mutationRespone) {
-      this._router.navigate(['/passenger/address']);
+      this._routerService.transition('/passenger/address');
     }
   }
 }
