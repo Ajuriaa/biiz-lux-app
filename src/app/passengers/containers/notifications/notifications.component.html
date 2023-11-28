@@ -1,0 +1,15 @@
+<app-shared-header></app-shared-header>
+
+<ion-content>
+  <div class="container">
+    <app-profile-header class="profile"></app-profile-header>
+    <div class="notification-wrapper">
+      <img class="notification" *ngFor="let notification of notifications" [src]="notification.imageUrl"/>
+    </div>
+    <app-primary-button class="button">INTRODUCIR CODIGO</app-primary-button>
+  </div>
+
+  <ng-template #EmptyNotifications>
+    <p>YOU HAVE NO NOTIFICATIONS</p>
+  </ng-template>
+</ion-content>
