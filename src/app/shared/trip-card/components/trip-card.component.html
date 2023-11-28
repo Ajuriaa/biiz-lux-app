@@ -1,0 +1,30 @@
+<div class="card-wrapper">
+  <p class="receipt inter">TKLS#4428239471</p>
+  <div class="insurance">
+    <p class="label">ASEGURADO POR</p>
+    <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/lafise.png"/>
+  </div>
+  <div class="report-wrapper">
+    <img class="qr" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/qr-finshed.png"/>
+    <p class="label">REPORTAR</p>
+  </div>
+  <div class="driver-wrapper">
+    <p class="name inter"> {{ trip.driver.shortName }} </p>
+    <p class="label">CONDUCTOR</p>
+  </div>
+  <div class="trip-info">
+    <p class="fare">L.{{ trip.fare }} </p>
+    <p [ngClass]="{'green' : this.status === 'VIAJANDO'}" class="status">
+      {{ this.status }}
+    </p>
+    <p class="addresses"> {{ startAddress }} - {{ endAddress }} </p>
+    <div class="time-container">
+      <p class="start-time"> {{ startTime }} </p>
+      <p class="end-time"> {{ endTime }} </p>
+    </div>
+    <div class="credit-card">
+      <p class="card inter">**** 8295</p>
+      <img src="https://biiz-bucket.s3.us-east-2.amazonaws.com/mastercard.png"/>
+    </div>
+  </div>
+</div>

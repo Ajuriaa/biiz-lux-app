@@ -21,7 +21,8 @@ import {
   FinishTripComponent,
   TripDetailComponent,
   EventsComponent,
-  AddCardComponent
+  AddCardComponent,
+  UserTripsComponent
 } from './containers';
 import { TravelingComponent } from './containers/traveling/traveling.component';
 
@@ -125,6 +126,11 @@ const routes: Routes = [{
       path: 'add-card',
       title: 'Agregar Tarjeta',
       component: AddCardComponent
+    },
+    {
+      path: 'my-trips',
+      title: 'Mis Viajes',
+      component: UserTripsComponent
     }
   ]
 }];

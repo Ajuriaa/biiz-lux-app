@@ -17,3 +17,4 @@ export * from './finish-trip/finish-trip.component';
 export * from './trip-detail/trip-detail.component';
 export * from './events/events.component';
 export * from './add-card/add-card.component';
+export * from './my-trips/my-trips.component';

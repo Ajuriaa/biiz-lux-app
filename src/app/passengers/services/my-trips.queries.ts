@@ -4,31 +4,22 @@ import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode, ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
 import { CookieHelper } from 'src/app/core/helpers';
-import { ITripResponse } from '../interfaces';
+import { IUserTripsResponse } from '../interfaces';
 
-export const tripQuery: DocumentNode = gql`
-  query trip($tripId: Int!) {
-    trip(tripId: $tripId) {
+export const userTripsQuery: DocumentNode = gql`
+  query trips {
+    trips {
       id
-      fare
+      status
+      startTime
       startAddress
+      endTime
       endAddress
-      passenger {
+      driver {
         id
         shortName
       }
-      startLocation {
-        lat
-        lng
-      }
-      endLocation {
-        lat
-        lng
-      }
-      startAddress
-      startTime
-      endAddress
-      endTime
+      fare
     }
   }
 `;
@@ -36,15 +27,12 @@ export const tripQuery: DocumentNode = gql`
 @Injectable({
   providedIn: 'root'
 })
-export class TripQueries {
+export class MyTripsQueries {
   constructor(private _apollo: Apollo) {}
 
-  public getTrip(tripId: number): Observable<ApolloQueryResult<ITripResponse>> {
-    return this._apollo.watchQuery<ITripResponse>({
-      query: tripQuery,
-      variables: {
-        tripId
-      },
+  public getTrips(): Observable<ApolloQueryResult<IUserTripsResponse>> {
+    return this._apollo.watchQuery<IUserTripsResponse>({
+      query: userTripsQuery,
       context: {
         headers: new HttpHeaders().set('Authorization', this._getToken())
       },

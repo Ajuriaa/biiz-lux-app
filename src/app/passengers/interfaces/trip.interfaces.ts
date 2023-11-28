@@ -15,7 +15,7 @@ export interface IVehicle {
 export interface ITrip {
   passenger: IUserable;
   driver: IUserable;
-  vehicle: IVehicle;
+  vehicle?: IVehicle;
   startLocation: ICoordinate;
   endLocation: ICoordinate;
   startAddress: string;
@@ -23,4 +23,5 @@ export interface ITrip {
   startTime: string;
   endTime?: string;
   fare: string;
+  status: string;
 }

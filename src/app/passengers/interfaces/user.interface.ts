@@ -13,4 +13,5 @@ export interface IUserable {
   addresses?: IAddress[];
   vehicles?: IVehicle[];
   user?: IUser;
+  shortName?: string;
 }

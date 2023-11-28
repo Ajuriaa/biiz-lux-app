@@ -14,3 +14,4 @@ export * from './timer/timer.module';
 export * from './current-driver-card/current-card.module';
 export * from './event-detail-card/event-detail.module';
 export * from './event-list/event-list.module';
+export * from './trip-card/trip-card.module';

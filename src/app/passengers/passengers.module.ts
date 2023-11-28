@@ -15,7 +15,8 @@ import {
   AvailableEventsModule,
   CurrentDriverCardModule,
   EventDetailModule,
-  EventListModule
+  EventListModule,
+  TripCardModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -37,7 +38,8 @@ import {
   FinishTripComponent,
   TripDetailComponent,
   EventsComponent,
-  AddCardComponent
+  AddCardComponent,
+  UserTripsComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -64,7 +66,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     FinishTripComponent,
     TripDetailComponent,
     EventsComponent,
-    AddCardComponent
+    AddCardComponent,
+    UserTripsComponent
   ],
   imports: [
     CommonModule,
@@ -85,7 +88,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     AvailableEventsModule,
     CurrentDriverCardModule,
     EventDetailModule,
-    EventListModule
+    EventListModule,
+    TripCardModule
   ],
   providers: [
     AddressMutations

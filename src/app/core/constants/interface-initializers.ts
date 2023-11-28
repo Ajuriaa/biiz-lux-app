@@ -58,5 +58,6 @@ export const TRIP: ITrip = {
   endAddress: '',
   startTime: '',
   fare: '1.00',
+  status: ''
 };
 
