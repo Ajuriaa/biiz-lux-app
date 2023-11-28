@@ -20,7 +20,8 @@ import {
   DriverArrivedComponent,
   FinishTripComponent,
   TripDetailComponent,
-  EventsComponent
+  EventsComponent,
+  AddCardComponent
 } from './containers';
 import { TravelingComponent } from './containers/traveling/traveling.component';
 
@@ -119,6 +120,11 @@ const routes: Routes = [{
       path: 'events',
       title: 'Eventos',
       component: EventsComponent
+    },
+    {
+      path: 'add-card',
+      title: 'Agregar Tarjeta',
+      component: AddCardComponent
     }
   ]
 }];

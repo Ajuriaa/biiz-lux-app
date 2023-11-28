@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherQueries } from 'src/app/shared/services';
+import { RouterService } from 'src/app/core/services';
 import { AddressQueries } from '../../services';
 import { IAddress } from '../../interfaces';
-import { RouterService } from 'src/app/core/services';
 
 const ICON_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/plus.png';
 const LOGO_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-white.png';

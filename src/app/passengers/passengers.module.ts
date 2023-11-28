@@ -36,7 +36,8 @@ import {
   DriverArrivedComponent,
   FinishTripComponent,
   TripDetailComponent,
-  EventsComponent
+  EventsComponent,
+  AddCardComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -62,7 +63,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     TravelingComponent,
     FinishTripComponent,
     TripDetailComponent,
-    EventsComponent
+    EventsComponent,
+    AddCardComponent
   ],
   imports: [
     CommonModule,
