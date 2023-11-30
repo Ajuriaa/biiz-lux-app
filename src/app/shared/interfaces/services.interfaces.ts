@@ -1,4 +1,4 @@
-import { IUser } from "src/app/passengers/interfaces";
+import { IUser, IVehicle } from "src/app/passengers/interfaces";
 
 export interface IWeatherInfo {
   icon: string;
@@ -17,4 +17,12 @@ export interface IHomeResponse {
 
 export interface IProfileHeaderResponse {
   currentUser: IUser;
+}
+
+export interface IFareResponse {
+  fare: number;
+}
+
+export interface IDriverCarResponse {
+  driverActiveCar: IVehicle;
 }

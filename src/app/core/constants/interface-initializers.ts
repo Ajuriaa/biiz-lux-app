@@ -3,13 +3,14 @@ import { ICoordinate } from "../interfaces";
 
 export const VEHICLE: IVehicle = {
   id: '',
-  vehicle_type: '',
+  vehicleType: '',
   model: '',
   plate: '',
   year: 0,
   color: '',
   registration: '',
-  registration_expiration_date: ''
+  registrationExpirationDate: '',
+  imageUrl: ''
 };
 
 export const USERABLE: IUserable = {

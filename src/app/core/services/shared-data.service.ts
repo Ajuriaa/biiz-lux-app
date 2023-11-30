@@ -14,7 +14,7 @@ interface ICurrentTrip {
 export class SharedDataService {
   private coordinates = DEFAULT_COORDS;
   private closeDriversCoordinates: ICoordinate[] = [];
-  private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS}];
+  private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
   private marker = new google.maps.Marker();
   private eta = 0;
   private destinationMarker = new google.maps.Marker();
@@ -22,6 +22,10 @@ export class SharedDataService {
   private driverCoords: ICoordinate = DEFAULT_COORDS;
   private driverArrived = false;
   private tripFinished = false;
+  private batteryLevel = 0;
+  private globalEta = 0;
+  private globalDistance = 0;
+  private passenderCoords = DEFAULT_COORDS;
 
   constructor(private mapService: MapService) {}
 
@@ -101,7 +105,7 @@ export class SharedDataService {
   public resetData(): void {
     this.coordinates = DEFAULT_COORDS;
     this.closeDriversCoordinates = [];
-    this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS}];
+    this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
     this.marker = new google.maps.Marker();
     this.destinationMarker = new google.maps.Marker();
     this.driverCoords = DEFAULT_COORDS;
@@ -113,11 +117,43 @@ export class SharedDataService {
     this.currentTrip = {passengerId: '0', tripId: '0'};
   }
 
-  public setEta(): void {
-    this.eta = this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);
+  public async setEta(): Promise<void> {
+    this.eta = await this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);
   }
 
   public getEta(): number {
     return this.eta;
+  }
+
+  public setBatteryLevel(level: number): void {
+    this.batteryLevel = level;
+  }
+
+  public getBatteryLevel(): number {
+    return this.batteryLevel;
+  }
+
+  public setGlobalEta(eta: number): void {
+    this.globalEta = eta;
+  }
+
+  public getGlobalEta(): number {
+    return this.globalEta;
+  }
+
+  public setGlobalDistance(distance: number): void {
+    this.globalDistance = distance;
+  }
+
+  public getGlobalDistance(): number {
+    return this.globalDistance;
+  }
+
+  public setPassengerCoords(coords: ICoordinate): void {
+    this.passenderCoords = coords;
+  }
+
+  public getPassengerCoords(): ICoordinate {
+    return this.passenderCoords;
   }
 }

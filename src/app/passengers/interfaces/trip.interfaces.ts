@@ -3,13 +3,14 @@ import { IUserable } from ".";
 
 export interface IVehicle {
   id: string;
-  vehicle_type: string;
+  vehicleType: string;
   model: string;
   plate: string;
   year: number;
   color: string;
   registration: string;
-  registration_expiration_date: string;
+  registrationExpirationDate: string;
+  imageUrl: string;
 }
 
 export interface ITrip {

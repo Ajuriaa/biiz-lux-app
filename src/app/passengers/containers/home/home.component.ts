@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { SharedDataService, GlobalWebsocketService, RouterService } from 'src/app/core/services';
 import { getClosestDriver } from 'src/app/core/helpers';
+import { Device } from '@capacitor/device';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,10 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.checkGeolocationPermissions();
+    const battery = await Device.getBatteryInfo();
     setTimeout(() => this.websocket.getDriverCoordinates(), 1000);
     setTimeout(() => this.getDriverTime(), 4000);
+    this.sharedDataService.setBatteryLevel((battery.batteryLevel || 0.5)*100);
   }
 
   public goToPath(path: string): void {

@@ -131,7 +131,7 @@ export class MapService {
     });
   }
 
-  public getEstimatedTime(driverCoords: ICoordinate, currentCoordinates: ICoordinate): number {
+  public async getEstimatedTime(driverCoords: ICoordinate, currentCoordinates: ICoordinate): Promise<number> {
     const request = {
       origin: driverCoords,
       destination: currentCoordinates,
@@ -141,13 +141,37 @@ export class MapService {
         trafficModel: google.maps.TrafficModel.PESSIMISTIC
       }
     };
+
+    return new Promise<number>((resolve, reject) => {
+      this.directionsService.route(request, (result, status) => {
+        if (status == 'OK' && result) {
+          resolve(result?.routes[0]?.legs[0]?.duration_in_traffic?.value || 0);
+        } else {
+          reject(602);
+        }
+      });
+    });
+  }
+
+
+  public async getDistance(startCoords: ICoordinate, finishCoords: ICoordinate): Promise<number> {
+    const request = {
+      origin: startCoords,
+      destination: finishCoords,
+      travelMode: google.maps.TravelMode.DRIVING,
+      drivingOptions: {
+        departureTime: new Date(),
+        trafficModel: google.maps.TrafficModel.PESSIMISTIC
+      },
+      unitSystem: google.maps.UnitSystem.METRIC
+    };
     this.directionsService.route(request, (result, status) => {
       if (status == 'OK' && result) {
-        return result?.routes[0]?.legs[0]?.duration_in_traffic?.value;
+        return result?.routes[0]?.legs[0]?.distance?.value;
       } else {
-        return 601;
+        return 600;
       }
     });
-    return 602;
+    return 600;
   }
 }

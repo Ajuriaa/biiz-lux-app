@@ -72,7 +72,7 @@ export class GlobalWebsocketService {
       if(message?.title === 'driverCoordinates'){
         // data = {title: 'driverCoordinates', driver: driverId, lat: 1, lng: 1}
         const coords = {lat: message.lat, lng: message.lng};
-        const newDriver = {id: message.driver, coordinates: coords};
+        const newDriver = {id: message.driver, coordinates: coords, eta: 0};
 
         if (!this.drivers.some((driver) => +driver.id === +newDriver.id)) {
           this.drivers.push(newDriver);

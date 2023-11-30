@@ -5,7 +5,8 @@ export interface ICoordinate {
 
 export interface IDriver {
   id: number;
-  coordinates: ICoordinate
+  coordinates: ICoordinate;
+  eta: number;
 }
 
 export interface ITripInfo {

@@ -35,7 +35,7 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
 export class TripComponent implements OnInit, OnDestroy {
   public imageUrl = IMAGE_URL;
   public driverSelected = false;
-  public selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };
+  public selectedDriver = { id: 0, coordinates: DEFAULT_COORDS, eta: 0 };
   public autocompleteCurrentAddresses: any = [];
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
@@ -127,11 +127,25 @@ export class TripComponent implements OnInit, OnDestroy {
     if(this.autocompleteDestination.input === '' || this.autocompleteCurrent.input === ''){
       return this.toaster.errorToast('Debes llenar ambas direcciones!');
     }
+    this.sharedDataService.setPassengerCoords(this.startCoordinates);
+    this.loading = true;
+    await this.getEtas();
+    await this.setTripDistance();
+    this.loading = false;
+  }
 
+  public async setTripDistance(): Promise<void> {
+    const tripDistance = await this.mapService.getDistance(this.startCoordinates, this.endCoordinates);
+    this.sharedDataService.setGlobalDistance(tripDistance);
+  }
+
+  public async getEtas(): Promise<void> {
+    const tripEstimatedTime = this.mapService.getEstimatedTime(this.startCoordinates, this.endCoordinates);
+    this.sharedDataService.setGlobalEta(await tripEstimatedTime);
     this.travelConfirmed = true;
   }
 
-  public selectDriver(driver: { id: number, coordinates: ICoordinate }): void {
+  public selectDriver(driver: { id: number, coordinates: ICoordinate, eta: 0 }): void {
     this.selectedDriver = driver;
     this.driverSelected = true;
   }
@@ -170,7 +184,7 @@ export class TripComponent implements OnInit, OnDestroy {
   }
 
   private rejectedTrip(): void {
-    this.selectedDriver = { id: 0, coordinates: DEFAULT_COORDS };
+    this.selectedDriver = { id: 0, coordinates: DEFAULT_COORDS, eta: 0 };
     this.driverSelected = false;
     this.toaster.errorToast('El conductor no aceptó el viaje!');
     this.loading = false;
