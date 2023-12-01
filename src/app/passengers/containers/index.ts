@@ -19,3 +19,4 @@ export * from './events/events.component';
 export * from './add-card/add-card.component';
 export * from './my-trips/my-trips.component';
 export * from './notifications/notifications.component';
+export * from './airport-trip/airport-trip.component';

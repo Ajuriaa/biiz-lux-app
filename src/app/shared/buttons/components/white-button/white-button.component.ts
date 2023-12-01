@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class WhiteButtonComponent {
   @Input() message = '';
   @Input() showNotification = false;
+  @Input() isGreen = false;
 }

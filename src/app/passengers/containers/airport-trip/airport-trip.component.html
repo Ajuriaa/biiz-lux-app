@@ -1,0 +1,41 @@
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
+<div class="container">
+  <div class="map" #map></div>
+  <div class="header-wrapper">
+    <app-shared-header class="header"></app-shared-header>
+    <app-primary-button (btnClick)="toggleCalendar()" class="button">SELECCIONAR FECHA Y HORA</app-primary-button>
+    <app-calendar *ngIf="showCalendar" class="calendar"></app-calendar>
+    <div class="trip-info">
+      <div class="img">
+        <img class="logo" src="assets/images/location-arrows.svg">
+      </div>
+      <div class="input-wrapper">
+        <ion-input
+          [(ngModel)]="currentAddress"
+          placeholder="Dirección actual"
+        ></ion-input>
+        <ion-input
+          [(ngModel)]="selectedAirport.name"
+          placeholder="Aeropuesto"
+          [readonly]="true"
+        ></ion-input>
+      </div>
+    </div>
+  </div>
+  <div class="buttons-container">
+    <app-primary-button
+      class="button"
+      *ngIf="!isRouteRendered"
+      (btnClick)="renderRoute()"
+    >
+      CONFIRMAR DESTINO
+    </app-primary-button>
+    <app-primary-button
+      class="button"
+      *ngIf="isRouteRendered"
+    >
+      CONFIRMAR FECHA
+    </app-primary-button>
+  </div>
+</div>

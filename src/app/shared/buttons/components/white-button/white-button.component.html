@@ -1,8 +1,8 @@
 <div class="button-container">
-  <div class="icon-container" *ngIf="showNotification"> 
+  <div class="icon-container" *ngIf="showNotification">
     <span class="material-icons-round icon">
       notifications
     </span>
   </div>
-  <div class="button">{{message}}</div>
+  <p class="button" [ngClass]="{'green' : isGreen}"> {{ message }} </p>
 </div>

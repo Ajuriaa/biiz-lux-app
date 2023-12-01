@@ -1,0 +1,60 @@
+@import 'src/app/core/sass/global';
+
+.header-wrapper {
+  @include flex-column;
+  width: 100%;
+  z-index: 2;
+
+  .header {
+    width: 100%;
+  }
+
+  .calendar {
+    margin-top: 1rem;
+  }
+}
+
+.button {
+  width: 90%;
+}
+
+.container, .map {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .buttons-container {
+    @include flex-column;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+.map {
+  position: absolute;
+}
+
+.trip-info {
+  margin: 2rem 0 0 0;
+  @include flex-center;
+  background-color: $white;
+  border-radius: 1rem;
+  width: 80%;
+  gap: 0.5rem;
+
+  .img {
+    @include flex-column;
+    justify-content: center;
+    width: 10%;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+}

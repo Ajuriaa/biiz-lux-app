@@ -23,7 +23,8 @@ import {
   EventsComponent,
   AddCardComponent,
   UserTripsComponent,
-  NotificationsComponent
+  NotificationsComponent,
+  AirportTripComponent
 } from './containers';
 import { TravelingComponent } from './containers/traveling/traveling.component';
 
@@ -137,6 +138,11 @@ const routes: Routes = [{
       path: 'notifications',
       title: 'Notificaciones',
       component: NotificationsComponent
+    },
+    {
+      path: 'airport-trip/:airport',
+      title: 'Viaje Aeropuerto',
+      component: AirportTripComponent
     }
   ]
 }];

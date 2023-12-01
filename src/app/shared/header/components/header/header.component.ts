@@ -5,7 +5,7 @@ import { RouterService } from 'src/app/core/services';
 import { WeatherQueries } from 'src/app/shared/services';
 
 const DEFAULT_WEATHER_IMAGE = 'assets/images/weather.svg';
-const TRANSPARENT_HEADER_ROUTES = ['trip', 'customer-service', 'awaiting-trip', 'traveling', 'events'];
+const TRANSPARENT_HEADER_ROUTES = ['trip', 'customer-service', 'awaiting-trip', 'traveling', 'events', 'airport-trip/XPL', 'airport-trip/RVM', 'airport-trip/TCT', 'airport-trip/GLS'];
 const DISABLE_HEADER_ROUTES = ['awaiting-trip', 'driver-arrived', 'traveling', 'finish-trip'];
 @Component({
   selector: 'app-shared-header',

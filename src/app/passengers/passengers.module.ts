@@ -40,7 +40,8 @@ import {
   EventsComponent,
   AddCardComponent,
   UserTripsComponent,
-  NotificationsComponent
+  NotificationsComponent,
+  AirportTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -69,7 +70,8 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     EventsComponent,
     AddCardComponent,
     UserTripsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    AirportTripComponent
   ],
   imports: [
     CommonModule,
