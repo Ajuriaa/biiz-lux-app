@@ -9,6 +9,7 @@ import { IProfileHeaderResponse } from '../interfaces';
 const userInfoQuery: DocumentNode = gql`
   query userInfoQuery {
     currentUser {
+      id
       imageUrl
       fullName
     }
