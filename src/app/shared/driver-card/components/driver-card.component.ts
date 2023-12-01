@@ -37,6 +37,7 @@ export class DriverCardComponent implements OnInit {
     this._driverCardQuery.generateFare(this.driver.id, phoneBattery, driversCount, 10, globalEta).subscribe(({ data }) => {
       if (data) {
         this.fare = `${data.fare} LPS`;
+        this.sharedDataService.setTripFare(data.fare);
       }
     });
     this._driverCardQuery.getDriverCar(this.driver.id).subscribe(({ data }) => {

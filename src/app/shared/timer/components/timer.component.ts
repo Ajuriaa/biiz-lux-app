@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TimerComponent implements OnInit {
   public progressPercentage = 0;
   public arrivalTime = '';
-  @Input() tripTime = 0;
+  @Input() tripTime = 60;
   @Input() isGray = false;
   @Input() startTimerOnInit = true;
 
@@ -35,13 +35,17 @@ export class TimerComponent implements OnInit {
     const currentTime = new Date();
     const endTime = new Date(currentTime.getTime() + seconds * 1000);
 
-    const hours = endTime.getHours();
-    const minutes = endTime.getMinutes();
+    // Set the time zone offset to GMT-6
+    const timeZoneOffset = -6 * 60; // GMT-6 is 6 hours behind UTC
+    endTime.setMinutes(endTime.getMinutes() + timeZoneOffset);
 
-    this.arrivalTime = `${this.formatTime(hours)}:${this.formatTime(minutes)}`;
-  }
+    const formattedTime = endTime.toLocaleString('en-US', {
+        timeZone: 'America/Belize', // Specify the time zone as GMT-6
+        hour12: false, // Use 24-hour format
+        hour: 'numeric',
+        minute: 'numeric'
+    });
 
-  private formatTime(value: number): string {
-    return value < 10 ? `0${value}` : `${value}`;
+    this.arrivalTime = formattedTime;
   }
 }

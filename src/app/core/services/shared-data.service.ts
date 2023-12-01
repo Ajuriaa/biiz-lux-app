@@ -26,6 +26,7 @@ export class SharedDataService {
   private globalEta = 0;
   private globalDistance = 0;
   private passenderCoords = DEFAULT_COORDS;
+  private tripFare = 0;
 
   constructor(private mapService: MapService) {}
 
@@ -155,5 +156,13 @@ export class SharedDataService {
 
   public getPassengerCoords(): ICoordinate {
     return this.passenderCoords;
+  }
+
+  public setTripFare(fare: number): void {
+    this.tripFare = fare;
+  }
+
+  public getTripFare(): number {
+    return this.tripFare;
   }
 }

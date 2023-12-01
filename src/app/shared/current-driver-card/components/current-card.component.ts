@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TRIP } from 'src/app/core/constants';
+import { SharedDataService } from 'src/app/core/services';
 import { ITrip } from 'src/app/passengers/interfaces';
 
 @Component({
@@ -7,7 +8,15 @@ import { ITrip } from 'src/app/passengers/interfaces';
   templateUrl: './current-card.component.html',
   styleUrls: ['./current-card.component.scss']
 })
-export class CurrentDriverCardComponent {
+export class CurrentDriverCardComponent implements OnInit {
+  public tripTime = 300;
+  public endTime = 650;
   @Input() public trip: ITrip = TRIP;
-  @Input() public tripTime = 300;
+
+  constructor (private sharedData: SharedDataService) {}
+
+  ngOnInit(): void {
+    this.tripTime = this.sharedData.getEta();
+    this.endTime = this.tripTime + this.sharedData.getGlobalEta();
+  }
 }

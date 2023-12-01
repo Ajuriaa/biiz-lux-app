@@ -162,7 +162,7 @@ export class TripComponent implements OnInit, OnDestroy {
       start_location: this.autocompleteCurrent.input,
       start_time: new Date(),
       destination_location: this.autocompleteDestination.input,
-      fare: Math.floor(Math.random() * 200)
+      fare: this.sharedDataService.getTripFare()
     };
     this.websocket.startTrip(info);
 

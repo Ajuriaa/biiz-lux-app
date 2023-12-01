@@ -6,6 +6,7 @@ import { WeatherQueries } from 'src/app/shared/services';
 
 const DEFAULT_WEATHER_IMAGE = 'assets/images/weather.svg';
 const TRANSPARENT_HEADER_ROUTES = ['trip', 'customer-service', 'awaiting-trip', 'traveling', 'events'];
+const DISABLE_HEADER_ROUTES = ['awaiting-trip', 'driver-arrived', 'traveling', 'finish-trip'];
 @Component({
   selector: 'app-shared-header',
   templateUrl: './header.component.html',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   public weatherImage = DEFAULT_WEATHER_IMAGE;
   public whiteHeader = false;
   private allowedRoutes = TRANSPARENT_HEADER_ROUTES;
+  private disabledRoutes = DISABLE_HEADER_ROUTES;
 
   constructor(
     private _router: Router,
@@ -35,6 +37,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public goToPath(path: string): void {
+    if (this.disabledRoutes.includes(this._route.snapshot.url.join('/'))) {
+      return;
+    }
     this._routerService.transition(path);
   }
 
@@ -43,6 +48,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public goToPreviousPage(): void {
+    if (this.disabledRoutes.includes(this._route.snapshot.url.join('/'))) {
+      return;
+    }
     this._routerService.animate();
     this._location.back();
   }
