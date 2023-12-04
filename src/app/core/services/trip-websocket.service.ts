@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
+import { Subject } from 'rxjs';
 import { WebsocketChannels } from '../enums';
 import { SharedDataService } from './shared-data.service';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MapService, SharedDataService } from 'src/app/core/services';
-import { DriverCardQueries } from '../../services';
 import { firstValueFrom } from 'rxjs';
+import { DriverCardQueries } from '../../services';
 
 @Component({
   selector: 'app-driver-card',

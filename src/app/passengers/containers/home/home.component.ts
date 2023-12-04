@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { SharedDataService, GlobalWebsocketService, RouterService, TripWebsocketService } from 'src/app/core/services';
-import { CookieHelper, getClosestDriver } from 'src/app/core/helpers';
+import { getClosestDriver } from 'src/app/core/helpers';
 import { Device } from '@capacitor/device';
-import { HomeQueries } from '../../services';
 import { Subscription } from 'rxjs';
+import { HomeQueries } from '../../services';
 
 @Component({
   selector: 'app-home',
