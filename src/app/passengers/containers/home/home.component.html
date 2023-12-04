@@ -1,5 +1,7 @@
-<app-shared-header></app-shared-header>
-<ion-content>
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
+<app-shared-header *ngIf="!loading"></app-shared-header>
+<ion-content *ngIf="!loading">
   <div class="container">
     <section class="trip-container" (click)="goToPath('/passenger/trip')">
       <div class="label">

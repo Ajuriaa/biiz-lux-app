@@ -23,3 +23,7 @@ export interface INotificationResponse {
 export interface IEventResponse {
   allEvents: IEvent[];
 }
+
+export interface ICurrentTripResponse {
+  activeTrip?: ITrip;
+}

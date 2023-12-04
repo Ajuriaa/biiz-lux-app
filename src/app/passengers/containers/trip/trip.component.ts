@@ -40,7 +40,7 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
-  public loading = false;
+  public loading = true;
   public map!: google.maps.Map;
   public drivers : IDriver[] = [];
   public travelConfirmed = false;
@@ -66,7 +66,6 @@ export class TripComponent implements OnInit, OnDestroy {
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger);
     this.sharedDataService.setCurrentMarker(marker);
     this.autocompleteCurrent.input = await this.mapService.getPlaceFromCoordinate(this.currentCoordinates);
-    setTimeout(() => { this.loading = false; }, 4000);
     setTimeout(() => this.websocket.getDriverCoordinates(), 3000);
     setTimeout(() => {
       const closestDrivers = getCloseDrivers(this.currentCoordinates, this.sharedDataService.getDriverCoordinates());
@@ -76,6 +75,7 @@ export class TripComponent implements OnInit, OnDestroy {
       }
 
       this.drivers = this.sharedDataService.getDrivers();
+      this.loading = false;
     } , 4000);
   }
 

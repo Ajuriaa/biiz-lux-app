@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
 import { WebsocketChannels } from '../enums';
 import { SharedDataService } from './shared-data.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,27 @@ import { SharedDataService } from './shared-data.service';
 export class TripWebsocketService {
   private socket!: WebSocket;
   private tripId = '';
+  public driverStatus = new Subject<string>();
 
   constructor(
     private sharedData: SharedDataService
   ) {}
+
+  public getDriverStatus() {
+    console.log('preguntando');
+    const id = JSON.stringify({
+      channel: WebsocketChannels.TRIP,
+      trip_id: this.tripId
+    });
+    const response = {title: 'tripStatus'};
+    const wsData = JSON.stringify({action: 'send_data', info: response, trip_id: this.tripId});
+    const payload = JSON.stringify({
+      command: 'message',
+      identifier: id,
+      data: wsData
+    });
+    this.socket.send(payload);
+  }
 
   public unsubscribe(): void {
     const id = JSON.stringify({channel: 'CurrentTripChannel'});
@@ -57,6 +75,11 @@ export class TripWebsocketService {
       if(message.title === 'tripFinished'){
         // data = {title: 'tripFinished'}
         this.sharedData.setFinishTrip(true);
+      }
+
+      if(message.title === 'driverStatus') {
+        console.log('respuesta', message.status);
+        this.driverStatus.next(message.status);
       }
     };
 

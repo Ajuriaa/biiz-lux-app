@@ -165,13 +165,14 @@ export class MapService {
       },
       unitSystem: google.maps.UnitSystem.METRIC
     };
-    this.directionsService.route(request, (result, status) => {
-      if (status == 'OK' && result) {
-        return result?.routes[0]?.legs[0]?.distance?.value;
-      } else {
-        return 600;
-      }
+    return new Promise<number>((resolve, reject) => {
+      this.directionsService.route(request, (result, status) => {
+        if (status == 'OK' && result) {
+          resolve(result?.routes[0]?.legs[0]?.distance?.value || 601);
+        } else {
+          reject(602);
+        }
+      });
     });
-    return 600;
   }
 }

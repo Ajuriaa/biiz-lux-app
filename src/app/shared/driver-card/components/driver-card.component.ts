@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MapService, SharedDataService } from 'src/app/core/services';
 import { DriverCardQueries } from '../../services';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-driver-card',
@@ -34,12 +35,16 @@ export class DriverCardComponent implements OnInit {
     const phoneBattery = this.sharedDataService.getBatteryLevel();
     const globalEta = this.sharedDataService.getGlobalEta();
     const driversCount = this.sharedDataService.getDrivers().length;
-    this._driverCardQuery.generateFare(this.driver.id, phoneBattery, driversCount, 10, globalEta).subscribe(({ data }) => {
-      if (data) {
-        this.fare = `${data.fare} LPS`;
-        this.sharedDataService.setTripFare(data.fare);
-      }
-    });
+    const distance = this.sharedDataService.getGlobalDistance();
+    const fareValue = await firstValueFrom(this._driverCardQuery.generateFare(this.driver.id, Math.round(phoneBattery), driversCount, distance, globalEta));
+    this.fare = `${fareValue.data.fare} LPS`;
+    this.sharedDataService.setTripFare(fareValue.data.fare);
+    // this._driverCardQuery.generateFare(this.driver.id, phoneBattery, driversCount, distance, globalEta).subscribe(({ data }) => {
+    //   if (data) {
+    //     this.fare = `${data.fare} LPS`;
+    //
+    //   }
+    // });
     this._driverCardQuery.getDriverCar(this.driver.id).subscribe(({ data }) => {
       if (data) {
         this.imageUrl = data.driverActiveCar.imageUrl;

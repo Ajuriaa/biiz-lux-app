@@ -103,21 +103,6 @@ export class SharedDataService {
     return this.tripFinished;
   }
 
-  public resetData(): void {
-    this.coordinates = DEFAULT_COORDS;
-    this.closeDriversCoordinates = [];
-    this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
-    this.marker = new google.maps.Marker();
-    this.destinationMarker = new google.maps.Marker();
-    this.driverCoords = DEFAULT_COORDS;
-    this.driverArrived = false;
-    this.tripFinished = false;
-  }
-
-  public resetCurrentTrip(): void {
-    this.currentTrip = {passengerId: '0', tripId: '0'};
-  }
-
   public async setEta(): Promise<void> {
     this.eta = await this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);
   }
@@ -164,5 +149,25 @@ export class SharedDataService {
 
   public getTripFare(): number {
     return this.tripFare;
+  }
+
+  public resetData(): void {
+    this.coordinates = DEFAULT_COORDS;
+    this.closeDriversCoordinates = [];
+    this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
+    this.marker = new google.maps.Marker();
+    this.destinationMarker = new google.maps.Marker();
+    this.driverCoords = DEFAULT_COORDS;
+    this.driverArrived = false;
+    this.tripFinished = false;
+    this.batteryLevel = 0;
+    this.globalEta = 0;
+    this.globalDistance = 0;
+    this.passenderCoords = DEFAULT_COORDS;
+    this.tripFare = 0;
+  }
+
+  public resetCurrentTrip(): void {
+    this.currentTrip = {passengerId: '0', tripId: '0'};
   }
 }

@@ -14,6 +14,7 @@ export interface IVehicle {
 }
 
 export interface ITrip {
+  id: string;
   passenger: IUserable;
   driver: IUserable;
   vehicle?: IVehicle;

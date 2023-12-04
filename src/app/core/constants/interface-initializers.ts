@@ -50,6 +50,7 @@ export const EVENT: IEvent = {
 };
 
 export const TRIP: ITrip = {
+  id: '',
   passenger: USERABLE,
   driver: USERABLE,
   vehicle: VEHICLE,
