@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { ICoordinate, IDriver } from '../interfaces';
 import { DEFAULT_COORDS } from '../constants';
+import { MapService } from './map.service';
 
 interface ICurrentTrip {
   passengerId: string;
@@ -13,13 +14,21 @@ interface ICurrentTrip {
 export class SharedDataService {
   private coordinates = DEFAULT_COORDS;
   private closeDriversCoordinates: ICoordinate[] = [];
-  private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS}];
+  private closeDrivers : IDriver[] = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
   private marker = new google.maps.Marker();
+  private eta = 0;
   private destinationMarker = new google.maps.Marker();
   private currentTrip: ICurrentTrip = {passengerId: '0', tripId: '0'};
   private driverCoords: ICoordinate = DEFAULT_COORDS;
   private driverArrived = false;
   private tripFinished = false;
+  private batteryLevel = 0;
+  private globalEta = 0;
+  private globalDistance = 0;
+  private passenderCoords = DEFAULT_COORDS;
+  private tripFare = 0;
+
+  constructor(private mapService: MapService) {}
 
   public async setDefaultCoordinates(): Promise<ICoordinate> {
     const coords = await Geolocation.getCurrentPosition({
@@ -94,15 +103,71 @@ export class SharedDataService {
     return this.tripFinished;
   }
 
+  public async setEta(): Promise<void> {
+    this.eta = await this.mapService.getEstimatedTime(this.getDriverCoord(), this.coordinates);
+  }
+
+  public getEta(): number {
+    return this.eta;
+  }
+
+  public setBatteryLevel(level: number): void {
+    this.batteryLevel = level;
+  }
+
+  public getBatteryLevel(): number {
+    return this.batteryLevel;
+  }
+
+  public setGlobalEta(eta: number): void {
+    this.globalEta = eta;
+  }
+
+  public getGlobalEta(): number {
+    return this.globalEta;
+  }
+
+  public setGlobalDistance(distance: number): void {
+    this.globalDistance = distance;
+  }
+
+  public getGlobalDistance(): number {
+    return this.globalDistance;
+  }
+
+  public setPassengerCoords(coords: ICoordinate): void {
+    this.passenderCoords = coords;
+  }
+
+  public getPassengerCoords(): ICoordinate {
+    return this.passenderCoords;
+  }
+
+  public setTripFare(fare: number): void {
+    this.tripFare = fare;
+  }
+
+  public getTripFare(): number {
+    return this.tripFare;
+  }
+
   public resetData(): void {
-  this.coordinates = DEFAULT_COORDS;
-  this.closeDriversCoordinates = [];
-  this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS}];
-  this.marker = new google.maps.Marker();
-  this.destinationMarker = new google.maps.Marker();
-  this.currentTrip = {passengerId: '0', tripId: '0'};
-  this.driverCoords = DEFAULT_COORDS;
-  this.driverArrived = false;
-  this.tripFinished = false;
+    this.coordinates = DEFAULT_COORDS;
+    this.closeDriversCoordinates = [];
+    this.closeDrivers = [{id : 0, coordinates : DEFAULT_COORDS, eta: 0}];
+    this.marker = new google.maps.Marker();
+    this.destinationMarker = new google.maps.Marker();
+    this.driverCoords = DEFAULT_COORDS;
+    this.driverArrived = false;
+    this.tripFinished = false;
+    this.batteryLevel = 0;
+    this.globalEta = 0;
+    this.globalDistance = 0;
+    this.passenderCoords = DEFAULT_COORDS;
+    this.tripFare = 0;
+  }
+
+  public resetCurrentTrip(): void {
+    this.currentTrip = {passengerId: '0', tripId: '0'};
   }
 }

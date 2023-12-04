@@ -1,0 +1,122 @@
+@import 'src/app/core/sass/global';
+
+.header-wrapper {
+  @include flex-column;
+  width: 100%;
+  z-index: 2;
+
+  .header {
+    width: 100%;
+  }
+}
+
+.icon {
+  color: $green;
+  font-size: 4rem;
+}
+
+.container, .map {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.map {
+  position: absolute;
+}
+
+.button-container {
+  @include flex-column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  transition: margin-bottom 1.5s ease-in-out;
+  z-index: 2;
+
+  .confirm {
+    width: 90%;
+  }
+
+  .text {
+    margin: 0;
+  }
+
+  .events-container {
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+  }
+}
+
+.button-image {
+  position: absolute;
+  right: 2rem;
+}
+
+.event-info {
+  margin: 2rem 0 0 0;
+  @include flex-center;
+  background-color: $white;
+  border-radius: 1rem;
+  width: 90%;
+  gap: 0.5rem;
+
+  .img {
+    @include flex-column;
+    justify-content: center;
+    width: 10%;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+}
+
+.event-details {
+  @include flex-center;
+  width: 90%;
+}
+
+.event-image {
+  @include flex-center;
+  gap: 1rem;
+  width: 90%;
+  height: 14.3rem;
+  width: 14.7rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.event-description {
+  @include flex-column;
+  justify-content: center;
+  color: $white;
+  border-radius: 0.5rem;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);;
+  margin: 0 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.event {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.scan {
+  font-size: 4rem;
+  margin-top: 2rem;
+  background-color: $green;
+  border-radius: 50%;
+}

@@ -10,7 +10,13 @@ import {
   LoadingModule,
   ToasterModule,
   AvailableDriversModule,
-  DriverCardModule
+  DriverCardModule,
+  EventCardModule,
+  AvailableEventsModule,
+  CurrentDriverCardModule,
+  EventDetailModule,
+  EventListModule,
+  TripCardModule
 } from '../shared';
 import { MaterialModule } from '../material';
 import {
@@ -30,7 +36,12 @@ import {
   AwaitingTripComponent,
   DriverArrivedComponent,
   FinishTripComponent,
-  TripDetailComponent
+  TripDetailComponent,
+  EventsComponent,
+  AddCardComponent,
+  UserTripsComponent,
+  NotificationsComponent,
+  AirportTripComponent
 } from './containers';
 import { PassengersRoutingModule } from './passengers-routing.module';
 import { AddressMutations } from './services';
@@ -55,7 +66,12 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     DriverArrivedComponent,
     TravelingComponent,
     FinishTripComponent,
-    TripDetailComponent
+    TripDetailComponent,
+    EventsComponent,
+    AddCardComponent,
+    UserTripsComponent,
+    NotificationsComponent,
+    AirportTripComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +87,13 @@ import { TravelingComponent } from './containers/traveling/traveling.component';
     LoadingModule,
     ToasterModule,
     DriverCardModule,
-    AvailableDriversModule
+    EventCardModule,
+    AvailableDriversModule,
+    AvailableEventsModule,
+    CurrentDriverCardModule,
+    EventDetailModule,
+    EventListModule,
+    TripCardModule
   ],
   providers: [
     AddressMutations

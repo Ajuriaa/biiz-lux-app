@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="labels">
+    <app-timer class="label" [tripTime]="tripTime"></app-timer>
+    <app-timer
+      [tripTime]="endTime"
+      [startTimerOnInit]="false"
+      [isGray]="true"
+      class="label"
+    >
+    </app-timer>
+  </div>
+  <img class="image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/car.png" />
+  <div class="price">
+    <span>{{ trip.fare }} LPS</span>
+  </div>
+</div>

@@ -17,11 +17,15 @@
         message="PALMEROLA"
         class="xpl display-btn"
         title="XPL"
+        (click)="selectAirport('XPL')"
+        [labelGreen]="selected('XPL')"
       ></app-display-button>
       <app-display-button
         message="VILLEDA MORALES"
         class="rvm display-btn"
         title="RVM"
+        (click)="selectAirport('RVM')"
+        [labelGreen]="selected('RVM')"
       ></app-display-button>
     </section>
     <section class="shared-container">
@@ -29,15 +33,19 @@
         message="TONCONTIN"
         class="tct display-btn"
         title="TCT"
+        (click)="selectAirport('TCT')"
+        [labelGreen]="selected('TCT')"
       ></app-display-button>
       <app-display-button
         message="GOLOSON"
         class="gls display-btn"
         title="GLS"
+        (click)="selectAirport('GLS')"
+        [labelGreen]="selected('GLS')"
       ></app-display-button>
     </section>
     <div class="main-button">
-      <app-primary-button>CONFIRMAR DESTINO</app-primary-button>
+      <app-primary-button (btnClick)="goToPath()">CONFIRMAR DESTINO</app-primary-button>
     </div>
   </div>
 </ion-content>

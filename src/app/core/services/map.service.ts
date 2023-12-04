@@ -2,7 +2,6 @@ import { ElementRef, Injectable, NgZone } from '@angular/core';
 import { ICoordinate } from '../interfaces';
 import { getCloseDrivers } from '../helpers';
 import { DriverMarkerType, MarkerUrl, PassengerMarkerType } from '../enums';
-import { SharedDataService } from './shared-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +12,7 @@ export class MapService {
   public directionsService: google.maps.DirectionsService;
   public geocoder: google.maps.Geocoder;
 
-  constructor(
-    private sharedDataService: SharedDataService,
-    private zone: NgZone
-  )
+  constructor(private zone: NgZone)
   {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.directionsService = new google.maps.DirectionsService();
@@ -130,6 +126,51 @@ export class MapService {
           resolve(address);
         } else {
           reject(new Error(`Reverse geocoding failed with status: ${status}`));
+        }
+      });
+    });
+  }
+
+  public async getEstimatedTime(driverCoords: ICoordinate, currentCoordinates: ICoordinate): Promise<number> {
+    const request = {
+      origin: driverCoords,
+      destination: currentCoordinates,
+      travelMode: google.maps.TravelMode.DRIVING,
+      drivingOptions: {
+        departureTime: new Date(),
+        trafficModel: google.maps.TrafficModel.PESSIMISTIC
+      }
+    };
+
+    return new Promise<number>((resolve, reject) => {
+      this.directionsService.route(request, (result, status) => {
+        if (status == 'OK' && result) {
+          resolve(result?.routes[0]?.legs[0]?.duration_in_traffic?.value || 0);
+        } else {
+          reject(602);
+        }
+      });
+    });
+  }
+
+
+  public async getDistance(startCoords: ICoordinate, finishCoords: ICoordinate): Promise<number> {
+    const request = {
+      origin: startCoords,
+      destination: finishCoords,
+      travelMode: google.maps.TravelMode.DRIVING,
+      drivingOptions: {
+        departureTime: new Date(),
+        trafficModel: google.maps.TrafficModel.PESSIMISTIC
+      },
+      unitSystem: google.maps.UnitSystem.METRIC
+    };
+    return new Promise<number>((resolve, reject) => {
+      this.directionsService.route(request, (result, status) => {
+        if (status == 'OK' && result) {
+          resolve(result?.routes[0]?.legs[0]?.distance?.value || 601);
+        } else {
+          reject(602);
         }
       });
     });

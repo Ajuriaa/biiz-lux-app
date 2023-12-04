@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterService } from 'src/app/core/services';
 
 
 @Component({
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class DriverArrivedComponent {
 
-  constructor(private _router: Router){}
+  constructor(private _routerService: RouterService){}
 
   public submit(): void {
-    this._router.navigate(['/passenger/traveling']);
+    this._routerService.transition('/passenger/traveling');
   }
 }

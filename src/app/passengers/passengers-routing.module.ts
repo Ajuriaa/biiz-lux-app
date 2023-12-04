@@ -19,7 +19,12 @@ import {
   AwaitingTripComponent,
   DriverArrivedComponent,
   FinishTripComponent,
-  TripDetailComponent
+  TripDetailComponent,
+  EventsComponent,
+  AddCardComponent,
+  UserTripsComponent,
+  NotificationsComponent,
+  AirportTripComponent
 } from './containers';
 import { TravelingComponent } from './containers/traveling/traveling.component';
 
@@ -113,6 +118,31 @@ const routes: Routes = [{
       path: 'trip-detail',
       title: 'Detalle Viaje',
       component: TripDetailComponent
+    },
+    {
+      path: 'events',
+      title: 'Eventos',
+      component: EventsComponent
+    },
+    {
+      path: 'add-card',
+      title: 'Agregar Tarjeta',
+      component: AddCardComponent
+    },
+    {
+      path: 'my-trips',
+      title: 'Mis Viajes',
+      component: UserTripsComponent
+    },
+    {
+      path: 'notifications',
+      title: 'Notificaciones',
+      component: NotificationsComponent
+    },
+    {
+      path: 'airport-trip/:airport',
+      title: 'Viaje Aeropuerto',
+      component: AirportTripComponent
     }
   ]
 }];

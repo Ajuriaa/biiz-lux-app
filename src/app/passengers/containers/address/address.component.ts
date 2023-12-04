@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherQueries } from 'src/app/shared/services';
+import { RouterService } from 'src/app/core/services';
 import { AddressQueries } from '../../services';
 import { IAddress } from '../../interfaces';
 
@@ -20,7 +21,8 @@ export class AddressComponent implements OnInit {
 
   constructor(
     private _addressQuery: AddressQueries,
-    private _weatherQuery: WeatherQueries
+    private _weatherQuery: WeatherQueries,
+    private _routerService: RouterService
   ){}
 
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class AddressComponent implements OnInit {
         this.temperature = Math.round(data.weather.main.temp);
       }
     });
+  }
+
+  public goToPath(path: string): void {
+    this._routerService.transition(path);
   }
 
   private _setWeatherImage(icon: string): string {

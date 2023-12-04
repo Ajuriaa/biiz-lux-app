@@ -38,11 +38,7 @@
       </div>
     </div>
     <div [@inAnimation] class="driver-container" *ngIf="!driverSelected && travelConfirmed">
-      <app-available-drivers
-        [drivers]="drivers"
-        (selected)="selectDriver($event)"
-      >
-      </app-available-drivers>
+      <app-available-drivers (selected)="selectDriver($event)"></app-available-drivers>
     </div>
     <div [@inAnimation] class="selected" *ngIf="driverSelected && travelConfirmed" >
       <app-driver-card class="driver" [driver]="selectedDriver" [unique]="true"></app-driver-card>

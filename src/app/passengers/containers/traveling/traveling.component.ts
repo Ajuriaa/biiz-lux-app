@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
-import { MapService, SharedDataService } from 'src/app/core/services';
+import { MapService, RouterService, SharedDataService, TripWebsocketService } from 'src/app/core/services';
 import { firstValueFrom } from 'rxjs';
 import { MarkerUrl } from 'src/app/core/enums';
 import { TripQueries } from '../../services';
@@ -13,7 +12,7 @@ import { ITrip } from '../../interfaces';
   templateUrl: './traveling.component.html',
   styleUrls: ['./traveling.component.scss']
 })
-export class TravelingComponent implements OnInit {
+export class TravelingComponent implements OnInit, OnDestroy {
   public loading = false;
   public map!: google.maps.Map;
   public trip: ITrip = TRIP;
@@ -29,12 +28,14 @@ export class TravelingComponent implements OnInit {
     private sharedData: SharedDataService,
     private mapService: MapService,
     private _tripQuery: TripQueries,
-    private _router: Router
+    private tripSocket: TripWebsocketService,
+    private _routerService: RouterService
   ){}
 
   async ngOnInit() {
     this.currentCoordinates = await this.sharedData.setDefaultCoordinates();
-    const tripId = this.sharedData.getCurrentTrip().tripId;
+    const tripId =  this.sharedData.getCurrentTrip().tripId;
+    this.tripSocket.connectWebSocket(tripId.toString());
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));
     this.trip = queryResponse.data.trip;
     this.endCoordinates = {lat: +this.trip.endLocation.lat, lng: +this.trip.endLocation.lng};
@@ -54,6 +55,10 @@ export class TravelingComponent implements OnInit {
     }, 1000);
   }
 
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
   public center(): void {
     this.map.panTo(this.currentCoordinates);
     this.map.setZoom(19);
@@ -70,7 +75,7 @@ export class TravelingComponent implements OnInit {
 
   private finishTrip(): void {
     if(this.sharedData.getFinishTrip()){
-      this._router.navigate(['/passenger/finish-trip']);
+      this._routerService.transition('/passenger/finish-trip');
     }
   }
 }

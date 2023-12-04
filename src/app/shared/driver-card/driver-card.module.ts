@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { LoadingModule } from '../loading/loading.module';
 import { DriverCardComponent } from './components/driver-card.component';
 
 @NgModule({
@@ -10,7 +11,8 @@ import { DriverCardComponent } from './components/driver-card.component';
   imports: [
     CommonModule,
     RouterModule,
-    IonicModule
+    IonicModule,
+    LoadingModule
   ]
 })
 export class DriverCardModule {}

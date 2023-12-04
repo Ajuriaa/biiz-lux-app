@@ -8,12 +8,14 @@
       <div class="content">
         <p class="title">MIS DIRECCIONES</p>
         <p class="address" *ngFor="let address of addresses"> {{ address.name }} </p>
-        <img class="icon" [src]="iconUrl" [routerLink]="'../new-address'">
-        <div class="weather">
-          <img class="weather-image" [src]="weatherImage"/>
-          <p class="temperature"> {{ temperature }}° </p>
+        <img class="icon" *ngIf="addresses.length < 3" [src]="iconUrl" (click)="goToPath('/passenger/new-address')">
+        <div class="footer-wrapper">
+          <div class="weather">
+            <img class="weather-image" [src]="weatherImage"/>
+            <p class="temperature"> {{ temperature }}° </p>
+          </div>
+          <img class="logo" [src]="logoUrl"/>
         </div>
-        <img class="logo" [src]="logoUrl"/>
       </div>
     </section>
   </div>

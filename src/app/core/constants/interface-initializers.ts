@@ -1,15 +1,16 @@
-import { IAddress, ITrip, IUser, IUserable, IVehicle } from "src/app/passengers/interfaces";
+import { IAddress, IEvent, ITrip, IUser, IUserable, IVehicle } from "src/app/passengers/interfaces";
 import { ICoordinate } from "../interfaces";
 
 export const VEHICLE: IVehicle = {
   id: '',
-  vehicle_type: '',
+  vehicleType: '',
   model: '',
   plate: '',
   year: 0,
   color: '',
   registration: '',
-  registration_expiration_date: ''
+  registrationExpirationDate: '',
+  imageUrl: ''
 };
 
 export const USERABLE: IUserable = {
@@ -38,13 +39,27 @@ export const DEFAULT_COORDS: ICoordinate = {
   lng: 0
 };
 
+export const EVENT: IEvent = {
+  id: '',
+  name: '',
+  locationCoordinates: DEFAULT_COORDS,
+  addressName: '',
+  category: '',
+  description: '',
+  imageUrl: ''
+};
+
 export const TRIP: ITrip = {
+  id: '',
   passenger: USERABLE,
   driver: USERABLE,
   vehicle: VEHICLE,
   startLocation: DEFAULT_COORDS,
   endLocation: DEFAULT_COORDS,
+  startAddress: '',
+  endAddress: '',
   startTime: '',
-  fare: '',
+  fare: '1.00',
+  status: ''
 };
 

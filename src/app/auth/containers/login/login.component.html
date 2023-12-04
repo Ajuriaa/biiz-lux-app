@@ -9,14 +9,14 @@
     <p class="version">ALFA</p>
   </div>
   <div class="login-footer">
-    <div class="terms">
-      <div class="green"></div>
+    <div class="terms" id="open-modal">
+      <div [ngClass]="{'not-accepted' : !acceptedTerms}" class="terms-color"></div>
       <p class="text">TERMINOS Y CONDICIONES</p>
     </div>
     <form [formGroup]="loginForm" class="form-field">
       <input
         class="input"
-        placeholder="Ingresa tu email"
+        placeholder="NOMBRE DE USUARIO"
         formControlName="email"
         maxlength="50"
         minlength="1"
@@ -24,10 +24,11 @@
       >
       <input
         class="input"
-        placeholder="Ingresa tu contraseña"
+        placeholder="CONTRASEÑA"
         formControlName="password"
         maxlength="50"
         minlength="1"
+        type="password"
         required
       >
     </form>
@@ -35,4 +36,23 @@
       <img class="button-image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz.png">
     </div>
   </div>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-icon (click)="cancel()" class="icon red" name="close-outline"></ion-icon>
+          </ion-buttons>
+          <ion-title class="modal-title">TÉRMINOS Y CONDICIONES</ion-title>
+          <ion-buttons slot="end">
+            <ion-icon (click)="confirm()" class="icon green" name="checkmark-outline"></ion-icon>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        {{ message }}
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </div>

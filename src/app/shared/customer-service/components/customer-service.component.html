@@ -22,12 +22,12 @@
       </p>
       <div class="button-wrapper">
         <div class="row-sh inter">
-          <p [routerLink]="['../faq']" class="text">PREGUNTAS FRECUENTES</p>
+          <p (click)="goToPath('faq')" class="text">PREGUNTAS FRECUENTES</p>
           <p class="text">SOBRE NOSOTROS</p>
         </div>
         <div class="row-sh inter">
-          <p [routerLink]="['../passenger/forgot-something']" class="text">OLVIDÉ ALGO</p>
-          <p [routerLink]="['../passenger/accident']" class="text">ME ACCIDENTÉ</p>
+          <p (click)="goToPath('/passenger/forgot-something')" class="text">OLVIDÉ ALGO</p>
+          <p (click)="goToPath('/passenger/accident')" class="text">ME ACCIDENTÉ</p>
         </div>
       </div>
     </div>

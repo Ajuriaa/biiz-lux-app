@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
+import { NativePageTransitions } from '@awesome-cordova-plugins/native-page-transitions/ngx';
 import { ApolloModule } from 'apollo-angular';
 import { GraphqlService } from '../services/graphql.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { AuthModule } from './auth';
     AuthModule,
     IonicModule.forRoot()
   ],
+  providers: [NativePageTransitions],
   bootstrap: [AppComponent]
 })
 export class AppModule {

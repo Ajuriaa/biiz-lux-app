@@ -5,7 +5,11 @@
   <app-shared-header class="header"></app-shared-header>
 
   <div class="driver-container">
-    <app-driver-card class="driver" [unique]="true"  [driver]="driver"></app-driver-card>
+    <app-current-driver
+      class="driver-card"
+      [trip]="trip"
+    >
+    </app-current-driver>
     <div class="row">
       <app-secondary-button class="option">
         <ion-icon name="chatbox" class="icon"></ion-icon>

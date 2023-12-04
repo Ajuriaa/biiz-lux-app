@@ -14,7 +14,7 @@
   }
 
   .content-wrapper {
-    height: 85%;
+    height: 84%;
   }
 }
 
@@ -27,6 +27,7 @@
   height: 80%;
   background-color: setColor(firm-gray, 100);
   letter-spacing: 0.2rem;
+  position: relative;
 
   .title {
     margin-top: 2rem;
@@ -67,7 +68,6 @@
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
-  height: 40%;
 
   .weather-image {
     height: 100%;
@@ -81,4 +81,10 @@
     text-shadow: 0.4rem 0.2rem 1rem #534848;
     padding-bottom: 6rem;
   }
+}
+
+.footer-wrapper {
+  @include flex-column;
+  position: absolute;
+  bottom: 1rem;
 }

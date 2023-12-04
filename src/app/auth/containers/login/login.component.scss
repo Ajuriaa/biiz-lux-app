@@ -82,11 +82,15 @@
     color: $black;
   }
 
-  .green {
+  .terms-color {
     width: 8%;
     padding: 1rem;
     border-radius: 0.3rem;
     background-color: $green;
+  }
+
+  .not-accepted {
+    background-color: $red;
   }
 }
 
@@ -110,6 +114,7 @@
     height: 3.5rem;
     margin-top: 0.3rem;
     text-align: center;
+    font-size: 1rem;
   }
 }
 
@@ -117,4 +122,24 @@
   text-align: center;
   line-height: 5rem;
   opacity: 50%;
+}
+
+.modal-title {
+  @include flex-center;
+  font-size: 1.7rem;
+}
+
+.icon {
+  font-size: 2.5rem;
+  border-radius: 3rem;
+}
+
+.red {
+  color: $red;
+  margin-left: 1rem;
+}
+
+.green {
+  color: $green;
+  margin-right: 1rem;
 }

@@ -1,0 +1,65 @@
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
+<div class="container"  [ngClass]="{'barcode-scanner-active' : scanOpen}">
+  <div class="map" #map></div>
+  <div class="header-wrapper">
+    <app-shared-header class="header"></app-shared-header>
+    <div class="event-info">
+      <div class="img">
+        <img class="logo" src="assets/images/location-arrows.svg">
+      </div>
+      <div class="input-wrapper">
+        <ion-input
+          [(ngModel)]="currentAddress"
+          placeholder="Dirección actual"
+          [readonly]="true"
+        ></ion-input>
+        <ion-input
+          [(ngModel)]="eventName"
+          placeholder="Evento"
+          [readonly]="true"
+        ></ion-input>
+      </div>
+    </div>
+    <ion-icon
+      (click)="scan()"
+      class="scan"
+      name="camera"
+      *ngIf="selectedEvent === 'escanear' && !singleEventSelected"
+    >
+    </ion-icon>
+    <app-event-list
+      [@inAnimation]
+      class="event"
+      (selected)="selectEvent($event)"
+      [eventList]="filteredEvents"
+      *ngIf="eventSelected && !singleEventSelected"
+    >
+    </app-event-list>
+    <app-event-detail
+      [@inAnimation]
+      class="event"
+      [event]="event"
+      [selected]="true"
+      *ngIf="singleEventSelected"
+    >
+    </app-event-detail>
+  </div>
+  <div class="button-container">
+    <div [@inAnimation] class="events-container" *ngIf="!eventSelected">
+      <app-available-events (selected)="selectEventType($event)"></app-available-events>
+    </div>
+    <div [@inAnimation] *ngIf="eventSelected && !hideCard">
+      <ion-icon (click)="backToEvents()" class="icon" name="arrow-back-circle"></ion-icon>
+      <app-event-card [event]="selectedEvent" [unique]="true"></app-event-card>
+    </div>
+    <div [@inAnimation] class="event-details inter" *ngIf="singleEventSelected">
+      <img class="event-image" [src]="event.imageUrl"/>
+      <p class="event-description"> {{ event.description }} </p>
+    </div>
+    <app-primary-button class="confirm" (btnClick)="startTrip(event)">
+      <p class="text">CONFIRMAR DESTINO</p>
+      <img class="button-image" [src]="imageUrl">
+    </app-primary-button>
+  </div>
+</div>

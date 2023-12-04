@@ -1,29 +1,31 @@
-<app-shared-header></app-shared-header>
-<ion-content>
+<app-shared-loading class="loading" *ngIf="loading"></app-shared-loading>
+
+<app-shared-header *ngIf="!loading"></app-shared-header>
+<ion-content *ngIf="!loading">
   <div class="container">
-    <section class="trip-container" routerLink="/passenger/trip">
+    <section class="trip-container" (click)="goToPath('/passenger/trip')">
       <div class="label">
         <ion-icon name="time" class="icon"></ion-icon>
         {{ this.time }}
       </div>
       <app-white-button message="SOLICITAR UNIDAD"></app-white-button>
     </section>
-    <section class="experience-container" [routerLink]="['../experiences']">
+    <section class="experience-container" (click)="goToPath('passenger/events')">
       <app-white-button message="EVENTOS"></app-white-button>
     </section>
     <section class="shared-container">
       <app-display-button
         message ="VIAJE AEROPUERTO"
-        link="../airport"
+        link="/passenger/airport"
         class="airport-container"
       ></app-display-button>
       <app-display-button
         message="ESPECIALES"
-        link="../specials"
+        link="/passenger/specials"
         class="specials-container"
       ></app-display-button>
     </section>
 
-    <app-primary-button class="button" (btnClick)="test()">MIS VIAJES</app-primary-button>
+    <app-primary-button class="button" (btnClick)="goToPath('/passenger/my-trips')">MIS VIAJES</app-primary-button>
   </div>
 </ion-content>

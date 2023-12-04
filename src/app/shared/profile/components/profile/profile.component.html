@@ -4,20 +4,20 @@
     <app-profile-header [showEditIcon]="true" class="profile"></app-profile-header>
     <section class="profile-options">
       <div class="row">
-        <app-display-button message="MIS VIAJES" class="car-box top-left"></app-display-button>
+        <app-display-button message="MIS VIAJES" class="car-box top-left" link="/passenger/my-trips"></app-display-button>
         <app-display-button message="MIS DATOS" class="car-box top-right" link="/passenger/user-info"></app-display-button>
       </div>
       <div class="row">
-        <app-display-button message="INGRESAR TARJETA" class="car-box bottom-left"></app-display-button>
-        <app-display-button message="NOTIFICACIONES" class="car-box bottom-right"></app-display-button>
+        <app-display-button message="INGRESAR TARJETA" class="car-box bottom-left" link="/passenger/add-card"></app-display-button>
+        <app-display-button message="NOTIFICACIONES" class="car-box bottom-right" link="/passenger/notifications"></app-display-button>
       </div>
     </section>
-    <section class="customer-service" [routerLink]="['../customer-service']">
+    <section class="customer-service" (click)="goTocustomerService()">
       <img class="image" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz.png" alt="Customer Image">
       <p class="service-label">SERVICIO AL CLIENTE</p>
     </section>
     <div class="main-button">
-      <app-primary-button>Terminos y condiciones</app-primary-button>
+      <app-primary-button (btnClick)="removeCookies()">Terminos y condiciones</app-primary-button>
     </div>
   </div>
 </ion-content>

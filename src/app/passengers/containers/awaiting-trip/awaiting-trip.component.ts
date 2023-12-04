@@ -1,10 +1,9 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MapService, SharedDataService, WebsocketService } from 'src/app/core/services';
+import { MapService, SharedDataService, RouterService } from 'src/app/core/services';
 import { DEFAULT_COORDS, TRIP } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { ICoordinate } from 'src/app/core/interfaces';
 import { firstValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
 import { TripQueries } from '../../services';
 import { ITrip } from '../../interfaces';
 
@@ -23,22 +22,19 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
   private currentCoordinates: ICoordinate = DEFAULT_COORDS;
   private interval: any = 0;
   private driverMarker = new google.maps.Marker();
-  private route!: google.maps.DirectionsRenderer;
+  private route: any;
   private oldRoute!: google.maps.DirectionsRenderer;
 
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private websocket: WebsocketService,
     private _tripQuery: TripQueries,
-    private _router: Router
+    private _routerService: RouterService
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.loading = true;
-    this.websocket.connectWebSocket();
+    this.loading = false;
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
-
     const tripId = this.sharedDataService.getCurrentTrip().tripId;
     const queryResponse = await firstValueFrom(this._tripQuery.getTrip(+tripId));
     this.trip = queryResponse.data.trip;
@@ -49,11 +45,11 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
       this.loading = false;
       this.driverMarker = this.mapService.addMarker(this.sharedDataService.getDriverCoord(), this.map, MarkerUrl.driver);
       this.route = this.mapService.renderRoute(this.sharedDataService.getDriverCoord(), this.currentCoordinates, this.map);
-    }, 5000);
+    }, 3000);
     this.interval = setInterval(() => {
       this.trackDriver(this.sharedDataService.getDriverCoord());
       this.driverArrived();
-    }, 1000);
+    }, 500);
   }
 
   ngOnDestroy() {
@@ -64,14 +60,14 @@ export class AwaitingTripComponent implements OnInit, OnDestroy {
     if(this.route){
       this.oldRoute = this.route;
     }
-    this.driverMarker.setPosition(coords);
     this.route = this.mapService.renderRoute(coords, this.currentCoordinates, this.map, true);
     this.oldRoute.setMap(null);
+    this.driverMarker.setPosition(coords);
   }
 
   private driverArrived(){
     if(this.sharedDataService.getDriverArrived()){
-      this._router.navigate(['passenger/driver-arrived']);
+      this._routerService.transition('passenger/driver-arrived');
     }
   }
 }

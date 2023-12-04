@@ -1,0 +1,20 @@
+<app-shared-header></app-shared-header>
+
+<ion-content>
+  <div class="container">
+    <app-profile-header class="profile"></app-profile-header>
+    <div class="trip-wrapper">
+      <div class="labels">
+        <p class="label">MIS VIAJES</p>
+        <section class="half-label">
+          <p class="green">1 VIAJE INICIADO</p>
+          <p class="black">ULTIMOS 3 DIAS</p>
+        </section>
+      </div>
+      <div class="trip-cards">
+        <app-trip-card class="card" *ngFor="let trip of trips" [trip]="trip"></app-trip-card>
+      </div>
+      <img class="logo" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-white.png"/>
+    </div>
+  </div>
+</ion-content>

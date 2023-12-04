@@ -8,18 +8,18 @@
         class="profile"
         *ngIf="!isProfileRoute()"
         src="assets/images/profile.svg"
-        [routerLink]="['/profile']"
+        (click)="goToPath('profile')"
         alt="profile"
       />
       <img
         class="logo"
-        (click)="navigate('home')"
+        (click)="goToPath('/passenger/home')"
         src="assets/images/logo.svg"
         alt="Logo"
       />
 
       <div class="d-flex">
-        <img class="weather" [src]="weatherImage" alt="weather" (click)="navigate('address')"/>
+        <img class="weather" [src]="weatherImage" alt="weather" (click)="goToPath('/passenger/address')"/>
         <img
           class="translate"
           src="assets/images/translate.svg"

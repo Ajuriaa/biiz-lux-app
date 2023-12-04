@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
-import { SharedDataService, WebsocketService } from 'src/app/core/services';
+import { SharedDataService, GlobalWebsocketService, RouterService, TripWebsocketService } from 'src/app/core/services';
 import { getClosestDriver } from 'src/app/core/helpers';
+import { Device } from '@capacitor/device';
+import { Subscription } from 'rxjs';
+import { HomeQueries } from '../../services';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +12,36 @@ import { getClosestDriver } from 'src/app/core/helpers';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public loading = false;
   public directionsService: google.maps.DirectionsService;
   public time = '-- mins';
+  private subscription!: Subscription;
 
   constructor(
     private sharedDataService: SharedDataService,
-    private websocket: WebsocketService,
+    private websocket: GlobalWebsocketService,
+    private tripSocket: TripWebsocketService,
+    private _routerService: RouterService,
+    private _homeQuery: HomeQueries
     ) {
+      this.websocket.connectWebSocket();
       this.directionsService = new google.maps.DirectionsService();
     }
 
-  ngOnInit(): void {
-    this.checkGeolocationPermissions();
-    setTimeout(() => this.websocket.getDriverCoordinates(), 3000);
+  async ngOnInit(): Promise<void> {
+    this.loading = true;
+    await this.checkGeolocationPermissions();
+    const battery = await Device.getBatteryInfo();
+    setTimeout(() => {
+      this.checkCurrentTrip();
+      this.websocket.getDriverCoordinates();
+    }, 2000);
     setTimeout(() => this.getDriverTime(), 4000);
+    this.sharedDataService.setBatteryLevel((battery.batteryLevel || 0.5)*100);
   }
 
-
-  public test(){
-    this.getDriverTime();
+  public goToPath(path: string): void {
+    this._routerService.transition(path);
   }
 
   private async checkGeolocationPermissions(): Promise<any> {
@@ -69,5 +83,25 @@ export class HomeComponent implements OnInit {
         this.time = '99 mins';
       }
     });
+    this.loading = false;
+  }
+
+  private checkCurrentTrip(): void {
+    // this._homeQuery.getCurrentTrip().subscribe(({ data }) => {
+    //   if (data.activeTrip) {
+    //     const trip = data.activeTrip;
+    //     this.tripSocket.connectWebSocket(trip.id);
+    //     this.sharedDataService.setCurrentTrip({passengerId: CookieHelper.getUserInfo(), tripId: trip.id});
+    //     console.log(trip);
+    //     this.tripSocket.getDriverStatus();
+    //     this.subscription = this.tripSocket.driverStatus.subscribe((message) => {
+    //       if (message === 'awaiting') {
+    //         this._routerService.transition('passenger/awaiting-trip');
+    //       } else {
+    //         this._routerService.transition('passenger/traveling');
+    //       }
+    //     });
+    //   }
+    // });
   }
 }

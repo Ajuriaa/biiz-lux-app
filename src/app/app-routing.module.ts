@@ -4,6 +4,7 @@ import { LoginComponent } from './auth';
 import { ProfileComponent } from './shared/profile/components';
 import { CustomerServiceComponent } from './shared/customer-service/';
 import { FaqComponent } from './shared/faq';
+import { TimerComponent } from './shared/timer/components/timer.component';
 
 const routes: Routes = [
   { path: '', title: 'Login!', component: LoginComponent },
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'faq',
     title: 'Preguntas frecuentes',
     component: FaqComponent
+  },
+  {
+    path: 'timer',
+    title: 'test',
+    component: TimerComponent
   }
 
   // Errors routes

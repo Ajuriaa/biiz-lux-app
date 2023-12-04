@@ -15,3 +15,8 @@ export * from './awaiting-trip/awaiting-trip.component';
 export * from './driver-arrived/driver-arrived.component';
 export * from './finish-trip/finish-trip.component';
 export * from './trip-detail/trip-detail.component';
+export * from './events/events.component';
+export * from './add-card/add-card.component';
+export * from './my-trips/my-trips.component';
+export * from './notifications/notifications.component';
+export * from './airport-trip/airport-trip.component';

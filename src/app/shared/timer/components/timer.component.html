@@ -1,0 +1,8 @@
+<div class="timer" [ngClass]="{'gray' : isGray}" >
+  <div class="progress-bar" [style.width.%]="progressPercentage"></div>
+  <div class="label-container">
+    <img *ngIf="!isGray" class="passenger-icon" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/passenger-location.png"/>
+    <ion-icon *ngIf="isGray" class="trip-icon" name="location-sharp"></ion-icon>
+    <p class="label"> {{ arrivalTime }} </p>
+  </div>
+</div>
