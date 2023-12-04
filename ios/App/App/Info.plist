@@ -43,10 +43,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <key>NSLocationAlwaysUsageDescription</key>
+<string>App_Name requires users location for better user experience.</string>
+
+<key>NSLocationAlwaysUsageDescription</key>
+<string>App_Name requires users location for better user experience.</string>
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>App_Name requires users location for better user experience.</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>
 </plist>
