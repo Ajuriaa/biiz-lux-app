@@ -6,7 +6,8 @@ const config: CapacitorConfig = {
   webDir: 'dist/biiz-lux-app',
   server: {
     androidScheme: 'http',
-    //url: 'http://192.168.1.13:4200/'
+    iosScheme: 'http',
+    url: 'http://192.168.1.16:4200/'
   },
   plugins: {
     CapacitorCookies: {
