@@ -100,3 +100,19 @@
     width: 80%;
   }
 }
+
+.form-field {
+  @include flex-center;
+  width: 100%;
+
+  .input {
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 5rem;
+  }
+
+  .icon {
+    margin: 0 1rem;
+  }
+}

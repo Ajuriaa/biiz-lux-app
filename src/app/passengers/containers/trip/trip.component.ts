@@ -6,6 +6,7 @@ import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
 import { CookieHelper, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
 
@@ -40,10 +41,11 @@ export class TripComponent implements OnInit, OnDestroy {
   public autocompleteCurrent = { input: ''};
   public autocompleteDestinationAddresses: any = [];
   public autocompleteDestination = { input: ''};
-  public loading = true;
+  public loading = false;
   public map!: google.maps.Map;
   public drivers : IDriver[] = [];
   public travelConfirmed = false;
+  public addressForm: FormGroup = new FormGroup({});
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
   private startCoordinates = DEFAULT_COORDS;
@@ -56,10 +58,15 @@ export class TripComponent implements OnInit, OnDestroy {
     private mapService: MapService,
     private websocket: GlobalWebsocketService,
     private toaster: ToastComponent,
-    private _routerService: RouterService
+    private _routerService: RouterService,
+    private readonly _formBuilder: FormBuilder
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.addressForm = this._formBuilder.group({
+      startAddress: ['', [Validators.required]],
+      endAddress: ['', [Validators.required]]
+    });
     this.websocket.connectWebSocket();
     this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
@@ -120,7 +127,13 @@ export class TripComponent implements OnInit, OnDestroy {
   }
 
   public ClearAutocomplete(destination = false): void {
-    destination ? this.autocompleteDestinationAddresses = [] : this.autocompleteCurrentAddresses = [];
+    if(destination) {
+      this.autocompleteDestinationAddresses = [];
+      this.autocompleteDestination.input = '';
+    } else {
+      this.autocompleteCurrentAddresses = [];
+      this.autocompleteCurrent.input = '';
+    }
   }
 
   public async submit(): Promise<void> {

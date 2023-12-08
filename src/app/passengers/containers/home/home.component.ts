@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     }
 
   async ngOnInit(): Promise<void> {
-    this.loading = true;
+    //this.loading = true;
     await this.checkGeolocationPermissions();
     const battery = await Device.getBatteryInfo();
     setTimeout(() => {

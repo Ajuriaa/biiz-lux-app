@@ -9,7 +9,43 @@
         <img class="logo" src="assets/images/location-arrows.svg">
       </div>
       <div class="input-wrapper">
-        <ion-input
+        <form [formGroup]="addressForm">
+          <div class="form-field">
+            <input
+              [(ngModel)]="autocompleteCurrent.input"
+              [readonly]="travelConfirmed"
+              (input)="UpdateSearchResults(autocompleteCurrent)"
+              placeholder="Dirección actual"
+              formControlName="startAddress"
+              class="input"
+              required
+            >
+            <ion-icon class="icon" name="close" *ngIf="!travelConfirmed" (click)="ClearAutocomplete()"></ion-icon>
+          </div>
+          <mat-list *ngIf="autocompleteCurrentAddresses.length !== 0 && !travelConfirmed">
+            <mat-list-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
+              {{ item.description }}
+            </mat-list-item>
+          </mat-list>
+          <div class="form-field">
+            <input
+              [(ngModel)]="autocompleteDestination.input"
+              [readonly]="travelConfirmed"
+              (input)="UpdateSearchResults(autocompleteDestination, true)"
+              placeholder="Dirección de destino"
+              formControlName="endAddress"
+              class="input"
+              required
+            >
+            <ion-icon class="icon" name="close" *ngIf="!travelConfirmed" (click)="ClearAutocomplete(true)"></ion-icon>
+          </div>
+          <mat-list *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
+            <mat-list-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
+              {{ item.description }}
+            </mat-list-item>
+          </mat-list>
+        </form>
+        <!-- <ion-input
           [(ngModel)]="autocompleteCurrent.input"
           (ionInput)="UpdateSearchResults(autocompleteCurrent)"
           placeholder="Dirección actual"
@@ -34,7 +70,7 @@
           <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
             {{ item.description }}
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </div>
     </div>
     <div [@inAnimation] class="driver-container" *ngIf="!driverSelected && travelConfirmed">
