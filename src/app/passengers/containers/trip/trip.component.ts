@@ -38,9 +38,9 @@ export class TripComponent implements OnInit, OnDestroy {
   public driverSelected = false;
   public selectedDriver = { id: 0, coordinates: DEFAULT_COORDS, eta: 0 };
   public autocompleteCurrentAddresses: any = [];
-  public autocompleteCurrent = { input: ''};
+  public autocompleteCurrent: { input: string | null } = { input: null};
   public autocompleteDestinationAddresses: any = [];
-  public autocompleteDestination = { input: ''};
+  public autocompleteDestination: { input: string | null } = { input: null};
   public loading = false;
   public map!: google.maps.Map;
   public drivers : IDriver[] = [];
@@ -92,8 +92,9 @@ export class TripComponent implements OnInit, OnDestroy {
     }
   }
 
-  public UpdateSearchResults(field: {input: string}, destination = false) {
-    this.mapService.placesSearchResult(field).then((predictions) => {
+  public UpdateSearchResults(field: {input: string | null}, destination = false) {
+    const input = {input: field.input || ''};
+    this.mapService.placesSearchResult(input).then((predictions) => {
       destination ? this.autocompleteDestinationAddresses = predictions : this.autocompleteCurrentAddresses = predictions;
     });
   }
@@ -129,10 +130,10 @@ export class TripComponent implements OnInit, OnDestroy {
   public ClearAutocomplete(destination = false): void {
     if(destination) {
       this.autocompleteDestinationAddresses = [];
-      this.autocompleteDestination.input = '';
+      this.autocompleteDestination.input = null;
     } else {
       this.autocompleteCurrentAddresses = [];
-      this.autocompleteCurrent.input = '';
+      this.autocompleteCurrent.input = null;
     }
   }
 
