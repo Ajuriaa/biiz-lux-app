@@ -39,11 +39,11 @@
             >
             <ion-icon class="icon" name="close" *ngIf="!travelConfirmed" (click)="ClearAutocomplete(true)"></ion-icon>
           </div>
-          <mat-list *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
-            <mat-list-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
+          <div *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
+            <p *ngFor="let item of autocompleteDestinationAddresses" (click)="SelectSearchResult(item.description, true)">
               {{ item.description }}
-            </mat-list-item>
-          </mat-list>
+            </p>
+          </div>
         </form>
         <!-- <ion-input
           [(ngModel)]="autocompleteCurrent.input"
