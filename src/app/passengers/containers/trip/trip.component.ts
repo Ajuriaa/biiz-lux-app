@@ -7,8 +7,6 @@ import { MarkerUrl } from 'src/app/core/enums';
 import { CookieHelper, getCloseDrivers } from 'src/app/core/helpers';
 import { ToastComponent } from 'src/app/shared/toaster';
 
-const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
-
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
@@ -33,7 +31,6 @@ const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png'
   ]
 })
 export class TripComponent implements OnInit, OnDestroy {
-  public imageUrl = IMAGE_URL;
   public driverSelected = false;
   public selectedDriver = { id: 0, coordinates: DEFAULT_COORDS, eta: 0 };
   public autocompleteCurrentAddresses: any = [];

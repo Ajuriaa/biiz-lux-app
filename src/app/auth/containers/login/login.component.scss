@@ -4,7 +4,8 @@
   height: 100%;
   background-image: url('https://biiz-bucket.s3.us-east-2.amazonaws.com/login_prado.png');
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 200% 100%;
+  background-position: center;
   justify-content: space-between;
   @include flex-column;
 
@@ -25,13 +26,12 @@
 }
 
 .translate {
-  width: 4rem;
+  @include flex-center;
   border-radius: 0.4rem;
-  background-color: $green;
+  background-color: $blue;
 
   .icon {
-    margin-left: 0.5rem;
-    margin-top: 0.8rem;
+    padding: 1rem;
   }
 }
 
@@ -40,18 +40,11 @@
   margin: 1rem;
 }
 
-.icon {
-  padding: 0.2rem;
-  border-radius: 0.4rem;
-  align-items: center;
-  justify-content: center;
-}
-
 .login {
   height: 3rem;
   min-width: 30rem;
   width: 85%;
-  background-color: $green;
+  background-color: $blue;
   border-radius: 0.4rem;
   display: flex;
   justify-content: flex-end;
@@ -86,7 +79,7 @@
     width: 8%;
     padding: 1rem;
     border-radius: 0.3rem;
-    background-color: $green;
+    background-color: $blue;
   }
 
   .not-accepted {
@@ -99,7 +92,7 @@
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0.4rem;
-  background-color: $yellow;
+  background-color: $red;
 }
 
 .form-field {
@@ -140,6 +133,13 @@
 }
 
 .green {
-  color: $green;
+  color: $blue;
   margin-right: 1rem;
+}
+
+
+.atlantis {
+  position: absolute;
+  bottom: 1rem;
+  height: 2rem;
 }

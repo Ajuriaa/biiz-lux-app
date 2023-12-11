@@ -42,7 +42,7 @@ $biiz-theme: mat.define-light-theme((
 // https://material.angular.io/guide/theming#multiple-themes-in-one-file
 // https://material.angular.io/guide/theming#scoping-style-customizations
 .alternative-theme {
-  $alternative-biiz-primary: mat.define-palette(mat.$green-palette, 500);
+  $alternative-biiz-primary: mat.define-palette(mat.$blue-palette, 500);
   $alternative-biiz-accent: mat.define-palette(mat.$gray-palette);
   $alternative-biiz-warn: mat.define-palette(mat.$red-palette, 600);
 

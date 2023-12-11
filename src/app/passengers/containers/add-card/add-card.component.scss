@@ -44,7 +44,7 @@
 
 .green-button {
   @include flex-center;
-  background-color: $green;
+  background-color: $blue;
   color: $black;
   height: 6rem;
   border-radius: 0.5rem;
@@ -92,7 +92,7 @@
 
   .soon-label {
     @include flex-center;
-    background-color: $green;
+    background-color: $blue;
     width: 8rem;
     color: $black;
     position: absolute;

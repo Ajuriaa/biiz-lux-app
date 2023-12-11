@@ -57,9 +57,8 @@
       <img class="event-image" [src]="event.imageUrl"/>
       <p class="event-description"> {{ event.description }} </p>
     </div>
-    <app-primary-button class="confirm" (btnClick)="startTrip(event)">
-      <p class="text">CONFIRMAR DESTINO</p>
-      <img class="button-image" [src]="imageUrl">
+    <app-primary-button class="confirm" (btnClick)="startTrip(event)" [showLogo]="true">
+      CONFIRMAR DESTINO
     </app-primary-button>
   </div>
 </div>

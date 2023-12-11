@@ -33,7 +33,7 @@
   }
 }
 
-.experience-container {
+.events-container {
   height: 25%;
   width: 90%;
   border-radius: 0.6rem;
@@ -63,8 +63,8 @@
 
 .specials-container {
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials.png');
-  background-size: 250%;
-  background-position: 30%;
+  background-size: 200%;
+  background-position: center;
 }
 
 .button {
@@ -74,7 +74,7 @@
 
 .label {
   width: 6.6rem;
-  background-color: $green;
+  background-color: $blue;
 }
 
 .button-container {
