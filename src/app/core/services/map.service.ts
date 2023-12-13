@@ -64,7 +64,7 @@ export class MapService {
 
   public renderRoute(start: ICoordinate, end: ICoordinate, map: google.maps.Map, isTracking = false): google.maps.DirectionsRenderer {
     const directionOptions: google.maps.DirectionsRendererOptions = {
-      polylineOptions: { strokeColor: '#00E741' },
+      polylineOptions: { strokeColor: '#006CFF' },
       suppressMarkers: true,
       preserveViewport: isTracking
     };
