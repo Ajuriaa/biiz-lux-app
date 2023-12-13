@@ -10,17 +10,26 @@
       <div class="img">
         <img class="logo" src="assets/images/location-arrows.svg">
       </div>
-      <div class="input-wrapper">
-        <ion-input
-          [(ngModel)]="currentAddress"
-          placeholder="Dirección actual"
-        ></ion-input>
-        <ion-input
-          [(ngModel)]="selectedAirport.name"
-          placeholder="Aeropuesto"
-          [readonly]="true"
-        ></ion-input>
-      </div>
+      <form [formGroup]="addressForm" class="form">
+        <div class="input-wrapper">
+          <input
+            [(ngModel)]="currentAddress"
+            [readonly]="true"
+            placeholder="DIRECCION ACTUAL"
+            formControlName="startAddress"
+            class="input"
+          >
+        </div>
+        <div class="input-wrapper">
+          <input
+            [(ngModel)]="selectedAirport.name"
+            [readonly]="true"
+            placeholder="Aeropuerto"
+            formControlName="endAddress"
+            class="input"
+          >
+        </div>
+      </form>
     </div>
   </div>
   <div class="buttons-container">

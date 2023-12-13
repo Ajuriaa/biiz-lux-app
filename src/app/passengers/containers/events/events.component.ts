@@ -5,6 +5,7 @@ import { DEFAULT_COORDS, EVENT } from 'src/app/core/constants';
 import { Events, MarkerUrl } from 'src/app/core/enums';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEvent } from '../../interfaces';
 import { EventQueries } from '../../services';
 
@@ -27,6 +28,7 @@ import { EventQueries } from '../../services';
 })
 
 export class EventsComponent implements OnInit, OnDestroy {
+
   public loading = false;
   public allEvents: IEvent[] = [];
   public map!: google.maps.Map;
@@ -43,16 +45,22 @@ export class EventsComponent implements OnInit, OnDestroy {
   public filteredEvents: IEvent[] = [];
   public singleEventSelected = false;
   public barcodes = '';
+  public addressForm: FormGroup = new FormGroup({});
   @ViewChild('map', { static: true }) public mapRef!: ElementRef;
   private currentCoordinates = DEFAULT_COORDS;
 
   constructor(
     private sharedDataService: SharedDataService,
     private mapService: MapService,
-    private _eventQuery: EventQueries
+    private _eventQuery: EventQueries,
+    private readonly _formBuilder: FormBuilder
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.addressForm = this._formBuilder.group({
+      startAddress: ['', [Validators.required]],
+      endAddress: ['', [Validators.required]]
+    });
     this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
     this.map = this.mapService.generateDefaultMap(this.currentCoordinates, this.mapRef);
     const marker = this.mapService.addMarker(this.currentCoordinates, this.map, MarkerUrl.passenger);

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DEFAULT_COORDS } from 'src/app/core/constants';
 import { MarkerUrl } from 'src/app/core/enums';
@@ -31,6 +32,7 @@ const DEFAULT_AIRPORT = { name: '', coordinates: { lat: 0, lng: 0 }};
   styleUrls: ['./airport-trip.component.scss']
 })
 export class AirportTripComponent implements OnInit {
+  public addressForm: FormGroup = new FormGroup({});
   public selectedAirport = DEFAULT_AIRPORT;
   public currentAddress = 'DIRECCION ACTUAL';
   public loading = false;
@@ -44,10 +46,15 @@ export class AirportTripComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private mapService: MapService,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private readonly _formBuilder: FormBuilder
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.addressForm = this._formBuilder.group({
+      startAddress: ['', [Validators.required]],
+      endAddress: ['', [Validators.required]]
+    });
     this.currentCoordinates = await this.sharedDataService.setDefaultCoordinates();
     const airportName = this._route.snapshot.url.join('/').split('/').pop() || '';
     this.selectedAirport = this.airports.find((airport) => airport.name === airportName) || DEFAULT_AIRPORT;

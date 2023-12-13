@@ -45,32 +45,6 @@
             </p>
           </div>
         </form>
-        <!-- <ion-input
-          [(ngModel)]="autocompleteCurrent.input"
-          (ionInput)="UpdateSearchResults(autocompleteCurrent)"
-          placeholder="Dirección actual"
-          (ionClear)="ClearAutocomplete()"
-          [clearInput]="!travelConfirmed"
-          [readonly]="travelConfirmed"
-        ></ion-input>
-        <ion-list *ngIf="autocompleteCurrentAddresses.length !== 0 && !travelConfirmed">
-          <ion-item *ngFor="let item of autocompleteCurrentAddresses" tappable (click)="SelectSearchResult(item.description)">
-            {{ item.description }}
-          </ion-item>
-        </ion-list>
-        <ion-input
-          [(ngModel)]="autocompleteDestination.input"
-          (ionInput)="UpdateSearchResults(autocompleteDestination, true)"
-          placeholder="Dirección de destino"
-          (ionClear)="ClearAutocomplete(true)"
-          [clearInput]="!travelConfirmed"
-          [readonly]="travelConfirmed"
-        ></ion-input>
-        <ion-list *ngIf="autocompleteDestinationAddresses.length !== 0  && !travelConfirmed">
-          <ion-item *ngFor="let item of autocompleteDestinationAddresses" tappable (click)="SelectSearchResult(item.description, true)">
-            {{ item.description }}
-          </ion-item>
-        </ion-list> -->
       </div>
     </div>
     <div [@inAnimation] class="driver-container" *ngIf="!driverSelected && travelConfirmed">
