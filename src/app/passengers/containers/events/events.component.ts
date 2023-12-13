@@ -8,8 +8,6 @@ import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { IEvent } from '../../interfaces';
 import { EventQueries } from '../../services';
 
-const IMAGE_URL = 'https://biiz-bucket.s3.us-east-2.amazonaws.com/iiz-green.png';
-
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -35,7 +33,6 @@ export class EventsComponent implements OnInit, OnDestroy {
   public drivers : IDriver[] = [];
   public selectedEvent = '';
   public eventSelected = false;
-  public imageUrl = IMAGE_URL;
   public currentAddress = 'CASITA';
   public eventName = '';
   public selectedConcert = 0;

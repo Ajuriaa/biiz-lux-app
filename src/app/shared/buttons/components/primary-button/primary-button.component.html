@@ -7,10 +7,11 @@
 >
   <div class="button-content">
     <ng-content></ng-content>
-    <div class="icon-container" *ngIf="showNotification"> 
+    <div class="icon-container" *ngIf="showNotification">
       <span class="material-icons-round icon">
         notifications
       </span>
     </div>
+    <img class="logo" [src]="logoUrl"/>
   </div>
 </button>
