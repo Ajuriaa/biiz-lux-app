@@ -2,28 +2,41 @@
 <ion-content>
   <div class="container">
     <section class="specials-container" (click)="goToPath()">
-      <div class="label main-banner-soon">SOON</div>
-      <div class="button-container">
-        <div class="label">2KM</div>
-        <app-white-button message="RENTAR"></app-white-button>
-      </div>
+      <app-white-button class="btn" message="UNIDAD DE LUJO"></app-white-button>
     </section>
-    <section class="ambulance-container" (click)="goToPath()">
-      <div class="button-container">
-        <app-white-button message="AMBULANCIA"></app-white-button>
-        <div class="label">7MIN</div>
-      </div>
+    <section class="tickets-container">
+      <p class="label">SOON</p>
+      <app-white-button class="btn" message="BOLETERIA"></app-white-button>
     </section>
     <section class="shared-container">
       <section class="armored-container" (click)="goToPath()">
         <app-white-button message="BLINDADOS"></app-white-button>
       </section>
-      <section class="crane-container" (click)="goToPath()">
-        <app-white-button message="GRUA"></app-white-button>
+      <section class="experiences-container" (click)="goToPath('experiences')">
+        <p class="label">SOON</p>
+        <app-white-button message="EXPERIENCIAS"></app-white-button>
+      </section>
+    </section>
+    <section class="ambulance-container" (click)="goToPath()">
+      <div class="time-container">
+        <ion-icon name="time" class="icon"></ion-icon>
+        <p class="time">7 MIN.</p>
+      </div>
+      <app-white-button class="btn" message="AMBULANCIA"></app-white-button>
+    </section>
+    <section class="shared-container">
+      <section class="water-container">
+        <p class="label">SOON</p>
+        <app-white-button message="CISTERNA"></app-white-button>
+      </section>
+      <section class="electric-container">
+        <p class="label">SOON</p>
+        <app-white-button message="ELECTRICOS"></app-white-button>
       </section>
     </section>
     <div class="main-button">
-      <app-primary-button>MIS VIAJES</app-primary-button>
+      <app-primary-button (btnClick)="goToPath('my-trips')" class="btn">MIS VIAJES</app-primary-button>
+      <img class="img" src="https://biiz-bucket.s3.us-east-2.amazonaws.com/atlantis-logo-black.png"/>
     </div>
   </div>
 </ion-content>
