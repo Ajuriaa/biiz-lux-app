@@ -7,7 +7,7 @@ const config: CapacitorConfig = {
   server: {
     androidScheme: 'http',
     iosScheme: 'http',
-    url: 'http://192.168.1.16:4200/'
+    //url: 'http://192.168.1.16:4200/'
   },
   plugins: {
     CapacitorCookies: {

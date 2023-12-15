@@ -49,6 +49,9 @@
 <key>NSLocationAlwaysUsageDescription</key>
 <string>App_Name requires users location for better user experience.</string>
 
+<key>NSCameraUsageDescription</key>
+<string>The app enables the scaning of various barcodes.</string>
+
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>App_Name requires users location for better user experience.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
