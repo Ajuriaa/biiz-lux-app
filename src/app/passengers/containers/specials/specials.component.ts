@@ -9,7 +9,7 @@ import { RouterService } from 'src/app/core/services';
 export class SpecialsComponent {
 
   constructor( private _routerService: RouterService) { }
-  public goToPath(): void {
-    this._routerService.transition('/passenger/trip');
+  public goToPath(path = 'trip'): void {
+    this._routerService.transition(`/passenger/${path}`);
   }
 }

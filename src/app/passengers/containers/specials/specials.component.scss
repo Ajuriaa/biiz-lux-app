@@ -4,72 +4,134 @@
   @include flex-column;
   gap: 0.7rem;
   width: 100%;
-  height: 85%;
+  height: 150%;
+}
+
+.label {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
 }
 
 .main-button {
+  @include flex-column;
   width: 90%;
+  height: 18.18%;
   margin: 0.5rem;
+
+  .btn {
+    width: 100%;
+  }
+
+  .img {
+    height: 2rem;
+    margin-top: 1rem;
+  }
 }
 
 .specials-container {
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials.png');
+  background-position: bottom;
   width: 90%;
-  height: 50%;
-  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-car.png');
+  height: 27.27%;
   border-radius: 0.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-direction: column;
+  position: relative;
+
+  .btn {
+    position: absolute;
+    right: 0rem;
+    bottom: 0rem;
+  }
 }
 
-.ambulance-container {
+.ambulance-container, .tickets-container {
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-ambulance.png');
-  height: 25%;
+  height: 13.63%;
   width: 90%;
   border-radius: 0.6rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  position: relative;
+}
+
+.time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin: 0 0 1.5rem 1rem;
+  height: 2rem;
+
+  .icon {
+    font-size: 1rem;
+  }
+
+  .time {
+    margin: 0;
+  }
+}
+
+.tickets-container {
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-tickets.png');
+  position: relative;
+
+  .btn {
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+  }
+
+  .label {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+  }
 }
 
 .shared-container {
   display: flex;
   gap: 0.5rem;
-  height: 25%;
+  height: 13.63%;
   width: 90%;
 }
 
-.armored-container,
-.crane-container {
+.armored-container, .experiences-container,
+.water-container, .electric-container {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  position: relative;
   width: 50%;
   border-radius: 0.4rem;
 }
 
 .armored-container {
   @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-armored.png');
+  background-position: center;
 }
 
-.crane-container {
-  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-crane.png');
+.experiences-container {
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/raptor.png');
+  background-position: center;
+  background-size: 125%;
 }
 
-.label {
+.electric-container {
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-electric.png');
+  background-position: center;
+}
+
+.water-container {
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/specials-water.png');
+  background-position: center;
+}
+
+.label, .time-container {
   width: 6.6rem;
   background-color: $blue;
-}
-
-.main-banner-soon {
-  margin-top: 1.5rem;
-  margin-right: 1rem;
-}
-
-.button-container {
-  display: flex;
-  gap: 0.5rem;
 }
 
 .button,
