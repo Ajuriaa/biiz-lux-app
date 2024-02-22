@@ -2,12 +2,14 @@
 
 .container {
   height: 100%;
+  width: 100%;
   background-image: url('https://biiz-bucket.s3.us-east-2.amazonaws.com/login_prado.png');
   background-repeat: no-repeat;
   background-size: 200% 100%;
   background-position: center;
   justify-content: space-between;
   @include flex-column;
+  position: absolute;
 
   .login-header,
   .login-footer {

@@ -25,6 +25,7 @@
     text-transform: uppercase;
     justify-content: flex-start;
     margin-bottom: 1.4rem;
+    margin-right: -0.5rem;
 
     .icon {
       margin:0 0.5rem;
@@ -37,7 +38,7 @@
   height: 25%;
   width: 90%;
   border-radius: 0.6rem;
-  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/events.png');
+  @include background-cover('https://biiz-bucket.s3.us-east-2.amazonaws.com/events.gif');
   background-position: center;
   display: flex;
   align-items: flex-end;
