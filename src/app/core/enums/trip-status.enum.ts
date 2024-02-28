@@ -1,5 +1,6 @@
 export enum TripStatus {
-  active = 'VIAJANDO',
+  pending = 'ESPERANDO',
+  enroute = 'VIAJANDO',
   completed = 'FINALIZADO',
   canceled = 'CANCELADO'
 }

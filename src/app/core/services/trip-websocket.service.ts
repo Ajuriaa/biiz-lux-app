@@ -16,22 +16,6 @@ export class TripWebsocketService {
     private sharedData: SharedDataService
   ) {}
 
-  public getDriverStatus() {
-    console.log('preguntando');
-    const id = JSON.stringify({
-      channel: WebsocketChannels.TRIP,
-      trip_id: this.tripId
-    });
-    const response = {title: 'tripStatus'};
-    const wsData = JSON.stringify({action: 'send_data', info: response, trip_id: this.tripId});
-    const payload = JSON.stringify({
-      command: 'message',
-      identifier: id,
-      data: wsData
-    });
-    this.socket.send(payload);
-  }
-
   public unsubscribe(): void {
     const id = JSON.stringify({channel: 'CurrentTripChannel'});
     const payload = JSON.stringify({

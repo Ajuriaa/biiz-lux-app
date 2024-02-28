@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { SharedDataService, GlobalWebsocketService, RouterService, TripWebsocketService } from 'src/app/core/services';
-import { getClosestDriver } from 'src/app/core/helpers';
+import { CookieHelper, getClosestDriver } from 'src/app/core/helpers';
 import { Device } from '@capacitor/device';
 import { Subscription } from 'rxjs';
 import { HomeQueries } from '../../services';
@@ -87,21 +87,18 @@ export class HomeComponent implements OnInit {
   }
 
   private checkCurrentTrip(): void {
-    // this._homeQuery.getCurrentTrip().subscribe(({ data }) => {
-    //   if (data.activeTrip) {
-    //     const trip = data.activeTrip;
-    //     this.tripSocket.connectWebSocket(trip.id);
-    //     this.sharedDataService.setCurrentTrip({passengerId: CookieHelper.getUserInfo(), tripId: trip.id});
-    //     console.log(trip);
-    //     this.tripSocket.getDriverStatus();
-    //     this.subscription = this.tripSocket.driverStatus.subscribe((message) => {
-    //       if (message === 'awaiting') {
-    //         this._routerService.transition('passenger/awaiting-trip');
-    //       } else {
-    //         this._routerService.transition('passenger/traveling');
-    //       }
-    //     });
-    //   }
-    // });
+    this._homeQuery.getCurrentTrip().subscribe(({ data }) => {
+      if (data.activeTrip) {
+        const trip = data.activeTrip;
+        this.tripSocket.connectWebSocket(trip.id);
+        this.sharedDataService.setCurrentTrip({passengerId: CookieHelper.getUserInfo(), tripId: trip.id});
+        if (trip.status === 'pending') {
+          this._routerService.transition('passenger/awaiting-trip');
+        }
+        if (trip.status === 'enroute') {
+          this._routerService.transition('passenger/traveling');
+        }
+      }
+    });
   }
 }
